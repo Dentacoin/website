@@ -16,7 +16,7 @@
                     </div>
                 </div>
             </section>
-            <section class="presents-list padding-top-40">
+            <section class="presents-list padding-top-150">
                 <img src="/assets/images/christmas-calendar-campaign/dentist-christmas.png" class="dentist" alt="Dentist" itemprop="contentUrl"/>
                 <picture itemscope="" itemtype="http://schema.org/ImageObject" class="presents padding-bottom-30">
                     <img src="/assets/images/christmas-calendar-campaign/holiday-calendar-2020-prizes.png" alt="Presents list" itemprop="contentUrl"/>

@@ -76,14 +76,26 @@
                                                         @endif
                                                     </figcaption>
                                                 @elseif($task['type'] == 'face-sticker')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Face sticket" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Face sticker</figcaption>
                                                 @elseif($task['type'] == 'facebook-holiday-frame')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Facebok holiday frame" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Facebook frame</figcaption>
                                                 @elseif($task['type'] == 'free-oracle-health-guide')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Oral health guide" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
+                                                @elseif($task['type'] == 'season-oral-guide')
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Seasons oral health guide</figcaption>
+                                                @elseif($task['type'] == 'kids-brushing-calendar')
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's  brushing calendar</figcaption>
+                                                @elseif($task['type'] == 'kids-oral-care-calendar')
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's oral care calendar</figcaption>
+                                                @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
+                                                    <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Ebook by Dr. Trino Nuno</figcaption>
                                                 @elseif($task['type'] == 'custom-holiday-card')
                                                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
@@ -182,14 +194,26 @@
                                                         @endif
                                                     </figcaption>
                                                 @elseif($task['type'] == 'face-sticker')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Face sticket" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Face sticker</figcaption>
                                                 @elseif($task['type'] == 'facebook-holiday-frame')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Facebok holiday frame" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Facebook frame</figcaption>
                                                 @elseif($task['type'] == 'free-oracle-health-guide')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Oral health guide" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
+                                                @elseif($task['type'] == 'season-oral-guide')
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Seasons oral health guide</figcaption>
+                                                @elseif($task['type'] == 'kids-brushing-calendar')
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's  brushing calendar</figcaption>
+                                                @elseif($task['type'] == 'kids-oral-care-calendar')
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's oral care calendar</figcaption>
+                                                @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
+                                                    <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Ebook by Dr. Trino Nuno</figcaption>
                                                 @elseif($task['type'] == 'custom-holiday-card')
                                                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>

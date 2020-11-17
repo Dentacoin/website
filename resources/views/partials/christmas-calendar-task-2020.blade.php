@@ -209,7 +209,7 @@
                         @break
                         @case(4)
                         <div>
-                            @php($userData = (new \App\Http\Controllers\APIRequestsController())->getUserData(session('logged_user')['id'], true))
+                            @php($userData = (new \App\Http\Controllers\APIRequestsController())->getUserData(session('logged_user')['id']))
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">Answer 8 simple questions to unlock your daily prize.</div>
                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeYywGTZGh4VClVzl2HKYXgA_s6AyX0oUdBVHjAIkXWP-4c0g/viewform?entry.1162335218={{$userData->email}}" class="white-red-btn" target="_blank">TAKE QUIZ</a>
                         </div>

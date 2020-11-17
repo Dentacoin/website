@@ -5,8 +5,8 @@
             <section class="container text-center">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto line-height-46">Dentacoin Holiday<br>CALENDAR CHALLENGE 2019 IS OVER!</h1>
-                        <p class="fs-22 fs-xs-20 lato-regular padding-bottom-xs-25">We picked 9 big winners on January 10, 2020:</p>
+                        <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto line-height-46">Dentacoin Holiday<br>CALENDAR CHALLENGE 2020 IS OVER!</h1>
+                        <p class="fs-22 fs-xs-20 lato-regular padding-bottom-xs-25">We picked 10 big winners on January 10, 2020:</p>
                     </div>
                 </div>
             </section>
@@ -44,27 +44,24 @@
             <section class="container text-center">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto">Join Dentacoin Holiday CALENDAR CHALLENGE 2019</h1>
+                        <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto">Join Dentacoin Holiday CALENDAR CHALLENGE 2020</h1>
                         <p class="fs-22 fs-xs-20 lato-regular">Unlock a new surprise every day from December 1 to 31!</p>
-                        <div class="padding-bottom-35 padding-top-10">
-                            <a href="javascript:void(0);" class="open-dentacoin-gateway patient-login">
-                                <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                    <img src="/assets/images/christmas-calendar-campaign/sign-up-button.svg" class="max-width-280 max-width-xs-300" alt="Sign up button" itemprop="contentUrl"/>
-                                </figure>
-                            </a>
-                        </div>
-                        <p class="fs-22 fs-xs-20 lato-regular">We are picking 9 big winners on January 10, 2020:</p>
+                        <p class="fs-22 fs-xs-20 lato-regular">Be consistent and increase your chances to win the <br><span class="lato-black">RAFFLE PRIZES on January, 11:</span></p>
                     </div>
                 </div>
             </section>
-            <section class="container-fluid text-center presents-list padding-bottom-50 padding-bottom-xs-30">
-                <div class="row">
-                    <div class="col-xs-12 padding-left-xs-0 padding-right-xs-0">
-                        <picture itemscope="" itemtype="http://schema.org/ImageObject">
-                            <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/presents-mobile.png" />
-                            <img src="/assets/images/christmas-calendar-campaign/presents.png" alt="Presents list" itemprop="contentUrl"/>
-                        </picture>
-                    </div>
+            <section class="presents-list padding-top-40">
+                <img src="/assets/images/christmas-calendar-campaign/dentist-christmas.png" class="dentist" alt="Dentist" itemprop="contentUrl"/>
+                <picture itemscope="" itemtype="http://schema.org/ImageObject" class="presents padding-bottom-30">
+                    <img src="/assets/images/christmas-calendar-campaign/holiday-calendar-2020-prizes.png" alt="Presents list" itemprop="contentUrl"/>
+                </picture>
+                <img src="/assets/images/christmas-calendar-campaign/user-christmas.png" class="user" alt="User" itemprop="contentUrl"/>
+                <div class="padding-bottom-50 text-center">
+                    <a href="javascript:void(0);" class="open-dentacoin-gateway patient-login">
+                        <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                            <img src="/assets/images/christmas-calendar-campaign/join-btn.svg" class="max-width-200 max-width-xs-300" alt="Join button" itemprop="contentUrl"/>
+                        </figure>
+                    </a>
                 </div>
             </section>
             <section class="container tasks-section">
@@ -88,7 +85,7 @@
                                     </div>
                                 </a>
                             @endfor
-                            <a href="{{route('holiday-calendar-terms')}}" target="_blank" class="text-decoration-underline padding-right-15 padding-right-xs-0 fs-18 terms-link">Terms &  Conditions</a>
+                            <a href="{{route('holiday-calendar-terms')}}" target="_blank" class="text-decoration-underline padding-right-15 padding-right-xs-0 fs-18 terms-link">Terms & Conditions</a>
                         </div>
                     </div>
                 </div>

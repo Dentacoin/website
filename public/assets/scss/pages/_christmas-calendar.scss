@@ -33,6 +33,12 @@ body.christmas-calendar {
     }
     .christmas-calendar-logged {
         .christmas-calendar-campaign-stats {
+            background-image: url(/assets/images/christmas-calendar-campaign/red-background.png);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            color: white;
+            max-width: 1300px;
             .single-stat {
                 text-align: center;
                 border-right: 1.5px solid black;
@@ -731,16 +737,6 @@ body.christmas-calendar {
                 }
             }
         }
-        .presents-list {
-            figure {
-                img {
-                    margin-top: -40px;
-                    @include breakpoint($xs) {
-                        margin-top: 0;
-                    }
-                }
-            }
-        }
         .santa-section {
             img {
                 margin-top: -150px;
@@ -752,5 +748,41 @@ body.christmas-calendar {
         &.challenge-passed {
 
         }
+    }
+    .presents-list {
+        position: relative;
+        overflow-x: hidden;
+        .presents {
+            width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 0 auto;
+            @include breakpoint($lgll) {
+                max-width: 900px;
+            }
+        }
+        .dentist {
+            position: absolute;
+            left: 0;
+            bottom: 20px;
+            width: 380px;
+            @include breakpoint($lgll) {
+                width: 500px;
+            }
+        }
+        .user {
+            position: absolute;
+            right: 0;
+            bottom: 20px;
+            width: 380px;
+            @include breakpoint($lgll) {
+                width: 500px;
+            }
+        }
+    }
+    .set-width-limit {
+        max-width: 1250px;
+        margin: 0 auto;
+        float: none;
     }
 }

@@ -16,7 +16,7 @@
 </div>
 <div class="popup-body">
     @if($type == 'task')
-        @if($dayId == 9)
+        @if($dayId == 27)
             <div class="newsletter-register">
                 <form action="https://dentacoin.us16.list-manage.com/subscribe/post?u=61ace7d2b009198ca373cb213&amp;id=993df5967d" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
                     <div class="padding-bottom-15 padding-top-25 fs-0 text-center-xs">
@@ -43,6 +43,18 @@
                                 @elseif($task['type'] == 'free-oracle-health-guide')
                                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                     <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
+                                @elseif($task['type'] == 'season-oral-guide')
+                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
+                                    <figcaption class="color-white lato-bold padding-top-5">Seasons oral health guide</figcaption>
+                                @elseif($task['type'] == 'kids-brushing-calendar')
+                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
+                                    <figcaption class="color-white lato-bold padding-top-5">Kid's  brushing calendar</figcaption>
+                                @elseif($task['type'] == 'kids-oral-care-calendar')
+                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
+                                    <figcaption class="color-white lato-bold padding-top-5">Kid's oral care calendar</figcaption>
+                                @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
+                                    <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
+                                    <figcaption class="color-white lato-bold padding-top-5">Ebook by Dr. Trino Nuno</figcaption>
                                 @elseif($task['type'] == 'custom-holiday-card')
                                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                     <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
@@ -90,6 +102,18 @@
                             @elseif($task['type'] == 'free-oracle-health-guide')
                                 <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                 <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
+                            @elseif($task['type'] == 'season-oral-guide')
+                                <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
+                                <figcaption class="color-white lato-bold padding-top-5">Seasons oral health guide</figcaption>
+                            @elseif($task['type'] == 'kids-brushing-calendar')
+                                <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
+                                <figcaption class="color-white lato-bold padding-top-5">Kid's  brushing calendar</figcaption>
+                            @elseif($task['type'] == 'kids-oral-care-calendar')
+                                <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
+                                <figcaption class="color-white lato-bold padding-top-5">Kid's oral care calendar</figcaption>
+                            @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
+                                <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
+                                <figcaption class="color-white lato-bold padding-top-5">Ebook by Dr. Trino Nuno</figcaption>
                             @elseif($task['type'] == 'custom-holiday-card')
                                 <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                 <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
@@ -158,29 +182,18 @@
                         @break
                         @case(2)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">Share the best joke about dentists and oral health you’ve ever heard:</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">We know the Tooth Fairy is a real global star. But how is it in your country? Share your favorite teeth-related tradition here:</div>
                             <textarea name="text_proof" rows="4" maxlength="1000"></textarea>
                         </div>
                         @break
                         @case(3)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin on Facebook, go to the “Reviews” tab and post a recommendation. Text comment is required.</div>
-                            <a href="https://www.facebook.com/pg/dentacoin/reviews/" class="white-red-btn" target="_blank">POST NOW</a>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
-                            <div class="upload-btn-parent">
-                                <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
-                            </div>
-                        </div>
-                        @break
-                        @case(4)
-                        <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">SHARE this post on your Facebook profile:</div>
-                            <a href="https://www.facebook.com/dentacoin/posts/866686657067732" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/dentacoin/posts/866686657067732</a>
+                            <a href="https://www.facebook.com/pg/dentacoin/samplepost/" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/pg/dentacoin/samplepost/</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
-                            <a href="https://twitter.com/dentacoin/status/1201786929307701248" class="color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1201786929307701248</a>
+                            <a href="https://www.twitter.com/pg/dentacoin/samplepost/" class="color-christmas-calendar-red" target="_blank">https://www.twitter.com/pg/dentacoin/samplepost/</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="padding-bottom-20">
                                 <div class="custom-google-label-style module max-width-400">
@@ -194,37 +207,28 @@
                             </div>
                         </div>
                         @break
+                        @case(4)
+                        <div>
+                            @php($userData = (new \App\Http\Controllers\APIRequestsController())->getUserData(session('logged_user')['id'], true))
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">Answer 8 simple questions to unlock your daily prize.</div>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeYywGTZGh4VClVzl2HKYXgA_s6AyX0oUdBVHjAIkXWP-4c0g/viewform?entry.1162335218={{$userData->email}}" class="white-red-btn" target="_blank">TAKE QUIZ</a>
+                        </div>
+                        @break
                         @case(5)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Save this image and send it to 5 friends using any channel:</div>
-                            <div>Here is a sample text you may send them with the image:<br>
-                                I care about you and your oral health. Here are 5 tips on how to take better care of your teeth.</div>
-                            <figure class="margin-top-25 downloadable-image" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <img alt="Trusted reviews promo banner" class="width-100" itemprop="contentUrl" src="/assets/images/christmas-calendar-campaign/5-oral-health-tips.jpg">
-                                <a class="overlay-on-hover" download="" href="/assets/images/christmas-calendar-campaign/5-oral-health-tips.jpg">
-                                    <span class="lato-bold fs-16 dark-blue-color">DOWNLOAD IMAGE</span>
-                                </a>
-                            </figure>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
-                            <div class="padding-bottom-10 upload-btn-parent">
-                                <input type="file" class="hide screenshot_proof" id="screenshot_proof_1" name="screenshot_proof[0]"/>
-                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof_1" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
-                            </div>
-                            <div class="padding-bottom-10 upload-btn-parent">
-                                <input type="file" class="hide screenshot_proof" id="screenshot_proof_2" name="screenshot_proof[1]"/>
-                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof_2" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
-                            </div>
-                            <div class="padding-bottom-10 upload-btn-parent">
-                                <input type="file" class="hide screenshot_proof" id="screenshot_proof_3" name="screenshot_proof[2]"/>
-                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof_3" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
-                            </div>
-                            <div class="padding-bottom-10 upload-btn-parent">
-                                <input type="file" class="hide screenshot_proof" id="screenshot_proof_4" name="screenshot_proof[3]"/>
-                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof_4" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">Visit Dentacoin’s profile on Google Maps and post a recommendation. Text comment is required.</div>
+                            <a href="https://goo.gl/maps/C9t4UEaEcQJPsrSBA" class="white-red-btn" target="_blank">POST NOW</a>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
+                            <div class="padding-bottom-20">
+                                <div class="custom-google-label-style module max-width-400">
+                                    <label for="text_proof">Link to your post/ tweet:</label>
+                                    <input type="text" id="text_proof" name="text_proof" maxlength="1000" class="full-rounded required form-field"/>
+                                </div>
                             </div>
                             <div class="upload-btn-parent">
-                                <input type="file" class="hide screenshot_proof" id="screenshot_proof_5" name="screenshot_proof[4]"/>
-                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof_5" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
+                                <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
                         </div>
                         @break
@@ -586,6 +590,14 @@
                 @elseif($task['type'] == 'free-oracle-health-guide')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @php($presentName = 'Oral health guide')
+                @elseif($task['type'] == 'season-oral-guide')
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
+                @elseif($task['type'] == 'kids-brushing-calendar')
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
+                @elseif($task['type'] == 'kids-oral-care-calendar')
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
+                @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
+                    <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
                 @elseif($task['type'] == 'custom-holiday-card')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @php($presentName = 'Holiday card')
@@ -593,22 +605,54 @@
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
             @if($dayId == 1 || $dayId == 16 || $dayId == 8 || $dayId == 24)
-                @if($dayId == 1)
-                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
-                    @php($btnLabel = 'DOWNLOAD')
-                    @php($actionType = 'download')
-                @elseif($dayId == 8)
-                    @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
-                    @php($btnLabel = 'HOLIDAY FRAME')
-                    @php($actionType = 'external-link')
-                @elseif($dayId == 16)
-                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
-                    @php($btnLabel = 'DOWNLOAD')
-                    @php($actionType = 'download')
-                @elseif($dayId == 24)
-                    @php($btnLink = 'https://dentacoin.com/assets/docs/dentacoin-oral-health-guide-2020.pdf')
-                    @php($btnLabel = 'DOWNLOAD')
-                    @php($actionType = 'download')
+                @if ($year == 2019)
+                    @if($dayId == 1)
+                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 8)
+                        @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
+                        @php($btnLabel = 'HOLIDAY FRAME')
+                        @php($actionType = 'external-link')
+                    @elseif($dayId == 16)
+                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 24)
+                        @php($btnLink = 'https://dentacoin.com/assets/docs/dentacoin-oral-health-guide-2020.pdf')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @endif
+                @elseif ($year == 2020)
+                    @if($dayId == 1)
+                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 4)
+                        @php($btnLink = 'https://www.facebook.com')
+                        @php($btnLabel = 'HOLIDAY FRAME')
+                        @php($actionType = 'external-link')
+                    @elseif($dayId == 11)
+                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-microbiome.pdf')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 14)
+                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'kids-oral-care-calendar.pdf')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 21)
+                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-health-tips.pdf')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 24)
+                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 28)
+                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'jaws-of-battle-brushing-calendar.pdf')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @endif
                 @endif
                 <div class="row padding-top-30">
                     <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
@@ -642,6 +686,14 @@
                 @elseif($task['type'] == 'free-oracle-health-guide')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @php($presentName = 'Oral health guide')
+                @elseif($task['type'] == 'season-oral-guide')
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
+                @elseif($task['type'] == 'kids-brushing-calendar')
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
+                @elseif($task['type'] == 'kids-oral-care-calendar')
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
+                @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
+                    <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
                 @elseif($task['type'] == 'custom-holiday-card')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @php($presentName = 'Holiday card')
@@ -649,22 +701,54 @@
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
             @if($dayId == 1 || $dayId == 16 || $dayId == 8 || $dayId == 24)
-                @if($dayId == 1)
-                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
-                    @php($btnLabel = 'DOWNLOAD')
-                    @php($actionType = 'download')
-                @elseif($dayId == 8)
-                    @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
-                    @php($btnLabel = 'HOLIDAY FRAME')
-                    @php($actionType = 'external-link')
-                @elseif($dayId == 16)
-                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
-                    @php($btnLabel = 'DOWNLOAD')
-                    @php($actionType = 'download')
-                @elseif($dayId == 24)
-                    @php($btnLink = 'https://dentacoin.com/assets/docs/dentacoin-oral-health-guide-2020.pdf')
-                    @php($btnLabel = 'DOWNLOAD')
-                    @php($actionType = 'download')
+                @if ($year == 2019)
+                    @if($dayId == 1)
+                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 8)
+                        @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
+                        @php($btnLabel = 'HOLIDAY FRAME')
+                        @php($actionType = 'external-link')
+                    @elseif($dayId == 16)
+                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 24)
+                        @php($btnLink = 'https://dentacoin.com/assets/docs/dentacoin-oral-health-guide-2020.pdf')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @endif
+                @elseif ($year == 2020)
+                    @if($dayId == 1)
+                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 4)
+                        @php($btnLink = 'https://www.facebook.com')
+                        @php($btnLabel = 'HOLIDAY FRAME')
+                        @php($actionType = 'external-link')
+                    @elseif($dayId == 11)
+                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-microbiome.pdf')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 14)
+                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'kids-oral-care-calendar.pdf')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 21)
+                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-health-tips.pdf')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 24)
+                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @elseif($dayId == 28)
+                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'jaws-of-battle-brushing-calendar.pdf')
+                        @php($btnLabel = 'DOWNLOAD')
+                        @php($actionType = 'download')
+                    @endif
                 @endif
                 <div class="row padding-top-30">
                     <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>

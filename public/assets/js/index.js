@@ -834,7 +834,7 @@ var projectData = {
                     });
 
                     if ($('.move-footer-above').length) {
-                        $('footer').css({'margin-top' : '-50px'});
+                        $('footer').css({'margin-top' : '-30px'});
                     }
 
                     if (Date.now() > Math.floor(new Date(2020, 12, 1, 23, 59, 59, 0).getTime())) {

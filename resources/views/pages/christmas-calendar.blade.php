@@ -1,13 +1,13 @@
 @extends("layout")
 @section("content")
-    @if(strtotime('2020/01/02 00:00:00') < time())
+    @if(strtotime('2021/01/02 00:00:00') < time())
         <div class="christmas-calendar-not-logged challenge-passed">
             <section class="container text-center">
                 <div class="row">
                     <div class="col-xs-12">
                         <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto line-height-46">Dentacoin Holiday<br>CALENDAR CHALLENGE 2020 IS OVER!</h1>
                         <p class="fs-22 fs-xs-20 lato-regular padding-bottom-xs-25">
-                            @if(time() < strtotime('2020/01/11 00:00:00'))
+                            @if(time() < strtotime('2021/01/11 00:00:00'))
                                 We will pick 10 winners on January 11, 2021.
                             @else
                                 We picked 10 winners on January 11, 2021.
@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <p class="fs-22 fs-xs-20 padding-bottom-30 lato-regular max-width-470 margin-0-auto">
-                            @if(time() < strtotime('2020/01/11 00:00:00'))
+                            @if(time() < strtotime('2021/01/11 00:00:00'))
                                 The winners will be announced first in our Telegram group. Join now and stay tuned for the winners announcement.
                             @else
                                 See the winners in our Telegram group and be the first to know about future raffles!

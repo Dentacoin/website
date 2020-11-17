@@ -146,7 +146,7 @@
             </section>
         </div>
     @else
-        <div class="christmas-calendar-logged">
+        <div class="christmas-calendar-logged move-footer-above">
             <section class="container text-center">
                 <div class="row">
                     <div class="col-xs-12">

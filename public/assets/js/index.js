@@ -833,6 +833,10 @@ var projectData = {
                         basic.closeDialog();
                     });
 
+                    if ($('.move-footer-above').length) {
+                        $('footer').css({'margin-top' : '-50px'});
+                    }
+
                     if (Date.now() > Math.floor(new Date(2020, 12, 1, 23, 59, 59, 0).getTime())) {
                         initTasksEvent();
                     } else {

@@ -779,6 +779,11 @@ body.christmas-calendar {
                 width: 500px;
             }
         }
+        &.no-dentist-and-user-bottom {
+            .user, .dentist {
+                bottom: 0;
+            }
+        }
     }
     .set-width-limit {
         max-width: 1250px;

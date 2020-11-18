@@ -212,7 +212,8 @@ class ChristmasCalendarController extends Controller
                     if (!empty($textProof))   {
                         if (is_array($textProof)) {
                             $insert_arr['text_proof'] = json_encode($textProof);
-                            (new APIRequestsController())->sendChristmasTemplate($insert_arr['text_proof']);
+                            var_dump((new APIRequestsController())->sendChristmasTemplate($insert_arr['text_proof']));
+                            die();
                         } else {
                             $insert_arr['text_proof'] = $textProof;
                         }

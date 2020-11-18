@@ -785,7 +785,12 @@ body.christmas-calendar {
             }
         }
         @include breakpoint($sm-down) {
-
+            .presents {
+                max-width: 100%;
+            } 
+            .dentist, .user {
+                display: none;
+            }
         }
     }
     .set-width-limit {

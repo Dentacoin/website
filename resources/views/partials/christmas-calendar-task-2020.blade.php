@@ -606,7 +606,7 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if($dayId == 1 || $dayId == 16 || $dayId == 8 || $dayId == 24)
+            @if(in_array($dayId, [1, 4, 8, 11, 14, 16, 21, 24, 28]))
                 @if ($year == 2019)
                     @if($dayId == 1)
                         @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
@@ -702,7 +702,7 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if($dayId == 1 || $dayId == 16 || $dayId == 8 || $dayId == 24)
+            @if(in_array($dayId, [1, 4, 8, 11, 14, 16, 21, 24, 28]))
                 @if ($year == 2019)
                     @if($dayId == 1)
                         @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')

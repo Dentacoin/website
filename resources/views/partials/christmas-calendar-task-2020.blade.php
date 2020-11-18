@@ -241,21 +241,9 @@
                         @break
                         @case(6)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Join the official Announcements channel of Dentacoin: <a href="https://t.me/Dentacoin_Official" class="color-christmas-calendar-red" target="_blank">https://t.me/Dentacoin_Official</a>.</div>
-                            <div class="padding-bottom-20">
-                                <a href="https://t.me/dentacoin" target="_blank" class="inline-block">
-                                    <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="/assets/images/christmas-calendar-campaign/join-now.svg" class="width-100 max-width-150" alt="Join now Dentacoin telegram group" itemprop="contentUrl"/>
-                                    </figure>
-                                </a>
-                                <div class="inline-block link-text fs-16 lato-regular padding-left-10 padding-left-xs-0 padding-top-xs-10">Don’t have Telegram yet? <a href="https://telegram.org/" target="_blank" class="color-christmas-calendar-red">Get it here.</a></div>
-                            </div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
-                            <div class="padding-bottom-20">
-                                <div class="custom-google-label-style module max-width-400">
-                                    <label for="telegram-username">Your Telegram username:</label>
-                                    <input type="text" id="telegram-username" name="proof-text" maxlength="1000" class="full-rounded required form-field"/>
-                                </div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">Cast your vote for the Top Dentist of 2020 from the list of nominees and claim your daily prize.</div>
+                            <div class="padding-top-15">
+                                <a href="https://reviews.dentacoin.com/blog/vote-for-top-dentist-of-the-year" target="_blank" class="white-red-btn">VOTE NOW</a>
                             </div>
                         </div>
                         @break

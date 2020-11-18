@@ -1207,7 +1207,7 @@ var projectData = {
                                                     var form = $(this);
                                                     var this_form = this;
 
-                                                    if (['12', '15', '25', '30'].indexOf(this_btn.attr('data-day-id')) > -1) {
+                                                    if (['6', '12', '15', '25', '30'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                         var warningReminderAboutTaskValidation = {};
                                                         warningReminderAboutTaskValidation.callback = function (result) {
                                                             if (result) {

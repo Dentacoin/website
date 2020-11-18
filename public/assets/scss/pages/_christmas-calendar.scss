@@ -784,6 +784,9 @@ body.christmas-calendar {
                 bottom: 0;
             }
         }
+        @include breakpoint($sm-down) {
+
+        }
     }
     .set-width-limit {
         max-width: 1250px;

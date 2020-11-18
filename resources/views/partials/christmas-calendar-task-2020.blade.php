@@ -606,8 +606,8 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if(in_array($dayId, [1, 4, 8, 11, 14, 16, 21, 24, 28]))
-                @if ($year == 2019)
+            @if ($year == 2019)
+                @if(in_array($dayId, [1, 8, 16, 24]))
                     @if($dayId == 1)
                         @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
                         @php($btnLabel = 'DOWNLOAD')
@@ -625,7 +625,16 @@
                         @php($btnLabel = 'DOWNLOAD')
                         @php($actionType = 'download')
                     @endif
-                @elseif ($year == 2020)
+
+                    <div class="row padding-top-30">
+                        <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
+                        <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
+                    </div>
+                @else
+                    <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-280 margin-top-30">{{$btnText}}</button>
+                @endif
+            @elseif ($year == 2020)
+                @if(in_array($dayId, [1, 4, 11, 14, 21, 28]))
                     @if($dayId == 1)
                         @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
                         @php($btnLabel = 'DOWNLOAD')
@@ -655,13 +664,14 @@
                         @php($btnLabel = 'DOWNLOAD')
                         @php($actionType = 'download')
                     @endif
+
+                    <div class="row padding-top-30">
+                        <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
+                        <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
+                    </div>
+                @else
+                    <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-280 margin-top-30">{{$btnText}}</button>
                 @endif
-                <div class="row padding-top-30">
-                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
-                    <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
-                </div>
-            @else
-                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-280 margin-top-30">{{$btnText}}</button>
             @endif
         </div>
     @elseif($type == 'already-completed')
@@ -702,8 +712,8 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if(in_array($dayId, [1, 4, 8, 11, 14, 16, 21, 24, 28]))
-                @if ($year == 2019)
+            @if ($year == 2019)
+                @if(in_array($dayId, [1, 8, 16, 24]))
                     @if($dayId == 1)
                         @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
                         @php($btnLabel = 'DOWNLOAD')
@@ -721,7 +731,16 @@
                         @php($btnLabel = 'DOWNLOAD')
                         @php($actionType = 'download')
                     @endif
-                @elseif ($year == 2020)
+
+                    <div class="row padding-top-30">
+                        <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
+                        <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
+                    </div>
+                @else
+                    <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-280 margin-top-30">{{$btnText}}</button>
+                @endif
+            @elseif ($year == 2020)
+                @if(in_array($dayId, [1, 4, 11, 14, 21, 28]))
                     @if($dayId == 1)
                         @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
                         @php($btnLabel = 'DOWNLOAD')
@@ -751,13 +770,14 @@
                         @php($btnLabel = 'DOWNLOAD')
                         @php($actionType = 'download')
                     @endif
+
+                    <div class="row padding-top-30">
+                        <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
+                        <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
+                    </div>
+                @else
+                    <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button>
                 @endif
-                <div class="row padding-top-30">
-                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
-                    <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
-                </div>
-            @else
-                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button>
             @endif
         </div>
     @elseif($type == 'not-active-yet')

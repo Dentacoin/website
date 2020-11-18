@@ -1201,20 +1201,20 @@ var projectData = {
                                                         });
                                                     }
                                                 });
-                                            } else if (['3', '4', '5', '7', '8', '10', '13', '14', '15', '17', '18', '19', '2', '6', '11', '20', '12', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31'].indexOf(this_btn.attr('data-day-id')) > -1) {
+                                            } else if (['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '25', '26', '28', '29', '30', '31'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                 $('.popup-body form').on('submit', function(event) {
                                                     event.preventDefault();
                                                     var form = $(this);
                                                     var this_form = this;
 
-                                                    if (['12', '21', '25', '30'].indexOf(this_btn.attr('data-day-id')) > -1) {
+                                                    if (['12', '15', '25', '30'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                         var warningReminderAboutTaskValidation = {};
                                                         warningReminderAboutTaskValidation.callback = function (result) {
                                                             if (result) {
                                                                 submitFormForMostTasks(form, this_form);
                                                             }
                                                         };
-                                                        basic.showConfirm('<div class="fs-20 lato-bold text-center padding-bottom-20">WARNING</div><div class="fs-16 text-center padding-bottom-20">All entries are subject to manual approval. If your entry does not meet the requierements, you will be disqualified from today\'s task.</div><div class="fs-16 text-center padding-bottom-20">Are you sure you want to submit the task?</div>', '', warningReminderAboutTaskValidation, true);
+                                                        basic.showConfirm('<div class="fs-20 lato-bold text-center padding-bottom-20">WARNING</div><div class="fs-16 text-center padding-bottom-20">All entries are subject to manual approval. If your entry does not meet the requirements, you will be disqualified from today\'s task.</div><div class="fs-16 text-center padding-bottom-20">Are you sure you want to submit the task?</div>', '', warningReminderAboutTaskValidation, true);
                                                     } else {
                                                         submitFormForMostTasks(form, this_form);
                                                     }
@@ -1244,7 +1244,7 @@ var projectData = {
                                                         basic.showDialog(response.success, 'response-popup', null);
                                                     });
                                                 }
-                                            } else if (['9'].indexOf(this_btn.attr('data-day-id')) > -1) {
+                                            } else if (['27'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                 // newsletter registration task
                                                 $('.newsletter-register form').on('submit', function(event)  {
                                                     var this_form = this;
@@ -1279,7 +1279,7 @@ var projectData = {
                                                         fireGoogleAnalyticsEvent('Subscription', 'Sign-up', 'Newsletter');
                                                     }
                                                 });
-                                            } else if (['16'].indexOf(this_btn.attr('data-day-id')) > -1) {
+                                            } else if (['24'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                 // holiday card generation task
                                                 $('.popup-body form').on('submit', function(event) {
                                                     event.preventDefault();

@@ -606,72 +606,43 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if ($year == 2019)
-                @if(in_array($dayId, [1, 8, 16, 24]))
-                    @if($dayId == 1)
-                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 8)
-                        @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
-                        @php($btnLabel = 'HOLIDAY FRAME')
-                        @php($actionType = 'external-link')
-                    @elseif($dayId == 16)
-                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 24)
-                        @php($btnLink = 'https://dentacoin.com/assets/docs/dentacoin-oral-health-guide-2020.pdf')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @endif
-
-                    <div class="row padding-top-30">
-                        <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
-                        <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
-                    </div>
-                @else
-                    <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-280 margin-top-30">{{$btnText}}</button>
+            @if(in_array($dayId, [1, 4, 11, 14, 21, 28]))
+                @if($dayId == 1)
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($dayId == 4)
+                    @php($btnLink = 'https://www.facebook.com')
+                    @php($btnLabel = 'HOLIDAY FRAME')
+                    @php($actionType = 'external-link')
+                @elseif($dayId == 11)
+                    @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-microbiome.pdf')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($dayId == 14)
+                    @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'kids-oral-care-calendar.pdf')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($dayId == 21)
+                    @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-health-tips.pdf')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($dayId == 24)
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($dayId == 28)
+                    @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'jaws-of-battle-brushing-calendar.pdf')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
                 @endif
-            @elseif ($year == 2020)
-                @if(in_array($dayId, [1, 4, 11, 14, 21, 28]))
-                    @if($dayId == 1)
-                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 4)
-                        @php($btnLink = 'https://www.facebook.com')
-                        @php($btnLabel = 'HOLIDAY FRAME')
-                        @php($actionType = 'external-link')
-                    @elseif($dayId == 11)
-                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-microbiome.pdf')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 14)
-                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'kids-oral-care-calendar.pdf')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 21)
-                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-health-tips.pdf')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 24)
-                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 28)
-                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'jaws-of-battle-brushing-calendar.pdf')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @endif
 
-                    <div class="row padding-top-30">
-                        <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
-                        <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
-                    </div>
-                @else
-                    <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-280 margin-top-30">{{$btnText}}</button>
-                @endif
+                <div class="row padding-top-30">
+                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
+                    <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
+                </div>
+            @else
+                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-280 margin-top-30">{{$btnText}}</button>
             @endif
         </div>
     @elseif($type == 'already-completed')
@@ -712,72 +683,43 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if ($year == 2019)
-                @if(in_array($dayId, [1, 8, 16, 24]))
-                    @if($dayId == 1)
-                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 8)
-                        @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
-                        @php($btnLabel = 'HOLIDAY FRAME')
-                        @php($actionType = 'external-link')
-                    @elseif($dayId == 16)
-                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 24)
-                        @php($btnLink = 'https://dentacoin.com/assets/docs/dentacoin-oral-health-guide-2020.pdf')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @endif
-
-                    <div class="row padding-top-30">
-                        <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
-                        <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
-                    </div>
-                @else
-                    <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-280 margin-top-30">{{$btnText}}</button>
+            @if(in_array($dayId, [1, 4, 11, 14, 21, 28]))
+                @if($dayId == 1)
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($dayId == 4)
+                    @php($btnLink = 'https://www.facebook.com')
+                    @php($btnLabel = 'HOLIDAY FRAME')
+                    @php($actionType = 'external-link')
+                @elseif($dayId == 11)
+                    @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-microbiome.pdf')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($dayId == 14)
+                    @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'kids-oral-care-calendar.pdf')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($dayId == 21)
+                    @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-health-tips.pdf')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($dayId == 24)
+                    @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
+                @elseif($dayId == 28)
+                    @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'jaws-of-battle-brushing-calendar.pdf')
+                    @php($btnLabel = 'DOWNLOAD')
+                    @php($actionType = 'download')
                 @endif
-            @elseif ($year == 2020)
-                @if(in_array($dayId, [1, 4, 11, 14, 21, 28]))
-                    @if($dayId == 1)
-                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 4)
-                        @php($btnLink = 'https://www.facebook.com')
-                        @php($btnLabel = 'HOLIDAY FRAME')
-                        @php($actionType = 'external-link')
-                    @elseif($dayId == 11)
-                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-microbiome.pdf')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 14)
-                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'kids-oral-care-calendar.pdf')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 21)
-                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'oral-health-tips.pdf')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 24)
-                        @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/'.$coredbData->slug.'.png')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @elseif($dayId == 28)
-                        @php($btnLink = ROOT . 'public' . DS . 'assets' . DS . 'docs' . DS . 'jaws-of-battle-brushing-calendar.pdf')
-                        @php($btnLabel = 'DOWNLOAD')
-                        @php($actionType = 'download')
-                    @endif
 
-                    <div class="row padding-top-30">
-                        <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
-                        <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
-                    </div>
-                @else
-                    <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button>
-                @endif
+                <div class="row padding-top-30">
+                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
+                    <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
+                </div>
+            @else
+                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button>
             @endif
         </div>
     @elseif($type == 'not-active-yet')

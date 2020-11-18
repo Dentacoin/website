@@ -259,7 +259,7 @@
                 </div>
             </section>
             <section class="presents-list padding-top-70 no-dentist-and-user-bottom">
-                <p class="fs-22 fs-xs-20 lato-regular padding-bottom-30 text-center">We are picking 10 big winners on January 10, 2020:</p>
+                <p class="fs-22 fs-xs-20 lato-regular padding-bottom-30 text-center padding-left-15 padding-right-15">We are picking 10 big winners on January 10, 2020:</p>
                 <img src="/assets/images/christmas-calendar-campaign/dentist-christmas.png" class="dentist" alt="Dentist" itemprop="contentUrl"/>
                 <picture itemscope="" itemtype="http://schema.org/ImageObject" class="presents padding-bottom-130">
                     <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/mobile-prizes.png">

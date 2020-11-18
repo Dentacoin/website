@@ -28,8 +28,6 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
             console.log('loading facebook from mobile app');
             // loading facebook from mobile app
             if (typeof(openFB) != 'undefined') {
-                console.log(openFB, 'openFB.init');
-                console.log(fb_config.app_id, 'appId: fb_config.app_id');
                 openFB.init({appId: fb_config.app_id});
 
                 openFB.login(

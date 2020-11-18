@@ -70,7 +70,7 @@
                                 <input type="hidden" name="b_61ace7d2b009198ca373cb213_993df5967d" tabindex="-1" value="">
                                 <div class="clear btn-container"><input type="submit" value="Sign Up" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
                             </div>
-                            <div class="checkbox-row"><input type="checkbox" required id="newsletter-privacy-policy-id"/><label for="newsletter-privacy-policy-id">I agree with <a href="/privacy-policy" target="_blank">Privacy Policy</a></label></div>
+                            <div class="checkbox-row"><input type="checkbox" required id="newsletter-privacy-policy-id"/><label for="newsletter-privacy-policy-id" class="cursor-pointer">I agree with <a href="/privacy-policy" target="_blank">Privacy Policy</a></label></div>
                         </div>
                     </div>
                     <div class="lato-bold fs-12 padding-bottom-20 padding-top-40 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2020.<br> Other gifts are sent via email within 5 days after the task is completed. All tasks are subject to manual approval. Improper entries will be disqualified and prizes will not be granted. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
@@ -610,7 +610,7 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if(in_array($dayId, [1, 4, 11, 14, 21, 28]))
+            @if(in_array($dayId, [1, 4, 11, 14, 21, 24, 28]))
                 @if($dayId == 1)
                     @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
                     @php($btnLabel = 'DOWNLOAD')
@@ -691,7 +691,7 @@
                 @endif
             </figure>
             <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
-            @if(in_array($dayId, [1, 4, 11, 14, 21, 28]))
+            @if(in_array($dayId, [1, 4, 11, 14, 21, 24, 28]))
                 @if($dayId == 1)
                     @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
                     @php($btnLabel = 'DOWNLOAD')

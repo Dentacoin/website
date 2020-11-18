@@ -594,12 +594,16 @@
                     @php($presentName = 'Oral health guide')
                 @elseif($task['type'] == 'season-oral-guide')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
+                    @php($presentName = 'Seasons oral health guide')
                 @elseif($task['type'] == 'kids-brushing-calendar')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
+                    @php($presentName = 'Kid\'s brushing calendar')
                 @elseif($task['type'] == 'kids-oral-care-calendar')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
+                    @php($presentName = 'Kid\'s oral care calendar')
                 @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
                     <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
+                    @php($presentName = 'The Microbiome In Your Mouth | A Beginners Guide: Discover Why The Futile War Against Germs Is Harmful To Your Health: by Dr. Trino Nuno')
                 @elseif($task['type'] == 'custom-holiday-card')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @php($presentName = 'Holiday card')
@@ -671,12 +675,16 @@
                     @php($presentName = 'Oral health guide')
                 @elseif($task['type'] == 'season-oral-guide')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
+                    @php($presentName = 'Seasons oral health guide')
                 @elseif($task['type'] == 'kids-brushing-calendar')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
+                    @php($presentName = 'Kid\'s brushing calendar')
                 @elseif($task['type'] == 'kids-oral-care-calendar')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
+                    @php($presentName = 'Kid\'s oral care calendar')
                 @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
                     <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
+                    @php($presentName = 'The Microbiome In Your Mouth | A Beginners Guide: Discover Why The Futile War Against Germs Is Harmful To Your Health: by Dr. Trino Nuno')
                 @elseif($task['type'] == 'custom-holiday-card')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @php($presentName = 'Holiday card')

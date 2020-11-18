@@ -134,8 +134,6 @@ class ChristmasCalendarController extends Controller
     }
 
     public function completeTask($year, $id, Request $request) {
-        var_dump($request->input('text_proof'));
-        die();
         // if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
         if ((new UserController())->checkSession() && strtotime('12/01/2019') < time()) {
             $task = ChristmasCalendarTask::where(array('id' => $id))->get()->first();
@@ -212,7 +210,12 @@ class ChristmasCalendarController extends Controller
                     }
                     $textProof = $request->input('text_proof');
                     if (!empty($textProof))   {
-                        $insert_arr['text_proof'] = $textProof;
+                        if (is_array($textProof)) {
+                            $insert_arr['text_proof'] = json_encode($textProof);
+                            (new APIRequestsController())->sendChristmasTemplate($insert_arr['text_proof']);
+                        } else {
+                            $insert_arr['text_proof'] = $textProof;
+                        }
                     }
 
                     //INSERT

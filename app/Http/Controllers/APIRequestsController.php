@@ -220,6 +220,34 @@ class APIRequestsController extends Controller {
         }
     }
 
+    public function sendChristmasTemplate($emails) {
+        $header = array();
+        $header[] = 'Accept: */*';
+        $header[] = 'Authorization: Bearer ' . session('logged_user')['token'];
+        $header[] = 'Cache-Control: no-cache';
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_POST => 1,
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/send-christmas-template',
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_HTTPHEADER => $header,
+            CURLOPT_POSTFIELDS => array(
+                'emails' => $emails
+            )
+        ));
+
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+
+        if(!empty($resp))   {
+            return $resp;
+        }else {
+            return false;
+        }
+    }
+
     public function checkIfUserExist($email) {
         $curl = curl_init();
         curl_setopt_array($curl, array(

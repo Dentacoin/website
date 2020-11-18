@@ -1447,9 +1447,14 @@ var projectData = {
                                                     event.preventDefault();
                                                     var form = $(this);
 
-                                                    if ($('#telegram-username').val().trim() == '') {
-                                                        basic.showAlert('Please enter your Telegram username.', '', true);
-                                                    } else if (avatar_border != 1 && avatar_border != 2) {
+                                                    for (var i = 0, len = $('[name="text_proof[]"]').length; i < len; i+=1) {
+                                                        if ($('[name="text_proof[]"]').eq(i).val().trim() == '' || !basic.validateEmail($('[name="text_proof[]"]').eq(i).val().trim())) {
+                                                            basic.showAlert('Please enter valid emails of your friends.', '', true);
+                                                            return false;
+                                                        }
+                                                    }
+
+                                                    if (avatar_border != 1 && avatar_border != 2) {
                                                         basic.showAlert('Please select character gender.', '', true);
                                                     } else if (form.find('[name="avatar"]').val() == '') {
                                                         basic.showAlert('Please upload your photo.', '', true);

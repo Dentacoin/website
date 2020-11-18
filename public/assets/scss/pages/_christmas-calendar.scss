@@ -760,6 +760,9 @@ body.christmas-calendar {
             @include breakpoint($lgll) {
                 max-width: 900px;
             }
+            @include breakpoint($md-only) {
+                max-width: 500px;
+            }
         }
         .dentist {
             position: absolute;
@@ -769,14 +772,20 @@ body.christmas-calendar {
             @include breakpoint($lgll) {
                 width: 500px;
             }
+            @include breakpoint($md-only) {
+                width: 300px;
+            }
         }
-        .user {
+        .user {  
             position: absolute;
             right: 0;
             bottom: 20px;
             width: 380px;
             @include breakpoint($lgll) {
                 width: 500px;
+            }
+            @include breakpoint($md-only) {
+                width: 300px;
             }
         }
         &.no-dentist-and-user-bottom {
@@ -787,7 +796,7 @@ body.christmas-calendar {
         @include breakpoint($sm-down) {
             .presents {
                 max-width: 100%;
-            } 
+            }
             .dentist, .user {
                 display: none;
             }

@@ -70,7 +70,7 @@
                                 <input type="hidden" name="b_61ace7d2b009198ca373cb213_993df5967d" tabindex="-1" value="">
                                 <div class="clear btn-container"><input type="submit" value="Sign Up" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
                             </div>
-                            <div class="checkbox-row"><input type="checkbox" required id="newsletter-privacy-policy"/><label for="newsletter-privacy-policy">I agree with <a href="/privacy-policy" target="_blank">Privacy Policy</a></label></div>
+                            <div class="checkbox-row"><input type="checkbox" required id="newsletter-privacy-policy-id"/><label for="newsletter-privacy-policy-id">I agree with <a href="/privacy-policy" target="_blank">Privacy Policy</a></label></div>
                         </div>
                     </div>
                     <div class="lato-bold fs-12 padding-bottom-20 padding-top-40 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2020.<br> Other gifts are sent via email within 5 days after the task is completed. All tasks are subject to manual approval. Improper entries will be disqualified and prizes will not be granted. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
@@ -373,8 +373,8 @@
                         @case(16)
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacare: Jaws of Battle and leave a review.</div>
-                            <div class="fs-18 fs-xs-16 padding-bottom-10">For Google Play: Go to My apps in Google Play, click Reviews, scroll to Dentacare Jaws of Battle, and post your review.  Text comment is required.</div>
-                            <div class="fs-18 fs-xs-16 padding-bottom-20">For App Store, follow the link in the button bellow.</div>
+                            <div class="fs-16 padding-bottom-10">For Google Play: Go to My apps in Google Play, click Reviews, scroll to Dentacare Jaws of Battle, and post your review.  Text comment is required.</div>
+                            <div class="fs-16 padding-bottom-30">For App Store, follow the link in the button bellow.</div>
                             <div>
                                 <a href="https://play.google.com/store/apps/details?id=com.DentaCare.JawsOfBattle&hl=en" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block"><img src="/assets/images/google-store-button.svg" alt="Google play button"/></a>
                                 <a href="https://testflight.apple.com/join/hOg8An1t" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
@@ -403,8 +403,8 @@
                         @case(18)
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacare - Health Training on Google Play or App Store and post your review. Text comment is required.</div>
-                            <div class="fs-18 fs-xs-16 padding-bottom-10">For Google Play: Go to My apps in Google Play, click Reviews, scroll to Dentacare Jaws of Battle, and post your review.  Text comment is required.</div>
-                            <div class="fs-18 fs-xs-16 padding-bottom-20">For App Store, follow the link in the button bellow.</div>
+                            <div class="fs-16 padding-bottom-10">For Google Play: Go to My apps in Google Play, click Reviews, scroll to Dentacare Jaws of Battle, and post your review.  Text comment is required.</div>
+                            <div class="fs-16 padding-bottom-30">For App Store, follow the link in the button bellow.</div>
                             <div>
                                 <a href="https://play.google.com/store/apps/details?id=com.dentacoin.dentacare&hl=en" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block"><img src="/assets/images/google-store-button.svg" alt="Google play button"/></a>
                                 <a href="https://apps.apple.com/us/app/dentacare-health-training/id1274148338" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>

@@ -1252,7 +1252,7 @@ var projectData = {
                                                     var error = false;
                                                     if (!basic.validateEmail(form.find('input[type="email"]').val().trim()))    {
                                                         error = true;
-                                                    } else if (!form.find('#newsletter-privacy-policy').is(':checked'))  {
+                                                    } else if (!form.find('#newsletter-privacy-policy-id').is(':checked'))  {
                                                         error = true;
                                                     }
 

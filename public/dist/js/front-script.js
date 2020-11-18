@@ -1447,10 +1447,13 @@ var projectData = {
                                                     event.preventDefault();
                                                     var form = $(this);
 
+                                                    var textProofArray = [];
                                                     for (var i = 0, len = $('[name="text_proof[]"]').length; i < len; i+=1) {
                                                         if ($('[name="text_proof[]"]').eq(i).val().trim() == '' || !basic.validateEmail($('[name="text_proof[]"]').eq(i).val().trim())) {
                                                             basic.showAlert('Please enter valid emails of your friends.', '', true);
                                                             return false;
+                                                        } else {
+                                                            textProofArray.push($('[name="text_proof[]"]').eq(i).val().trim());
                                                         }
                                                     }
 
@@ -1477,7 +1480,7 @@ var projectData = {
                                                             url: '/holiday-calendar/'+christmasCalendarYear+'/complete-task/' + this_btn.attr('data-task'),
                                                             dataType: 'json',
                                                             data: {
-                                                                'text_proof' : $('#telegram-username').val().trim()
+                                                                'text_proof' : textProofArray
                                                             },
                                                             headers: {
                                                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

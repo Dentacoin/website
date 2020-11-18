@@ -85,6 +85,7 @@ if($('body').hasClass('add-job-offer')) {
     $('input[name="color"]').spectrum(color_picker_options);
 } else if($('body').hasClass('view-christmas-calendar-participant')) {
     $('.approve-user-calendar-participation').click(function() {
+        var thisBtn = $(this);
         var approvedTasksLength = $('tr.passed-not-payed-task').length;
         if(approvedTasksLength) {
             var dcnAmount = 0;
@@ -112,7 +113,7 @@ if($('body').hasClass('add-job-offer')) {
                 if(result) {
                     $.ajax({
                         type: 'POST',
-                        url: SITE_URL + '/christmas-calendar-participants/approve-tasks',
+                        url: SITE_URL + '/christmas-calendar-participants/' + thisBtn.attr('data-year') + '/approve-tasks',
                         data: {
                             'tasksToApprove' : tasksToApprove,
                             'participant' : $('table').attr('data-participant-id'),

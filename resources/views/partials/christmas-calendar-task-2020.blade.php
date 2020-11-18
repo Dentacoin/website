@@ -131,23 +131,40 @@
                         <input type="hidden" name="background_scale" value="1"/>
                         <input type="hidden" name="avatar-border" id="avatar-border"/>
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Join the official Telegram group of Dentacoin: <a href="https://t.me/dentacoin" class="color-christmas-calendar-red" target="_blank">https://t.me/dentacoin</a>.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Invite 5 friends to join Dentacoin Holiday challenge</div>
                             <div class="padding-bottom-20">
-                                <a href="https://t.me/dentacoin" target="_blank" class="inline-block">
-                                    <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                                        <img src="/assets/images/christmas-calendar-campaign/join-now.svg" class="width-100 max-width-150" alt="Join now Dentacoin telegram group" itemprop="contentUrl"/>
-                                    </figure>
-                                </a>
-                                <div class="inline-block link-text fs-16 lato-regular padding-left-10 padding-left-xs-0 padding-top-xs-10">Don’t have Telegram yet? <a href="https://telegram.org/" target="_blank" class="color-christmas-calendar-red">Get it here.</a></div>
-                            </div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
-                            <div class="padding-bottom-20">
-                                <div class="custom-google-label-style module max-width-400">
-                                    <label for="telegram-username">Telegram username:</label>
-                                    <input type="text" id="telegram-username" name="proof-text" maxlength="1000" class="full-rounded required form-field"/>
+                                <div class="padding-bottom-15">
+                                    <div class="custom-google-label-style module max-width-400">
+                                        <label for="text_proof_1">Email:</label>
+                                        <input type="text" id="text_proof_1" name="text_proof[]" maxlength="1000" class="full-rounded required form-field"/>
+                                    </div>
+                                </div>
+                                <div class="padding-bottom-15">
+                                    <div class="custom-google-label-style module max-width-400">
+                                        <label for="text_proof_2">Email:</label>
+                                        <input type="text" id="text_proof_2" name="text_proof[]" maxlength="1000" class="full-rounded required form-field"/>
+                                    </div>
+                                </div>
+                                <div class="padding-bottom-15">
+                                    <div class="custom-google-label-style module max-width-400">
+                                        <label for="text_proof_3">Email:</label>
+                                        <input type="text" id="text_proof_3" name="text_proof[]" maxlength="1000" class="full-rounded required form-field"/>
+                                    </div>
+                                </div>
+                                <div class="padding-bottom-15">
+                                    <div class="custom-google-label-style module max-width-400">
+                                        <label for="text_proof_4">Email:</label>
+                                        <input type="text" id="text_proof_4" name="text_proof[]" maxlength="1000" class="full-rounded required form-field"/>
+                                    </div>
+                                </div>
+                                <div class="padding-bottom-15">
+                                    <div class="custom-google-label-style module max-width-400">
+                                        <label for="text_proof_5">Email:</label>
+                                        <input type="text" id="text_proof_5" name="text_proof[]" maxlength="1000" class="full-rounded required form-field"/>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 3:</span> Let’s prepare  your custom sticker!</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Let’s prepare  your custom sticker!</div>
                             <div class="fs-16 padding-bottom-10">Attach a portrait photo and choose a character:</div>
                             <div class="text-center fs-16 padding-bottom-20 gender-radio-btns">
                                 <input type="radio" name="character-type" id="character-type-male" value="male"/> <label class="fs-16 lato-bold" for="character-type-male">Male character</label>

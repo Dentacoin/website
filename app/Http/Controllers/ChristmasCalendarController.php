@@ -134,6 +134,8 @@ class ChristmasCalendarController extends Controller
     }
 
     public function completeTask($year, $id, Request $request) {
+        var_dump($request->input('text_proof'));
+        die();
         // if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
         if ((new UserController())->checkSession() && strtotime('12/01/2019') < time()) {
             $task = ChristmasCalendarTask::where(array('id' => $id))->get()->first();

@@ -664,7 +664,7 @@
                     <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">CLOSE</button></div>
                 </div>
             @else
-                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-280 margin-top-30">{{$btnText}}</button>
+                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-280 margin-top-30 fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">{{$btnText}}</button>
             @endif
         </div>
     @elseif($type == 'already-completed')

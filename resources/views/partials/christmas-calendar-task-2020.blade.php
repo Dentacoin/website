@@ -660,7 +660,7 @@
                 @endif
 
                 <div class="row padding-top-30">
-                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-200 inline-block text-center fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">{{$btnLabel}}</a></div>
+                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-210 inline-block text-center fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">{{$btnLabel}}</a></div>
                     <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">CLOSE</button></div>
                 </div>
             @else
@@ -741,7 +741,7 @@
                 @endif
 
                 <div class="row padding-top-30">
-                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-200 inline-block text-center fs-20  padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">{{$btnLabel}}</a></div>
+                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-210 inline-block text-center fs-20  padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">{{$btnLabel}}</a></div>
                     <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">CLOSE</button></div>
                 </div>
             @else

@@ -55,13 +55,13 @@
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/bonus-ticket.svg" alt="Bonus ticket" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-ticket-amount">{{$ticketAmount}}</span>/81 bonus tickets for tasks</div>
+                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-ticket-amount">{{$ticketAmount}}</span>/44 bonus tickets for tasks</div>
                     </div>
                     <div class="col-xs-12 col-md-4 single-stat inline-block-bottom">
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" alt="Dentacoins" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/210,000 Dentacoin (DCN)</div>
+                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/190,000 Dentacoin (DCN)</div>
                     </div>
                 </div>
             </section>
@@ -169,13 +169,13 @@
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/bonus-ticket.svg" alt="Bonus ticket" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-ticket-amount">{{$ticketAmount}}</span>/81 bonus tickets for tasks</div>
+                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-ticket-amount">{{$ticketAmount}}</span>/44 bonus tickets for tasks</div>
                     </div>
                     <div class="col-xs-12 col-md-4 single-stat inline-block-bottom">
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" alt="Dentacoins" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/210,000 Dentacoin (DCN)</div>
+                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/1820,000 Dentacoin (DCN)</div>
                     </div>
                 </div>
             </section>

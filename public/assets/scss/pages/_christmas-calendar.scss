@@ -76,7 +76,7 @@ body.christmas-calendar {
                 top: 50px;
                 width: 95%;
                 max-width: 800px;
-                z-index: 100;
+                z-index: 1000;
                 position: absolute;
                 left: calc(50% + 15px);
                 -webkit-transform: translateX(-50%);
@@ -374,7 +374,7 @@ body.christmas-calendar {
                             background-color: white;
                             @include rounded(0 0 20px 20px);
                             .submit-btn {
-                                width: 150px;
+                                width: 180px;
                             }
                             .downloadable-image {
                                 position: relative;
@@ -776,7 +776,7 @@ body.christmas-calendar {
                 width: 300px;
             }
         }
-        .user {  
+        .user {
             position: absolute;
             right: 0;
             bottom: 20px;

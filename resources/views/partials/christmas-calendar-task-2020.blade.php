@@ -44,17 +44,17 @@
                                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                     <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
                                 @elseif($task['type'] == 'season-oral-guide')
-                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
-                                    <figcaption class="color-white lato-bold padding-top-5">Seasons oral health guide</figcaption>
+                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's oral health guide" itemprop="contentUrl"/>
+                                    <figcaption class="color-white lato-bold padding-top-5">Season's oral health guide</figcaption>
                                 @elseif($task['type'] == 'kids-brushing-calendar')
-                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
-                                    <figcaption class="color-white lato-bold padding-top-5">Kid's  brushing calendar</figcaption>
+                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's brushing calendar 2021" itemprop="contentUrl"/>
+                                    <figcaption class="color-white lato-bold padding-top-5">Kid's brushing calendar 2021</figcaption>
                                 @elseif($task['type'] == 'kids-oral-care-calendar')
-                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
-                                    <figcaption class="color-white lato-bold padding-top-5">Kid's oral care calendar</figcaption>
+                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral health guide" itemprop="contentUrl"/>
+                                    <figcaption class="color-white lato-bold padding-top-5">Kid's oral health guide</figcaption>
                                 @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
                                     <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
-                                    <figcaption class="color-white lato-bold padding-top-5">Ebook by Dr. Trino Nuno</figcaption>
+                                    <figcaption class="color-white lato-bold padding-top-5">Ebook by <br>Dr. Trino Nuno</figcaption>
                                 @elseif($task['type'] == 'custom-holiday-card')
                                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                     <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
@@ -73,7 +73,7 @@
                             <div class="checkbox-row"><input type="checkbox" required id="newsletter-privacy-policy-id"/><label for="newsletter-privacy-policy-id" class="cursor-pointer">I agree with <a href="/privacy-policy" target="_blank">Privacy Policy</a></label></div>
                         </div>
                     </div>
-                    <div class="lato-bold fs-12 padding-bottom-20 padding-top-40 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2020.<br> Other gifts are sent via email within 5 days after the task is completed. All tasks are subject to manual approval. Improper entries will be disqualified and prizes will not be granted. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
+                    <div class="lato-bold fs-12 padding-bottom-20 padding-top-40 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2021.<br> Other gifts are sent via email within 5 days after the task is completed. All tasks are subject to manual approval. Improper entries will be disqualified and prizes will not be granted. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
                 </form>
             </div>
         @else
@@ -103,17 +103,17 @@
                                 <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                 <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
                             @elseif($task['type'] == 'season-oral-guide')
-                                <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
-                                <figcaption class="color-white lato-bold padding-top-5">Seasons oral health guide</figcaption>
+                                <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's oral health guide" itemprop="contentUrl"/>
+                                <figcaption class="color-white lato-bold padding-top-5">Season's oral health guide</figcaption>
                             @elseif($task['type'] == 'kids-brushing-calendar')
-                                <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
-                                <figcaption class="color-white lato-bold padding-top-5">Kid's  brushing calendar</figcaption>
+                                <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's brushing calendar 2021" itemprop="contentUrl"/>
+                                <figcaption class="color-white lato-bold padding-top-5">Kid's brushing calendar 2021</figcaption>
                             @elseif($task['type'] == 'kids-oral-care-calendar')
-                                <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
-                                <figcaption class="color-white lato-bold padding-top-5">Kid's oral care calendar</figcaption>
+                                <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral health guide" itemprop="contentUrl"/>
+                                <figcaption class="color-white lato-bold padding-top-5">Kid's oral health guide</figcaption>
                             @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
                                 <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
-                                <figcaption class="color-white lato-bold padding-top-5">Ebook by Dr. Trino Nuno</figcaption>
+                                <figcaption class="color-white lato-bold padding-top-5">Ebook by <br>Dr. Trino Nuno</figcaption>
                             @elseif($task['type'] == 'custom-holiday-card')
                                 <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                 <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
@@ -165,10 +165,10 @@
                                 </div>
                             </div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Let’s prepare  your custom sticker!</div>
-                            <div class="fs-16 padding-bottom-10">Attach a portrait photo and choose a character:</div>
-                            <div class="text-center fs-16 padding-bottom-20 gender-radio-btns">
-                                <input type="radio" name="character-type" id="character-type-male" value="male"/> <label class="fs-16 lato-bold" for="character-type-male">Male character</label>
-                                <input type="radio" name="character-type" id="character-type-female" class="margin-left-15" value="female"/> <label class="fs-16 lato-bold" for="character-type-female">Female character</label>
+                            <div class="fs-16 padding-bottom-25">Attach a portrait photo and choose a character:</div>
+                            <div class="text-center fs-18 padding-bottom-20 gender-radio-btns">
+                                <input type="radio" name="character-type" id="character-type-male" value="male"/> <label class="fs-18 lato-bold" for="character-type-male">Male character</label>
+                                <input type="radio" name="character-type" id="character-type-female" class="margin-left-15" value="female"/> <label class="fs-18 lato-bold" for="character-type-female">Female character</label>
                             </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-offset-1 col-sm-10 upload-image">
@@ -212,12 +212,13 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
                             <a href="https://www.twitter.com/pg/dentacoin/samplepost/" class="color-christmas-calendar-red" target="_blank">https://www.twitter.com/pg/dentacoin/samplepost/</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
-                            <div class="padding-bottom-20">
+                            <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">
                                     <label for="text_proof">Link to your post/ tweet:</label>
                                     <input type="text" id="text_proof" name="text_proof" maxlength="1000" class="full-rounded required form-field"/>
                                 </div>
                             </div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
@@ -229,7 +230,7 @@
                             @php($userData = (new \App\Http\Controllers\APIRequestsController())->getUserData(session('logged_user')['id']))
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Answer 8 simple questions to unlock your daily prize.</div>
                             <a href="https://docs.google.com/forms/d/e/1FAIpQLSeYywGTZGh4VClVzl2HKYXgA_s6AyX0oUdBVHjAIkXWP-4c0g/viewform?entry.1162335218={{$userData->email}}" class="white-red-btn" target="_blank">TAKE QUIZ</a>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Get the secret code after completing the quiz and fill it in the field below:</div>
+                            <div class="padding-top-30 fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Get the secret code after completing the quiz and fill it in the field below:</div>
                             <div class="padding-bottom-20">
                                 <div class="custom-google-label-style module max-width-400">
                                     <label for="quiz-code">Quiz secret code:</label>
@@ -241,12 +242,12 @@
                         @case(5)
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">Visit Dentacoin’s profile on Google Maps and post a recommendation. Text comment is required.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-25">Visit Dentacoin’s profile on Google Maps and post a recommendation. Text comment is required.</div>
                             <a href="https://goo.gl/maps/C9t4UEaEcQJPsrSBA" class="white-red-btn" target="_blank">POST NOW</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="padding-bottom-20">
                                 <div class="custom-google-label-style module max-width-400">
-                                    <label for="text_proof">Link to your post/ tweet:</label>
+                                    <label for="text_proof">Link to your review:</label>
                                     <input type="text" id="text_proof" name="text_proof" maxlength="1000" class="full-rounded required form-field"/>
                                 </div>
                             </div>
@@ -262,6 +263,7 @@
                             <div class="padding-top-15">
                                 <a href="https://reviews.dentacoin.com/blog/vote-for-top-dentist-of-the-year" target="_blank" class="white-red-btn">VOTE NOW</a>
                             </div>
+                            <div class="fs-16 fs-xs-14 padding-top-25">Once you are done, submit the task from the button below to unlock your gift.</div>
                         </div>
                         @break
                         @case(7)
@@ -287,7 +289,7 @@
                         @break
                         @case(8)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Find DentaVox Surveys on Facebook, go to the “Reviews” tab and post a recommendation. Text comment is required.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-25"><span class="color-christmas-calendar-red">• STEP 1:</span> Find DentaVox Surveys on Facebook, go to the “Reviews” tab and post a recommendation. Text comment is required.</div>
                             <div>
                                 <a href="https://www.facebook.com/dentavox.dentacoin/reviews/" class="white-red-btn" target="_blank">POST NOW</a>
                             </div>
@@ -301,7 +303,11 @@
                         @break
                         @case(9)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin on Coingecko through the search bar. Go to the Overview section and click the thumbs up/down icon to share “How do you feel about Dentacoin today?”</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-15"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin on Coingecko through the search bar. Go to the Overview section and click the thumbs up/down icon to share “How do you feel about Dentacoin today?”</div>
+                            <picture itemscope="" itemtype="http://schema.org/ImageObject" class="display-block padding-bottom-20">
+                                <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/rate-coingecko-mob.png"/>
+                                <img alt="Rate Dentacoin on Coingecko" itemprop="contentUrl" class="width-100" src="/assets/images/christmas-calendar-campaign/rate-coingecko.png"/>
+                            </picture>
                             <div>
                                 <a href="https://www.coingecko.com/en" class="white-red-btn" target="_blank">VOTE NOW</a>
                             </div>
@@ -351,7 +357,7 @@
                         @break
                         @case(13)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin official profile on Instagram and follow</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin official profile on Instagram and click follow.</div>
                             <a href="https://www.instagram.com/dentacoin_official/" class="white-red-btn" target="_blank">FOLLOW NOW</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
@@ -419,7 +425,7 @@
                             <div class="fs-16 padding-bottom-30">For App Store, follow the link in the button bellow.</div>
                             <div>
                                 <a href="https://play.google.com/store/apps/details?id=com.dentacoin.dentacare&hl=en" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block"><img src="/assets/images/google-store-button.svg" alt="Google play button"/></a>
-                                <a href="https://apps.apple.com/us/app/dentacare-health-training/id1274148338" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
+                                <a href="https://apps.apple.com/us/app/dentacare-health-training/id1274148338?action=write-review" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
                             </div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="upload-btn-parent">
@@ -488,14 +494,14 @@
                         @break
                         @case(24)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20">STEP 1: Donate to an organisation of your choosing, join a social campaign in your community or just do something good for someone. We don’t need any proof. Just share what you did:</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20">Donate to an organisation of your choosing, join a social campaign in your community or just do something good for someone. We don’t need any proof. Just share what you did:</div>
                             <textarea name="text_proof" rows="4" maxlength="1000"></textarea>
                         </div>
                         @break
                         @case(25)
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20">Holidays spice up our life but do they come at a price? Do they affect our oral hygiene negatively? How does your oral health do during the holidays? What do you do if you have a problem? Share in DentaVox holiday survey “Oral Care During Holidays”!</div>
-                            <a href="https://dentavox.dentacoin.com/" class="white-red-btn" target="_blank">TAKE SURVEY</a>
+                            <a href="https://dentavox.dentacoin.com/en/paid-dental-surveys/oral-care-holidays/" class="white-red-btn" target="_blank">TAKE SURVEY</a>
                         </div>
                         @break
                         @case(26)
@@ -536,14 +542,14 @@
                         @break
                         @case(30)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20">Holidays spice up our life, but do they come at a price? Do they affect our oral hygiene negatively? How does your oral health do during the holidays? What do you do if you have a problem? Share in DentaVox holiday survey “Oral Care During Holidays”!</div>
-                            <a href="https://dentavox.dentacoin.com/" class="white-red-btn" target="_blank">TAKE SURVEY</a>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20">Another year comes to an end. Let's make a recapitulation of your oral health and lifestyle habits in 2020! Did you visit the dentist regularly? Did your home oral hygiene routine change? Share in DentaVox survey "Oral Health Summary 2020".</div>
+                            <a href="https://dentavox.dentacoin.com/en/paid-dental-surveys/oral-health-summary-2020" class="white-red-btn" target="_blank">TAKE SURVEY</a>
                         </div>
                         @break
                         @case(31)
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Cover the requirements:
-                                <div class="fs-16">1. Post on Facebook/ Twitter/ Instagram what’s one thing you promise yourself to do better next year in terms of oral care.</div>
+                                <div class="fs-16 padding-top-10">1. Post on Facebook/ Twitter/ Instagram what’s one thing you promise yourself to do better next year in terms of oral care.</div>
                                 <div class="fs-16">2. Make the post public.</div>
                                 <div class="fs-16">3. Tag Dentacoin’s official account on this social network and add hashtags: #Dentacoin2021resolutions</div>
                             </div>
@@ -570,7 +576,7 @@
                         <img src="/assets/images/christmas-calendar-campaign/submit-btn-present.svg" class="submit-btn" alt="Submit button" itemprop="contentUrl"/>
                     </button>
                 </div>
-                <div class="lato-bold fs-12 padding-bottom-20 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2020.<br> Other gifts are sent via email within 5 days after the task is completed. All tasks are subject to manual approval. Improper entries will be disqualified and prizes will not be granted. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
+                <div class="lato-bold fs-12 padding-bottom-20 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2021.<br> Other gifts are sent via email within 5 days after the task is completed. All tasks are subject to manual approval. Improper entries will be disqualified and prizes will not be granted. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
             </form>
         @endif
     @elseif($type == 'congrats')
@@ -605,23 +611,23 @@
                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @php($presentName = 'Oral health guide')
                 @elseif($task['type'] == 'season-oral-guide')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
-                    @php($presentName = 'Seasons oral health guide')
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's Oral Health Guide" itemprop="contentUrl"/>
+                    @php($presentName = 'Season\'s Oral Health Guide')
                 @elseif($task['type'] == 'kids-brushing-calendar')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
-                    @php($presentName = 'Kid\'s brushing calendar')
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's Brushing Calendar 2021" itemprop="contentUrl"/>
+                    @php($presentName = 'Kid\'s Brushing Calendar 2021')
                 @elseif($task['type'] == 'kids-oral-care-calendar')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
-                    @php($presentName = 'Kid\'s oral care calendar')
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care guide" itemprop="contentUrl"/>
+                    @php($presentName = 'Kid\'s Oral Health Guide: <br>Timeless Super Dentist\'s Tips')
                 @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
                     <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
-                    @php($presentName = 'The Microbiome In Your Mouth | A Beginners Guide: Discover Why The Futile War Against Germs Is Harmful To Your Health: by Dr. Trino Nuno')
+                    @php($presentName = 'The Microbiome In Your Mouth | A Beginners Guide:<br> Discover Why The Futile War Against Germs Is Harmful To Your Health: <br>by Dr. Trino Nuno')
                 @elseif($task['type'] == 'custom-holiday-card')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @php($presentName = 'Holiday card')
                 @endif
             </figure>
-            <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
+            <div class="fs-18 lato-bold padding-top-10">{!! $presentName !!}</div>
             @if(in_array($dayId, [1, 4, 11, 14, 21, 24, 28]))
                 @if($dayId == 1)
                     @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
@@ -636,7 +642,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 14)
-                    @php($btnLink = URL::asset('assets/docs/' . 'kids-oral-care-calendar.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/' . 'kids-oral-health-guide.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 21)
@@ -654,8 +660,8 @@
                 @endif
 
                 <div class="row padding-top-30">
-                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
-                    <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
+                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-200 inline-block text-center fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">{{$btnLabel}}</a></div>
+                    <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">CLOSE</button></div>
                 </div>
             @else
                 <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-280 margin-top-30">{{$btnText}}</button>
@@ -686,23 +692,23 @@
                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @php($presentName = 'Oral health guide')
                 @elseif($task['type'] == 'season-oral-guide')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
-                    @php($presentName = 'Seasons oral health guide')
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's Oral Health Guide" itemprop="contentUrl"/>
+                    @php($presentName = 'Season\'s Oral Health Guide')
                 @elseif($task['type'] == 'kids-brushing-calendar')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's Brushing Calendar 2021" itemprop="contentUrl"/>
                     @php($presentName = 'Kid\'s brushing calendar')
                 @elseif($task['type'] == 'kids-oral-care-calendar')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
-                    @php($presentName = 'Kid\'s oral care calendar')
+                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care guide" itemprop="contentUrl"/>
+                    @php($presentName = 'Kid\'s Oral Health Guide: <br>Timeless Super Dentist\'s Tips')
                 @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
                     <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
-                    @php($presentName = 'The Microbiome In Your Mouth | A Beginners Guide: Discover Why The Futile War Against Germs Is Harmful To Your Health: by Dr. Trino Nuno')
+                    @php($presentName = 'The Microbiome In Your Mouth | A Beginners Guide:<br> Discover Why The Futile War Against Germs Is Harmful To Your Health: <br>by Dr. Trino Nuno')
                 @elseif($task['type'] == 'custom-holiday-card')
                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @php($presentName = 'Holiday card')
                 @endif
             </figure>
-            <div class="fs-18 lato-bold padding-top-10">{{$presentName}}</div>
+            <div class="fs-18 lato-bold padding-top-10">{!! $presentName !!}</div>
             @if(in_array($dayId, [1, 4, 11, 14, 21, 24, 28]))
                 @if($dayId == 1)
                     @php($btnLink = 'https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/'.$coredbData->slug.'.png')
@@ -717,7 +723,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 14)
-                    @php($btnLink = URL::asset('assets/docs/' . 'kids-oral-care-calendar.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/' . 'kids-oral-health-guide.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 21)
@@ -735,11 +741,11 @@
                 @endif
 
                 <div class="row padding-top-30">
-                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-150 inline-block text-center">{{$btnLabel}}</a></div>
-                    <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150">CLOSE</button></div>
+                    <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-200 inline-block text-center fs-20  padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">{{$btnLabel}}</a></div>
+                    <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">CLOSE</button></div>
                 </div>
             @else
-                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button>
+                <button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30 fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">CLOSE</button>
             @endif
         </div>
     @elseif($type == 'not-active-yet')

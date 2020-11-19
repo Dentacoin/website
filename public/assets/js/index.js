@@ -843,7 +843,7 @@ var projectData = {
                         console.log('! initTasksEvent');
                         if (basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
                             console.log('basic.cookies.get(\'agreed_with_christmas_calendar_rules\') ');
-                            $('.tasks-section .camping-custom-popups.rules').html('<div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2><ul class="lato-regular fs-18 line-height-30"><li><span class="lato-black">31 days = 31 gifts:</span> Unlock a new task every day, complete it and get various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days = 31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards will be gradually unlocked for withdrawal in the period <span class="lato-black">Jan 1-15, 2021.</span></li><li>Other gifts are sent via email <span class="lato-black">within 5 days after</span> the task is completed.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks get rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 10, 2021 - first in our Telegram group!</span></li></ul><div class="padding-top-20 padding-bottom-20 max-width-350 margin-0-auto checkboxes"><div class="padding-bottom-10 padding-top-15"><div class="checkbox-wrapper"><input id="christmas-calendar-terms" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-terms">I read and agree to the Terms & Conditions</label></div><div class="padding-bottom-10"><div class="checkbox-wrapper"><input id="christmas-calendar-privacy-policy" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the Privacy Policy</label></div><div><div class="checkbox-wrapper"><input id="christmas-calendar-years" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div></div>');
+                            $('.tasks-section .camping-custom-popups.rules').html('<div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2><ul class="lato-regular fs-18 line-height-30"><li><span class="lato-black">31 days = 31 gifts:</span> Unlock a new task every day, complete it and get various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days = 31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards will be gradually unlocked for withdrawal in the period <span class="lato-black">Jan 1-15, 2021.</span></li><li>Other gifts are sent via email <span class="lato-black">within 5 days after</span> the task is completed.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks get rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 11, 2021 - first in our Telegram group!</span></li></ul><div class="padding-top-20 padding-bottom-20 max-width-400 margin-0-auto checkboxes"><div class="padding-bottom-10 padding-top-15"><div class="checkbox-wrapper"><input id="christmas-calendar-terms" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-terms">I read and agree to the <a href="/holiday-calendar-terms" target="_blank" class="color-christmas-calendar-red">Terms & Conditions</a></label></div><div class="padding-bottom-10"><div class="checkbox-wrapper"><input id="christmas-calendar-privacy-policy" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the <a href="/privacy-policy" target="_blank" class="color-christmas-calendar-red">Privacy Policy</a></label></div><div><div class="checkbox-wrapper"><input id="christmas-calendar-years" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div></div>');
 
                             $('.tasks-section .camping-custom-popups.rules .popup-wrapper .accept-christmas-calendar-rules').click(function() {
                                 if (!$('.camping-custom-popups.rules #christmas-calendar-terms').is(':checked')) {
@@ -1219,16 +1219,16 @@ var projectData = {
                                                         var warningReminderAboutTaskValidation = {};
                                                         warningReminderAboutTaskValidation.callback = function (result) {
                                                             if (result) {
-                                                                submitFormForMostTasks(form, this_form);
+                                                                submitFormForMostTasks(form, this_form, this_btn.attr('data-day-id'));
                                                             }
                                                         };
                                                         basic.showConfirm('<div class="fs-20 lato-bold text-center padding-bottom-20">WARNING</div><div class="fs-16 text-center padding-bottom-20">All entries are subject to manual approval. If your entry does not meet the requirements, you will be disqualified from today\'s task.</div><div class="fs-16 text-center padding-bottom-20">Are you sure you want to submit the task?</div>', '', warningReminderAboutTaskValidation, true);
                                                     } else {
-                                                        submitFormForMostTasks(form, this_form);
+                                                        submitFormForMostTasks(form, this_form, this_btn.attr('data-day-id'));
                                                     }
                                                 });
 
-                                                function submitFormForMostTasks(form, this_form) {
+                                                function submitFormForMostTasks(form, this_form, task_id) {
                                                     completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
                                                         $('.response-layer').hide();
                                                         if (response.dcnAmount) {
@@ -1250,7 +1250,7 @@ var projectData = {
 
                                                         basic.closeDialog();
                                                         basic.showDialog(response.success, 'response-popup', null);
-                                                    });
+                                                    }, task_id);
                                                 }
                                             } else if (['27'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                 // newsletter registration task
@@ -1342,34 +1342,43 @@ var projectData = {
                                                 }
                                             }
 
-                                            function completeTask(form, this_form, this_btn, data, callback) {
+                                            function completeTask(form, this_form, this_btn, data, callback, task_id) {
                                                 $('.task-error').remove();
                                                 var error = false;
-                                                if (form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
-                                                    basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
-                                                    return false;
-                                                } else if (screenshotProofsLength) {
-                                                    if (screenshotProofsLength > 1) {
-                                                        for (var i = 0; i < screenshotProofsLength; i+= 1) {
-                                                            if (!error) {
-                                                                if (form.find('.screenshot_proof').eq(i).val().trim() == '') {
-                                                                    basic.showAlert('Please attach all screenshots. Otherwise, you will not receive your reward.', '', true);
-                                                                    error = true;
-                                                                } else {
-                                                                    readURL(this_form.querySelectorAll('.screenshot_proof')[i], 2, allowedImagesExtensions, undefined, function () {
+
+                                                if (task_id != undefined && task_id == '3') {
+                                                    // for this task text and screenshot proof are not both requires, just one of them
+                                                    if ((form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') && form.find('.screenshot_proof').val().trim() == '') {
+                                                        basic.showAlert('Please submit proof. You need to link your post/ tweet or attach a screenshot.', '', true);
+                                                        return false;
+                                                    }
+                                                } else {
+                                                    if (form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
+                                                        basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
+                                                        return false;
+                                                    } else if (screenshotProofsLength) {
+                                                        if (screenshotProofsLength > 1) {
+                                                            for (var i = 0; i < screenshotProofsLength; i+= 1) {
+                                                                if (!error) {
+                                                                    if (form.find('.screenshot_proof').eq(i).val().trim() == '') {
+                                                                        basic.showAlert('Please attach all screenshots. Otherwise, you will not receive your reward.', '', true);
                                                                         error = true;
-                                                                    });
+                                                                    } else {
+                                                                        readURL(this_form.querySelectorAll('.screenshot_proof')[i], 2, allowedImagesExtensions, undefined, function () {
+                                                                            error = true;
+                                                                        });
+                                                                    }
                                                                 }
                                                             }
-                                                        }
-                                                    } else {
-                                                        if (form.find('.screenshot_proof').val().trim() == '') {
-                                                            basic.showAlert('Please attach a screenshot. Otherwise, you will not receive your reward.', '', true);
-                                                            error = true;
                                                         } else {
-                                                            readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, undefined, function () {
+                                                            if (form.find('.screenshot_proof').val().trim() == '') {
+                                                                basic.showAlert('Please attach a screenshot. Otherwise, you will not receive your reward.', '', true);
                                                                 error = true;
-                                                            });
+                                                            } else {
+                                                                readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, undefined, function () {
+                                                                    error = true;
+                                                                });
+                                                            }
                                                         }
                                                     }
                                                 }

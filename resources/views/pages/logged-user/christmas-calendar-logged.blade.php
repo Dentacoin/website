@@ -99,17 +99,17 @@
                                                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Oral health guide" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
                                                 @elseif($task['type'] == 'season-oral-guide')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Seasons oral health guide</figcaption>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's oral health guide" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Season's oral health guide</figcaption>
                                                 @elseif($task['type'] == 'kids-brushing-calendar')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's  brushing calendar</figcaption>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's brushing calendar 2021" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's brushing calendar 2021</figcaption>
                                                 @elseif($task['type'] == 'kids-oral-care-calendar')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's oral care calendar</figcaption>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral health guide" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's oral health guide</figcaption>
                                                 @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
                                                     <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Ebook by Dr. Trino Nuno</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Ebook by <br>Dr. Trino Nuno</figcaption>
                                                 @elseif($task['type'] == 'custom-holiday-card')
                                                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
@@ -182,7 +182,7 @@
             <section class="container tasks-section">
                 <div class="row camping-custom-popups rules"></div>
                 @if(!empty($social_engagement_cookie))
-                    <div class="row camping-custom-popups socials"><div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-35">BEFORE YOU START:</h2><div class="fs-18 text-center lato-regular">01. Follow us on Twitter</div><div class="text-center padding-top-15 padding-bottom-35"><a class="twitter-follow-button" href="https://twitter.com/dentacoin" data-size="large" data-show-screen-name="true" data-show-count="true">Follow</a></div><div class="fs-18 text-center lato-regular">02. Like our Facebook pages: </div><div class="facebook-buttons text-center padding-top-15 padding-bottom-35"><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacoin</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacare</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentavox</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Trusted Reviews</div></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="christmas-calendar-get-started white-red-btn padding-left-30 padding-right-30">GET STARTED</a></div></div></div>
+                    <div class="row camping-custom-popups socials"><div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-35">BEFORE YOU START:</h2><div class="fs-18 text-center lato-regular">01. Follow us on Twitter</div><div class="text-center padding-top-15 padding-bottom-35"><a class="twitter-follow-button" href="https://twitter.com/dentacoin" data-size="large" data-show-screen-name="true" data-show-count="true">Follow</a></div><div class="fs-18 text-center lato-regular">02. Like our Facebook pages: </div><div class="facebook-buttons text-center padding-top-15 padding-bottom-35"><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacoin</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacare</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentavox</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Trusted Reviews</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.jaws/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Jaws of Battle</div></div></div><div class="padding-bottom-30 text-center"><a href="javascript:void(0);" class="christmas-calendar-get-started white-red-btn padding-left-30 padding-right-30 padding-top-15 padding-bottom-15 fs-20">GET STARTED</a></div></div></div>
                 @endif
                 <div class="row blurred-section active">
                     <div class="col-xs-12 col-lg-10 col-lg-offset-1 set-width-limit">
@@ -217,17 +217,17 @@
                                                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Oral health guide" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
                                                 @elseif($task['type'] == 'season-oral-guide')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Seasons oral health guide" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Seasons oral health guide</figcaption>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's oral health guide" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Season's oral health guide</figcaption>
                                                 @elseif($task['type'] == 'kids-brushing-calendar')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's  brushing calendar" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's  brushing calendar</figcaption>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's brushing calendar 2021" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's brushing calendar 2021</figcaption>
                                                 @elseif($task['type'] == 'kids-oral-care-calendar')
-                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care calendar" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's oral care calendar</figcaption>
+                                                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral health guide" itemprop="contentUrl"/>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Kid's oral health guide</figcaption>
                                                 @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
                                                     <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5">Ebook by Dr. Trino Nuno</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5">Ebook by <br>Dr. Trino Nuno</figcaption>
                                                 @elseif($task['type'] == 'custom-holiday-card')
                                                     <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Holiday card</figcaption>
@@ -259,7 +259,7 @@
                 </div>
             </section>
             <section class="presents-list padding-top-70 no-dentist-and-user-bottom">
-                <p class="fs-22 fs-xs-20 lato-regular padding-bottom-30 text-center padding-left-15 padding-right-15">We are picking 10 big winners on January 10, 2020:</p>
+                <p class="fs-22 fs-xs-20 lato-regular padding-bottom-30 text-center padding-left-15 padding-right-15">We are picking 10 big winners on January 11, 2020:</p>
                 <img src="/assets/images/christmas-calendar-campaign/dentist-christmas.png" class="dentist" alt="Dentist" itemprop="contentUrl"/>
                 <picture itemscope="" itemtype="http://schema.org/ImageObject" class="presents padding-bottom-130">
                     <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/mobile-prizes.png">

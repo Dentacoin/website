@@ -61,7 +61,7 @@
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" alt="Dentacoins" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/190,000 Dentacoin (DCN)</div>
+                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/180,000 Dentacoin (DCN)</div>
                     </div>
                 </div>
             </section>
@@ -175,7 +175,7 @@
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" alt="Dentacoins" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/190,000 Dentacoin (DCN)</div>
+                        <div class="inline-block lato-bold fs-16 fs-xs-14 stats-text"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/180,000 Dentacoin (DCN)</div>
                     </div>
                 </div>
             </section>

@@ -228,7 +228,7 @@
                 </picture>
             </a>
         @endif
-        <div class="container">
+        <div class="container" data-test="{{Route::current()->getName()}}">
             <div class="row all-rights">
                 <div class="col-xs-12">
                     <div>© {{date('Y')}} Dentacoin Foundation. All rights reserved.</div>

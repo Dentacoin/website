@@ -220,7 +220,7 @@
             </div>
             @endif
         </div>
-        @if(!empty(Route::current()) && (Route::current()->getName() == 'holiday-calendar') && !\App\Http\Controllers\UserController::instance()->checkSession())
+        @if(!empty(Route::current()) && (Route::current()->getName() == 'christmas-calendar') && !\App\Http\Controllers\UserController::instance()->checkSession())
             <a href="https://blog.dentacoin.com/new-partner-dr-trino-nuno-omaha-nebraska/" target="_blank">
                 <picture itemscope="" itemtype="http://schema.org/ImageObject" class="display-block">
                     <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/dr-trino-nuno-banner-mobile.png"/>
@@ -228,7 +228,7 @@
                 </picture>
             </a>
         @endif
-        <div class="container" data-test="{{Route::current()->getName()}}">
+        <div class="container">
             <div class="row all-rights">
                 <div class="col-xs-12">
                     <div>© {{date('Y')}} Dentacoin Foundation. All rights reserved.</div>

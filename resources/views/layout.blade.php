@@ -221,7 +221,7 @@
             @endif
         </div>
         @if(!empty(Route::current()) && (Route::current()->getName() == 'christmas-calendar') && !\App\Http\Controllers\UserController::instance()->checkSession())
-            <a href="https://blog.dentacoin.com/new-partner-dr-trino-nuno-omaha-nebraska/" target="_blank">
+            <a href="https://blog.dentacoin.com/new-partner-dr-trino-nuno-omaha-nebraska/" target="_blank" class="display-block margin-bottom-15">
                 <picture itemscope="" itemtype="http://schema.org/ImageObject" class="display-block">
                     <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/dr-trino-nuno-banner-mobile.png"/>
                     <img alt="dr. Trino Nuno banner" itemprop="contentUrl" class="width-100" src="/assets/images/christmas-calendar-campaign/dr-trino-nuno-banner.png"/>

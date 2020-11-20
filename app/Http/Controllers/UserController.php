@@ -247,7 +247,7 @@ class UserController extends Controller {
 
         $customMessages = [
             'platform.required' => 'Platform is required.',
-            'grecaptcha.required' => 'Captcha is required.',
+            /*'grecaptcha.required' => 'Captcha is required.',*/
             'latin-name.required' => 'Dentist or Practice Name is required.',
             'email.required' => 'Email address is required.',
             'password.required' => 'Password is required.',
@@ -262,7 +262,7 @@ class UserController extends Controller {
         ];
         $this->validate($request, [
             'platform' => 'required',
-            'grecaptcha' => 'required',
+            /*'grecaptcha' => 'required',*/
             'latin-name' => 'required|max:250',
             'email' => 'required|max:100',
             'password' => 'required|max:50',
@@ -276,6 +276,12 @@ class UserController extends Controller {
             'hidden-image' => 'required'
         ], $customMessages);
 
+        $captcha = $request->input('grecaptcha');
+        $typeRegistration = $request->input('typeRegistration');
+        if ($typeRegistration != 'mobile' && empty($captcha)) {
+            return response()->json(['error' => true, 'message' => 'Missing captcha.']);
+        }
+
         // if user didn't enter http/ https append it to his website
         if ($request->input('website') && mb_strpos(mb_strtolower($request->input('website')), 'http') !== 0) {
             request()->merge([
@@ -286,7 +292,6 @@ class UserController extends Controller {
         $data = $request->input();
 
         $recaptchaSecret = env('GOOGLE_reCAPTCHA_SECRET');
-        $typeRegistration = $request->input('typeRegistration');
         if (!empty($typeRegistration) && $typeRegistration == 'mobile') {
             $recaptchaSecret = env('GOOGLE_reCAPTCHA_SECRET_ONLY_MOBILE_APPS');
         }

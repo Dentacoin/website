@@ -2148,7 +2148,8 @@ if (typeof jQuery == 'undefined') {
                                             if (!errors) {
                                                 //checking captcha
                                                 if (loadedFromMobileApp) {
-                                                    function initHybridAppCaptcha() {
+                                                    proceedWithFourthStepLogic();
+                                                    /*function initHybridAppCaptcha() {
                                                         console.log($('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').attr('data-public-key'), 'initHybridAppCaptcha');
                                                         if (hasOwnProperty.call(window.plugins, 'recaptcha')) {
                                                             window.plugins.recaptcha.verify($('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').attr('data-public-key'), function(response) {
@@ -2170,7 +2171,7 @@ if (typeof jQuery == 'undefined') {
                                                             console.error('Missing cordova plugin cordova-plugin-recaptcha.')
                                                         }
                                                     }
-                                                    initHybridAppCaptcha();
+                                                    initHybridAppCaptcha();*/
                                                 } else {
                                                     if (typeof(grecaptcha) != undefined && grecaptcha.getResponse().length == 0) {
                                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Please prove that you\'re not a robot.');
@@ -2201,7 +2202,7 @@ if (typeof jQuery == 'undefined') {
                                                 };
 
                                                 if (loadedFromMobileApp) {
-                                                    registerParams.grecaptcha = $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val();
+                                                    /*registerParams.grecaptcha = $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val();*/
                                                     registerParams.typeRegistration = 'mobile';
                                                 } else {
                                                     registerParams.grecaptcha = grecaptcha.getResponse();

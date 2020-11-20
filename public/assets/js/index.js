@@ -1382,6 +1382,8 @@ var projectData = {
                                                     if ((form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') && form.find('.screenshot_proof').val().trim() == '') {
                                                         basic.showAlert('Please submit proof. You need to link your post/ tweet or attach a screenshot.', '', true);
                                                         return false;
+                                                    } else {
+                                                        proceedWithTaskFinishing();
                                                     }
                                                 } else {
                                                     if (form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {

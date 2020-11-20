@@ -1285,7 +1285,7 @@ var projectData = {
                                                             reader.readAsDataURL(input.files[0]);
                                                         }
                                                     }, function() {
-                                                        basic.showAlert('The file you selected is large. Max size: 2MB.', '', true);
+                                                        basic.showAlert('Max file size must be 2MB and allowed file formats are png, jpg, jpeg.', '', true);
                                                         return false;
                                                     });
                                                 });
@@ -1666,44 +1666,6 @@ var projectData = {
 
                                             function completeTask(form, this_form, this_btn, data, callback, task_id) {
                                                 $('.task-error').remove();
-                                                var error = false;
-
-                                                if (task_id != undefined && task_id == '3') {
-                                                    // for this task text and screenshot proof are not both requires, just one of them
-                                                    if ((form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') && form.find('.screenshot_proof').val().trim() == '') {
-                                                        basic.showAlert('Please submit proof. You need to link your post/ tweet or attach a screenshot.', '', true);
-                                                        return false;
-                                                    }
-                                                } else {
-                                                    if (form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
-                                                        basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
-                                                        return false;
-                                                    } else if (screenshotProofsLength) {
-                                                        if (screenshotProofsLength > 1) {
-                                                            for (var i = 0; i < screenshotProofsLength; i+= 1) {
-                                                                if (!error) {
-                                                                    if (form.find('.screenshot_proof').eq(i).val().trim() == '') {
-                                                                        basic.showAlert('Please attach all screenshots. Otherwise, you will not receive your reward.', '', true);
-                                                                        error = true;
-                                                                    } else {
-                                                                        readURL(this_form.querySelectorAll('.screenshot_proof')[i], 2, allowedImagesExtensions, undefined, function () {
-                                                                            error = true;
-                                                                        });
-                                                                    }
-                                                                }
-                                                            }
-                                                        } else {
-                                                            if (form.find('.screenshot_proof').val().trim() == '') {
-                                                                basic.showAlert('Please attach a screenshot. Otherwise, you will not receive your reward.', '', true);
-                                                                error = true;
-                                                            } else {
-                                                                readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, undefined, function () {
-                                                                    error = true;
-                                                                });
-                                                            }
-                                                        }
-                                                    }
-                                                }
 
                                                 function proceedWithTaskFinishing() {
                                                     $('.response-layer').show();
@@ -1735,8 +1697,52 @@ var projectData = {
                                                     });
                                                 }
 
-                                                if (!error) {
-                                                    proceedWithTaskFinishing();
+                                                if (task_id != undefined && task_id == '3') {
+                                                    // for this task text and screenshot proof are not both requires, just one of them
+                                                    if ((form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') && form.find('.screenshot_proof').val().trim() == '') {
+                                                        basic.showAlert('Please submit proof. You need to link your post/ tweet or attach a screenshot.', '', true);
+                                                        return false;
+                                                    }
+                                                } else {
+                                                    if (form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
+                                                        basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
+                                                        return false;
+                                                    } else if (screenshotProofsLength) {
+                                                        if (screenshotProofsLength > 1) {
+                                                            for (var i = 0; i < screenshotProofsLength; i+= 1) {
+                                                                if (!error) {
+                                                                    if (form.find('.screenshot_proof').eq(i).val().trim() == '') {
+                                                                        basic.showAlert('Please attach all screenshots. Otherwise, you will not receive your reward.', '', true);
+                                                                        break;
+                                                                        return false;
+                                                                    } else {
+                                                                        readURL(this_form.querySelectorAll('.screenshot_proof')[i], 2, allowedImagesExtensions, function() {
+                                                                            if (i == screenshotProofsLength - 1) {
+                                                                                proceedWithTaskFinishing();
+                                                                            }
+                                                                        }, function () {
+                                                                            basic.showAlert('Max file size must be 2MB and allowed file formats are png, jpg, jpeg.', '', true);
+                                                                            break;
+                                                                            return false;
+                                                                        });
+                                                                    }
+                                                                }
+                                                            }
+                                                        } else {
+                                                            if (form.find('.screenshot_proof').val().trim() == '') {
+                                                                basic.showAlert('Please attach a screenshot. Otherwise, you will not receive your reward.', '', true);
+                                                                return false;
+                                                            } else {
+                                                                readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, function() {
+
+                                                                    proceedWithTaskFinishing();
+                                                                }, function () {
+                                                                    basic.showAlert('Max file size must be 2MB and allowed file formats are png, jpg, jpeg.', '', true);
+                                                                    return false;
+                                                                });
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             }
                                         } else if (response.error) {
@@ -3858,14 +3864,11 @@ function customErrorHandle(el, string) {
 
 // reading file and check size and extension
 function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, failed_callback) {
-    console.log(input.files, 'readURL');
     if (input.files && input.files[0]) {
         var filename = input.files[0].name;
-        console.log(filename, 'filename');
 
         // check file size
         if (megaBytesLimit < basic.bytesToMegabytes(input.files[0].size)) {
-            console.log('SIZE PROBLEM');
             if (failed_callback != undefined) {
                 failed_callback();
             }

@@ -1284,6 +1284,9 @@ var projectData = {
                                                             }
                                                             reader.readAsDataURL(input.files[0]);
                                                         }
+                                                    }, function() {
+                                                        basic.showAlert('The file you selected is large. Max size: 2MB.', '', true);
+                                                        return false;
                                                     });
                                                 });
 

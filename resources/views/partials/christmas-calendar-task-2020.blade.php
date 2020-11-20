@@ -40,9 +40,6 @@
                                 @elseif($task['type'] == 'facebook-holiday-frame')
                                     <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                     <figcaption class="color-white lato-bold padding-top-5">Facebook frame</figcaption>
-                                @elseif($task['type'] == 'free-oracle-health-guide')
-                                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                    <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
                                 @elseif($task['type'] == 'season-oral-guide')
                                     <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's oral health guide" itemprop="contentUrl"/>
                                     <figcaption class="color-white lato-bold padding-top-5">Season's oral health guide</figcaption>
@@ -99,9 +96,6 @@
                             @elseif($task['type'] == 'facebook-holiday-frame')
                                 <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                                 <figcaption class="color-white lato-bold padding-top-5">Facebook frame</figcaption>
-                            @elseif($task['type'] == 'free-oracle-health-guide')
-                                <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                <figcaption class="color-white lato-bold padding-top-5">Oral health guide</figcaption>
                             @elseif($task['type'] == 'season-oral-guide')
                                 <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's oral health guide" itemprop="contentUrl"/>
                                 <figcaption class="color-white lato-bold padding-top-5">Season's oral health guide</figcaption>
@@ -593,7 +587,7 @@
             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile">
                 @if($task['type'] == 'dcn-reward')
                     <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    @php($presentName = $task['value'] . 'DCN')
+                    @php($presentName = $task['value'] . ' DCN')
                 @elseif($task['type'] == 'ticket-reward')
                     <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @if((int)$task['value'] > 1)
@@ -602,28 +596,39 @@
                         @php($presentName = $task['value'] . ' raffle ticket')
                     @endif
                 @elseif($task['type'] == 'face-sticker')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <a href="https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/{{$coredbData->slug}}.png" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'Face sticker')
                 @elseif($task['type'] == 'facebook-holiday-frame')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <a href="https://www.facebook.com" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'Facebook frame')
-                @elseif($task['type'] == 'free-oracle-health-guide')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    @php($presentName = 'Oral health guide')
                 @elseif($task['type'] == 'season-oral-guide')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's Oral Health Guide" itemprop="contentUrl"/>
+                    <a href="{{URL::asset('assets/docs/oral-health-tips.pdf')}}" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's Oral Health Guide" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'Season\'s Oral Health Guide')
                 @elseif($task['type'] == 'kids-brushing-calendar')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's Brushing Calendar 2021" itemprop="contentUrl"/>
+                    <a href="{{URL::asset('assets/docs/jaws-of-battle-brushing-calendar.pdf')}}" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's Brushing Calendar 2021" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'Kid\'s Brushing Calendar 2021')
                 @elseif($task['type'] == 'kids-oral-care-calendar')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care guide" itemprop="contentUrl"/>
+                    <a href="{{URL::asset('assets/docs/kids-oral-health-guide.pdf')}}" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care guide" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'Kid\'s Oral Health Guide: <br>Timeless Super Dentist\'s Tips')
                 @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
-                    <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
+                    <a href="{{URL::asset('assets/docs/oral-microbiome.pdf')}}" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'The Microbiome In Your Mouth | A Beginners Guide:<br> Discover Why The Futile War Against Germs Is Harmful To Your Health: <br>by Dr. Trino Nuno')
                 @elseif($task['type'] == 'custom-holiday-card')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <a href="https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/{{$coredbData->slug}}.png" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'Holiday card')
                 @endif
             </figure>
@@ -638,15 +643,15 @@
                     @php($btnLabel = 'HOLIDAY FRAME')
                     @php($actionType = 'external-link')
                 @elseif($dayId == 11)
-                    @php($btnLink = URL::asset('assets/docs/' . 'oral-microbiome.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/oral-microbiome.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 14)
-                    @php($btnLink = URL::asset('assets/docs/' . 'kids-oral-health-guide.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/kids-oral-health-guide.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 21)
-                    @php($btnLink = URL::asset('assets/docs/' . 'oral-health-tips.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/oral-health-tips.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 24)
@@ -654,11 +659,10 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 28)
-                    @php($btnLink = URL::asset('assets/docs/' . 'jaws-of-battle-brushing-calendar.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/jaws-of-battle-brushing-calendar.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @endif
-
                 <div class="row padding-top-30">
                     <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-210 max-width-xs-220 inline-block text-center fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">{{$btnLabel}}</a></div>
                     <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 max-width-xs-220 fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">CLOSE</button></div>
@@ -674,7 +678,7 @@
             <figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center margin-0-auto task-present-tile">
                 @if($task['type'] == 'dcn-reward')
                     <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    @php($presentName = $task['value'] . 'DCN')
+                    @php($presentName = $task['value'] . ' DCN')
                 @elseif($task['type'] == 'ticket-reward')
                     <img src="/assets/images/christmas-calendar-campaign/ticket.svg" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     @if((int)$task['value'] > 1)
@@ -683,28 +687,39 @@
                         @php($presentName = $task['value'] . ' raffle ticket')
                     @endif
                 @elseif($task['type'] == 'face-sticker')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <a href="https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/2020/{{$coredbData->slug}}.png" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-sticker.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'Face sticker')
                 @elseif($task['type'] == 'facebook-holiday-frame')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <a href="https://www.facebook.com" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'Facebook frame')
-                @elseif($task['type'] == 'free-oracle-health-guide')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                    @php($presentName = 'Oral health guide')
                 @elseif($task['type'] == 'season-oral-guide')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's Oral Health Guide" itemprop="contentUrl"/>
+                    <a href="{{URL::asset('assets/docs/oral-health-tips.pdf')}}" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's Oral Health Guide" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'Season\'s Oral Health Guide')
                 @elseif($task['type'] == 'kids-brushing-calendar')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's Brushing Calendar 2021" itemprop="contentUrl"/>
-                    @php($presentName = 'Kid\'s brushing calendar')
+                    <a href="{{URL::asset('assets/docs/jaws-of-battle-brushing-calendar.pdf')}}" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's Brushing Calendar 2021" itemprop="contentUrl"/>
+                    </a>
+                    @php($presentName = 'Kid\'s Brushing Calendar 2021')
                 @elseif($task['type'] == 'kids-oral-care-calendar')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care guide" itemprop="contentUrl"/>
+                    <a href="{{URL::asset('assets/docs/kids-oral-health-guide.pdf')}}" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-kids-dental-book.png" class="width-100" alt="Kid's oral care guide" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'Kid\'s Oral Health Guide: <br>Timeless Super Dentist\'s Tips')
                 @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
-                    <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
+                    <a href="{{URL::asset('assets/docs/oral-microbiome.pdf')}}" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'The Microbiome In Your Mouth | A Beginners Guide:<br> Discover Why The Futile War Against Germs Is Harmful To Your Health: <br>by Dr. Trino Nuno')
                 @elseif($task['type'] == 'custom-holiday-card')
-                    <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    <a href="https://christmas-calendar-api.dentacoin.com/assets/uploads/holiday-cards/2020/{{$coredbData->slug}}.png" target="_blank" download>
+                        <img src="/assets/images/christmas-calendar-campaign/christmas-card-gift.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
+                    </a>
                     @php($presentName = 'Holiday card')
                 @endif
             </figure>
@@ -739,7 +754,6 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @endif
-
                 <div class="row padding-top-30">
                     <div class="col-xs-12 col-sm-6 text-right text-center-xs"><a href="{{$btnLink}}" target="_blank" @if($actionType == 'download') download @endif class="red-white-btn width-100 max-width-210 max-width-xs-220 inline-block text-center fs-20  padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">{{$btnLabel}}</a></div>
                     <div class="col-xs-12 col-sm-6 text-left text-center-xs padding-top-xs-15"><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 max-width-xs-220 fs-20 padding-top-15 padding-bottom-15 padding-left-20 padding-right-20">CLOSE</button></div>

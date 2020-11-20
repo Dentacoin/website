@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Input;
 use Log;
@@ -77,7 +78,12 @@ class UserController extends Controller {
         $token = $this->encrypt(session('logged_user')['token'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
 
         $request->session()->forget('logged_user');
-        return redirect()->route('home')->with(['logout_token' => $token]);
+
+        if ($request->route()->getName() == 'holiday-calendar') {
+            return redirect()->route('holiday-calendar', ['yearnum' => 2020])->with(['logout_token' => $token]);
+        } else {
+            return redirect()->route('home')->with(['logout_token' => $token]);
+        }
     }
 
     protected function getCurrentUserData() {

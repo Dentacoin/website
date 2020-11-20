@@ -181,12 +181,12 @@
                                         <div class="right-triangle inline-block"><img src="/assets/images/christmas-calendar-campaign/left-triangle.png"/></div>
                                         <div class="down-triangle"><img src="/assets/images/christmas-calendar-campaign/triangle.png"/></div>
                                     </div>
-                                    <div class="legend">Select a photo, move it with the arrow keys, rotate it with the button, zoom in / out with the slider.<div>Max size 2MB.</div></div>
                                     <div class="zoom-scroll-container">
                                         <div class="wrapper">
                                             <span class="scroll"></span>
                                         </div>
                                     </div>
+                                    <div class="legend">Select a photo, move it with the arrow keys, rotate it with the button, zoom in / out with the slider.<div>Max size 2MB.</div></div>
                                 </div>
                             </div>
                         </div>

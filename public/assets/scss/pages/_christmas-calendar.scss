@@ -603,6 +603,7 @@ body.christmas-calendar {
                                         .up-triangle {
                                             padding-bottom: 5px;
                                             text-align: center;
+                                            cursor: pointer;
                                             &, img{
                                                 @include user-select(none);
                                                 @include user-drag(none);
@@ -621,6 +622,7 @@ body.christmas-calendar {
                                             padding-top: 5px;
                                             position: relative;
                                             text-align: center;
+                                            cursor: pointer;
                                             div {
                                                 color: $dark_blue;
                                                 font-size: 14px;
@@ -648,6 +650,7 @@ body.christmas-calendar {
                                         .left-triangle {
                                             padding-right: 5px;
                                             text-align: left;
+                                            cursor: pointer;
                                             &, img{
                                                 @include user-select(none);
                                                 @include user-drag(none);
@@ -659,6 +662,7 @@ body.christmas-calendar {
                                         .right-triangle {
                                             padding-right: 5px;
                                             text-align: left;
+                                            cursor: pointer;
                                             transform: rotate(180deg);
                                             &, img{
                                                 @include user-select(none);
@@ -669,7 +673,7 @@ body.christmas-calendar {
                                             }
                                         }
                                         .zoom-scroll-container {
-                                            padding-top: 20px;
+                                            padding-top: 30px;
                                             padding-left: 15px;
                                             padding-right: 15px;
                                             .wrapper {

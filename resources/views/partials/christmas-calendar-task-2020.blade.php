@@ -229,7 +229,7 @@
                             <div class="padding-bottom-20">
                                 <div class="custom-google-label-style module max-width-400">
                                     <label for="quiz-code">Quiz secret code:</label>
-                                    <input type="text" id="quiz-code" name="proof-text" maxlength="1000" class="full-rounded required form-field"/>
+                                    <input type="text" id="quiz-code" name="text_proof" maxlength="1000" class="full-rounded required form-field"/>
                                 </div>
                             </div>
                         </div>

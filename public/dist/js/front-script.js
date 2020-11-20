@@ -1702,6 +1702,14 @@ var projectData = {
                                                     if ((form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') && form.find('.screenshot_proof').val().trim() == '') {
                                                         basic.showAlert('Please submit proof. You need to link your post/ tweet or attach a screenshot.', '', true);
                                                         return false;
+                                                    } else if (form.find('.screenshot_proof').val().trim() != '') {
+                                                        readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, function() {
+
+                                                            proceedWithTaskFinishing();
+                                                        }, function () {
+                                                            basic.showAlert('Max file size must be 2MB and allowed file formats are png, jpg, jpeg.', '', true);
+                                                            return false;
+                                                        });
                                                     } else {
                                                         proceedWithTaskFinishing();
                                                     }

@@ -287,6 +287,7 @@
                             <div>
                                 <a href="https://www.facebook.com/dentavox.dentacoin/reviews/" class="white-red-btn" target="_blank">POST NOW</a>
                             </div>
+                            <div class="fs-16 fs-xs-14 padding-top-10">If you’ve already rated the page in the past, make a screenshot of your review.</div>
 
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
@@ -353,6 +354,7 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin official profile on Instagram and click follow.</div>
                             <a href="https://www.instagram.com/dentacoin_official/" class="white-red-btn" target="_blank">FOLLOW NOW</a>
+                            <div class="fs-16 fs-xs-14 padding-top-10">If you are already a follower, just make a screenshot.</div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>

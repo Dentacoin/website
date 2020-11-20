@@ -988,7 +988,7 @@ if (typeof jQuery == 'undefined') {
 
                     // load login gateway style
                     if (!$('#dentacoin-login-gateway-style').length) {
-                        if (isFirefox) {
+                        if (isFirefox || loadedFromMobileApp) {
                             $('head').append('<link rel="stylesheet" id="dentacoin-login-gateway-style" type="text/css" href="'+dcnLibsDomain+'/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v='+new Date().getTime()+'"/>');
                         } else {
                             $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" id="dentacoin-login-gateway-style" type="text/css" href="'+dcnLibsDomain+'/assets/libs/dentacoin-login-gateway/css/dentacoin-login-gateway-style.css?v='+new Date().getTime()+'"/>');
@@ -1822,7 +1822,7 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     // load avatar cropper
-                                    if (isFirefox) {
+                                    if (isFirefox || loadedFromMobileApp) {
                                         $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
                                     } else {
                                         $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
@@ -2114,7 +2114,7 @@ if (typeof jQuery == 'undefined') {
                                                 }
 
                                                 // load avatar cropper
-                                                if (isFirefox) {
+                                                if (isFirefox || loadedFromMobileApp) {
                                                     $('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');
                                                 } else {
                                                     $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="https://dentacoin.com/assets/libs/croppie/croppie.css"/>');

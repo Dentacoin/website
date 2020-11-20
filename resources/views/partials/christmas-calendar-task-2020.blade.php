@@ -70,6 +70,7 @@
                             <div class="checkbox-row"><input type="checkbox" required id="newsletter-privacy-policy-id"/><label for="newsletter-privacy-policy-id" class="cursor-pointer">I agree with <a href="/privacy-policy" target="_blank">Privacy Policy</a></label></div>
                         </div>
                     </div>
+                    <div class="fs-16 fs-xs-14 padding-top-10">Don’t worry if you are already subscribed, just enter your email and you will receive your daily prize.</div>
                     <div class="lato-bold fs-12 padding-bottom-20 padding-top-40 text-center">All DCN daily rewards will be gradually unlocked for withdrawal in the period Jan 1-15, 2021.<br> Other gifts are sent via email within 5 days after the task is completed. All tasks are subject to manual approval. Improper entries will be disqualified and prizes will not be granted. Only users who have submitted proofs for their tasks get rewards and participate in the raffle. All posts, likes and follows must remain at least until the raffle is finished. Terms & Conditions</div>
                 </form>
             </div>
@@ -387,12 +388,13 @@
                         @case(16)
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacare: Jaws of Battle and leave a review.</div>
-                            <div class="fs-16 padding-bottom-10">For Google Play: Go to My apps in Google Play, click Reviews, scroll to Dentacare Jaws of Battle, and post your review.  Text comment is required.</div>
+                            <div class="fs-16 padding-bottom-10">For Google Play: Go to My apps in Google Play, click Reviews, scroll to Dentacare Jaws of Battle, and post your review. Text comment is required.</div>
                             <div class="fs-16 padding-bottom-30">For App Store, follow the link in the button bellow.</div>
                             <div>
                                 <a href="https://play.google.com/store/apps/details?id=com.DentaCare.JawsOfBattle&hl=en" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block"><img src="/assets/images/google-store-button.svg" alt="Google play button"/></a>
                                 <a href="https://testflight.apple.com/join/hOg8An1t" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
                             </div>
+                            <div class="fs-16 fs-xs-14 padding-top-10">If you've already rated the app in the past, just make a screenshot of your review.</div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
@@ -423,6 +425,7 @@
                                 <a href="https://play.google.com/store/apps/details?id=com.dentacoin.dentacare&hl=en" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block"><img src="/assets/images/google-store-button.svg" alt="Google play button"/></a>
                                 <a href="https://apps.apple.com/us/app/dentacare-health-training/id1274148338?action=write-review" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
                             </div>
+                            <div class="fs-16 fs-xs-14 padding-top-10">If you've already rated the app in the past, just make a screenshot of your review.</div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
@@ -434,6 +437,7 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Join the official Facebook group of Dentacoin: <a href="https://www.facebook.com/groups/dentacoin.official/" target="_blank" class="color-christmas-calendar-red">https://www.facebook.com/groups/dentacoin.official/</a>.</div>
                             <a href="https://www.facebook.com/groups/dentacoin.official/" class="white-red-btn" target="_blank">JOIN NOW</a>
+                            <div class="fs-16 fs-xs-14 padding-top-10">If you are already a member, just make a screenshot.</div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="padding-bottom-20 padding-top-15">
                                 <div class="custom-google-label-style module max-width-400">
@@ -454,7 +458,7 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Cover the requirements:</div>
                             <div class="fs-16">
-                                1. Make a photo/ video/ boomerang of yourself with a holiday motive (Christmas three, any decoration, drawing, etc.) and a big smile.<br>
+                                1. Take a photo/ video/ boomerang of yourself with a holiday motive (Christmas three, any decoration, drawing, etc.) and a big smile.<br>
                                 2. Post it on Facebook/ Twitter/ Instagram with a message: <span class="lato-bold color-christmas-calendar-red">A smile is for sharing.</span> and make the post public.<br>
                                 3. Tag Dentacoin’s official account on this social network and add hashtags: #Dentacoin2020
                             </div>
@@ -498,6 +502,7 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20">Holidays spice up our life but do they come at a price? Do they affect our oral hygiene negatively? How does your oral health do during the holidays? What do you do if you have a problem? Share in DentaVox holiday survey “Oral Care During Holidays”!</div>
                             <a href="https://dentavox.dentacoin.com/en/paid-dental-surveys/oral-care-holidays/" class="white-red-btn" target="_blank">TAKE SURVEY</a>
+                            <div class="fs-16 fs-xs-14 padding-top-10">If you’ve already completed this survey in the past, just submit the task as completed.</div>
                         </div>
                         @break
                         @case(26)

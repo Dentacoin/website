@@ -1393,7 +1393,6 @@ var projectData = {
                                                                 if (!error) {
                                                                     if (form.find('.screenshot_proof').eq(i).val().trim() == '') {
                                                                         basic.showAlert('Please attach all screenshots. Otherwise, you will not receive your reward.', '', true);
-                                                                        break;
                                                                         return false;
                                                                     } else {
                                                                         readURL(this_form.querySelectorAll('.screenshot_proof')[i], 2, allowedImagesExtensions, function() {
@@ -1402,7 +1401,6 @@ var projectData = {
                                                                             }
                                                                         }, function () {
                                                                             basic.showAlert('Max file size must be 2MB and allowed file formats are png, jpg, jpeg.', '', true);
-                                                                            break;
                                                                             return false;
                                                                         });
                                                                     }

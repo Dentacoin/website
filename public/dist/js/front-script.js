@@ -3858,11 +3858,14 @@ function customErrorHandle(el, string) {
 
 // reading file and check size and extension
 function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, failed_callback) {
+    console.log(input.files, 'readURL');
     if (input.files && input.files[0]) {
         var filename = input.files[0].name;
+        console.log(filename, 'filename');
 
         // check file size
         if (megaBytesLimit < basic.bytesToMegabytes(input.files[0].size)) {
+            console.log('SIZE PROBLEM');
             if (failed_callback != undefined) {
                 failed_callback();
             }

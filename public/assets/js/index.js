@@ -1420,6 +1420,8 @@ var projectData = {
                                                                 });
                                                             }
                                                         }
+                                                    } else {
+                                                        proceedWithTaskFinishing();
                                                     }
                                                 }
                                             }

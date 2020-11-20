@@ -1740,6 +1740,8 @@ var projectData = {
                                                                 });
                                                             }
                                                         }
+                                                    } else {
+                                                        proceedWithTaskFinishing();
                                                     }
                                                 }
                                             }

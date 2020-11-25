@@ -302,6 +302,7 @@
 
 
 function customCivicEvent(type, message, response_data, vanilla_js_event) {
+    console.log(type, 'customCivicEvent');
     if (vanilla_js_event) {
         var event_obj = {
             message: message,

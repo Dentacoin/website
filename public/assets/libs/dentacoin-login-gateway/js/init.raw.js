@@ -2336,6 +2336,7 @@ if (typeof jQuery == 'undefined') {
                                     $(document).off('civicLibLoaded');
                                     $(document).on('civicLibLoaded', function() {
                                         dcnGateway.utils.cookies.set('strictly_necessary_policy', 1);
+                                        $('.dcn-privacy-policy-cookie').remove();
                                         $('.civic-custom-btn.type-login').click();
                                     });
                                 }
@@ -2345,6 +2346,8 @@ if (typeof jQuery == 'undefined') {
                                     $(document).on('civicLibLoaded', function() {
                                         $('#agree-over-eighteen').prop('checked', true).trigger('change');
                                         $('#privacy-policy-registration-patient').prop('checked', true).trigger('change');
+                                        dcnGateway.utils.cookies.set('strictly_necessary_policy', 1);
+                                        $('.dcn-privacy-policy-cookie').remove();
                                         $('.civic-custom-btn.type-register').click();
                                     });
                                 }

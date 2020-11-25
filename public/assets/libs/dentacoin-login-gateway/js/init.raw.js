@@ -2335,6 +2335,7 @@ if (typeof jQuery == 'undefined') {
                                 if (hasOwnProperty.call(getParams, 'open-civic-login')) {
                                     $(document).off('civicLibLoaded');
                                     $(document).on('civicLibLoaded', function() {
+                                        dcnGateway.utils.cookies.set('strictly_necessary_policy', 1);
                                         $('.civic-custom-btn.type-login').click();
                                     });
                                 }

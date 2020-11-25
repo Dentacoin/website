@@ -159,7 +159,12 @@ function proceedWithFacebookLogin(response, this_btn, type, vanilla_js_event) {
                             customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type, vanilla_js_event);
                         } else if (type == 'desktop') {
                             console.log('patientProceedWithCreatingSession');
-                            customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, type, vanilla_js_event);
+                            if (vanilla_js_event) {
+                                customFacebookEvent('hideGatewayLoader', '');
+                                customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type, vanilla_js_event);
+                            } else {
+                                customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, type);
+                            }
                         }
                     }
                 } else if (!data.success) {

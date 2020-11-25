@@ -66,7 +66,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 });
 
 function proceedWithFacebookLogin(response, this_btn, type) {
-    console.log('proceedWithFacebookLogin');
+    console.log(type, 'proceedWithFacebookLogin');
     if (response.authResponse && response.status == 'connected') {
         //fbGetData();
 
@@ -138,18 +138,23 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                         }
                         return false;
                     } else if (data.new_account) {
+                        console.log('successfulFacebookPatientRegistration');
                         customFacebookEvent('successfulFacebookPatientRegistration', '', null, type);
                     } else {
+                        console.log('successfulFacebookPatientLogin');
                         customFacebookEvent('successfulFacebookPatientLogin', '', null, type);
                     }
 
                     if (data.data.email == '' || data.data.email == null) {
+                        console.log('registeredAccountMissingEmail');
                         customFacebookEvent('registeredAccountMissingEmail', '', data, type);
                     } else {
                         if (type == 'mobile') {
+                            console.log('patientAuthSuccessResponse');
                             customFacebookEvent('hideGatewayLoader', '');
                             customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type);
                         } else if (type == 'desktop') {
+                            console.log('patientProceedWithCreatingSession');
                             customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, type);
                         }
                     }

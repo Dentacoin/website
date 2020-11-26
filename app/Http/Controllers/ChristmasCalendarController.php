@@ -283,15 +283,18 @@ class ChristmasCalendarController extends Controller
     public function getHolidayCalendarParticipants(Request $request) {
         //if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY').$request->input('day')) == trim($request->input('hash'))) {
             $tasks = ChristmasCalendarTask::where(array('year' => 2020))->get()->all();
+            var_dump((int)$request->input('day'));
             foreach ($tasks as $loopedTask) {
                 $day = date('j', strtotime($loopedTask->date));
+
+                var_dump((int)$day);
                 if ((int)$day == (int)$request->input('day')) {
                     $task = $loopedTask;
                     break;
                 }
-            }
 
-            var_dump($task);
+                echo "<br><br>";
+            }
 
             $participants = DB::table('christmas_calendar_participants')
                 ->leftJoin('christmas_calendar_task_participant', 'christmas_calendar_participants.id', '=', 'christmas_calendar_task_participant.participant_id')

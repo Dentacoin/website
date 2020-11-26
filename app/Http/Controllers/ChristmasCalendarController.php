@@ -281,6 +281,7 @@ class ChristmasCalendarController extends Controller
     }
 
     public function getHolidayCalendarParticipants(Request $request) {
+        die('asd');
         if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY').$request->input('day')) == trim($request->input('hash'))) {
             $task = ChristmasCalendarTask::where(array('id' => $request->input('day')))->get()->first();
 

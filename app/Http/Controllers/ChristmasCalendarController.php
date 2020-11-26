@@ -281,7 +281,7 @@ class ChristmasCalendarController extends Controller
     }
 
     public function getHolidayCalendarParticipants(Request $request) {
-        if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY').$request->input('day')) == trim($request->input('hash'))) {
+        //if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY').$request->input('day')) == trim($request->input('hash'))) {
             $task = ChristmasCalendarTask::where(array('id' => $request->input('day')))->get()->first();
 
             $participants = DB::table('christmas_calendar_participants')
@@ -342,10 +342,10 @@ class ChristmasCalendarController extends Controller
                     'error' => true
                 ]);
             }
-        } else {
+        /*} else {
             return response()->json([
                 'error' => true
             ]);
-        }
+        }*/
     }
 }

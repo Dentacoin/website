@@ -61,8 +61,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         Route::post('/complete-task/{id}', 'ChristmasCalendarController@completeTask')->name('complete-task');
     });
 
-    Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');
-
     //Route::post('/submit-berlin-roundtable-form', 'BerlinRoundtableController@submitForm')->name('submit-berlin-roundtable-form');
 
     Route::get('careers/{slug?}', function($slug = null)    {
@@ -171,6 +169,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return Redirect::to('/holiday-calendar/2019');
     });
 });
+
+Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');
 
 Route::group(['prefix' => 'combined-hub'], function () {
     Route::post('/get-hub-data/{hubType}', 'DentacoinHubController@getHubData')->name('get-hub-data');

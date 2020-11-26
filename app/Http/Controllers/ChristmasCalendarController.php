@@ -287,7 +287,6 @@ class ChristmasCalendarController extends Controller
             $participants = DB::table('christmas_calendar_participants')
                 ->leftJoin('christmas_calendar_task_participant', 'christmas_calendar_participants.id', '=', 'christmas_calendar_task_participant.participant_id')
                 ->select('christmas_calendar_participants.*')
-                ->leftJoin('christmas_calendar_participants', 'christmas_calendar_task_participant.participant_id', '=', 'christmas_calendar_participants.id')
                 ->where(array('christmas_calendar_task_participant.task_id' => 1, 'christmas_calendar_participants.year' => 2020))
                 ->get()->keyBy('user_id')->toArray();
 

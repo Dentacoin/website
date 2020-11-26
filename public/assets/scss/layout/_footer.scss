@@ -1,5 +1,14 @@
 footer {
     border-top: 1px solid black;
+    &.extra-bottom-padding {
+        padding-bottom: 400px;
+        @include breakpoint($md-down) {
+            padding-bottom: 300px;      
+        }
+        @include breakpoint($xs) {
+            padding-bottom: 200px;
+        }
+    }
     .section-title {
         padding-top: 30px;
     }

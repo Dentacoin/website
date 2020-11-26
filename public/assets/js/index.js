@@ -3647,6 +3647,7 @@ bindGoogleAlikeButtonsEvents();
 
 if ($('.bottom-fixed-promo-banner').length) {
     $('.bottom-fixed-promo-banner .close-banner').click(function() {
+        $('footer').removeClass('extra-bottom-padding');
         $('.bottom-fixed-promo-banner').remove();
 
         var now = new Date();

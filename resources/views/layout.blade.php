@@ -155,7 +155,7 @@
         </div>
     </header>
     <main @if(!empty(Route::current()) && (Route::current()->getName() != 'home' && Route::current()->getName() != 'foundation' && Route::current()->getName() != 'users' && Route::current()->getName() != 'dentists' && Route::current()->getName() != 'traders')) class="main-container" @endif>@yield("content")</main>
-    <footer class="padding-bottom-80 hide-on-map-open hide-on-hub-open @if(!empty(Route::current()) && Route::current()->getName() == 'traders') black-style @endif">
+    <footer class="padding-bottom-80 hide-on-map-open hide-on-hub-open @if(!empty(Route::current()) && Route::current()->getName() == 'traders') black-style @endif @if((!empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'foundation' || Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists'  || Route::current()->getName() == 'traders')) && empty($_COOKIE['hide-holiday-calendar-banner'])) extra-bottom-padding @endif">
         <div class="container">
             @if(!empty($socials))
                 <div class="row socials">

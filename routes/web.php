@@ -83,8 +83,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     //======================================= LOGGED IN LOGIC ========================================
 
-    Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');
-
     //======================================= AJAX ========================================
 
     Route::post('/press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');

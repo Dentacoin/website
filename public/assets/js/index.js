@@ -214,17 +214,17 @@ var projectData = {
                     
                     async function initBigHub() {
                         if (!hasOwnProperty.call(loadedLibs, 'bigHubStyle')) {
-                            loadedLibs.bigHubStyle = true;
                             if (isFirefox) {
                                 $('head').append('<link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v='+new Date().getTime()+'"/>');
                             } else {
                                 $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/assets/libs/dentacoin-package/css/styles-big-hub.css?v='+new Date().getTime()+'"/>');
                             }
+                            loadedLibs.bigHubStyle = true;
                         }
 
                         if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
-                            loadedLibs.dentacoinPackageJs = true;
                             await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
+                            loadedLibs.dentacoinPackageJs = true;
                         }
 
                         var bigHubParams = {
@@ -385,14 +385,14 @@ var projectData = {
                 if ($('.mobile-exchanges').length) {
                     // load slick lib
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
-                        console.log('slick loaded');
-                        loadedLibs.slick = true;
                         if (isFirefox) {
                             $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         } else {
                             $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         }
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
+                        console.log('slick loaded');
+                        loadedLibs.slick = true;
                     }
 
                     $('.mobile-exchanges .slider-row').slick({
@@ -661,14 +661,14 @@ var projectData = {
                 if ($('body').hasClass('team')) {
                     // load slick lib
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
-                        console.log('slick loaded');
-                        loadedLibs.slick = true;
                         if (isFirefox) {
                             $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         } else {
                             $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         }
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
+                        console.log('slick loaded');
+                        loadedLibs.slick = true;
                     }
 
                     $('.team-container .advisors .advisors-slider').slick({
@@ -1457,14 +1457,14 @@ var projectData = {
 
                     // load slick lib
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
-                        console.log('slick loaded');
-                        loadedLibs.slick = true;
                         if (isFirefox) {
                             $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         } else {
                             $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         }
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
+                        console.log('slick loaded');
+                        loadedLibs.slick = true;
                     }
 
                     $(document).on('click', '.reserve-your-spot', function() {
@@ -1601,20 +1601,19 @@ var projectData = {
                 console.log('cookie');
                 if (basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && !$('body').hasClass('dentacoin-map-iframe')) {
                     if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
+                        await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
                         console.log('dentacoinPackageJs loaded');
                         loadedLibs.dentacoinPackageJs = true;
-                        await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
                     }
 
                     if (!hasOwnProperty.call(loadedLibs, 'dentacoinCookieCss')) {
-                        console.log('dentacoinCookieCss loaded');
-                        loadedLibs.dentacoinCookieCss = true;
-
                         if (isFirefox) {
                             $('head').append('<link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v='+new Date().getTime()+'"/>');
                         } else {
                             $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v='+new Date().getTime()+'"/>');
                         }
+                        console.log('dentacoinCookieCss loaded');
+                        loadedLibs.dentacoinCookieCss = true;
                     }
 
                     console.log(typeof(dcnCookie), 'typeof(dcnCookie)');
@@ -1655,9 +1654,8 @@ var projectData = {
             },
             miniHub: async function() {
                 if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
-                    loadedLibs.dentacoinPackageJs = true;
-                    console.log('dentacoinPackageJs loaded');
                     await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
+                    loadedLibs.dentacoinPackageJs = true;
                 }
 
                 // /assets/libs/dentacoin-package/js/init.js?v=
@@ -1685,14 +1683,14 @@ var projectData = {
                 if ($('.module.video-expressions-slider[data-type="'+type+'"]').length) {
                     // load slick lib
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
-                        console.log('slick loaded');
-                        loadedLibs.slick = true;
                         if (isFirefox) {
                             $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         } else {
                             $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         }
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
+                        console.log('slick loaded');
+                        loadedLibs.slick = true;
                     }
 
                     // add youtube API
@@ -1807,14 +1805,14 @@ var projectData = {
                 if ($('.user-expressions-slider[data-type="'+type+'"]').length) {
                     // load slick lib
                     if (!hasOwnProperty.call(loadedLibs, 'slick')) {
-                        console.log('slick loaded');
-                        loadedLibs.slick = true;
                         if (isFirefox) {
                             $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         } else {
                             $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
                         }
                         await $.getScript('/dist/libs/slick/slick.min.js', function() {});
+                        console.log('slick loaded');
+                        loadedLibs.slick = true;
                     }
 
                     $('.user-expressions-slider[data-type="'+type+'"]').slick({
@@ -1904,10 +1902,10 @@ var projectData = {
             },
             async dentacoinGoogleMap() {
                 if (!hasOwnProperty.call(loadedLibs, 'googleMap')) {
-                    console.log('googleMap loaded');
-                    loadedLibs.googleMap = true;
                     await $.getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk&libraries=places&language=en', function() {});
                     await $.getScript('/dist/js/init-map.min.js', function() {});
+                    console.log('googleMap loaded');
+                    loadedLibs.googleMap = true;
                 }
 
                 if (basic.getMobileOperatingSystem() == 'Mac') {

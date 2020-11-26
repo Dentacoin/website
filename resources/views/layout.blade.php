@@ -240,7 +240,7 @@
         </div>
     </footer>
 
-    @if((!empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'foundation' || Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists'  || Route::current()->getName() == 'traders')) && empty($_COOKIE['hide-holiday-calendar-banner']))
+    @if((!empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'foundation' || Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists'  || Route::current()->getName() == 'traders')) && empty($_COOKIE['hide-holiday-calendar-banner']) && strtotime('2020/12/01 00:00:00') < time())
         <div class="bottom-fixed-promo-banner fs-0">
             <a href="javascript:void(0);" class="close-banner">×</a>
             <a href="{{route('christmas-calendar', ['year' => 2020])}}" target="_blank">

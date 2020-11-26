@@ -339,7 +339,8 @@ class ChristmasCalendarController extends Controller
                 ]);
             } else {
                 return response()->json([
-                    'error' => true
+                    'error' => true,
+                    'test' => 123
                 ]);
             }
         /*} else {

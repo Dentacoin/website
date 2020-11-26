@@ -608,17 +608,17 @@
                     </a>
                     @php($presentName = 'Face sticker')
                 @elseif($task['type'] == 'facebook-holiday-frame')
-                    <a href="https://www.facebook.com" target="_blank" download>
+                    <a href="https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'Facebook frame')
                 @elseif($task['type'] == 'season-oral-guide')
-                    <a href="{{URL::asset('assets/docs/oral-health-tips.pdf')}}" target="_blank" download>
+                    <a href="{{URL::asset('assets/docs/seasons-oral-health-guide.pdf')}}" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's Oral Health Guide" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'Season\'s Oral Health Guide')
                 @elseif($task['type'] == 'kids-brushing-calendar')
-                    <a href="{{URL::asset('assets/docs/jaws-of-battle-brushing-calendar.pdf')}}" target="_blank" download>
+                    <a href="{{URL::asset('assets/docs/kids-brushing-calendar.pdf')}}" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's Brushing Calendar 2021" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'Kid\'s Brushing Calendar 2021')
@@ -628,7 +628,7 @@
                     </a>
                     @php($presentName = 'Kid\'s Oral Health Guide: <br>Timeless Super Dentist\'s Tips')
                 @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
-                    <a href="{{URL::asset('assets/docs/oral-microbiome.pdf')}}" target="_blank" download>
+                    <a href="{{URL::asset('assets/docs/oral-microbiome-ebook.pdf')}}" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'The Microbiome In Your Mouth | A Beginners Guide:<br> Discover Why The Futile War Against Germs Is Harmful To Your Health: <br>by Dr. Trino Nuno')
@@ -646,11 +646,11 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 4)
-                    @php($btnLink = 'https://www.facebook.com')
+                    @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
                     @php($btnLabel = 'HOLIDAY FRAME')
                     @php($actionType = 'external-link')
                 @elseif($dayId == 11)
-                    @php($btnLink = URL::asset('assets/docs/oral-microbiome.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/oral-microbiome-ebook.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 14)
@@ -658,7 +658,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 21)
-                    @php($btnLink = URL::asset('assets/docs/oral-health-tips.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/seasons-oral-health-guide.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 24)
@@ -666,7 +666,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 28)
-                    @php($btnLink = URL::asset('assets/docs/jaws-of-battle-brushing-calendar.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/kids-brushing-calendar.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @endif
@@ -699,17 +699,17 @@
                     </a>
                     @php($presentName = 'Face sticker')
                 @elseif($task['type'] == 'facebook-holiday-frame')
-                    <a href="https://www.facebook.com" target="_blank" download>
+                    <a href="https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/christmas-fb-frame.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'Facebook frame')
                 @elseif($task['type'] == 'season-oral-guide')
-                    <a href="{{URL::asset('assets/docs/oral-health-tips.pdf')}}" target="_blank" download>
+                    <a href="{{URL::asset('assets/docs/seasons-oral-health-guide.pdf')}}" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/christmas-pdf.png" class="width-100" alt="Season's Oral Health Guide" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'Season\'s Oral Health Guide')
                 @elseif($task['type'] == 'kids-brushing-calendar')
-                    <a href="{{URL::asset('assets/docs/jaws-of-battle-brushing-calendar.pdf')}}" target="_blank" download>
+                    <a href="{{URL::asset('assets/docs/kids-brushing-calendar.pdf')}}" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/christmas-kids-brushing-calendar.png" class="width-100" alt="Kid's Brushing Calendar 2021" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'Kid\'s Brushing Calendar 2021')
@@ -719,7 +719,7 @@
                     </a>
                     @php($presentName = 'Kid\'s Oral Health Guide: <br>Timeless Super Dentist\'s Tips')
                 @elseif($task['type'] == 'ebook-by-dr-trino-nuno')
-                    <a href="{{URL::asset('assets/docs/oral-microbiome.pdf')}}" target="_blank" download>
+                    <a href="{{URL::asset('assets/docs/oral-microbiome-ebook.pdf')}}" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/book-gift.png" class="width-100" alt="Ebook by Dr. Trino Nuno" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'The Microbiome In Your Mouth | A Beginners Guide:<br> Discover Why The Futile War Against Germs Is Harmful To Your Health: <br>by Dr. Trino Nuno')
@@ -737,11 +737,11 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 4)
-                    @php($btnLink = 'https://www.facebook.com')
+                    @php($btnLink = 'https://www.facebook.com/profilepicframes/?selected_overlay_id=431397017465500')
                     @php($btnLabel = 'HOLIDAY FRAME')
                     @php($actionType = 'external-link')
                 @elseif($dayId == 11)
-                    @php($btnLink = URL::asset('assets/docs/' . 'oral-microbiome.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/' . 'oral-microbiome-ebook.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 14)
@@ -749,7 +749,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 21)
-                    @php($btnLink = URL::asset('assets/docs/' . 'oral-health-tips.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/' . 'seasons-oral-health-guide.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 24)
@@ -757,7 +757,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif($dayId == 28)
-                    @php($btnLink = URL::asset('assets/docs/' . 'jaws-of-battle-brushing-calendar.pdf'))
+                    @php($btnLink = URL::asset('assets/docs/' . 'kids-brushing-calendar.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @endif

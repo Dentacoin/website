@@ -1496,3 +1496,24 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
 .cursor-pointer {
     cursor: pointer;
 }
+
+.bottom-fixed-promo-banner {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9990;
+    .close-banner {
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        font-size: 50px;
+        font-weight: bold;
+        color: white;
+        line-height: 50px;
+        z-index: 1000;
+    }
+    video {
+        width: 100%;
+    }
+}

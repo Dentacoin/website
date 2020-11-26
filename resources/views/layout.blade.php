@@ -239,6 +239,26 @@
             </div>
         </div>
     </footer>
+
+    @if((!empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'foundation' || Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists'  || Route::current()->getName() == 'traders')) && empty($_COOKIE['hide-holiday-calendar-banner']))
+        <div class="bottom-fixed-promo-banner fs-0">
+            <a href="javascript:void(0);" class="close-banner">×</a>
+            <a href="{{route('christmas-calendar', ['year' => 2020])}}" target="_blank">
+                <div itemprop="video" itemscope="" itemtype="http://schema.org/VideoObject">
+                    <video muted autoplay loop>
+                        <source src="{{URL::asset('assets/videos/dentacoin-christmas-calendar-banner.mp4') }}" type="video/mp4">
+                        Your browser does not support HTML5 video.
+                    </video>
+                    <meta itemprop="name" content="Dentacoin Holiday Calendar Video">
+                    <meta itemprop="description" content="Holiday Calendar 2020 campaign video">
+                    <meta itemprop="uploadDate" content="2020-11-30T08:00:00+08:00">
+                    <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
+                    <link itemprop="contentURL" href="{{URL::asset('assets/videos/dentacoin-christmas-calendar-banner.mp4') }}">
+                </div>
+            </a>
+        </div>
+    @endif
+
     @php($crossLogin = \Illuminate\Support\Facades\Input::get('cross-login'))
     @if(\App\Http\Controllers\UserController::instance()->checkSession() && !empty($crossLogin))
         @php($slug = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['id'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')))

@@ -1144,7 +1144,7 @@ var projectData = {
                                                     } else if (form.find('[name="avatar"]').val() == '') {
                                                         basic.showAlert('Please upload your photo.', '', true);
                                                     } else {
-                                                        $('.response-layer').show();
+                                                        projectData.general_logic.data.showLoader();
 
                                                         var post_data = {
                                                             'avatar' : form.find('[name="avatar"]').val(),
@@ -1176,7 +1176,7 @@ var projectData = {
                                                                         dataType: 'json',
                                                                         data: post_data,
                                                                         success: function (imageGenerationResponse) {
-                                                                            $('.response-layer').hide();
+                                                                            projectData.general_logic.data.hideLoader();
                                                                             if (imageGenerationResponse.success) {
                                                                                 if (response.dcnAmount) {
                                                                                     $('.user-dcn-amount').html(response.dcnAmount);
@@ -1200,7 +1200,7 @@ var projectData = {
                                                                         }
                                                                     });
                                                                 } else if (response.error) {
-                                                                    $('.response-layer').hide();
+                                                                    projectData.general_logic.data.hideLoader();
                                                                     if (response.technicalError) {
                                                                         basic.showAlert(response.error, '', null);
                                                                     } else {
@@ -1232,7 +1232,7 @@ var projectData = {
 
                                                 function submitFormForMostTasks(form, this_form, task_id) {
                                                     completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
-                                                        $('.response-layer').hide();
+                                                        projectData.general_logic.data.hideLoader();
                                                         if (response.dcnAmount) {
                                                             $('.user-dcn-amount').html(response.dcnAmount);
                                                         }
@@ -1268,7 +1268,7 @@ var projectData = {
 
                                                     if (!error) {
                                                         completeTask(form, this_form, this_btn, new FormData($(form)[0]), function(response) {
-                                                            $('.response-layer').hide();
+                                                            projectData.general_logic.data.hideLoader();
                                                             if (response.dcnAmount) {
                                                                 $('.user-dcn-amount').html(response.dcnAmount);
                                                             }
@@ -1306,7 +1306,7 @@ var projectData = {
                                                             dataType: 'json',
                                                             data: post_data,
                                                             success: function (imageGenerationResponse) {
-                                                                $('.response-layer').hide();
+                                                                projectData.general_logic.data.hideLoader();
                                                                 if (imageGenerationResponse.success) {
                                                                     if (imageGenerationResponse.dcnAmount) {
                                                                         $('.user-dcn-amount').html(imageGenerationResponse.dcnAmount);
@@ -1348,7 +1348,7 @@ var projectData = {
                                                 $('.task-error').remove();
 
                                                 function proceedWithTaskFinishing() {
-                                                    $('.response-layer').show();
+                                                    projectData.general_logic.data.showLoader();
                                                     setTimeout(function() {
                                                         $.ajax({
                                                             type: 'POST',
@@ -1365,7 +1365,7 @@ var projectData = {
                                                                 if (response.success) {
                                                                     callback(response);
                                                                 } else if (response.error) {
-                                                                    $('.response-layer').hide();
+                                                                    projectData.general_logic.data.hideLoader();
                                                                     if (response.technicalError) {
                                                                         basic.showAlert(response.error, '', null);
                                                                     } else {
@@ -3639,7 +3639,14 @@ function bindGoogleAlikeButtonsEvents() {
 
 bindGoogleAlikeButtonsEvents();
 
-// =================================== GOOGLE ANALYTICS TRACKING LOGIC ======================================
+if ($('.bottom-fixed-promo-banner').length) {
+    $('.bottom-fixed-promo-banner .close-banner').click(function() {
+        $('.bottom-fixed-promo-banner').remove();
 
-
-// =================================== /GOOGLE ANALYTICS TRACKING LOGIC ======================================
+        var now = new Date();
+        var time = now.getTime();
+        time += 7200 * 1000;
+        now.setTime(time);
+        document.cookie = 'hide-holiday-calendar-banner=1; expires=' + now.toUTCString() + ';domain=dentacoin.com;path=/;';
+    });
+}

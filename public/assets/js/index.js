@@ -1598,17 +1598,23 @@ var projectData = {
                 }
             },
             cookie: async function() {
+                console.log('cookie');
                 if (basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && !$('body').hasClass('dentacoin-map-iframe')) {
                     if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
                         console.log('dentacoinPackageJs loaded');
                         loadedLibs.dentacoinPackageJs = true;
+                        await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
+                    }
+
+                    if (!hasOwnProperty.call(loadedLibs, 'dentacoinCookieCss')) {
+                        console.log('dentacoinCookieCss loaded');
+                        loadedLibs.dentacoinCookieCss = true;
 
                         if (isFirefox) {
                             $('head').append('<link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v='+new Date().getTime()+'"/>');
                         } else {
                             $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/assets/libs/dentacoin-package/css/style-cookie.css?v='+new Date().getTime()+'"/>');
                         }
-                        await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
                     }
 
                     if (typeof(dcnCookie) != 'undefined') {

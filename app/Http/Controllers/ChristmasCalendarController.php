@@ -296,6 +296,8 @@ class ChristmasCalendarController extends Controller
                 echo "<br><br>";
             }
 
+            die();
+
             $participants = DB::table('christmas_calendar_participants')
                 ->leftJoin('christmas_calendar_task_participant', 'christmas_calendar_participants.id', '=', 'christmas_calendar_task_participant.participant_id')
                 ->select('christmas_calendar_participants.*, christmas_calendar_task_participant.task_id')

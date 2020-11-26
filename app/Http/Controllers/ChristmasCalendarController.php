@@ -282,13 +282,25 @@ class ChristmasCalendarController extends Controller
 
     public function getHolidayCalendarParticipants(Request $request) {
         //if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY').$request->input('day')) == trim($request->input('hash'))) {
-            $task = ChristmasCalendarTask::where(array('id' => $request->input('day')))->get()->first();
+            $tasks = ChristmasCalendarTask::where(array('year' => 2020))->get()->all();
+            foreach ($tasks as $loopedTask) {
+                $day = date('j', strtotime($loopedTask->date));
+                if ((int)$day == (int)$request->input('day')) {
+                    $task = $loopedTask;
+                    break;
+                }
+            }
+
+            var_dump($task);
 
             $participants = DB::table('christmas_calendar_participants')
                 ->leftJoin('christmas_calendar_task_participant', 'christmas_calendar_participants.id', '=', 'christmas_calendar_task_participant.participant_id')
-                ->select('christmas_calendar_participants.*')
+                ->select('christmas_calendar_participants.*, christmas_calendar_task_participant.task_id')
                 ->where(array('christmas_calendar_task_participant.task_id' => 1, 'christmas_calendar_participants.year' => 2020))
                 ->get()->keyBy('user_id')->toArray();
+
+            var_dump($participants);
+            die();
 
             if (!empty($participants) && !empty($task)) {
                 $participantsCoredbDataResponse = (new APIRequestsController())->getUsersData(array_keys($participants));

@@ -1617,6 +1617,7 @@ var projectData = {
                         }
                     }
 
+                    console.log(typeof(dcnCookie), 'typeof(dcnCookie)');
                     if (typeof(dcnCookie) != 'undefined') {
                         dcnCookie.init({
                             'google_app_id': 'UA-97167262-1',

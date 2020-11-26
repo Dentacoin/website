@@ -20,7 +20,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 
         var obj = {
             //scope: 'email,first_name,last_name,user_gender,user_birthday,user_location'
-            scope: 'email,public_profile,user_link',
+            scope: 'email,public_profile',
             auth_type: 'rerequest'
         };
 
@@ -28,7 +28,6 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
             console.log('loading facebook from mobile app');
             // loading facebook from mobile app
             if (typeof(openFB) != 'undefined') {
-                console.log('openFB.init');
                 openFB.init({appId: fb_config.app_id});
 
                 openFB.login(
@@ -57,7 +56,11 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
                 };
 
                 FB.login(function (response) {
-                    proceedWithFacebookLogin(response, this_btn, 'desktop');
+                    if (this_btn.hasClass('vanilla-js-event')) {
+                        proceedWithFacebookLogin(response, this_btn, 'desktop', true);
+                    } else {
+                        proceedWithFacebookLogin(response, this_btn, 'desktop');
+                    }
                 }, obj);
             }).fail(function() {
                 alert('Looks like your browser is blocking Facebook login. Please check and edit your privacy settings in order to login in Dentacoin tools.');
@@ -66,13 +69,13 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
     }
 });
 
-function proceedWithFacebookLogin(response, this_btn, type) {
-    console.log('proceedWithFacebookLogin');
+function proceedWithFacebookLogin(response, this_btn, type, vanilla_js_event) {
+    console.log(type, 'proceedWithFacebookLogin');
     if (response.authResponse && response.status == 'connected') {
         //fbGetData();
 
         //setTimeout(function() {
-        customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response, type);
+        customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response, type, vanilla_js_event);
 
         var register_data = {
             platform: this_btn.attr('data-platform'),
@@ -139,30 +142,40 @@ function proceedWithFacebookLogin(response, this_btn, type) {
                         }
                         return false;
                     } else if (data.new_account) {
-                        customFacebookEvent('successfulFacebookPatientRegistration', '', null, type);
+                        console.log('successfulFacebookPatientRegistration');
+                        customFacebookEvent('successfulFacebookPatientRegistration', '', null, type, vanilla_js_event);
                     } else {
-                        customFacebookEvent('successfulFacebookPatientLogin', '', null, type);
+                        console.log('successfulFacebookPatientLogin');
+                        customFacebookEvent('successfulFacebookPatientLogin', '', null, type, vanilla_js_event);
                     }
 
                     if (data.data.email == '' || data.data.email == null) {
+                        console.log('registeredAccountMissingEmail');
                         customFacebookEvent('registeredAccountMissingEmail', '', data, type);
                     } else {
                         if (type == 'mobile') {
+                            console.log('patientAuthSuccessResponse');
                             customFacebookEvent('hideGatewayLoader', '');
-                            customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type);
+                            customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type, vanilla_js_event);
                         } else if (type == 'desktop') {
-                            customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, type);
+                            console.log('patientProceedWithCreatingSession');
+                            if (vanilla_js_event) {
+                                customFacebookEvent('hideGatewayLoader', '');
+                                customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type, vanilla_js_event);
+                            } else {
+                                customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, type);
+                            }
                         }
                     }
                 } else if (!data.success) {
-                    customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, type);
+                    customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, type, vanilla_js_event);
                 } else {
-                    customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', null, type);
+                    customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', null, type, vanilla_js_event);
                 }
             },
             error: function() {
                 //ajax to the external url is not working properly
-                customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', null, type);
+                customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', null, type, vanilla_js_event);
             }
         });
         //}, 5000);
@@ -185,8 +198,9 @@ function proceedWithFacebookLogin(response, this_btn, type) {
     }*/
 
 //custom function for firing events
-function customFacebookEvent(type, message, response_data, event_type) {
-    if (event_type != undefined && event_type == 'mobile') {
+function customFacebookEvent(type, message, response_data, event_type, vanilla_js_event) {
+    console.log(vanilla_js_event, 'customFacebookEvent');
+    if ((event_type != undefined && event_type == 'mobile') || vanilla_js_event) {
         var event_obj = {
             message: message,
             platform_type: 'facebook',

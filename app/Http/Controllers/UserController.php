@@ -253,7 +253,7 @@ class UserController extends Controller {
 
         $customMessages = [
             'platform.required' => 'Platform is required.',
-            'grecaptcha.required' => 'Captcha is required.',
+            /*'grecaptcha.required' => 'Captcha is required.',*/
             'latin-name.required' => 'Dentist or Practice Name is required.',
             'email.required' => 'Email address is required.',
             'password.required' => 'Password is required.',
@@ -268,7 +268,7 @@ class UserController extends Controller {
         ];
         $this->validate($request, [
             'platform' => 'required',
-            'grecaptcha' => 'required',
+            /*'grecaptcha' => 'required',*/
             'latin-name' => 'required|max:250',
             'email' => 'required|max:100',
             'password' => 'required|max:50',
@@ -282,6 +282,12 @@ class UserController extends Controller {
             'hidden-image' => 'required'
         ], $customMessages);
 
+        $captchaValue = $request->input('grecaptcha');
+        $typeRegistration = $request->input('typeRegistration');
+        if ($typeRegistration != 'mobile' && empty($captchaValue)) {
+            return response()->json(['error' => true, 'message' => 'Missing captcha.']);
+        }
+
         // if user didn't enter http/ https append it to his website
         if ($request->input('website') && mb_strpos(mb_strtolower($request->input('website')), 'http') !== 0) {
             request()->merge([
@@ -292,33 +298,34 @@ class UserController extends Controller {
         $data = $request->input();
 
         $recaptchaSecret = env('GOOGLE_reCAPTCHA_SECRET');
-        $typeRegistration = $request->input('typeRegistration');
         if (!empty($typeRegistration) && $typeRegistration == 'mobile') {
             $recaptchaSecret = env('GOOGLE_reCAPTCHA_SECRET_ONLY_MOBILE_APPS');
         }
 
-        $captcha = false;
-        $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
-        curl_setopt($ch, CURLOPT_HEADER, 0);
-        curl_setopt ($ch, CURLOPT_POST, 1);
-        curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query(array(
-            'secret' => $recaptchaSecret,
-            'response' => $data['grecaptcha'],
-            'remoteip' => $this->getClientIp()
-        )));
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
-        $response = curl_exec($ch);
-        curl_close($ch);
-        if ($response) {
-            $api_response = json_decode($response, true);
-            if (!empty($api_response['success'])) {
-                $captcha = true;
+        if (!empty($captchaValue)) {
+            $captcha = false;
+            $ch = curl_init('https://www.google.com/recaptcha/api/siteverify');
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            curl_setopt ($ch, CURLOPT_POST, 1);
+            curl_setopt ($ch, CURLOPT_POSTFIELDS, http_build_query(array(
+                'secret' => $recaptchaSecret,
+                'response' => $data['grecaptcha'],
+                'remoteip' => $this->getClientIp()
+            )));
+            curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+            curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+            $response = curl_exec($ch);
+            curl_close($ch);
+            if ($response) {
+                $api_response = json_decode($response, true);
+                if (!empty($api_response['success'])) {
+                    $captcha = true;
+                }
             }
-        }
 
-        if (!$captcha) {
-            return response()->json(['error' => true, 'message' => 'Wrong captcha, please try again.']);
+            if (!$captcha) {
+                return response()->json(['error' => true, 'message' => 'Wrong captcha, please try again.']);
+            }
         }
 
         if ($data['user-type'] == 'dentist') {

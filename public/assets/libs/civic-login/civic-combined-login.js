@@ -25,6 +25,7 @@
     var civicApiVersion;
     var civicActionType;
     var civicAjaxUrl;
+    var vanilla_js_event_boolean = false;
 
     //init civic
     var civicSip = new civic.sip({appId: civic_config.app_id});
@@ -38,15 +39,19 @@
             civicActionType = 'register';
         }
 
+        if (civic_custom_btn.hasClass('vanilla-js-event')) {
+            vanilla_js_event_boolean = true;
+        }
+
         if (document.cookie.indexOf('strictly_necessary_policy=') == -1 && !civic_custom_btn.hasClass('mobile-app')) {
-            customCivicEvent('cannotLoginBecauseOfMissingCookies', '');
+            customCivicEvent('cannotLoginBecauseOfMissingCookies', '', undefined, vanilla_js_event_boolean);
         } else {
-            customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.');
+            customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.', undefined, vanilla_js_event_boolean);
 
             if (civic_custom_btn != undefined) {
                 civicAjaxUrl = civic_custom_btn.attr('data-url');
                 if (civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
-                    customCivicEvent('customCivicFbStopperTriggered', '');
+                    customCivicEvent('customCivicFbStopperTriggered', '', undefined, vanilla_js_event_boolean);
                     return false;
                 }
             }
@@ -59,18 +64,16 @@
     });
 
     console.log('fire civicLibLoaded');
-    customCivicEvent('civicLibLoaded', '');
+    customCivicEvent('civicLibLoaded', '', undefined, vanilla_js_event_boolean);
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
         console.log(event, 'event');
         var jwtToken = event.response;
         civicApiVersion = event.clientVersion;
-        console.log(civicActionType, 'civicActionType uth-code-received');
-        console.log(civicApiVersion, 'civicApiVersion uth-code-received');
 
         if (civicActionType == undefined) {
-            customCivicEvent('civicRead', '');
+            customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
             if (location.hostname == 'dev.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {
                 civicAjaxUrl = '//dev-api.dentacoin.com/api/login';
             } else {
@@ -85,7 +88,7 @@
                     // old legacy app
                     console.log('stop civic register');
 
-                    customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.');
+                    customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, vanilla_js_event_boolean);
                 } else if (civicApiVersion == 'v3') {
                     proceedWithDentacoinAuth(jwtToken);
                 }
@@ -105,9 +108,9 @@
             dataType: 'json',
             success: function (ret) {
                 if (!ret.userId) {
-                    customCivicEvent('noUserIdReceived', 'No userId found after civic token/data exchange.', ret);
+                    customCivicEvent('noUserIdReceived', 'No userId found after civic token/data exchange.', ret, vanilla_js_event_boolean);
                 } else {
-                    customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret);
+                    customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret, vanilla_js_event_boolean);
                     var loginRegisterData = {
                         clientVersion: civicApiVersion,
                         auth_token: jwtToken,
@@ -142,17 +145,21 @@
 
                     console.log(currentPlatform, 'currentPlatform');
 
-                    if (dcnGateway.utils.cookies.get('first_test') != '') {
-                        loginRegisterData.country_id = JSON.parse(decodeURIComponent(dcnGateway.utils.cookies.get('first_test')))['location'];
+                    if (typeof(dcnGateway) != 'undefined') {
+                        if (dcnGateway.utils.cookies.get('first_test') != '') {
+                            loginRegisterData.country_id = JSON.parse(decodeURIComponent(dcnGateway.utils.cookies.get('first_test')))['location'];
+                        }
                     }
 
-                    if ($('.patient .form-register [name="user_patient_type[]"]:checked').val() != 'undefined') {
-                        var tempArr = [];
-                        for (var i = 0, len = $('.patient .form-register [name="user_patient_type[]"]:checked').length; i < len; i+=1) {
-                            tempArr.push($('.patient .form-register [name="user_patient_type[]"]:checked').eq(i).val());
-                        }
+                    if ($('.patient .form-register').length) {
+                        if ($('.patient .form-register [name="user_patient_type[]"]:checked').val() != 'undefined') {
+                            var tempArr = [];
+                            for (var i = 0, len = $('.patient .form-register [name="user_patient_type[]"]:checked').length; i < len; i+=1) {
+                                tempArr.push($('.patient .form-register [name="user_patient_type[]"]:checked').eq(i).val());
+                            }
 
-                        loginRegisterData.user_patient_type = JSON.stringify(tempArr);
+                            loginRegisterData.user_patient_type = JSON.stringify(tempArr);
+                        }
                     }
 
                     setTimeout(function () {
@@ -211,9 +218,9 @@
                                         }
                                         return false;
                                     } else if (data.new_account) {
-                                        customCivicEvent('successfulCivicPatientRegistration', '');
+                                        customCivicEvent('successfulCivicPatientRegistration', '', undefined, vanilla_js_event_boolean);
                                     } else {
-                                        customCivicEvent('successfulCivicPatientLogin', '');
+                                        customCivicEvent('successfulCivicPatientLogin', '', undefined, vanilla_js_event_boolean);
                                     }
 
                                     if (data.data.email == '' || data.data.email == null) {
@@ -225,10 +232,10 @@
                                                 console.log('stop civic login');
                                                 if (isMobile()) {
                                                     console.log('logging from phone');
-                                                    customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.');
+                                                    customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, vanilla_js_event_boolean);
                                                 } else {
                                                     console.log('CivicLegacyAppForbiddenLogging');
-                                                    customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data);
+                                                    customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data, vanilla_js_event_boolean);
                                                 }
                                             } else {
                                                 var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
@@ -236,7 +243,12 @@
                                                 if (logging_from_mobile_app.success) {
                                                     location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                 } else {
-                                                    customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                                                    if (vanilla_js_event_boolean) {
+                                                        customCivicEvent('hideGatewayLoader', '');
+                                                        customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
+                                                    } else {
+                                                        customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
+                                                    }
                                                 }
                                             }
                                         } else {
@@ -245,26 +257,31 @@
                                             if (logging_from_mobile_app.success) {
                                                 location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                             } else {
-                                                customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data);
+                                                if (vanilla_js_event_boolean) {
+                                                    customCivicEvent('hideGatewayLoader', '');
+                                                    customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
+                                                } else {
+                                                    customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
+                                                }
                                             }
                                         }
                                     }
 
                                 } else if (!data.success) {
-                                    customCivicEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data);
+                                    customCivicEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, vanilla_js_event_boolean);
                                 } else {
-                                    customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
+                                    customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', undefined, vanilla_js_event_boolean);
                                 }
                             },
                             error: function() {
-                                customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.');
+                                customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', undefined, vanilla_js_event_boolean);
                             }
                         });
                     }, 3000);
                 }
             },
             error: function (ret) {
-                customCivicEvent('noExternalLoginProviderConnection', 'Request to Civic NodeJS API failed while exchanging token for data.');
+                customCivicEvent('noExternalLoginProviderConnection', 'Request to Civic NodeJS API failed while exchanging token for data.', undefined, vanilla_js_event_boolean);
             }
         });
     }
@@ -275,27 +292,45 @@
 
     civicSip.on('read', function (event) {
         console.log(event, 'reading');
-        customCivicEvent('civicRead', '');
+        customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
     });
 
     civicSip.on('civic-sip-error', function (error) {
-        customCivicEvent('civicSipError', '');
+        customCivicEvent('civicSipError', '', undefined, vanilla_js_event_boolean);
     });
 })();
 
 
-function customCivicEvent(type, message, response_data) {
-    var event_obj = {
-        type: type,
-        message: message,
-        platform_type: 'civic',
-        time: new Date()
-    };
+function customCivicEvent(type, message, response_data, vanilla_js_event) {
+    console.log(type, 'customCivicEvent');
+    if (vanilla_js_event) {
+        var event_obj = {
+            message: message,
+            platform_type: 'civic',
+            time: new Date()
+        };
 
-    if (response_data != undefined) {
-        event_obj.response_data = response_data;
+        if (response_data != undefined) {
+            event_obj.response_data = response_data;
+        }
+
+        const event = new CustomEvent(type, {
+            detail: event_obj
+        });
+        document.dispatchEvent(event);
+    } else {
+        var event_obj = {
+            type: type,
+            message: message,
+            platform_type: 'civic',
+            time: new Date()
+        };
+
+        if (response_data != undefined) {
+            event_obj.response_data = response_data;
+        }
+        $.event.trigger(event_obj);
     }
-    $.event.trigger(event_obj);
 }
 
 async function checkCivicEmailIfLoggingFromMobileApp(email) {

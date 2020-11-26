@@ -281,7 +281,7 @@ class ChristmasCalendarController extends Controller
     }
 
     public function getHolidayCalendarParticipants(Request $request) {
-        //if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY').$request->input('day')) == trim($request->input('hash'))) {
+        if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY').$request->input('day')) == trim($request->input('hash'))) {
             $tasks = ChristmasCalendarTask::where(array('year' => '2020'))->get()->all();
             $firstTask = true;
             foreach ($tasks as $loopedTask) {
@@ -302,9 +302,6 @@ class ChristmasCalendarController extends Controller
                 ->leftJoin('christmas_calendar_task_participant', 'christmas_calendar_participants.id', '=', 'christmas_calendar_task_participant.participant_id')
                 ->where(array('christmas_calendar_task_participant.task_id' => $firstTaskId, 'christmas_calendar_participants.year' => '2020'))
                 ->get()->keyBy('user_id')->toArray();
-
-            var_dump($participants);
-            die();
 
             if (!empty($participants) && !empty($task)) {
                 $participantsCoredbDataResponse = (new APIRequestsController())->getUsersData(array_keys($participants));
@@ -359,10 +356,10 @@ class ChristmasCalendarController extends Controller
                     'test' => 123
                 ]);
             }
-        /*} else {
+        } else {
             return response()->json([
                 'error' => true
             ]);
-        }*/
+        }
     }
 }

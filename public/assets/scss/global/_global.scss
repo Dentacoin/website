@@ -1512,6 +1512,12 @@ body > [style="display: block !important;"], body > iframe[title="chat widget"][
         color: white;
         line-height: 50px;
         z-index: 1000;
+        @include breakpoint($xs) {
+            top: 0;
+            right: 10px;
+            font-size: 35px;   
+            line-height: 35px;
+        }
     }
     video {
         width: 100%;

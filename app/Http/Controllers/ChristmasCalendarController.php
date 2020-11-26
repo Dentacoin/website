@@ -281,7 +281,6 @@ class ChristmasCalendarController extends Controller
     }
 
     public function getHolidayCalendarParticipants(Request $request) {
-        die('asd');
         if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY').$request->input('day')) == trim($request->input('hash'))) {
             $task = ChristmasCalendarTask::where(array('id' => $request->input('day')))->get()->first();
 
@@ -320,10 +319,16 @@ class ChristmasCalendarController extends Controller
                     $reward = 'Face sticker';
                 } else if ($task->type == 'facebook-holiday-frame') {
                     $reward = 'Facebook frame';
-                } else if ($task->type == 'free-oracle-health-guide') {
-                    $reward = 'Oral health guide';
                 } else if ($task->type == 'custom-holiday-card') {
                     $reward = 'Holiday card';
+                } else if ($task->type == 'season-oral-guide') {
+                    $reward = 'Season\'s Oral Health Guide';
+                } else if ($task->type == 'kids-brushing-calendar') {
+                    $reward = 'Kid\'s Brushing Calendar 2021';
+                } else if ($task->type == 'kids-oral-care-calendar') {
+                    $reward = 'Kid\'s Oral Health Guide: Timeless Super Dentist\'s Tips';
+                } else if ($task->type == 'ebook-by-dr-trino-nuno') {
+                    $reward = 'The Microbiome In Your Mouth | A Beginners Guide: Discover Why The Futile War Against Germs Is Harmful To Your Health: by Dr. Trino Nuno';
                 }
 
                 return response()->json([

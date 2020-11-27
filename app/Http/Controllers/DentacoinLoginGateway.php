@@ -84,11 +84,9 @@ class DentacoinLoginGateway extends Controller
         ]);
 
         $response = (new APIRequestsController())->checkIfCivicEmailTryingToLoginFromMobileApp($request->input('email'));
-        var_dump($response);
-        die();
 
         if (!empty($response) && is_object($response) && property_exists($response, 'success') && $response->success) {
-            return response()->json(['success' => true]);
+            return response()->json(['success' => true, 'type' => $response->type]);
         } else {
             return response()->json(['error' => true]);
         }

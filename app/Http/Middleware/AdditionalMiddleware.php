@@ -39,7 +39,7 @@ class AdditionalMiddleware
 
         $route = Route::getRoutes()->match($request);
         if ($route->getName() != 'google-map-iframe') {
-            $response->headers->set('X-Frame-Options', 'DENY');
+            //$response->headers->set('X-Frame-Options', 'DENY');
         }
 
         return (new App\Http\Controllers\Controller())->minifyHtml($response);

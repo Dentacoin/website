@@ -240,7 +240,7 @@
                                             } else {
                                                 var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
                                                 // request to check if data.data.civic_email is in logging from mobile apps table
-                                                if (logging_from_mobile_app.success) {
+                                                if (logging_from_mobile_app.success && isMobile()) {
                                                     if (logging_from_mobile_app.type == 'dentavox') {
                                                         location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                     } else if (logging_from_mobile_app.type == 'dentacoin') {
@@ -258,7 +258,7 @@
                                         } else {
                                             var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
                                             // request to check if data.data.civic_email is in logging from mobile apps table
-                                            if (logging_from_mobile_app.success) {
+                                            if (logging_from_mobile_app.success && isMobile()) {
                                                 if (logging_from_mobile_app.type == 'dentavox') {
                                                     location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                 } else if (logging_from_mobile_app.type == 'dentacoin') {

@@ -241,7 +241,11 @@
                                                 var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
                                                 // request to check if data.data.civic_email is in logging from mobile apps table
                                                 if (logging_from_mobile_app.success) {
-                                                    location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
+                                                    if (logging_from_mobile_app.type == 'dentavox') {
+                                                        location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
+                                                    } else if (logging_from_mobile_app.type == 'dentacoin') {
+                                                        location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
+                                                    }
                                                 } else {
                                                     if (vanilla_js_event_boolean) {
                                                         customCivicEvent('hideGatewayLoader', '');
@@ -255,7 +259,11 @@
                                             var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
                                             // request to check if data.data.civic_email is in logging from mobile apps table
                                             if (logging_from_mobile_app.success) {
-                                                location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
+                                                if (logging_from_mobile_app.type == 'dentavox') {
+                                                    location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
+                                                } else if (logging_from_mobile_app.type == 'dentacoin') {
+                                                    location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
+                                                }
                                             } else {
                                                 if (vanilla_js_event_boolean) {
                                                     customCivicEvent('hideGatewayLoader', '');

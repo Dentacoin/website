@@ -27,9 +27,10 @@
 
     <script src="/dist/js/front-libs-script.js?v={{time()}}"></script>
     {{--<script type="text/javascript" src="https://hosted-sip.civic.com/js/civic.sip.min.js?v={{time()}}"></script>--}}
-    <script defer type="text/javascript" src="https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v={{time()}}"></script>
-    <script defer type="text/javascript">
-        $(document).ready(function() {
+    <script type="text/javascript">
+        $(document).ready(async function() {
+            await $.getScript(dcnLibsDomain + '/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+            
             if ($('.type-login').hasClass('active')) {
                 console.log('type-login clicked');
                 $('.type-login').click();

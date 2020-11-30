@@ -28,7 +28,7 @@
     <script src="/dist/js/front-libs-script.js?v={{time()}}"></script>
     {{--<script type="text/javascript" src="https://hosted-sip.civic.com/js/civic.sip.min.js?v={{time()}}"></script>--}}
     <script async type="text/javascript" src="https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v={{time()}}"></script>
-    <script type="text/javascript">
+    <script async type="text/javascript">
         $(document).ready(function() {
             if ($('.type-login').hasClass('active')) {
                 console.log('type-login clicked');

@@ -31,15 +31,17 @@
         $(document).ready(async function() {
             await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
 
-            if ($('.type-login').hasClass('active')) {
-                console.log('type-login clicked');
-                $('.type-login').click();
-            }
+            $(document).on('civicLibLoaded', function() {
+                if ($('.type-login').hasClass('active')) {
+                    console.log('type-login clicked');
+                    $('.type-login').click();
+                }
 
-            if ($('.type-register').hasClass('active')) {
-                console.log('type-register clicked');
-                $('.type-register').click();
-            }
+                if ($('.type-register').hasClass('active')) {
+                    console.log('type-register clicked');
+                    $('.type-register').click();
+                }
+            });
 
             var sentEventToParent = false;
             $('body').on('DOMSubtreeModified', '#civic-iframe-zone', function () {

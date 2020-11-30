@@ -14,6 +14,7 @@
     </style>
 </head>
 <body>
+    <script src="/dist/js/front-libs-script.js?v={{time()}}"></script>
     <script type="text/javascript" src="https://hosted-sip.civic.com/js/civic.sip.min.js?v={{time()}}"></script>
     <script type="text/javascript">
         var civicId = '{{ getenv("CIVIC_APP_ID") }}';
@@ -21,6 +22,18 @@
         civicSip.signup({
             style: 'popup',
             scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
+        });
+
+        $('body').on('DOMSubtreeModified', '#civic-sr-frame', function () {
+            console.log('Civic iframe removed');
+
+            window.parent.postMessage(
+                {
+                    event_id: 'civic_iframe_removed',
+                    data: {}
+                },
+                "*"
+            );
         });
     </script>
 </body>

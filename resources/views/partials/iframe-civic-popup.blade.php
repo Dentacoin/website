@@ -15,7 +15,7 @@
             opacity: 0;
             font-size: 0;
         }
-        .response-layer{background-color:rgba(255,255,255,0.7);width:100%;height:100%;position:fixed;top:0;left:0;z-index:1100;display:none}.response-layer .wrapper{text-align:center;padding-left:15px;padding-right:15px;font-size:20px;position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}.response-layer .wrapper img{width:200px;margin-bottom:15px}
+        .response-layer{background-color:rgba(255,255,255,0.7);width:100%;height:100%;position:fixed;top:0;left:0;z-index:1100}.response-layer .wrapper{text-align:center;padding-left:15px;padding-right:15px;font-size:20px;position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}.response-layer .wrapper img{width:200px;margin-bottom:15px}
     </style>
 </head>
 <body>
@@ -27,6 +27,7 @@
 
     <script src="/dist/js/front-libs-script.js?v={{time()}}"></script>
     {{--<script type="text/javascript" src="https://hosted-sip.civic.com/js/civic.sip.min.js?v={{time()}}"></script>--}}
+    <script type="text/javascript" src="'https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v={{time()}}"></script>
     <script type="text/javascript">
         function getGETParameters() {
             var prmstr = window.location.search.substr(1);
@@ -46,20 +47,16 @@
         var getParams = getGETParameters();
 
         if (!getParams.hasOwnProperty('uuid')) {
-            $(document).ready(async function() {
-                await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+            $(document).on('civicLibLoaded', function() {
+                if ($('.type-login').hasClass('active')) {
+                    console.log('type-login clicked');
+                    $('.type-login').click();
+                }
 
-                $(document).on('civicLibLoaded', function() {
-                    if ($('.type-login').hasClass('active')) {
-                        console.log('type-login clicked');
-                        $('.type-login').click();
-                    }
-
-                    if ($('.type-register').hasClass('active')) {
-                        console.log('type-register clicked');
-                        $('.type-register').click();
-                    }
-                });
+                if ($('.type-register').hasClass('active')) {
+                    console.log('type-register clicked');
+                    $('.type-register').click();
+                }
             });
         }
 

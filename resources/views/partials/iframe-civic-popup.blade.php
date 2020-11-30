@@ -29,8 +29,8 @@
     {{--<script type="text/javascript" src="https://hosted-sip.civic.com/js/civic.sip.min.js?v={{time()}}"></script>--}}
     <script type="text/javascript">
         $(document).ready(async function() {
-            await $.getScript(dcnLibsDomain + '/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
-            
+            await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+
             if ($('.type-login').hasClass('active')) {
                 console.log('type-login clicked');
                 $('.type-login').click();

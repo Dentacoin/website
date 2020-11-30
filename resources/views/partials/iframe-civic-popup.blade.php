@@ -24,7 +24,7 @@
             scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
         });
 
-        $('body').on('DOMSubtreeModified', '#civic-sr-frame', function () {
+        $('body').on('DOMSubtreeModified', '#civic-iframe-zone', function () {
             console.log('Civic iframe removed');
 
             window.parent.postMessage(

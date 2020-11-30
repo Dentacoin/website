@@ -243,8 +243,10 @@
                                                 if (logging_from_mobile_app.success && isMobile()) {
                                                     if (logging_from_mobile_app.type == 'dentavox') {
                                                         location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
+                                                        window.close();
                                                     } else if (logging_from_mobile_app.type == 'dentacoin') {
                                                         location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
+                                                        window.close();
                                                     }
                                                 } else {
                                                     if (vanilla_js_event_boolean) {
@@ -261,8 +263,10 @@
                                             if (logging_from_mobile_app.success && isMobile()) {
                                                 if (logging_from_mobile_app.type == 'dentavox') {
                                                     location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
+                                                    window.close();
                                                 } else if (logging_from_mobile_app.type == 'dentacoin') {
                                                     location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
+                                                    window.close();
                                                 }
                                             } else {
                                                 if (vanilla_js_event_boolean) {

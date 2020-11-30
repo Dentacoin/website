@@ -30,7 +30,7 @@
     <script type="text/javascript">
         function getGETParameters() {
             var prmstr = window.location.search.substr(1);
-            return prmstr != null && prmstr != "" ? dcnGateway.utils.transformToAssocArray(prmstr) : {};
+            return prmstr != null && prmstr != "" ? transformToAssocArray(prmstr) : {};
         }
 
         function transformToAssocArray(prmstr) {

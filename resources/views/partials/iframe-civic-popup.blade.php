@@ -24,16 +24,20 @@
             scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
         });
 
+        var sentEventToParent = false;
         $('body').on('DOMSubtreeModified', '#civic-iframe-zone', function () {
             console.log('Civic iframe removed');
 
-            window.parent.postMessage(
-                {
-                    event_id: 'civic_iframe_removed',
-                    data: {}
-                },
-                "*"
-            );
+            if (!$('#civic-sr-frame').length && !sentEventToParent) {
+                sentEventToParent = true;
+                window.parent.postMessage(
+                    {
+                        event_id: 'civic_iframe_removed',
+                        data: {}
+                    },
+                    "*"
+                );
+            }
         });
     </script>
 </body>

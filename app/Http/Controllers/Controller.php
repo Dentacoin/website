@@ -264,6 +264,11 @@ class Controller extends BaseController
         return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations(), 'location_types' => (new PartnerNetworkController())->getLocationTypes(), 'locations_select' => (new PartnerNetworkController())->getAllLocations(), 'clinics' => (new LocationsController())->getAllFeaturedClinics()]);
     }
 
+    protected function getCivicPopupIframe()
+    {
+        return view('partials/iframe-civic-popup');
+    }
+
     protected function refreshCaptcha()
     {
         return response()->json(['captcha' => captcha_img()]);

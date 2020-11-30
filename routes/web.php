@@ -202,6 +202,8 @@ Route::get('/custom-cookie', 'UserController@manageCustomCookie')->name('custom-
 
 Route::get('/google-map-iframe', 'Controller@getGoogleMapIframe')->name('google-map-iframe');
 
+Route::get('/iframe-civic-popup', 'Controller@getCivicPopupIframe')->name('iframe-civic-popup');
+
 Route::any('/info/{slug}', 'Controller@handleApiEndpoints')->name('api-endpoints');
 
 Route::post('/get-country-code', 'UserController@getCountryCode')->name('get-country-code');

@@ -38,8 +38,8 @@ class AdditionalMiddleware
         $response->headers->set('X-XSS-Protection', '1; mode=block');
 
         $route = Route::getRoutes()->match($request);
-        if ($route->getName() != 'google-map-iframe') {
-            //$response->headers->set('X-Frame-Options', 'DENY');
+        if ($route->getName() != 'google-map-iframe' || $route->getName() != 'iframe-civic-popup') {
+            $response->headers->set('X-Frame-Options', 'DENY');
         }
 
         return (new App\Http\Controllers\Controller())->minifyHtml($response);

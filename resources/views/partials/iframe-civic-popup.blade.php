@@ -28,36 +28,55 @@
     <script src="/dist/js/front-libs-script.js?v={{time()}}"></script>
     {{--<script type="text/javascript" src="https://hosted-sip.civic.com/js/civic.sip.min.js?v={{time()}}"></script>--}}
     <script type="text/javascript">
-        $(document).ready(async function() {
-            await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+        function getGETParameters() {
+            var prmstr = window.location.search.substr(1);
+            return prmstr != null && prmstr != "" ? dcnGateway.utils.transformToAssocArray(prmstr) : {};
+        }
 
-            $(document).on('civicLibLoaded', function() {
-                if ($('.type-login').hasClass('active')) {
-                    console.log('type-login clicked');
-                    $('.type-login').click();
-                }
+        function transformToAssocArray(prmstr) {
+            var params = {};
+            var prmarr = prmstr.split("&");
+            for (var i = 0, len = prmarr.length; i < len; i+=1) {
+                var tmparr = prmarr[i].split("=");
+                params[tmparr[0]] = tmparr[1];
+            }
+            return params;
+        }
 
-                if ($('.type-register').hasClass('active')) {
-                    console.log('type-register clicked');
-                    $('.type-register').click();
-                }
+        var getParams = getGETParameters();
+
+        if (!getParams.hasOwnProperty('uuid')) {
+            $(document).ready(async function() {
+                await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
+
+                $(document).on('civicLibLoaded', function() {
+                    if ($('.type-login').hasClass('active')) {
+                        console.log('type-login clicked');
+                        $('.type-login').click();
+                    }
+
+                    if ($('.type-register').hasClass('active')) {
+                        console.log('type-register clicked');
+                        $('.type-register').click();
+                    }
+                });
             });
+        }
 
-            var sentEventToParent = false;
-            $('body').on('DOMSubtreeModified', '#civic-iframe-zone', function () {
-                console.log('Civic iframe removed');
+        var sentEventToParent = false;
+        $('body').on('DOMSubtreeModified', '#civic-iframe-zone', function () {
+            console.log('Civic iframe removed');
 
-                if (!$('#civic-sr-frame').length && !sentEventToParent) {
-                    sentEventToParent = true;
-                    window.parent.postMessage(
-                        {
-                            event_id: 'civic_iframe_removed',
-                            data: {}
-                        },
-                        "*"
-                    );
-                }
-            });
+            if (!$('#civic-sr-frame').length && !sentEventToParent) {
+                sentEventToParent = true;
+                window.parent.postMessage(
+                    {
+                        event_id: 'civic_iframe_removed',
+                        data: {}
+                    },
+                    "*"
+                );
+            }
         });
     </script>
 </body>

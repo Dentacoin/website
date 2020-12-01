@@ -73,7 +73,7 @@
                 <div class="padding-bottom-50 text-center">
                     <a href="javascript:void(0);" class="open-dentacoin-gateway patient-login">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-                            <img src="/assets/images/christmas-calendar-campaign/join-btn.svg" class="max-width-200 max-width-xs-300" alt="Join button" itemprop="contentUrl"/>
+                            <img src="/assets/images/christmas-calendar-campaign/join-btn.svg" class="max-width-250 max-width-xs-300" alt="Join button" itemprop="contentUrl"/>
                         </figure>
                     </a>
                 </div>

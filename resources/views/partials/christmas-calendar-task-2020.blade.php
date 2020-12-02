@@ -205,7 +205,7 @@
                             <a href="https://facebook.com/watch/?v=202109878142200" class="color-christmas-calendar-red" target="_blank">https://facebook.com/watch/?v=202109878142200</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
-                            <a href="https://www.twitter.com/pg/dentacoin/samplepost/" class="color-christmas-calendar-red" target="_blank">https://www.twitter.com/pg/dentacoin/samplepost/</a>
+                            <a href="https://twitter.com/dentacoin/status/1334072692853628929?s=20" class="color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1334072692853628929?s=20</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">

@@ -230,13 +230,13 @@
                                             if (civicApiVersion == 'v2') {
                                                 // this should work on second phase
                                                 console.log('stop civic login');
-                                                if (isMobile()) {
+                                                // if (isMobile()) {
                                                     console.log('logging from phone');
                                                     customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, vanilla_js_event_boolean);
-                                                } else {
+                                                /*} else {
                                                     console.log('CivicLegacyAppForbiddenLogging');
                                                     customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data, vanilla_js_event_boolean);
-                                                }
+                                                }*/
                                             } else {
                                                 var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
                                                 // request to check if data.data.civic_email is in logging from mobile apps table

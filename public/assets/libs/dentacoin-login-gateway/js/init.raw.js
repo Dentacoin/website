@@ -688,7 +688,7 @@ if (typeof jQuery == 'undefined') {
                     dcnGateway.utils.showLoader('Receiving your details from Civic...');
                 });
 
-                $(document).on('CivicLegacyAppForbiddenLogging', async function (event) {
+                /*$(document).on('CivicLegacyAppForbiddenLogging', async function (event) {
                     var eventData = event;
 
                     dcnGateway.utils.hideLoader();
@@ -714,7 +714,7 @@ if (typeof jQuery == 'undefined') {
                             time: new Date()
                         });
                     });
-                });
+                });*/
 
                 $(document).on('CivicLegacyAppForbiddenRegistrations', async function (event) {
                     dcnGateway.utils.hideLoader();
@@ -790,7 +790,7 @@ if (typeof jQuery == 'undefined') {
                     $(document).off('civicRead');
                     $(document).off('hideGateway');
                     $(document).off('hideGatewayLoader');
-                    $(document).off('CivicLegacyAppForbiddenLogging');
+                    /*$(document).off('CivicLegacyAppForbiddenLogging');*/
                     $(document).off('CivicLegacyAppForbiddenRegistrations');
                     $(document).off('receivedFacebookToken');
                     $(document).off('facebookCustomBtnClicked');

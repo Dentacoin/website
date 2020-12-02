@@ -297,10 +297,15 @@ class ChristmasCalendarController extends Controller
                 }
             }
 
-            $participants = DB::table('christmas_calendar_participants')
+            /*$participants = DB::table('christmas_calendar_participants')
                 ->select('christmas_calendar_participants.*')
                 ->leftJoin('christmas_calendar_task_participant', 'christmas_calendar_participants.id', '=', 'christmas_calendar_task_participant.participant_id')
                 ->where(array('christmas_calendar_task_participant.task_id' => $firstTaskId, 'christmas_calendar_participants.year' => '2020'))
+                ->get()->keyBy('user_id')->toArray();*/
+
+            $participants = DB::table('christmas_calendar_participants')
+                ->select('christmas_calendar_participants.*')
+                ->where(array('christmas_calendar_participants.year' => '2020'))
                 ->get()->keyBy('user_id')->toArray();
 
             if (!empty($participants) && !empty($task)) {

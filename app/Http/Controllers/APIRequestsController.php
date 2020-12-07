@@ -30,7 +30,7 @@ class APIRequestsController extends Controller {
 
         if(!empty($resp))   {
             return $resp;
-        }else {
+        } else {
             return false;
         }
     }

@@ -202,10 +202,10 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">SHARE this post on your Facebook profile:</div>
-                            <a href="https://www.facebook.com/pg/dentacoin/samplepost/" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/pg/dentacoin/samplepost/</a>
+                            <a href="https://facebook.com/watch/?v=202109878142200" class="color-christmas-calendar-red" target="_blank">https://facebook.com/watch/?v=202109878142200</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
-                            <a href="https://www.twitter.com/pg/dentacoin/samplepost/" class="color-christmas-calendar-red" target="_blank">https://www.twitter.com/pg/dentacoin/samplepost/</a>
+                            <a href="https://twitter.com/dentacoin/status/1334072692853628929?s=20" class="color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1334072692853628929?s=20</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">
@@ -235,10 +235,12 @@
                         </div>
                         @break
                         @case(5)
+                        {{--@php($userData = (new \App\Http\Controllers\APIRequestsController())->getUserData(session('logged_user')['id']))--}}
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-25">Visit Dentacoin’s profile on Google Maps and post a recommendation. Text comment is required.</div>
-                            <a href="https://goo.gl/maps/C9t4UEaEcQJPsrSBA" class="white-red-btn" target="_blank">POST NOW</a>
+                            <a href="https://maps.app.goo.gl/V9CA7rqGjvk9Yk3S7" class="white-red-btn" target="_blank">POST NOW</a>
+                            {{--<a href="https://docs.google.com/forms/d/e/1FAIpQLScUjtpN0C3OfrqeVThn8ElA00mzyhml4MDhNzcOxmuKZ-dovQ/viewform?usp=pp_url&entry.599133584={{$userData->email}}" class="white-red-btn" target="_blank">POST NOW</a>--}}
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="padding-bottom-20">
                                 <div class="custom-google-label-style module max-width-400">
@@ -253,10 +255,11 @@
                         </div>
                         @break
                         @case(6)
+                        @php($userData = (new \App\Http\Controllers\APIRequestsController())->getUserData(session('logged_user')['id']))
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">Cast your vote for the Top Dentist of 2020 from the list of nominees and claim your daily prize.</div>
                             <div class="padding-top-15">
-                                <a href="https://reviews.dentacoin.com/blog/vote-for-top-dentist-of-the-year" target="_blank" class="white-red-btn">VOTE NOW</a>
+                                <a href="https://docs.google.com/forms/d/e/1FAIpQLScUjtpN0C3OfrqeVThn8ElA00mzyhml4MDhNzcOxmuKZ-dovQ/viewform?usp=pp_url&entry.599133584={{$userData->email}}" target="_blank" class="white-red-btn">VOTE NOW</a>
                             </div>
                             <div class="fs-16 fs-xs-14 padding-top-25">Once you are done, submit the task from the button below to unlock your gift.</div>
                         </div>
@@ -265,10 +268,10 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">SHARE this post on your Facebook profile:</div>
-                            <a href="https://www.facebook.com/pg/dentacoin/samplepost/" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/pg/dentacoin/samplepost/</a>
+                            <a href="https://www.facebook.com/dentavox.dentacoin/posts/3644857712247200" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/dentavox.dentacoin/posts/3644857712247200</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15 padding-bottom-10">RETWEET this tweet on your Twitter profile:</div>
-                            <a href="https://www.twitter.com/pg/dentacoin/samplepost/" class="color-christmas-calendar-red" target="_blank">https://www.twitter.com/pg/dentacoin/samplepost/</a>
+                            <a href="https://twitter.com/DentavoxSurveys/status/1334396393386094593" class="color-christmas-calendar-red" target="_blank">https://twitter.com/DentavoxSurveys/status/1334396393386094593</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task</div>
                             <div class="padding-bottom-20">
                                 <div class="custom-google-label-style module max-width-400">

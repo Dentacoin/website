@@ -75,9 +75,9 @@
         if (civicActionType == undefined) {
             customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
             if (location.hostname == 'dev.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {
-                civicAjaxUrl = '//dev-api.dentacoin.com/api/login';
+                civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login';
             } else {
-                civicAjaxUrl = '//api.dentacoin.com/api/login';
+                civicAjaxUrl = 'https://api.dentacoin.com/api/login';
             }
 
             proceedWithDentacoinAuth(jwtToken, true);
@@ -230,15 +230,15 @@
                                             if (civicApiVersion == 'v2') {
                                                 // this should work on second phase
                                                 console.log('stop civic login');
-                                                if (isMobile()) {
+                                                // if (isMobile()) {
                                                     console.log('logging from phone');
                                                     customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, vanilla_js_event_boolean);
-                                                } else {
+                                                /*} else {
                                                     console.log('CivicLegacyAppForbiddenLogging');
                                                     customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data, vanilla_js_event_boolean);
-                                                }
+                                                }*/
                                             } else {
-                                                var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
+                                                var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(getHostname(civicAjaxUrl), data.data.civic_email);
                                                 // request to check if data.data.civic_email is in logging from mobile apps table
                                                 if (logging_from_mobile_app.success && isMobile()) {
                                                     if (logging_from_mobile_app.type == 'dentavox') {
@@ -258,7 +258,7 @@
                                                 }
                                             }
                                         } else {
-                                            var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(data.data.civic_email);
+                                            var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp(getHostname(civicAjaxUrl), data.data.civic_email);
                                             // request to check if data.data.civic_email is in logging from mobile apps table
                                             if (logging_from_mobile_app.success && isMobile()) {
                                                 if (logging_from_mobile_app.type == 'dentavox') {
@@ -345,13 +345,18 @@ function customCivicEvent(type, message, response_data, vanilla_js_event) {
     }
 }
 
-async function checkCivicEmailIfLoggingFromMobileApp(email) {
+async function checkCivicEmailIfLoggingFromMobileApp(url, email) {
     return await $.ajax({
         type: 'POST',
-        url: 'https://dentacoin.com/dentacoin-login-gateway/check-civic-email',
+        url: 'https://'+url+'/dentacoin-login-gateway/check-civic-email',
         dataType: 'json',
         data: {
             email: email
         }
     });
 }
+
+const getHostname = (url) => {
+    console.log(url, 'url');
+    return new URL(url).hostname;
+};

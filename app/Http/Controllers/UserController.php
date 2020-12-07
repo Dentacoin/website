@@ -132,17 +132,19 @@ class UserController extends Controller {
             } else {
                 if (array_key_exists('deleted', $api_response) && $api_response['deleted']) {
                     if (array_key_exists('appeal', $api_response) && $api_response['appeal']) {
+                        // if appeal is already submitted and being reviewed by DCN team
                         $redirect_to = 'https://account.dentacoin.com/blocked-account-thank-you?platform=' . $data['platform'];
                     } else {
+                        // redirect user to submit blocked account appeal
                         $redirect_to = 'https://account.dentacoin.com/blocked-account?platform=' . $data['platform'] . '&key=' . urlencode($this->encrypt($api_response['data']['id'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')));
                     }
-                    return response()->json(['success' => true, 'redirect_to' => $redirect_to]);
+                    return response()->json(array('success' => true, 'redirect_to' => $redirect_to));
                 } else {
-                    return response()->json(['success' => true]);
+                    return response()->json(array('success' => true));
                 }
             }
         } else {
-            return response()->json(['error' => true, 'message' => 'Wrong email or password.']);
+            return response()->json(array('error' => true, 'message' => 'Wrong email or password.'));
         }
     }
 

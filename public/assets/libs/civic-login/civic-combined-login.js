@@ -357,5 +357,6 @@ async function checkCivicEmailIfLoggingFromMobileApp(url, email) {
 }
 
 const getHostname = (url) => {
+    console.log(url, 'url');
     return new URL(url).hostname;
 };

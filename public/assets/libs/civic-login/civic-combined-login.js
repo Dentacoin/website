@@ -249,10 +249,10 @@
                                                     console.log('REDIRECT TO MOBILE: ', logging_from_mobile_app.type);
                                                     if (logging_from_mobile_app.type == 'dentavox') {
                                                         console.log('dentavoxapp://?token=' + encodeURIComponent(data.token), 'LINK');
-                                                        location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
+                                                        window.location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                         window.close();
                                                     } else if (logging_from_mobile_app.type == 'dentacoin') {
-                                                        location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
+                                                        window.location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
                                                         window.close();
                                                     }
                                                 } else {
@@ -275,10 +275,10 @@
                                                 console.log('REDIRECT TO MOBILE: ', logging_from_mobile_app.type);
                                                 if (logging_from_mobile_app.type == 'dentavox') {
                                                     console.log('dentavoxapp://?token=' + encodeURIComponent(data.token), 'LINK');
-                                                    location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
+                                                    window.location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                     window.close();
                                                 } else if (logging_from_mobile_app.type == 'dentacoin') {
-                                                    location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
+                                                    window.location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
                                                     window.close();
                                                 }
                                             } else {

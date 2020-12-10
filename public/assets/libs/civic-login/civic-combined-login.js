@@ -226,6 +226,7 @@
                                     if (data.data.email == '' || data.data.email == null) {
                                         customCivicEvent('registeredAccountMissingEmail', '', data);
                                     } else {
+                                        console.log(data, 'data');
                                         if (civicActionType == 'login') {
                                             if (civicApiVersion == 'v2') {
                                                 // this should work on second phase
@@ -245,6 +246,7 @@
                                                 }
                                                 // request to check if data.data.civic_email is in logging from mobile apps table
                                                 if (logging_from_mobile_app.success && isMobile()) {
+                                                    console.log('REDIRECT TO MOBILE: ', logging_from_mobile_app.type);
                                                     if (logging_from_mobile_app.type == 'dentavox') {
                                                         location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                         window.close();
@@ -269,6 +271,7 @@
                                             }
                                             // request to check if data.data.civic_email is in logging from mobile apps table
                                             if (logging_from_mobile_app.success && isMobile()) {
+                                                console.log('REDIRECT TO MOBILE: ', logging_from_mobile_app.type);
                                                 if (logging_from_mobile_app.type == 'dentavox') {
                                                     location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                     window.close();

@@ -250,10 +250,10 @@
                                                     if (logging_from_mobile_app.type == 'dentavox') {
                                                         console.log('dentavoxapp://?token=' + encodeURIComponent(data.token), 'LINK');
                                                         window.location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
-                                                        // window.close();
+                                                        window.close();
                                                     } else if (logging_from_mobile_app.type == 'dentacoin') {
                                                         window.location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
-                                                        // window.close();
+                                                        window.close();
                                                     }
                                                 } else {
                                                     if (vanilla_js_event_boolean) {
@@ -276,10 +276,10 @@
                                                 if (logging_from_mobile_app.type == 'dentavox') {
                                                     console.log('dentavoxapp://?token=' + encodeURIComponent(data.token), 'LINK');
                                                     window.location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
-                                                    // window.close();
+                                                    window.close();
                                                 } else if (logging_from_mobile_app.type == 'dentacoin') {
                                                     window.location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
-                                                    // window.close();
+                                                    window.close();
                                                 }
                                             } else {
                                                 if (vanilla_js_event_boolean) {

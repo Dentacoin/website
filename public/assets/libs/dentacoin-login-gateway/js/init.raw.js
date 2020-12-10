@@ -12,6 +12,7 @@ if (typeof jQuery == 'undefined') {
     var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
     var apiDomain = 'https://api.dentacoin.com';
     var dcnLibsDomain = 'https://dentacoin.com';
+    var civic_iframe_removedEventLoaded = false;
     var environment = 'live';
     var initCivicEvents = true;
     var googleKey = 'AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk';
@@ -1129,7 +1130,10 @@ if (typeof jQuery == 'undefined') {
                                                         civicMobileProceeded = true;
 
                                                         window.localStorage.setItem('user_civic_email', $('.patient #mobile-logging-civic-email').val().trim());
-                                                        proceedWithMobileAppAuth(thisBtn);
+
+                                                        if (!$('#iframe-civic-popup').length) {
+                                                            $('body').append('<iframe src="'+dcnLibsDomain+'/iframe-civic-popup?type=login" id="iframe-civic-popup"></iframe>');
+                                                        }
                                                     }
                                                 } else {
                                                     dcnGateway.utils.customErrorHandle($('.patient #mobile-logging-civic-email').closest('.field-parent'), 'Please enter valid email.');
@@ -1141,25 +1145,52 @@ if (typeof jQuery == 'undefined') {
                                                 $('.patient .form-register-fields, .patient .form-login-fields').show();
                                             });
                                         } else {
-                                            // civic email already saved in mobile app
-                                            proceedWithMobileAppAuth(thisBtn);
+                                            if (!$('#iframe-civic-popup').length) {
+                                                $('body').append('<iframe src="'+dcnLibsDomain+'/iframe-civic-popup?type=login" id="iframe-civic-popup"></iframe>');
+                                            }
                                         }
                                     });
 
-                                    function proceedWithMobileAppAuth(thisBtn) {
+                                    if (!civic_iframe_removedEventLoaded) {
+                                        civic_iframe_removedEventLoaded = true;
+
+                                        window.addEventListener('message', function(event) {
+                                            if (event.data.event_id === 'civic_iframe_removed' && $('#iframe-civic-popup').length) {
+                                                if ($('.mobile-proceeding-to-civic').length) {
+                                                    $('.mobile-proceeding-to-civic').remove();
+                                                }
+                                                if ($('.form-register-fields').length) {
+                                                    $('.form-register-fields').show();
+                                                }
+                                                if ($('.form-login-fields').length) {
+                                                    $('.form-login-fields').show();
+                                                }
+
+                                                proceedWithMobileAppAuth();
+                                                $('#iframe-civic-popup').remove();
+                                            }
+                                        });
+                                    }
+
+                                    function proceedWithMobileAppAuth() {
+                                        console.log({
+                                            email: window.localStorage.getItem('user_civic_email'),
+                                            type: params.platform
+                                        }, 'proceedWithMobileAppAuth');
                                         dcnGateway.dcnGatewayRequests.saveCivicEmailTryingToLoginFromMobileApp({
                                             email: window.localStorage.getItem('user_civic_email'),
                                             type: params.platform
                                         }, function(response) {
                                             if (response.success) {
-                                                $('.patient .mobile-proceeding-to-civic').remove();
+                                                console.log(response, 'proceedWithMobileAppAuth response');
+                                                /*$('.patient .mobile-proceeding-to-civic').remove();
                                                 $('.patient .form-register-fields, .patient .form-login-fields').show();
 
                                                 if (thisBtn.hasClass('type-login')) {
                                                     window.open('https://dentavox.dentacoin.com/?dcn-gateway-type=patient-login&open-civic-login=true', '_blank');
                                                 } else if (thisBtn.hasClass('type-register')) {
                                                     window.open('https://dentavox.dentacoin.com/?dcn-gateway-type=patient-register&open-civic-register=true', '_blank');
-                                                }
+                                                }*/
                                             } else {
                                                 dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                             }

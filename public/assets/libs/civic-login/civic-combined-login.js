@@ -248,6 +248,7 @@
                                                 if (logging_from_mobile_app.success && isMobile()) {
                                                     console.log('REDIRECT TO MOBILE: ', logging_from_mobile_app.type);
                                                     if (logging_from_mobile_app.type == 'dentavox') {
+                                                        console.log('dentavoxapp://?token=' + encodeURIComponent(data.token), 'LINK');
                                                         location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                         window.close();
                                                     } else if (logging_from_mobile_app.type == 'dentacoin') {
@@ -273,6 +274,7 @@
                                             if (logging_from_mobile_app.success && isMobile()) {
                                                 console.log('REDIRECT TO MOBILE: ', logging_from_mobile_app.type);
                                                 if (logging_from_mobile_app.type == 'dentavox') {
+                                                    console.log('dentavoxapp://?token=' + encodeURIComponent(data.token), 'LINK');
                                                     location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                     window.close();
                                                 } else if (logging_from_mobile_app.type == 'dentacoin') {

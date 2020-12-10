@@ -1113,9 +1113,15 @@ if (typeof jQuery == 'undefined') {
                                                 $('.form-login-fields').hide();
                                                 $('.patient .form-login').append('<div class="padding-bottom-50 mobile-proceeding-to-civic"><div class="padding-bottom-10 field-parent dentacoin-login-gateway-fs-16" style="color: white;">Open your Civic Wallet mobile app and paste your account email:</div><div class="padding-bottom-10 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true"><label for="mobile-logging-civic-email">Civic Wallet email</label><input class="full-rounded form-field" maxlength="100" type="email" id="mobile-logging-civic-email" /></div></div><div class="padding-bottom-20"><a href="javascript:void(0)" class="social-login-btn civic-style calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18">Continue with Civic</a></div><div><a href="javascript:void(0);" class="go-back-to-logins dentacoin-login-gateway-fs-16" style="color: white;">← Go back</a></div></div>');
 
+                                                $('.patient .form-login .custom-google-label-style label').addClass('active-label');
+                                                $('.patient .form-login .custom-google-label-style #mobile-logging-civic-email').focus();
+
                                             } else if (thisBtn.hasClass('type-register')) {
                                                 $('.form-register-fields').hide();
                                                 $('.patient .form-register').append('<div class="padding-bottom-50 mobile-proceeding-to-civic"><div class="padding-bottom-10 field-parent dentacoin-login-gateway-fs-16" style="color: white;">Open your Civic Wallet mobile app and paste your account email:</div><div class="padding-bottom-10 field-parent"><div class="custom-gateway-google-label-style module" data-input-colorful-border="true"><label for="mobile-logging-civic-email">Civic Wallet email</label><input class="full-rounded form-field" maxlength="100" type="email" id="mobile-logging-civic-email" /></div></div><div class="padding-bottom-20"><a href="javascript:void(0)" class="social-login-btn civic-style calibri-regular dentacoin-login-gateway-fs-20 dentacoin-login-gateway-fs-xs-18">Continue with Civic</a></div><div><a href="javascript:void(0);" class="go-back-to-logins dentacoin-login-gateway-fs-16" style="color: white;">← Go back</a></div></div>');
+
+                                                $('.patient .form-register .custom-google-label-style label').addClass('active-label');
+                                                $('.patient .form-register .custom-google-label-style #mobile-logging-civic-email').focus();
                                             }
 
                                             var civicMobileProceeded = false;

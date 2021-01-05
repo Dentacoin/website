@@ -410,6 +410,7 @@ if (typeof jQuery == 'undefined') {
 
                     $('.cancel-custom-popup').click(function() {
                         $(this).closest('.dentacoin-login-gateway-container').remove();
+                        $('body').removeClass('dentacoin-login-gateway-overflow-hidden');
                     });
 
                     $('form#enrich-profile').on('submit', async function(event) {

@@ -325,6 +325,17 @@
     }
 }
 
+.social-login-btn.apple-custom-btn {
+    background-color: black;
+    background-image: url(/assets/images/apple-icon.svg);
+    color: white;
+    @include breakpoint($md) {
+        &:hover {
+            color: white;
+        }
+    }
+}
+
 .dentacoin-login-gateway-container * {
     outline: none;
     box-sizing: border-box;

@@ -931,6 +931,7 @@ if (typeof jQuery == 'undefined') {
 
                 if (hasOwnProperty.call(params, 'mobile_app') && params.mobile_app == true) {
                     loadedFromMobileApp = true;
+                    $('body').addClass('mobile-app-loaded');
                     googleKey = 'AIzaSyAq7ie77jwp2ydsmjM0yvo69f0yyrx-9QA';
                 }
 
@@ -1055,6 +1056,14 @@ if (typeof jQuery == 'undefined') {
 
                                     // =============================================== FACEBOOK ====================================================
                                     await $.getScript(dcnLibsDomain + '/assets/libs/facebook-login/facebook-combined-login.js?v='+new Date().getTime(), function() {});
+
+                                    // =============================================== APPLE ====================================================
+                                    if (loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                        if ($('.apple-custom-btn.social-login-btn').length) {
+                                            $('.apple-custom-btn.social-login-btn').removeClass('hide');
+                                        }
+                                        await $.getScript(dcnLibsDomain + '/assets/libs/apple-login/apple-combined-login.js.js?v='+new Date().getTime(), function() {});
+                                    }
                                     loadedSocialLibs = true;
                                 }
 

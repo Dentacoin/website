@@ -28,7 +28,22 @@
     var vanilla_js_event_boolean = false;
 
     //init civic
-    var civicSip = new civic.sip({appId: civic_config.app_id});
+    var civicSipObject = {};
+    if ($('body').addClass('mobile-app-loaded')) {
+        civicSipObject = {
+            appId: civic_config.app_id,
+            mobileRedirectUrl: 'hubapp://',
+            skipMobileDetectedScreen: true
+        };
+    } else {
+        civicSipObject = {
+            appId: civic_config.app_id
+        };
+    }
+
+    console.log(civicSipObject, 'civicSipObject');
+
+    var civicSip = new civic.sip(civicSipObject);
 
     //bind click event for the civic button
     $('body').on('click', '.civic-custom-btn', function() {

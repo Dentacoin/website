@@ -7,6 +7,7 @@ return [
     'log-in-uppercase' => 'LOG IN',
     'continue-with-fb' => 'Continue with Facebook',
     'continue-with-civic' => 'Continue with Civic',
+    'continue-with-apple' => 'Continue with Apple',
     'have-old-profile' => 'Have an old profile with email and password?',
     'contact-us' => 'Contact us',
     'dont-have-acc' => 'Don\'t have an account?',

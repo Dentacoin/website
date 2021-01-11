@@ -705,6 +705,10 @@
     }
 }
 
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .hide {
+    display: none;
+}
+
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action {
     a {
         width: calc(50% - 40px);

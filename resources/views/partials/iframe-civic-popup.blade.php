@@ -18,7 +18,7 @@
         .response-layer{background-color:rgba(255,255,255,0.7);width:100%;height:100%;position:fixed;top:0;left:0;z-index:1100}.response-layer .wrapper{text-align:center;padding-left:15px;padding-right:15px;font-size:20px;position:absolute;top:50%;left:50%;-webkit-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%)}.response-layer .wrapper img{width:200px;margin-bottom:15px}
     </style>
 </head>
-<body>
+<body class="mobile-app-loaded">
     @php($type = \Illuminate\Support\Facades\Input::get('type'))
     <a href="javascript:void(0)" class="civic-custom-btn type-login social-login-btn mobile-app visual-hide @if ($type == 'login') active @endif" data-url="{{getenv('API_DOMAIN')}}/api/login" data-platform="">{{ __('login-register.continue-with-civic') }}</a>
     <a href="javascript:void(0)" class="civic-custom-btn type-register social-login-btn mobile-app visual-hide @if ($type == 'register') active @endif" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="">{{ __('login-register.continue-with-civic') }}</a>

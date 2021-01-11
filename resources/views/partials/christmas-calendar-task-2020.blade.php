@@ -371,7 +371,6 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Download Dentacare: Jaws of Battle game</div>
                             <div>
                                 <a href="https://play.google.com/store/apps/details?id=com.DentaCare.JawsOfBattle&hl=en" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block"><img src="/assets/images/google-store-button.svg" alt="Google play button"/></a>
-                                <a href="https://testflight.apple.com/join/hOg8An1t" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
                             </div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
@@ -392,10 +391,8 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacare: Jaws of Battle and leave a review.</div>
                             <div class="fs-16 padding-bottom-10">For Google Play: Go to My apps in Google Play, click Reviews, scroll to Dentacare Jaws of Battle, and post your review. Text comment is required.</div>
-                            <div class="fs-16 padding-bottom-30">For App Store, follow the link in the button bellow.</div>
                             <div>
                                 <a href="https://play.google.com/store/apps/details?id=com.DentaCare.JawsOfBattle&hl=en" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block"><img src="/assets/images/google-store-button.svg" alt="Google play button"/></a>
-                                <a href="https://testflight.apple.com/join/hOg8An1t" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
                             </div>
                             <div class="fs-16 fs-xs-14 padding-top-10">If you've already rated the app in the past, just make a screenshot of your review.</div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
@@ -422,7 +419,7 @@
                         @case(18)
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacare - Health Training on Google Play or App Store and post your review. Text comment is required.</div>
-                            <div class="fs-16 padding-bottom-10">For Google Play: Go to My apps in Google Play, click Reviews, scroll to Dentacare Jaws of Battle, and post your review.  Text comment is required.</div>
+                            <div class="fs-16 padding-bottom-10">For Google Play: Go to My apps in Google Play, click Reviews, scroll to Dentacare - Health Training, and post your review. Text comment is required.</div>
                             <div class="fs-16 padding-bottom-30">For App Store, follow the link in the button bellow.</div>
                             <div>
                                 <a href="https://play.google.com/store/apps/details?id=com.dentacoin.dentacare&hl=en" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block"><img src="/assets/images/google-store-button.svg" alt="Google play button"/></a>

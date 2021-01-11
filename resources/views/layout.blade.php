@@ -165,7 +165,7 @@
         </div>
     </header>
     <main @if(!empty(Route::current()) && (Route::current()->getName() != 'home' && Route::current()->getName() != 'foundation' && Route::current()->getName() != 'users' && Route::current()->getName() != 'dentists' && Route::current()->getName() != 'traders')) class="main-container" @endif>@yield("content")</main>
-    <footer class="padding-bottom-80 hide-on-map-open hide-on-hub-open @if(!empty(Route::current()) && Route::current()->getName() == 'traders') black-style @endif @if((!empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'foundation' || Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists'  || Route::current()->getName() == 'traders')) && empty($_COOKIE['hide-holiday-calendar-banner'])) extra-bottom-padding @endif">
+    <footer class="padding-bottom-80 hide-on-map-open hide-on-hub-open @if(!empty(Route::current()) && Route::current()->getName() == 'traders') black-style @endif">
         <div class="container">
             @if(!empty($socials))
                 <div class="row socials">
@@ -250,7 +250,7 @@
         </div>
     </footer>
 
-    @if((!empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'foundation' || Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists'  || Route::current()->getName() == 'traders')) && empty($_COOKIE['hide-holiday-calendar-banner']) && strtotime('2020/12/01 00:00:00') < time())
+    {{--@if((!empty(Route::current()) && (Route::current()->getName() == 'home' || Route::current()->getName() == 'foundation' || Route::current()->getName() == 'users' || Route::current()->getName() == 'dentists'  || Route::current()->getName() == 'traders')) && empty($_COOKIE['hide-holiday-calendar-banner']) && strtotime('2020/12/01 00:00:00') < time())
         <div class="bottom-fixed-promo-banner fs-0">
             <a href="javascript:void(0);" class="close-banner">×</a>
             <a href="{{route('christmas-calendar', ['year' => 2020])}}" target="_blank">
@@ -271,7 +271,7 @@
                 </div>
             </a>
         </div>
-    @endif
+    @endif--}}
 
     @php($crossLogin = \Illuminate\Support\Facades\Input::get('cross-login'))
     @if(\App\Http\Controllers\UserController::instance()->checkSession() && !empty($crossLogin))

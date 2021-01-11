@@ -28,7 +28,22 @@
     var vanilla_js_event_boolean = false;
 
     //init civic
-    var civicSip = new civic.sip({appId: civic_config.app_id});
+    var civicSipObject = {};
+    if ($('body').hasClass('mobile-app-loaded')) {
+        civicSipObject = {
+            appId: civic_config.app_id,
+            mobileRedirectUrl: 'hubapp://',
+            skipMobileDetectedScreen: true
+        };
+    } else {
+        civicSipObject = {
+            appId: civic_config.app_id
+        };
+    }
+
+    console.log(civicSipObject, 'civicSipObject');
+
+    var civicSip = new civic.sip(civicSipObject);
 
     //bind click event for the civic button
     $('body').on('click', '.civic-custom-btn', function() {
@@ -248,10 +263,11 @@
                                                 if (logging_from_mobile_app.success && isMobile()) {
                                                     console.log('REDIRECT TO MOBILE: ', logging_from_mobile_app.type);
                                                     if (logging_from_mobile_app.type == 'dentavox') {
-                                                        location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
+                                                        console.log('dentavoxapp://?token=' + encodeURIComponent(data.token), 'LINK');
+                                                        window.location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                         window.close();
                                                     } else if (logging_from_mobile_app.type == 'dentacoin') {
-                                                        location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
+                                                        window.location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
                                                         window.close();
                                                     }
                                                 } else {
@@ -273,10 +289,11 @@
                                             if (logging_from_mobile_app.success && isMobile()) {
                                                 console.log('REDIRECT TO MOBILE: ', logging_from_mobile_app.type);
                                                 if (logging_from_mobile_app.type == 'dentavox') {
-                                                    location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
+                                                    console.log('dentavoxapp://?token=' + encodeURIComponent(data.token), 'LINK');
+                                                    window.location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
                                                     window.close();
                                                 } else if (logging_from_mobile_app.type == 'dentacoin') {
-                                                    location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
+                                                    window.location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
                                                     window.close();
                                                 }
                                             } else {

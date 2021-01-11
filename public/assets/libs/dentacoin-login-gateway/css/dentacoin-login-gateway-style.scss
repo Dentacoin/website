@@ -325,6 +325,17 @@
     }
 }
 
+.social-login-btn.apple-custom-btn {
+    background-color: black;
+    background-image: url(/assets/images/apple-icon.svg);
+    color: white;
+    @include breakpoint($md) {
+        &:hover {
+            color: white;
+        }
+    }
+}
+
 .dentacoin-login-gateway-container * {
     outline: none;
     box-sizing: border-box;
@@ -692,6 +703,10 @@
             margin: 0 auto;
         }
     }
+}
+
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .hide {
+    display: none;
 }
 
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-header-action {
@@ -1096,4 +1111,14 @@
 .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient.custom-hide, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist.custom-hide {
     visibility: hidden;
     display: none;
+}
+
+#iframe-civic-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 99999;
+    border: 0;
 }

@@ -1,4 +1,4 @@
-//binding click event for all the faceboon login btns
+//binding click event for all the facebook login btns
 $('body').on('click', '.facebook-custom-btn', function(rerequest){
     if(document.cookie.indexOf('strictly_necessary_policy=') == -1 && !$(this).hasClass('mobile-app')) {
         customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');

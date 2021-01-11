@@ -29,7 +29,7 @@
 
     //init civic
     var civicSipObject = {};
-    if ($('body').addClass('mobile-app-loaded')) {
+    if ($('body').hasClass('mobile-app-loaded')) {
         civicSipObject = {
             appId: civic_config.app_id,
             mobileRedirectUrl: 'hubapp://',

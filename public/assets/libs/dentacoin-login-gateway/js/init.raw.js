@@ -1062,7 +1062,7 @@ if (typeof jQuery == 'undefined') {
                                         if ($('.apple-custom-btn.social-login-btn').length) {
                                             $('.apple-custom-btn.social-login-btn').removeClass('hide');
                                         }
-                                        await $.getScript(dcnLibsDomain + '/assets/libs/apple-login/apple-combined-login.js.js?v='+new Date().getTime(), function() {});
+                                        await $.getScript(dcnLibsDomain + '/assets/libs/apple-login/apple-combined-login.js?v='+new Date().getTime(), function() {});
                                     }
                                     loadedSocialLibs = true;
                                 }
@@ -1117,7 +1117,7 @@ if (typeof jQuery == 'undefined') {
                                             }
                                         }
 
-                                        if (window.localStorage.getItem('user_civic_email') == null) {
+                                        /*if (window.localStorage.getItem('user_civic_email') == null) {
                                             // display email field to let user save his civic email into the mobile app
                                             if (thisBtn.hasClass('type-login')) {
                                                 $('.form-login-fields').hide();
@@ -1160,14 +1160,14 @@ if (typeof jQuery == 'undefined') {
                                                 $('.patient .mobile-proceeding-to-civic').remove();
                                                 $('.patient .form-register-fields, .patient .form-login-fields').show();
                                             });
-                                        } else {
+                                        } else {*/
                                             if (!$('#iframe-civic-popup').length) {
                                                 $('body').append('<iframe src="'+dcnLibsDomain+'/iframe-civic-popup?type=login" id="iframe-civic-popup"></iframe>');
                                             }
-                                        }
+                                        // }
                                     });
 
-                                    if (!civic_iframe_removedEventLoaded) {
+                                    /*if (!civic_iframe_removedEventLoaded) {
                                         civic_iframe_removedEventLoaded = true;
 
                                         window.addEventListener('message', function(event) {
@@ -1199,19 +1199,19 @@ if (typeof jQuery == 'undefined') {
                                         }, function(response) {
                                             if (response.success) {
                                                 console.log(response, 'proceedWithMobileAppAuth response');
-                                                /*$('.patient .mobile-proceeding-to-civic').remove();
+                                                /!*$('.patient .mobile-proceeding-to-civic').remove();
                                                 $('.patient .form-register-fields, .patient .form-login-fields').show();
 
                                                 if (thisBtn.hasClass('type-login')) {
                                                     window.open('https://dentavox.dentacoin.com/?dcn-gateway-type=patient-login&open-civic-login=true', '_blank');
                                                 } else if (thisBtn.hasClass('type-register')) {
                                                     window.open('https://dentavox.dentacoin.com/?dcn-gateway-type=patient-register&open-civic-register=true', '_blank');
-                                                }*/
+                                                }*!/
                                             } else {
                                                 dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                             }
                                         });
-                                    }
+                                    }*/
                                 }
 
                                 $('body').on('keyup change focusout', '.custom-gateway-google-label-style input', function() {

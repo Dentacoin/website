@@ -60,7 +60,7 @@
             });
         }
 
-        var sentEventToParent = false;
+        /*var sentEventToParent = false;
         $('body').on('DOMSubtreeModified', '#civic-iframe-zone', function () {
             console.log('Civic iframe removed');
 
@@ -74,7 +74,7 @@
                     "*"
                 );
             }
-        });
+        });*/
     </script>
 </body>
 </html>

@@ -1577,9 +1577,9 @@ var projectData = {
             gateway: function() {
                 if (typeof(dcnGateway) != 'undefined') {
                     dcnGateway.init({
-                        'platform': 'dev.dentacoin',
-                        'environment' : 'staging',
-                        /*'platform': 'dentacoin',*/
+                        /*'platform': 'dev.dentacoin',
+                        'environment' : 'staging',*/
+                        'platform': 'dentacoin',
                         'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password',
                         'callback' : function() {
                             console.log('INITIATED')

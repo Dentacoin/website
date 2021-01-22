@@ -41,10 +41,10 @@ if (typeof jQuery == 'undefined') {
                     return "";
                 },
                 set: function(name, value) {
-                    if(name == undefined){
+                    if(name == undefined) {
                         name = "cookieLaw";
                     }
-                    if(value == undefined){
+                    if(value == undefined) {
                         value = 1;
                     }
                     var d = new Date();
@@ -53,7 +53,8 @@ if (typeof jQuery == 'undefined') {
                     if (location.hostname == 'localhost') {
                         document.cookie = name + "=" + value + "; " + expires + ";domain="+location.hostname+";path=/;";
                     } else {
-                        document.cookie = name + "=" + value + "; " + expires + ";domain=."+location.hostname+";path=/;secure";
+                        document.cookie = name + "=" + value + "; " + expires + ";domain="+location.hostname+";path=/;secure";
+                        // document.cookie = name + "=" + value + "; " + expires + ";domain=."+location.hostname+";path=/;secure";
                     }
                     if(name == "cookieLaw"){
                         jQuery(".cookies_popup").slideUp();

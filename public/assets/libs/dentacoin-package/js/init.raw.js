@@ -52,8 +52,10 @@ if (typeof jQuery == 'undefined') {
                     var expires = "expires="+d.toUTCString();
                     if (location.hostname == 'localhost') {
                         document.cookie = name + "=" + value + "; " + expires + ";domain="+location.hostname+";path=/;";
+                    } else if (location.hostname == 'dentacoin.com') {
+                        document.cookie = name + "=" + value + "; " + expires + ";path=/;";
                     } else {
-                        document.cookie = name + "=" + value + "; " + expires + ";domain="+location.hostname+";path=/;secure";
+                        document.cookie = name + "=" + value + "; " + expires + ";domain=."+location.hostname+";path=/;secure";
                         // document.cookie = name + "=" + value + "; " + expires + ";domain=."+location.hostname+";path=/;secure";
                     }
                     if(name == "cookieLaw"){

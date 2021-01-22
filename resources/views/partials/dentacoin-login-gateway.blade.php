@@ -7,7 +7,7 @@
     @endif
 @endif
 <div class="dentacoin-login-gateway-fs-0 popup-header-action" data-translation-patients="{{ __('login-register.patients-tab') }}">
-    <a href="javascript:void(0)" class="inline-block @if($type == 'patient-login' || $type == 'patient-register') gateway-platform-background-color-important active @endif" data-type="patient"><span class="header-custom-radio-btn inline-block"></span> <span class="inline-block">{{ __('login-register.users-tab') }}</span></a>
+    <a href="javascript:void(0)" class="inline-block @if($type == 'patient-login' || $type == 'patient-register') gateway-platform-background-color-important active @endif" data-type="patient"><span class="header-custom-radio-btn inline-block"></span> <span class="inline-block role-name">{{ __('login-register.users-tab') }}</span></a>
     <button class="inline-block dentacoin-login-gateway-close"><img src="https://dentacoin.com/assets/uploads/close-combined-login-popup.svg" alt="Close combined login popup"/></button>
     <a href="javascript:void(0)" class="inline-block init-dentists-click-event @if($type == 'dentist-login' || $type == 'dentist-register' || $type == 'incompleted-dentist-register') active @endif" data-type="dentist"><span class="header-custom-radio-btn inline-block"></span> <span class="inline-block">{{ __('login-register.dentists-tab') }}</span></a>
 </div>

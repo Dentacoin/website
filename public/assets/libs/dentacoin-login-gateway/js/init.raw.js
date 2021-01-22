@@ -1079,7 +1079,7 @@ if (typeof jQuery == 'undefined') {
                                 $('.dentacoin-login-gateway-container .forgotten-password-link').attr('href', params.forgotten_password_link);
 
                                 if (params.platform == 'assurance' || params.platform == 'trusted-reviews') {
-                                    $('.popup-header-action a[data-type="patient"]').html($('.popup-header-action').attr('data-translation-patients'));
+                                    $('.popup-header-action a[data-type="patient"] .role-name').html($('.popup-header-action').attr('data-translation-patients'));
                                 }
 
                                 // init custom checkboxes style

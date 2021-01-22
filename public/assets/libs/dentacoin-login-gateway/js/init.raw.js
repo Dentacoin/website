@@ -970,6 +970,13 @@ if (typeof jQuery == 'undefined') {
                     } else if (params.platform == 'account') {
                         currentPlatformDomain = 'https://account.dentacoin.com/';
                         params.platform = 'dentacoin';
+
+                        for (var i = 0, len = platformsData.length; i < len; i+=1) {
+                            if (platformsData[i].slug == 'dentacoin') {
+                                currentPlatformColor = platformsData[i].color;
+                                break;
+                            }
+                        }
                         validPlatform = true;
                     } else {
                         for (var i = 0, len = platformsData.length; i < len; i+=1) {

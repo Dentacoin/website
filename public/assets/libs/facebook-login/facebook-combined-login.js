@@ -45,7 +45,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
             // loading facebook from browser
 
             if (typeof(FB) != 'object') {
-                $.getScript('https://connect.facebook.net/bg_BG/sdk.js', async function( data, textStatus, jqxhr ) {
+                $.getScript('https://connect.facebook.net/bg_BG/sdk.js', function( data, textStatus, jqxhr ) {
                     proceedWithFacebookInstanceCreating();
                 }).fail(function() {
                     alert('Looks like your browser is blocking Facebook login. Please check and edit your privacy settings in order to login in Dentacoin tools.');
@@ -54,7 +54,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
                 proceedWithFacebookInstanceCreating();
             }
 
-            function proceedWithFacebookInstanceCreating() {
+            async function proceedWithFacebookInstanceCreating() {
                 //application init
                 window.fbAsyncInit = await function () {
                     FB.init({

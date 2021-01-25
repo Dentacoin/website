@@ -57,48 +57,6 @@
                     $('.type-register').click();
                 }
             });
-        } else {
-            console.log('auth-code-received listening');
-            civicSip.on('auth-code-received', function (event) {
-                // show reader
-                if (event.clientVersion == 'v2') {
-                    alert('KYC via Civic Legacy App is forbidden.');
-                } else if (event.clientVersion == 'v3') {
-                    var jwtToken = event.response;
-                    var sentEventToParent = false;
-
-                    $.ajax({
-                        type: 'POST',
-                        url: 'https://civic.dentacoin.net/civic',
-                        data: {
-                            jwtToken: jwtToken
-                        },
-                        dataType: 'json',
-                        success: function (civicLoginResponse) {
-                            console.log(civicLoginResponse, 'civicLoginResponse');
-                            $('body').on('DOMSubtreeModified', '#civic-iframe-zone', function () {
-                                console.log('Civic iframe removed');
-
-                                if (!$('#civic-sr-frame').length && !sentEventToParent) {
-                                    sentEventToParent = true;
-                                    window.parent.postMessage(
-                                        {
-                                            event_id: 'civic_iframe_removed',
-                                            data: {
-                                                civicLoginResponse: civicLoginResponse
-                                            }
-                                        },
-                                        "*"
-                                    );
-                                }
-                            });
-                        },
-                        error: function () {
-                            alert('Connection error!');
-                        }
-                    });
-                }
-            });
         }
     </script>
 </body>

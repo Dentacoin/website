@@ -87,6 +87,8 @@
         var jwtToken = event.response;
         civicApiVersion = event.clientVersion;
 
+        console.log(civicActionType, 'civicActionType');
+
         if (civicActionType == undefined) {
             civicCombinedLogin.utils.customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
             if (location.hostname == 'dev.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {

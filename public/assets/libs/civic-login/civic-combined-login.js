@@ -83,13 +83,10 @@
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
-        console.log(event, 'event');
         var jwtToken = event.response;
         civicApiVersion = event.clientVersion;
 
         var get_params = civicCombinedLogin.utils.getGETParameters();
-        console.log(get_params, 'get_params');
-
         if (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && civicCombinedLogin.utils.property_exists(get_params, 'auth_type')) {
             if (get_params.environment_type == 'civic-from-mobile-app') {
 
@@ -138,10 +135,10 @@
                             loginRegisterData.platform = currentPlatform;
 
                             setTimeout(function () {
-                                if (civicCombinedLogin.utils.property_exists(get_params, 'invite') && civicCombinedLogin.utils.property_exists(get_params, 'inviteid')) {
+                                /*if (civicCombinedLogin.utils.property_exists(get_params, 'invite') && civicCombinedLogin.utils.property_exists(get_params, 'inviteid')) {
                                     loginRegisterData.invited_by = get_params.invite;
                                     loginRegisterData.inviteid = get_params.inviteid;
-                                }
+                                }*/
 
                                 $.ajax({
                                     type: 'POST',
@@ -154,19 +151,15 @@
                                             if (data.deleted) {
                                                 if (currentPlatform != undefined) {
                                                     if (data.appeal) {
-                                                        window.location.href = 'https://account.dentacoin.com/blocked-account-thank-you?platform=' + currentPlatform;
-                                                        window.close();
+                                                        window.open('https://account.dentacoin.com/blocked-account-thank-you?platform=' + currentPlatform, '_system');
                                                     } else {
-                                                        window.location.href = 'https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id);
-                                                        window.close();
+                                                        window.open('https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id), '_system');
                                                     }
                                                 } else {
                                                     if (data.appeal) {
-                                                        window.location.href = 'https://account.dentacoin.com/blocked-account-thank-you';
-                                                        window.close();
+                                                        window.open('https://account.dentacoin.com/blocked-account-thank-you', '_system');
                                                     } else {
-                                                        window.location.href = 'https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id);
-                                                        window.close();
+                                                        window.open('https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id), '_system');
                                                     }
                                                 }
                                                 return false;
@@ -180,19 +173,15 @@
 
                                                 if (currentPlatform != undefined) {
                                                     if (data.appeal) {
-                                                        window.location.href = 'https://account.dentacoin.com/account-on-hold-thank-you?platform=' + currentPlatform;
-                                                        window.close();
+                                                        window.open('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + currentPlatform, '_system');
                                                     } else {
-                                                        window.location.href = 'https://account.dentacoin.com/account-on-hold?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type;
-                                                        window.close();
+                                                        window.open('https://account.dentacoin.com/account-on-hold?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type, '_system');
                                                     }
                                                 } else {
                                                     if (data.appeal) {
-                                                        window.location.href = 'https://account.dentacoin.com/account-on-hold-thank-you';
-                                                        window.close();
+                                                        window.open('https://account.dentacoin.com/account-on-hold-thank-you', '_system');
                                                     } else {
-                                                        window.location.href = 'https://account.dentacoin.com/account-on-hold?key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type;
-                                                        window.close();
+                                                        window.open('https://account.dentacoin.com/account-on-hold?key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type, '_system');
                                                     }
                                                 }
                                                 return false;

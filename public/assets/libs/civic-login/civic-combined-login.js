@@ -87,22 +87,21 @@
         var jwtToken = event.response;
         civicApiVersion = event.clientVersion;
 
-        var get_params = civicCombinedLogin.utils.getGETParameters();
-        console.log(get_params, 'get_params');
-        if (civicCombinedLogin.utils.property_exists(get_params, 'type') && civicCombinedLogin.utils.property_exists(get_params, 'auth_type')) {
-            if (get_params.type == 'civic-from-mobile-app') {
-                alert('Civic logging from mobile app, auth type: ' + get_params.auth_type);
+        if (civicActionType == undefined) {
+            civicCombinedLogin.utils.customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
+            if (location.hostname == 'dev.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {
+                civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login';
+            } else {
+                civicAjaxUrl = 'https://api.dentacoin.com/api/login';
             }
-        } else {
-            if (civicActionType == undefined) {
-                civicCombinedLogin.utils.customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
-                if (location.hostname == 'dev.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {
-                    civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login';
-                } else {
-                    civicAjaxUrl = 'https://api.dentacoin.com/api/login';
-                }
 
-                proceedWithDentacoinAuth(jwtToken, true);
+            proceedWithDentacoinAuth(jwtToken, true);
+        } else {
+            var get_params = civicCombinedLogin.utils.getGETParameters();
+            console.log(get_params, 'get_params');
+
+            if (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && get_params.environment_type == 'civic-from-mobile-app') {
+                alert('Civic logging from mobile app, auth type: ' + civicActionType);
             } else {
                 if (civicActionType == 'register') {
                     if (civicApiVersion == 'v2') {

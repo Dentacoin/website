@@ -87,9 +87,9 @@
         var jwtToken = event.response;
         civicApiVersion = event.clientVersion;
 
-        var get_params = projectData.utils.getGETParameters();
+        var get_params = civicCombinedLogin.utils.getGETParameters();
         console.log(get_params, 'get_params');
-        if (projectData.utils.property_exists(get_params, 'type') && projectData.utils.property_exists(get_params, 'auth_type')) {
+        if (civicCombinedLogin.utils.property_exists(get_params, 'type') && civicCombinedLogin.utils.property_exists(get_params, 'auth_type')) {
             if (get_params.type == 'civic-from-mobile-app') {
                 alert('Civic logging from mobile app, auth type: ' + get_params.auth_type);
             }
@@ -395,7 +395,7 @@ var civicCombinedLogin = {
         },
         getGETParameters: function() {
             var prmstr = window.location.search.substr(1);
-            return prmstr != null && prmstr != "" ? projectData.utils.transformToAssocArray(prmstr) : {};
+            return prmstr != null && prmstr != "" ? civicCombinedLogin.utils.transformToAssocArray(prmstr) : {};
         },
         transformToAssocArray: function(prmstr) {
             var params = {};

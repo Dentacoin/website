@@ -93,10 +93,18 @@
         if (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && civicCombinedLogin.utils.property_exists(get_params, 'auth_type')) {
             if (get_params.environment_type == 'civic-from-mobile-app') {
 
-                if (get_params.auth_type == 'login') {
-                    civicAjaxUrl = 'https://api.dentacoin.com/api/login';
-                } else if (get_params.auth_type == 'register') {
-                    civicAjaxUrl = 'https://api.dentacoin.com/api/register';
+                if (civicCombinedLogin.utils.property_exists(get_params, 'dev')) {
+                    if (get_params.auth_type == 'login') {
+                        civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login';
+                    } else if (get_params.auth_type == 'register') {
+                        civicAjaxUrl = 'https://dev-api.dentacoin.com/api/register';
+                    }
+                } else {
+                    if (get_params.auth_type == 'login') {
+                        civicAjaxUrl = 'https://api.dentacoin.com/api/login';
+                    } else if (get_params.auth_type == 'register') {
+                        civicAjaxUrl = 'https://api.dentacoin.com/api/register';
+                    }
                 }
 
                 $.ajax({

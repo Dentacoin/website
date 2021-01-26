@@ -59,14 +59,14 @@
         }
 
         if (document.cookie.indexOf('strictly_necessary_policy=') == -1 && !civic_custom_btn.hasClass('mobile-app')) {
-            customCivicEvent('cannotLoginBecauseOfMissingCookies', '', undefined, vanilla_js_event_boolean);
+            civicCombinedLogin.utils.customCivicEvent('cannotLoginBecauseOfMissingCookies', '', undefined, vanilla_js_event_boolean);
         } else {
-            customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.', undefined, vanilla_js_event_boolean);
+            civicCombinedLogin.utils.customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.', undefined, vanilla_js_event_boolean);
 
             if (civic_custom_btn != undefined) {
                 civicAjaxUrl = civic_custom_btn.attr('data-url');
                 if (civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
-                    customCivicEvent('customCivicFbStopperTriggered', '', undefined, vanilla_js_event_boolean);
+                    civicCombinedLogin.utils.customCivicEvent('customCivicFbStopperTriggered', '', undefined, vanilla_js_event_boolean);
                     return false;
                 }
             }
@@ -79,7 +79,7 @@
     });
 
     console.log('fire civicLibLoaded');
-    customCivicEvent('civicLibLoaded', '', undefined, vanilla_js_event_boolean);
+    civicCombinedLogin.utils.customCivicEvent('civicLibLoaded', '', undefined, vanilla_js_event_boolean);
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
@@ -87,28 +87,36 @@
         var jwtToken = event.response;
         civicApiVersion = event.clientVersion;
 
-        if (civicActionType == undefined) {
-            customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
-            if (location.hostname == 'dev.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {
-                civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login';
-            } else {
-                civicAjaxUrl = 'https://api.dentacoin.com/api/login';
+        var get_params = projectData.utils.getGETParameters();
+        console.log(get_params, 'get_params');
+        if (projectData.utils.property_exists(get_params, 'type') && projectData.utils.property_exists(get_params, 'auth_type')) {
+            if (get_params.type == 'civic-from-mobile-app') {
+                alert('Civic logging from mobile app, auth type: ' + get_params.auth_type);
             }
-
-            proceedWithDentacoinAuth(jwtToken, true);
         } else {
-            if (civicActionType == 'register') {
-                if (civicApiVersion == 'v2') {
-                    // this should work on first phase
-                    // old legacy app
-                    console.log('stop civic register');
+            if (civicActionType == undefined) {
+                civicCombinedLogin.utils.customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
+                if (location.hostname == 'dev.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {
+                    civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login';
+                } else {
+                    civicAjaxUrl = 'https://api.dentacoin.com/api/login';
+                }
 
-                    customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, vanilla_js_event_boolean);
-                } else if (civicApiVersion == 'v3') {
+                proceedWithDentacoinAuth(jwtToken, true);
+            } else {
+                if (civicActionType == 'register') {
+                    if (civicApiVersion == 'v2') {
+                        // this should work on first phase
+                        // old legacy app
+                        console.log('stop civic register');
+
+                        civicCombinedLogin.utils.customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, vanilla_js_event_boolean);
+                    } else if (civicApiVersion == 'v3') {
+                        proceedWithDentacoinAuth(jwtToken);
+                    }
+                } else if (civicActionType == 'login') {
                     proceedWithDentacoinAuth(jwtToken);
                 }
-            } else if (civicActionType == 'login') {
-                proceedWithDentacoinAuth(jwtToken);
             }
         }
     });
@@ -123,9 +131,9 @@
             dataType: 'json',
             success: function (ret) {
                 if (!ret.userId) {
-                    customCivicEvent('noUserIdReceived', 'No userId found after civic token/data exchange.', ret, vanilla_js_event_boolean);
+                    civicCombinedLogin.utils.customCivicEvent('noUserIdReceived', 'No userId found after civic token/data exchange.', ret, vanilla_js_event_boolean);
                 } else {
-                    customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret, vanilla_js_event_boolean);
+                    civicCombinedLogin.utils.customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret, vanilla_js_event_boolean);
                     var loginRegisterData = {
                         clientVersion: civicApiVersion,
                         auth_token: jwtToken,
@@ -138,7 +146,6 @@
                     }
 
                     var currentPlatform;
-
                     if (civic_custom_btn != undefined) {
                         currentPlatform = civic_custom_btn.attr('data-platform');
                         loginRegisterData.platform = currentPlatform;
@@ -233,13 +240,13 @@
                                         }
                                         return false;
                                     } else if (data.new_account) {
-                                        customCivicEvent('successfulCivicPatientRegistration', '', undefined, vanilla_js_event_boolean);
+                                        civicCombinedLogin.utils.customCivicEvent('successfulCivicPatientRegistration', '', undefined, vanilla_js_event_boolean);
                                     } else {
-                                        customCivicEvent('successfulCivicPatientLogin', '', undefined, vanilla_js_event_boolean);
+                                        civicCombinedLogin.utils.customCivicEvent('successfulCivicPatientLogin', '', undefined, vanilla_js_event_boolean);
                                     }
 
                                     if (data.data.email == '' || data.data.email == null) {
-                                        customCivicEvent('registeredAccountMissingEmail', '', data);
+                                        civicCombinedLogin.utils.customCivicEvent('registeredAccountMissingEmail', '', data);
                                     } else {
                                         console.log(data, 'data');
                                         if (civicActionType == 'login') {
@@ -248,13 +255,13 @@
                                                 console.log('stop civic login');
                                                 // if (isMobile()) {
                                                     console.log('logging from phone');
-                                                    customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, vanilla_js_event_boolean);
+                                                    civicCombinedLogin.utils.customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, vanilla_js_event_boolean);
                                                 /*} else {
                                                     console.log('CivicLegacyAppForbiddenLogging');
-                                                    customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data, vanilla_js_event_boolean);
+                                                    civicCombinedLogin.utils.customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data, vanilla_js_event_boolean);
                                                 }*/
                                             } else {
-                                                if (getHostname(civicAjaxUrl) == 'dev-api.dentacoin.com') {
+                                                /*if (civicCombinedLogin.utils.getHostname(civicAjaxUrl) == 'dev-api.dentacoin.com') {
                                                     var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp('https://dev.dentacoin.com/dentacoin-login-gateway/check-civic-email', data.data.civic_email);
                                                 } else {
                                                     var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp('https://dentacoin.com/dentacoin-login-gateway/check-civic-email', data.data.civic_email);
@@ -270,17 +277,17 @@
                                                         window.location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
                                                         window.close();
                                                     }
-                                                } else {
+                                                } else {*/
                                                     if (vanilla_js_event_boolean) {
-                                                        customCivicEvent('hideGatewayLoader', '');
-                                                        customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
+                                                        civicCombinedLogin.utils.customCivicEvent('hideGatewayLoader', '');
+                                                        civicCombinedLogin.utils.customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
                                                     } else {
-                                                        customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
+                                                        civicCombinedLogin.utils.customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
                                                     }
-                                                }
+                                                //}
                                             }
                                         } else {
-                                            if (getHostname(civicAjaxUrl) == 'dev-api.dentacoin.com') {
+                                            /*if (civicCombinedLogin.utils.getHostname(civicAjaxUrl) == 'dev-api.dentacoin.com') {
                                                 var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp('https://dev.dentacoin.com/dentacoin-login-gateway/check-civic-email', data.data.civic_email);
                                             } else {
                                                 var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp('https://dentacoin.com/dentacoin-login-gateway/check-civic-email', data.data.civic_email);
@@ -296,84 +303,51 @@
                                                     window.location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
                                                     window.close();
                                                 }
-                                            } else {
+                                            } else {*/
                                                 if (vanilla_js_event_boolean) {
-                                                    customCivicEvent('hideGatewayLoader', '');
-                                                    customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
+                                                    civicCombinedLogin.utils.customCivicEvent('hideGatewayLoader', '');
+                                                    civicCombinedLogin.utils.customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
                                                 } else {
-                                                    customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
+                                                    civicCombinedLogin.utils.customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
                                                 }
-                                            }
+                                            //}
                                         }
                                     }
 
                                 } else if (!data.success) {
-                                    customCivicEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, vanilla_js_event_boolean);
+                                    civicCombinedLogin.utils.customCivicEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, vanilla_js_event_boolean);
                                 } else {
-                                    customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', undefined, vanilla_js_event_boolean);
+                                    civicCombinedLogin.utils.customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', undefined, vanilla_js_event_boolean);
                                 }
                             },
                             error: function() {
-                                customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', undefined, vanilla_js_event_boolean);
+                                civicCombinedLogin.utils.customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', undefined, vanilla_js_event_boolean);
                             }
                         });
                     }, 3000);
                 }
             },
             error: function (ret) {
-                customCivicEvent('noExternalLoginProviderConnection', 'Request to Civic NodeJS API failed while exchanging token for data.', undefined, vanilla_js_event_boolean);
+                civicCombinedLogin.utils.customCivicEvent('noExternalLoginProviderConnection', 'Request to Civic NodeJS API failed while exchanging token for data.', undefined, vanilla_js_event_boolean);
             }
         });
     }
 
     /*civicSip.on('user-cancelled', function (event) {
-        customCivicEvent('civicUserCancelled', '');
+        civicCombinedLogin.utils.customCivicEvent('civicUserCancelled', '');
     });*/
 
     civicSip.on('read', function (event) {
         console.log(event, 'reading');
-        customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
+        civicCombinedLogin.utils.customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
     });
 
     civicSip.on('civic-sip-error', function (error) {
-        customCivicEvent('civicSipError', '', undefined, vanilla_js_event_boolean);
+        civicCombinedLogin.utils.customCivicEvent('civicSipError', '', undefined, vanilla_js_event_boolean);
     });
 })();
 
-
-function customCivicEvent(type, message, response_data, vanilla_js_event) {
-    console.log(type, 'customCivicEvent');
-    if (vanilla_js_event) {
-        var event_obj = {
-            message: message,
-            platform_type: 'civic',
-            time: new Date()
-        };
-
-        if (response_data != undefined) {
-            event_obj.response_data = response_data;
-        }
-
-        const event = new CustomEvent(type, {
-            detail: event_obj
-        });
-        document.dispatchEvent(event);
-    } else {
-        var event_obj = {
-            type: type,
-            message: message,
-            platform_type: 'civic',
-            time: new Date()
-        };
-
-        if (response_data != undefined) {
-            event_obj.response_data = response_data;
-        }
-        $.event.trigger(event_obj);
-    }
-}
-
-async function checkCivicEmailIfLoggingFromMobileApp(url, email) {
+/*async function checkCivicEmailIfLoggingFromMobileApp(url, email) {
     return await $.ajax({
         type: 'POST',
         url: url,
@@ -382,9 +356,58 @@ async function checkCivicEmailIfLoggingFromMobileApp(url, email) {
             email: email
         }
     });
-}
+}*/
 
-const getHostname = (url) => {
-    console.log(url, 'url');
-    return new URL(url).hostname;
+var civicCombinedLogin = {
+    utils: {
+        getHostname: (url) => {
+            return new URL(url).hostname;
+        },
+        customCivicEvent: function(type, message, response_data, vanilla_js_event) {
+            if (vanilla_js_event) {
+                var event_obj = {
+                    message: message,
+                    platform_type: 'civic',
+                    time: new Date()
+                };
+
+                if (response_data != undefined) {
+                    event_obj.response_data = response_data;
+                }
+
+                const event = new CustomEvent(type, {
+                    detail: event_obj
+                });
+                document.dispatchEvent(event);
+            } else {
+                var event_obj = {
+                    type: type,
+                    message: message,
+                    platform_type: 'civic',
+                    time: new Date()
+                };
+
+                if (response_data != undefined) {
+                    event_obj.response_data = response_data;
+                }
+                $.event.trigger(event_obj);
+            }
+        },
+        getGETParameters: function() {
+            var prmstr = window.location.search.substr(1);
+            return prmstr != null && prmstr != "" ? projectData.utils.transformToAssocArray(prmstr) : {};
+        },
+        transformToAssocArray: function(prmstr) {
+            var params = {};
+            var prmarr = prmstr.split("&");
+            for (var i = 0, len = prmarr.length; i < len; i+=1) {
+                var tmparr = prmarr[i].split("=");
+                params[tmparr[0]] = tmparr[1];
+            }
+            return params;
+        },
+        property_exists: function(object, key) {
+            return object ? hasOwnProperty.call(object, key) : false;
+        }
+    }
 };

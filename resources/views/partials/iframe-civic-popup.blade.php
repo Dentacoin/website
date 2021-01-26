@@ -26,7 +26,6 @@
     <div class="camping-loader"><div class="response-layer"><div class="wrapper"><picture itemscope="" itemtype="http://schema.org/ImageObject"><source media="(max-width: 768px)" srcset="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif"><img itemprop="contentUrl" src="/assets/uploads/dcn-flipping-coin-logo-loader-v3_desktop.gif" alt="Loader"></picture></div></div></div>
 
     <script src="/dist/js/front-libs-script.js?v={{time()}}"></script>
-    {{--<script type="text/javascript" src="https://hosted-sip.civic.com/js/civic.sip.min.js?v={{time()}}"></script>--}}
     <script type="text/javascript" src="https://dentacoin.com/assets/libs/civic-login/civic-combined-login.js?v={{time()}}"></script>
     <script type="text/javascript">
         function getGETParameters() {

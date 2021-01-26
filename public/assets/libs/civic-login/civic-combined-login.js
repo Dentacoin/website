@@ -149,18 +149,21 @@
                                         console.log(data, 'data');
                                         if (data.success) {
                                             if (data.deleted) {
-                                                civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframe');
                                                 if (currentPlatform != undefined) {
                                                     if (data.appeal) {
-                                                        window.open('https://account.dentacoin.com/blocked-account-thank-you?platform=' + currentPlatform, '_system');
+                                                        // window.open('https://account.dentacoin.com/blocked-account-thank-you?platform=' + currentPlatform, '_system');
+                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframe', {redirect: 'https://account.dentacoin.com/blocked-account-thank-you?platform=' + currentPlatform});
                                                     } else {
-                                                        window.open('https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id), '_system');
+                                                        // window.open('https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id), '_system');
+                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframe', {redirect: 'https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id)});
                                                     }
                                                 } else {
                                                     if (data.appeal) {
-                                                        window.open('https://account.dentacoin.com/blocked-account-thank-you', '_system');
+                                                        // window.open('https://account.dentacoin.com/blocked-account-thank-you', '_system');
+                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframe', {redirect: 'https://account.dentacoin.com/blocked-account-thank-you'});
                                                     } else {
-                                                        window.open('https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id), '_system');
+                                                        // window.open('https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id), '_system');
+                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframe', {redirect: 'https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id)});
                                                     }
                                                 }
                                                 return false;

@@ -149,6 +149,7 @@
                                         console.log(data, 'data');
                                         if (data.success) {
                                             if (data.deleted) {
+                                                civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframe');
                                                 if (currentPlatform != undefined) {
                                                     if (data.appeal) {
                                                         window.open('https://account.dentacoin.com/blocked-account-thank-you?platform=' + currentPlatform, '_system');
@@ -164,6 +165,7 @@
                                                 }
                                                 return false;
                                             } else if (data.bad_ip || data.suspicious_admin) {
+                                                civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframe');
                                                 var on_hold_type = '';
                                                 if (data.bad_ip) {
                                                     on_hold_type = '&on-hold-type=bad_ip';

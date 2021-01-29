@@ -329,6 +329,7 @@
     background-color: black;
     background-image: url(/assets/images/apple-icon.svg);
     color: white;
+    background-size: 25px auto;
     @include breakpoint($md) {
         &:hover {
             color: white;

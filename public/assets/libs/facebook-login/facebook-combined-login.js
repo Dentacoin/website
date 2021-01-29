@@ -1,16 +1,13 @@
 //binding click event for all the facebook login btns
 $('body').on('click', '.facebook-custom-btn', function(rerequest){
     if(document.cookie.indexOf('strictly_necessary_policy=') == -1 && !$(this).hasClass('mobile-app')) {
-        customFacebookEvent('cannotLoginBecauseOfMissingCookies', '');
+        customFacebookEvent('cannotLoginBecauseOfMissingCookies');
     } else {
         var this_btn = $(this);
         const fb_config = {
             app_id: '1906201509652855'
         };
         customFacebookEvent('facebookCustomBtnClicked', 'Button #facebook-custom-btn was clicked.');
-
-        console.log($(this), "$(this)");
-        console.log($(this).attr('custom-stopper'), "$(this).attr('custom-stopper')");
 
         //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the facebook login won't proceed
         if ($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
@@ -25,14 +22,13 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
         };
 
         if (this_btn.hasClass('mobile-app')) {
-            console.log('loading facebook from mobile app');
             // loading facebook from mobile app
+
             if (typeof(openFB) != 'undefined') {
                 openFB.init({appId: fb_config.app_id});
 
                 openFB.login(
                     function(response) {
-                        console.log(response, 'response');
                         proceedWithFacebookLogin(response, this_btn, 'mobile');
                     },
                     obj
@@ -41,7 +37,6 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
                 alert('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.');
             }
         } else {
-            console.log('loading facebook from browser');
             // loading facebook from browser
 
             if (typeof(FB) != 'object') {
@@ -66,8 +61,9 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
                 };
 
                 FB.login(function (response) {
+                    // class vanilla-js-event is used when we are using the facebook combined login library without going thru the Dentacoin gateway
                     if (this_btn.hasClass('vanilla-js-event')) {
-                        proceedWithFacebookLogin(response, this_btn, 'desktop', true);
+                        proceedWithFacebookLogin(response, this_btn, 'desktop', 'vanilla-js-event');
                     } else {
                         proceedWithFacebookLogin(response, this_btn, 'desktop');
                     }
@@ -77,13 +73,12 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
     }
 });
 
-function proceedWithFacebookLogin(response, this_btn, type, vanilla_js_event) {
-    console.log(type, 'proceedWithFacebookLogin');
+function proceedWithFacebookLogin(response, this_btn, type, event_type) {
     if (response.authResponse && response.status == 'connected') {
         //fbGetData();
 
         //setTimeout(function() {
-        customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response, type, vanilla_js_event);
+        customFacebookEvent('receivedFacebookToken', 'Received facebook token successfully.', response, type, event_type);
 
         var register_data = {
             platform: this_btn.attr('data-platform'),
@@ -151,10 +146,10 @@ function proceedWithFacebookLogin(response, this_btn, type, vanilla_js_event) {
                         return false;
                     } else if (data.new_account) {
                         console.log('successfulFacebookPatientRegistration');
-                        customFacebookEvent('successfulFacebookPatientRegistration', '', null, type, vanilla_js_event);
+                        customFacebookEvent('successfulFacebookPatientRegistration', '', null, type, event_type);
                     } else {
                         console.log('successfulFacebookPatientLogin');
-                        customFacebookEvent('successfulFacebookPatientLogin', '', null, type, vanilla_js_event);
+                        customFacebookEvent('successfulFacebookPatientLogin', '', null, type, event_type);
                     }
 
                     if (data.data.email == '' || data.data.email == null) {
@@ -164,26 +159,26 @@ function proceedWithFacebookLogin(response, this_btn, type, vanilla_js_event) {
                         if (type == 'mobile') {
                             console.log('patientAuthSuccessResponse');
                             customFacebookEvent('hideGatewayLoader', '');
-                            customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type, vanilla_js_event);
+                            customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type, event_type);
                         } else if (type == 'desktop') {
                             console.log('patientProceedWithCreatingSession');
-                            if (vanilla_js_event) {
+                            if (event_type) {
                                 customFacebookEvent('hideGatewayLoader', '');
-                                customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type, vanilla_js_event);
+                                customFacebookEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, type, event_type);
                             } else {
                                 customFacebookEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, type);
                             }
                         }
                     }
                 } else if (!data.success) {
-                    customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, type, vanilla_js_event);
+                    customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, type, event_type);
                 } else {
-                    customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', null, type, vanilla_js_event);
+                    customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', null, type, event_type);
                 }
             },
             error: function() {
                 //ajax to the external url is not working properly
-                customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', null, type, vanilla_js_event);
+                customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', null, type, event_type);
             }
         });
         //}, 5000);
@@ -206,9 +201,8 @@ function proceedWithFacebookLogin(response, this_btn, type, vanilla_js_event) {
     }*/
 
 //custom function for firing events
-function customFacebookEvent(type, message, response_data, event_type, vanilla_js_event) {
-    console.log(vanilla_js_event, 'customFacebookEvent');
-    if ((event_type != undefined && event_type == 'mobile') || vanilla_js_event) {
+function customFacebookEvent(type, message, response_data, device_type, event_type) {
+    if ((device_type != undefined && device_type == 'mobile') || event_type == 'vanilla-js-event') {
         var event_obj = {
             message: message,
             platform_type: 'facebook',

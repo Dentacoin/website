@@ -1,19 +1,8 @@
 (async function() {
-    function isMobile() {
-        var isMobile = false; //initiate as false
-// device detection
-        if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i.test(navigator.userAgent)
-            || /1207|6310|6590|3gso|4thp|50[1-6]i|770s|802s|a wa|abac|ac(er|oo|s\-)|ai(ko|rn)|al(av|ca|co)|amoi|an(ex|ny|yw)|aptu|ar(ch|go)|as(te|us)|attw|au(di|\-m|r |s )|avan|be(ck|ll|nq)|bi(lb|rd)|bl(ac|az)|br(e|v)w|bumb|bw\-(n|u)|c55\/|capi|ccwa|cdm\-|cell|chtm|cldc|cmd\-|co(mp|nd)|craw|da(it|ll|ng)|dbte|dc\-s|devi|dica|dmob|do(c|p)o|ds(12|\-d)|el(49|ai)|em(l2|ul)|er(ic|k0)|esl8|ez([4-7]0|os|wa|ze)|fetc|fly(\-|_)|g1 u|g560|gene|gf\-5|g\-mo|go(\.w|od)|gr(ad|un)|haie|hcit|hd\-(m|p|t)|hei\-|hi(pt|ta)|hp( i|ip)|hs\-c|ht(c(\-| |_|a|g|p|s|t)|tp)|hu(aw|tc)|i\-(20|go|ma)|i230|iac( |\-|\/)|ibro|idea|ig01|ikom|im1k|inno|ipaq|iris|ja(t|v)a|jbro|jemu|jigs|kddi|keji|kgt( |\/)|klon|kpt |kwc\-|kyo(c|k)|le(no|xi)|lg( g|\/(k|l|u)|50|54|\-[a-w])|libw|lynx|m1\-w|m3ga|m50\/|ma(te|ui|xo)|mc(01|21|ca)|m\-cr|me(rc|ri)|mi(o8|oa|ts)|mmef|mo(01|02|bi|de|do|t(\-| |o|v)|zz)|mt(50|p1|v )|mwbp|mywa|n10[0-2]|n20[2-3]|n30(0|2)|n50(0|2|5)|n7(0(0|1)|10)|ne((c|m)\-|on|tf|wf|wg|wt)|nok(6|i)|nzph|o2im|op(ti|wv)|oran|owg1|p800|pan(a|d|t)|pdxg|pg(13|\-([1-8]|c))|phil|pire|pl(ay|uc)|pn\-2|po(ck|rt|se)|prox|psio|pt\-g|qa\-a|qc(07|12|21|32|60|\-[2-7]|i\-)|qtek|r380|r600|raks|rim9|ro(ve|zo)|s55\/|sa(ge|ma|mm|ms|ny|va)|sc(01|h\-|oo|p\-)|sdk\/|se(c(\-|0|1)|47|mc|nd|ri)|sgh\-|shar|sie(\-|m)|sk\-0|sl(45|id)|sm(al|ar|b3|it|t5)|so(ft|ny)|sp(01|h\-|v\-|v )|sy(01|mb)|t2(18|50)|t6(00|10|18)|ta(gt|lk)|tcl\-|tdg\-|tel(i|m)|tim\-|t\-mo|to(pl|sh)|ts(70|m\-|m3|m5)|tx\-9|up(\.b|g1|si)|utst|v400|v750|veri|vi(rg|te)|vk(40|5[0-3]|\-v)|vm40|voda|vulc|vx(52|53|60|61|70|80|81|83|85|98)|w3c(\-| )|webc|whit|wi(g |nc|nw)|wmlb|wonu|x700|yas\-|your|zeto|zte\-/i.test(navigator.userAgent.substr(0, 4)))  {
-            isMobile = true;
-        }
-        return isMobile;
-    }
-
     console.log('civic loaded');
     await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-config.js', function() {});
 
     //load civic lib CSS
-    // downloaded from https://hosted-sip.civic.com/css/civic-modal.min.css
     //$('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css?v='+new Date().getTime()+'"/>');
     $('head').append('<link rel="stylesheet" type="text/css" href="https://hosted-sip.civic.com/css/civic-modal.min.css?v='+new Date().getTime()+'"/>');
 
@@ -25,7 +14,7 @@
     var civicApiVersion;
     var civicActionType;
     var civicAjaxUrl;
-    var vanilla_js_event_boolean = false;
+    var civic_event_type = 'jquery-event';
 
     //init civic
     var civicSipObject = {};
@@ -41,8 +30,6 @@
         };
     }
 
-    console.log(civicSipObject, 'civicSipObject');
-
     var civicSip = new civic.sip(civicSipObject);
 
     //bind click event for the civic button
@@ -54,19 +41,20 @@
             civicActionType = 'register';
         }
 
+        // class vanilla-js-event is used when we are using the facebook combined login library without going thru the Dentacoin gateway
         if (civic_custom_btn.hasClass('vanilla-js-event')) {
-            vanilla_js_event_boolean = true;
+            civic_event_type = 'vanilla-js-event';
         }
 
         if (document.cookie.indexOf('strictly_necessary_policy=') == -1 && !civic_custom_btn.hasClass('mobile-app')) {
-            civicCombinedLogin.utils.customCivicEvent('cannotLoginBecauseOfMissingCookies', '', undefined, vanilla_js_event_boolean);
+            civicCombinedLogin.utils.customCivicEvent('cannotLoginBecauseOfMissingCookies', '', undefined, civic_event_type);
         } else {
-            civicCombinedLogin.utils.customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.', undefined, vanilla_js_event_boolean);
+            civicCombinedLogin.utils.customCivicEvent('civicCustomBtnClicked', 'Button .civic-custom-btn was clicked.', undefined, civic_event_type);
 
             if (civic_custom_btn != undefined) {
                 civicAjaxUrl = civic_custom_btn.attr('data-url');
                 if (civic_custom_btn.attr('custom-stopper') && civic_custom_btn.attr('custom-stopper') == 'true') {
-                    civicCombinedLogin.utils.customCivicEvent('customCivicFbStopperTriggered', '', undefined, vanilla_js_event_boolean);
+                    civicCombinedLogin.utils.customCivicEvent('customCivicFbStopperTriggered', '', undefined, civic_event_type);
                     return false;
                 }
             }
@@ -78,8 +66,7 @@
         }
     });
 
-    console.log('fire civicLibLoaded');
-    civicCombinedLogin.utils.customCivicEvent('civicLibLoaded', '', undefined, vanilla_js_event_boolean);
+    civicCombinedLogin.utils.customCivicEvent('civicLibLoaded', '', undefined, civic_event_type);
 
     // Listen for data
     civicSip.on('auth-code-received', function (event) {
@@ -88,6 +75,8 @@
 
         var get_params = civicCombinedLogin.utils.getGETParameters();
         if (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && civicCombinedLogin.utils.property_exists(get_params, 'auth_type')) {
+            // running civic from mobile application
+
             if (get_params.environment_type == 'civic-from-mobile-app') {
 
                 if (civicCombinedLogin.utils.property_exists(get_params, 'dev')) {
@@ -112,11 +101,10 @@
                     },
                     dataType: 'json',
                     success: function (ret) {
-                        console.log(ret, 'ret');
                         if (!ret.userId) {
-                            civicCombinedLogin.utils.customCivicEventToMobileApp('noUserIdReceived', ret);
+                            civicCombinedLogin.utils.customCivicEvent('noUserIdReceived', null, ret, 'event-from-iframe-to-parent');
                         } else {
-                            civicCombinedLogin.utils.customCivicEventToMobileApp('userIdReceived', ret);
+                            civicCombinedLogin.utils.customCivicEvent('userIdReceived', null, ret, 'event-from-iframe-to-parent');
                             var loginRegisterData = {
                                 clientVersion: civicApiVersion,
                                 auth_token: jwtToken,
@@ -135,40 +123,29 @@
                             loginRegisterData.platform = currentPlatform;
 
                             setTimeout(function () {
-                                /*if (civicCombinedLogin.utils.property_exists(get_params, 'invite') && civicCombinedLogin.utils.property_exists(get_params, 'inviteid')) {
-                                    loginRegisterData.invited_by = get_params.invite;
-                                    loginRegisterData.inviteid = get_params.inviteid;
-                                }*/
-
                                 $.ajax({
                                     type: 'POST',
                                     url: civicAjaxUrl,
                                     dataType: 'json',
                                     data: loginRegisterData,
                                     success: async function(data) {
-                                        console.log(data, 'data');
                                         if (data.success) {
                                             if (data.deleted) {
                                                 if (currentPlatform != undefined) {
                                                     if (data.appeal) {
-                                                        // window.open('https://account.dentacoin.com/blocked-account-thank-you?platform=' + currentPlatform, '_system');
-                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframeAndRedirectToAccountPage', {redirect: 'https://account.dentacoin.com/blocked-account-thank-you?platform=' + currentPlatform});
+                                                        civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/blocked-account-thank-you?platform=' + currentPlatform}, 'event-from-iframe-to-parent');
                                                     } else {
-                                                        // window.open('https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id), '_system');
-                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframeAndRedirectToAccountPage', {redirect: 'https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id)});
+                                                        civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id)}, 'event-from-iframe-to-parent');
                                                     }
                                                 } else {
                                                     if (data.appeal) {
-                                                        // window.open('https://account.dentacoin.com/blocked-account-thank-you', '_system');
-                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframeAndRedirectToAccountPage', {redirect: 'https://account.dentacoin.com/blocked-account-thank-you'});
+                                                        civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/blocked-account-thank-you'}, 'event-from-iframe-to-parent');
                                                     } else {
-                                                        // window.open('https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id), '_system');
-                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframeAndRedirectToAccountPage', {redirect: 'https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id)});
+                                                        civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id)}, 'event-from-iframe-to-parent');
                                                     }
                                                 }
                                                 return false;
                                             } else if (data.bad_ip || data.suspicious_admin) {
-                                                civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframeAndRedirectToAccountPage');
                                                 var on_hold_type = '';
                                                 if (data.bad_ip) {
                                                     on_hold_type = '&on-hold-type=bad_ip';
@@ -178,60 +155,64 @@
 
                                                 if (currentPlatform != undefined) {
                                                     if (data.appeal) {
-                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframeAndRedirectToAccountPage', {redirect: 'https://account.dentacoin.com/account-on-hold-thank-you?platform=' + currentPlatform});
+                                                        civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/account-on-hold-thank-you?platform=' + currentPlatform}, 'event-from-iframe-to-parent');
                                                     } else {
-                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframeAndRedirectToAccountPage', {redirect: 'https://account.dentacoin.com/account-on-hold?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type});
+                                                        civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/account-on-hold?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type}, 'event-from-iframe-to-parent');
                                                     }
                                                 } else {
                                                     if (data.appeal) {
-                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframeAndRedirectToAccountPage', {redirect: 'https://account.dentacoin.com/account-on-hold-thank-you'});
+                                                        civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/account-on-hold-thank-you'}, 'event-from-iframe-to-parent');
                                                     } else {
-                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('removeCivicIframeAndRedirectToAccountPage', {redirect: 'https://account.dentacoin.com/account-on-hold?key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type});
+                                                        civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/account-on-hold?key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type}, 'event-from-iframe-to-parent');
                                                     }
                                                 }
                                                 return false;
                                             } else if (data.new_account) {
-                                                civicCombinedLogin.utils.customCivicEventToMobileApp('successfulCivicPatientRegistration');
+                                                civicCombinedLogin.utils.customCivicEvent('successfulCivicPatientRegistration', null, null, 'event-from-iframe-to-parent');
                                             } else {
-                                                civicCombinedLogin.utils.customCivicEventToMobileApp('successfulCivicPatientLogin');
+                                                civicCombinedLogin.utils.customCivicEvent('successfulCivicPatientLogin', null, null, 'event-from-iframe-to-parent');
                                             }
 
                                             if (data.data.email == '' || data.data.email == null) {
-                                                civicCombinedLogin.utils.customCivicEventToMobileApp('registeredAccountMissingEmail', data);
+                                                civicCombinedLogin.utils.customCivicEvent('registeredAccountMissingEmail', null, data, 'event-from-iframe-to-parent');
                                             } else {
-                                                console.log(data, 'data');
                                                 if (civicActionType == 'login') {
                                                     if (civicApiVersion == 'v2') {
-                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('CivicLegacyAppForbiddenRegistrations', data);
+                                                        // forbidden
+                                                        civicCombinedLogin.utils.customCivicEvent('CivicLegacyAppForbiddenRegistrations', null, data, 'event-from-iframe-to-parent');
                                                     } else {
-                                                        civicCombinedLogin.utils.customCivicEventToMobileApp('patientProceedWithCreatingSession', data);
+                                                        civicCombinedLogin.utils.customCivicEvent('patientProceedWithCreatingSession', null, data, 'event-from-iframe-to-parent');
                                                     }
                                                 } else {
-                                                    civicCombinedLogin.utils.customCivicEventToMobileApp('patientProceedWithCreatingSession', data);
+                                                    civicCombinedLogin.utils.customCivicEvent('patientProceedWithCreatingSession', null, data, 'event-from-iframe-to-parent');
                                                 }
                                             }
 
                                         } else if (!data.success) {
-                                            civicCombinedLogin.utils.customCivicEventToMobileApp('patientAuthErrorResponse', data);
+                                            civicCombinedLogin.utils.customCivicEvent('patientAuthErrorResponse', null, data, 'event-from-iframe-to-parent');
                                         } else {
-                                            civicCombinedLogin.utils.customCivicEventToMobileApp('noCoreDBApiConnection', data);
+                                            civicCombinedLogin.utils.customCivicEvent('noCoreDBApiConnection', null, data, 'event-from-iframe-to-parent');
                                         }
                                     },
                                     error: function() {
-                                        civicCombinedLogin.utils.customCivicEventToMobileApp('noCoreDBApiConnection');
+                                        civicCombinedLogin.utils.customCivicEvent('noCoreDBApiConnection', null, null, 'event-from-iframe-to-parent');
                                     }
                                 });
                             }, 3000);
                         }
                     },
                     error: function (ret) {
-                        civicCombinedLogin.utils.customCivicEventToMobileApp('noExternalLoginProviderConnection');
+                        civicCombinedLogin.utils.customCivicEvent('noExternalLoginProviderConnection', null, null, 'event-from-iframe-to-parent');
                     }
                 });
             }
         } else {
+            // running civic from desktop or mobile device, but not mobile application
+
             if (civicActionType == undefined) {
-                civicCombinedLogin.utils.customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
+                civicCombinedLogin.utils.customCivicEvent('civicRead', '', undefined, civic_event_type);
+
+                // overriding civicAjaxUrl is civic library is called from one of the DEV environments
                 if (location.hostname == 'dev.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {
                     civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login';
                 } else {
@@ -242,11 +223,8 @@
             } else {
                 if (civicActionType == 'register') {
                     if (civicApiVersion == 'v2') {
-                        // this should work on first phase
-                        // old legacy app
-                        console.log('stop civic register');
-
-                        civicCombinedLogin.utils.customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, vanilla_js_event_boolean);
+                        // forbidden
+                        civicCombinedLogin.utils.customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, civic_event_type);
                     } else if (civicApiVersion == 'v3') {
                         proceedWithDentacoinAuth(jwtToken);
                     }
@@ -267,9 +245,9 @@
             dataType: 'json',
             success: function (ret) {
                 if (!ret.userId) {
-                    civicCombinedLogin.utils.customCivicEvent('noUserIdReceived', 'No userId found after civic token/data exchange.', ret, vanilla_js_event_boolean);
+                    civicCombinedLogin.utils.customCivicEvent('noUserIdReceived', 'No userId found after civic token/data exchange.', ret, civic_event_type);
                 } else {
-                    civicCombinedLogin.utils.customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret, vanilla_js_event_boolean);
+                    civicCombinedLogin.utils.customCivicEvent('userIdReceived', 'UserId found after civic token/data exchange.', ret, civic_event_type);
                     var loginRegisterData = {
                         clientVersion: civicApiVersion,
                         auth_token: jwtToken,
@@ -301,7 +279,7 @@
                         loginRegisterData.platform = currentPlatform;
                     }
 
-                    console.log(currentPlatform, 'currentPlatform');
+                    console.log(currentPlatform, 'Civic lib - currentPlatform');
 
                     if (typeof(dcnGateway) != 'undefined') {
                         if (dcnGateway.utils.cookies.get('first_test') != '') {
@@ -376,95 +354,51 @@
                                         }
                                         return false;
                                     } else if (data.new_account) {
-                                        civicCombinedLogin.utils.customCivicEvent('successfulCivicPatientRegistration', '', undefined, vanilla_js_event_boolean);
+                                        civicCombinedLogin.utils.customCivicEvent('successfulCivicPatientRegistration', '', undefined, civic_event_type);
                                     } else {
-                                        civicCombinedLogin.utils.customCivicEvent('successfulCivicPatientLogin', '', undefined, vanilla_js_event_boolean);
+                                        civicCombinedLogin.utils.customCivicEvent('successfulCivicPatientLogin', '', undefined, civic_event_type);
                                     }
 
                                     if (data.data.email == '' || data.data.email == null) {
                                         civicCombinedLogin.utils.customCivicEvent('registeredAccountMissingEmail', '', data);
                                     } else {
-                                        console.log(data, 'data');
                                         if (civicActionType == 'login') {
                                             if (civicApiVersion == 'v2') {
-                                                // this should work on second phase
-                                                console.log('stop civic login');
-                                                // if (isMobile()) {
-                                                    console.log('logging from phone');
-                                                    civicCombinedLogin.utils.customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, vanilla_js_event_boolean);
-                                                /*} else {
-                                                    console.log('CivicLegacyAppForbiddenLogging');
-                                                    civicCombinedLogin.utils.customCivicEvent('CivicLegacyAppForbiddenLogging', 'Logging via Civic Legacy App is forbidden.', data, vanilla_js_event_boolean);
-                                                }*/
+                                                // forbidden
+                                                civicCombinedLogin.utils.customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, civic_event_type);
                                             } else {
-                                                /*if (civicCombinedLogin.utils.getHostname(civicAjaxUrl) == 'dev-api.dentacoin.com') {
-                                                    var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp('https://dev.dentacoin.com/dentacoin-login-gateway/check-civic-email', data.data.civic_email);
+                                                if (civic_event_type) {
+                                                    civicCombinedLogin.utils.customCivicEvent('hideGatewayLoader', '');
+                                                    civicCombinedLogin.utils.customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, civic_event_type);
                                                 } else {
-                                                    var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp('https://dentacoin.com/dentacoin-login-gateway/check-civic-email', data.data.civic_email);
+                                                    civicCombinedLogin.utils.customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, civic_event_type);
                                                 }
-                                                // request to check if data.data.civic_email is in logging from mobile apps table
-                                                if (logging_from_mobile_app.success && isMobile()) {
-                                                    console.log('REDIRECT TO MOBILE: ', logging_from_mobile_app.type);
-                                                    if (logging_from_mobile_app.type == 'dentavox') {
-                                                        console.log('dentavoxapp://?token=' + encodeURIComponent(data.token), 'LINK');
-                                                        window.location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
-                                                        window.close();
-                                                    } else if (logging_from_mobile_app.type == 'dentacoin') {
-                                                        window.location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
-                                                        window.close();
-                                                    }
-                                                } else {*/
-                                                    if (vanilla_js_event_boolean) {
-                                                        civicCombinedLogin.utils.customCivicEvent('hideGatewayLoader', '');
-                                                        civicCombinedLogin.utils.customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
-                                                    } else {
-                                                        civicCombinedLogin.utils.customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
-                                                    }
-                                                //}
                                             }
                                         } else {
-                                            /*if (civicCombinedLogin.utils.getHostname(civicAjaxUrl) == 'dev-api.dentacoin.com') {
-                                                var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp('https://dev.dentacoin.com/dentacoin-login-gateway/check-civic-email', data.data.civic_email);
+                                            if (civic_event_type) {
+                                                civicCombinedLogin.utils.customCivicEvent('hideGatewayLoader', '');
+                                                civicCombinedLogin.utils.customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, civic_event_type);
                                             } else {
-                                                var logging_from_mobile_app = await checkCivicEmailIfLoggingFromMobileApp('https://dentacoin.com/dentacoin-login-gateway/check-civic-email', data.data.civic_email);
+                                                civicCombinedLogin.utils.customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, civic_event_type);
                                             }
-                                            // request to check if data.data.civic_email is in logging from mobile apps table
-                                            if (logging_from_mobile_app.success && isMobile()) {
-                                                console.log('REDIRECT TO MOBILE: ', logging_from_mobile_app.type);
-                                                if (logging_from_mobile_app.type == 'dentavox') {
-                                                    console.log('dentavoxapp://?token=' + encodeURIComponent(data.token), 'LINK');
-                                                    window.location.href = 'dentavoxapp://?token=' + encodeURIComponent(data.token);
-                                                    window.close();
-                                                } else if (logging_from_mobile_app.type == 'dentacoin') {
-                                                    window.location.href = 'hubapp://?token=' + encodeURIComponent(data.token);
-                                                    window.close();
-                                                }
-                                            } else {*/
-                                                if (vanilla_js_event_boolean) {
-                                                    civicCombinedLogin.utils.customCivicEvent('hideGatewayLoader', '');
-                                                    civicCombinedLogin.utils.customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
-                                                } else {
-                                                    civicCombinedLogin.utils.customCivicEvent('patientProceedWithCreatingSession', 'Request to CoreDB-API succeed.', data, vanilla_js_event_boolean);
-                                                }
-                                            //}
                                         }
                                     }
 
                                 } else if (!data.success) {
-                                    civicCombinedLogin.utils.customCivicEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, vanilla_js_event_boolean);
+                                    civicCombinedLogin.utils.customCivicEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, civic_event_type);
                                 } else {
-                                    civicCombinedLogin.utils.customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', undefined, vanilla_js_event_boolean);
+                                    civicCombinedLogin.utils.customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', undefined, civic_event_type);
                                 }
                             },
                             error: function() {
-                                civicCombinedLogin.utils.customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', undefined, vanilla_js_event_boolean);
+                                civicCombinedLogin.utils.customCivicEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', undefined, civic_event_type);
                             }
                         });
                     }, 3000);
                 }
             },
             error: function (ret) {
-                civicCombinedLogin.utils.customCivicEvent('noExternalLoginProviderConnection', 'Request to Civic NodeJS API failed while exchanging token for data.', undefined, vanilla_js_event_boolean);
+                civicCombinedLogin.utils.customCivicEvent('noExternalLoginProviderConnection', 'Request to Civic NodeJS API failed while exchanging token for data.', undefined, civic_event_type);
             }
         });
     }
@@ -474,42 +408,18 @@
     });*/
 
     civicSip.on('read', function (event) {
-        console.log(event, 'reading');
-        civicCombinedLogin.utils.customCivicEvent('civicRead', '', undefined, vanilla_js_event_boolean);
+        civicCombinedLogin.utils.customCivicEvent('civicRead', '', undefined, civic_event_type);
     });
 
     civicSip.on('civic-sip-error', function (error) {
-        civicCombinedLogin.utils.customCivicEvent('civicSipError', '', undefined, vanilla_js_event_boolean);
+        civicCombinedLogin.utils.customCivicEvent('civicSipError', '', undefined, civic_event_type);
     });
 })();
 
-/*async function checkCivicEmailIfLoggingFromMobileApp(url, email) {
-    return await $.ajax({
-        type: 'POST',
-        url: url,
-        dataType: 'json',
-        data: {
-            email: email
-        }
-    });
-}*/
-
 var civicCombinedLogin = {
     utils: {
-        getHostname: (url) => {
-            return new URL(url).hostname;
-        },
-        customCivicEventToMobileApp: function(type, data) {
-            window.parent.postMessage(
-                {
-                    event_id: type,
-                    data: data
-                },
-                "*"
-            );
-        },
-        customCivicEvent: function(type, message, response_data, vanilla_js_event) {
-            if (vanilla_js_event) {
+        customCivicEvent: function(type, message, response_data, event_type) {
+            if (event_type == 'vanilla-js-event') {
                 var event_obj = {
                     message: message,
                     platform_type: 'civic',
@@ -524,6 +434,14 @@ var civicCombinedLogin = {
                     detail: event_obj
                 });
                 document.dispatchEvent(event);
+            } else if (event_type == 'event-from-iframe-to-parent') {
+                window.parent.postMessage(
+                    {
+                        event_id: type,
+                        data: data
+                    },
+                    "*"
+                );
             } else {
                 var event_obj = {
                     type: type,

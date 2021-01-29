@@ -15,6 +15,7 @@ $('body').on('click', '.apple-custom-btn', function() {
                 window.cordova.plugins.SignInWithApple.signin(
                     { requestedScopes: [0, 1] },
                     function(success) {
+                        // send token to backend
                         console.log(success, 'success');
                     },
                     function(error) {

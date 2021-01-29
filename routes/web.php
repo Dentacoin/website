@@ -168,10 +168,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::get('holiday-calendar-2019', function() {
         return Redirect::to('/holiday-calendar/2019');
     });
-
-    Route::get('test', function() {
-        return Redirect::to('https://dev-api.dentacoin.com/storage/gdpr/2c2ab841cbdd9d70927b6f5e9c1f08a2.zip');
-    });
 });
 
 Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');

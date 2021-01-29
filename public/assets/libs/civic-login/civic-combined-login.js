@@ -368,7 +368,7 @@
                                                 // forbidden
                                                 civicCombinedLogin.utils.customCivicEvent('CivicLegacyAppForbiddenRegistrations', 'Registering via Civic Legacy App is forbidden.', undefined, civic_event_type);
                                             } else {
-                                                if (civic_event_type) {
+                                                if (civic_event_type == 'vanilla-js-event') {
                                                     civicCombinedLogin.utils.customCivicEvent('hideGatewayLoader', '');
                                                     civicCombinedLogin.utils.customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, civic_event_type);
                                                 } else {
@@ -376,7 +376,7 @@
                                                 }
                                             }
                                         } else {
-                                            if (civic_event_type) {
+                                            if (civic_event_type == 'vanilla-js-event') {
                                                 civicCombinedLogin.utils.customCivicEvent('hideGatewayLoader', '');
                                                 civicCombinedLogin.utils.customCivicEvent('patientAuthSuccessResponse', 'Request to CoreDB-API succeed.', data, civic_event_type);
                                             } else {

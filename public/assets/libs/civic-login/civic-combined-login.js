@@ -420,6 +420,11 @@
 var civicCombinedLogin = {
     utils: {
         customCivicEvent: function(type, message, response_data, event_type) {
+            console.log(type, 'type');
+            console.log(message, 'message');
+            console.log(response_data, 'response_data');
+            console.log(event_type, 'event_type');
+
             if (event_type == 'vanilla-js-event') {
                 var event_obj = {
                     message: message,

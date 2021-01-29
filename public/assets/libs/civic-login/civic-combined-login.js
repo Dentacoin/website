@@ -315,6 +315,7 @@
                             dataType: 'json',
                             data: loginRegisterData,
                             success: async function(data) {
+                                console.log(data, 'data');
                                 if (data.success) {
                                     if (data.deleted) {
                                         if (currentPlatform != undefined) {
@@ -360,7 +361,7 @@
                                     }
 
                                     if (data.data.email == '' || data.data.email == null) {
-                                        civicCombinedLogin.utils.customCivicEvent('registeredAccountMissingEmail', '', data);
+                                        civicCombinedLogin.utils.customCivicEvent('registeredAccountMissingEmail', '', data, civic_event_type);
                                     } else {
                                         if (civicActionType == 'login') {
                                             if (civicApiVersion == 'v2') {

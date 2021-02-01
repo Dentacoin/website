@@ -30,12 +30,10 @@
         };
     }
 
-    console.log('Before civicSip');
     var civicSip = new civic.sip(civicSipObject);
-    console.log('After civicSip', civicSipObject);
 
     //bind click event for the civic button
-    /*$('body').on('click', '.civic-custom-btn', function() {
+    $('body').on('click', '.civic-custom-btn', function() {
         civic_custom_btn = $(this);
         if (civic_custom_btn.hasClass('type-login')) {
             civicActionType = 'login';
@@ -408,9 +406,9 @@
         });
     }
 
-    /!*civicSip.on('user-cancelled', function (event) {
+    civicSip.on('user-cancelled', function (event) {
         civicCombinedLogin.utils.customCivicEvent('civicUserCancelled', '');
-    });*!/
+    });
 
     civicSip.on('read', function (event) {
         civicCombinedLogin.utils.customCivicEvent('civicRead', '', undefined, civic_event_type);
@@ -418,7 +416,7 @@
 
     civicSip.on('civic-sip-error', function (error) {
         civicCombinedLogin.utils.customCivicEvent('civicSipError', '', undefined, civic_event_type);
-    });*/
+    });
 })();
 
 var civicCombinedLogin = {

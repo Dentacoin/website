@@ -30,7 +30,8 @@
         };
     }
 
-    var civicSip = new civic.sip(civicSipObject);
+    console.log('Before civicSip');
+    /*var civicSip = new civic.sip(civicSipObject);
 
     //bind click event for the civic button
     $('body').on('click', '.civic-custom-btn', function() {
@@ -69,7 +70,7 @@
     civicCombinedLogin.utils.customCivicEvent('civicLibLoaded', '', undefined, civic_event_type);
 
     // Listen for data
-    /*civicSip.on('auth-code-received', function (event) {
+    civicSip.on('auth-code-received', function (event) {
         var jwtToken = event.response;
         civicApiVersion = event.clientVersion;
 

@@ -1,6 +1,6 @@
 (async function() {
     console.log('Civic library loaded');
-    await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-config.js', function() {});
+    /*await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-config.js', function() {});
 
     //load civic lib CSS
     //$('head').append('<link rel="stylesheet" type="text/css" href="https://dentacoin.com/assets/libs/civic-login/civic/civic.min.css?v='+new Date().getTime()+'"/>');
@@ -69,7 +69,7 @@
     civicCombinedLogin.utils.customCivicEvent('civicLibLoaded', '', undefined, civic_event_type);
 
     // Listen for data
-    /*civicSip.on('auth-code-received', function (event) {
+    civicSip.on('auth-code-received', function (event) {
         var jwtToken = event.response;
         civicApiVersion = event.clientVersion;
 

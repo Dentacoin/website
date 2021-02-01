@@ -73,6 +73,11 @@
         var jwtToken = event.response;
         civicApiVersion = event.clientVersion;
 
+        console.log(event, 'event');
+        console.log(jwtToken, 'jwtToken');
+
+        return false;
+
         var get_params = civicCombinedLogin.utils.getGETParameters();
         if (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && civicCombinedLogin.utils.property_exists(get_params, 'auth_type')) {
             // running civic from mobile application

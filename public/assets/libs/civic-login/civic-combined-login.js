@@ -1,5 +1,5 @@
 (async function() {
-    console.log('civic loaded');
+    console.log('Civic library loaded');
     await $.getScript('https://dentacoin.com/assets/libs/civic-login/civic-config.js', function() {});
 
     //load civic lib CSS
@@ -69,14 +69,11 @@
     civicCombinedLogin.utils.customCivicEvent('civicLibLoaded', '', undefined, civic_event_type);
 
     // Listen for data
-    civicSip.on('auth-code-received', function (event) {
+    /*civicSip.on('auth-code-received', function (event) {
         var jwtToken = event.response;
         civicApiVersion = event.clientVersion;
 
         console.log(event, 'event');
-        console.log(jwtToken, 'jwtToken');
-
-        return false;
 
         var get_params = civicCombinedLogin.utils.getGETParameters();
         if (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && civicCombinedLogin.utils.property_exists(get_params, 'auth_type')) {
@@ -409,9 +406,9 @@
         });
     }
 
-    /*civicSip.on('user-cancelled', function (event) {
+    /!*civicSip.on('user-cancelled', function (event) {
         civicCombinedLogin.utils.customCivicEvent('civicUserCancelled', '');
-    });*/
+    });*!/
 
     civicSip.on('read', function (event) {
         civicCombinedLogin.utils.customCivicEvent('civicRead', '', undefined, civic_event_type);
@@ -419,7 +416,7 @@
 
     civicSip.on('civic-sip-error', function (error) {
         civicCombinedLogin.utils.customCivicEvent('civicSipError', '', undefined, civic_event_type);
-    });
+    });*/
 })();
 
 var civicCombinedLogin = {

@@ -171,7 +171,11 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
                         }
                     }
                 } else if (!data.success) {
-                    customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, type, event_type);
+                    if (data.already_existing_patient_relation) {
+
+                    } else {
+                        customFacebookEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', data, type, event_type);
+                    }
                 } else {
                     customFacebookEvent('noCoreDBApiConnection', 'Request to CoreDB-API failed.', null, type, event_type);
                 }

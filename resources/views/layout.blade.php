@@ -11,7 +11,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     @endif
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    @if(!empty(Route::current()) && Route::current()->getName() == 'careers' && empty(!request()->route()->parameters))
+    @if(!empty(Route::current()) && Route::current()->getName() == 'careers' && !empty($job_offer) && empty(!request()->route()->parameters))
         <title>{{$job_offer->meta_title}}</title>
         <meta name="description" content="{{$job_offer->meta_description}}" />
         <meta name="keywords" content="{{$job_offer->keywords}}" />

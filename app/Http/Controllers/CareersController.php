@@ -14,9 +14,13 @@ class CareersController extends Controller
 
     public function getSingleView($slug) {
         $job_offer = $this->getJobOfferBySlug($slug);
-        $prev_job_offer = JobOffer::where(array('order_id' => $job_offer->order_id - 1))->get()->first();
-        $next_job_offer = JobOffer::where(array('order_id' => $job_offer->order_id + 1))->get()->first();
-        return view('pages/single-job-offer', ['job_offer' => $job_offer, 'benefits' => (new \App\Http\Controllers\Admin\CareersController())->getAllBenefits(), 'prev' => $prev_job_offer, 'next' => $next_job_offer]);
+        if (!empty($job_offer)) {
+            $prev_job_offer = JobOffer::where(array('order_id' => $job_offer->order_id - 1))->get()->first();
+            $next_job_offer = JobOffer::where(array('order_id' => $job_offer->order_id + 1))->get()->first();
+            return view('pages/single-job-offer', ['job_offer' => $job_offer, 'benefits' => (new \App\Http\Controllers\Admin\CareersController())->getAllBenefits(), 'prev' => $prev_job_offer, 'next' => $next_job_offer]);
+        } else {
+            return abort(404);
+        }
     }
 
     protected function getJobOfferBySlug($slug)  {

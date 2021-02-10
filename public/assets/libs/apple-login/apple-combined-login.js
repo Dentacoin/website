@@ -71,7 +71,7 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
     //exchanging the token for user data
     $.ajax({
         type: 'POST',
-        dataType: 'json',
+        dataType: 'json', 
         url: this_btn.attr('data-url'),
         data: register_data,
         success: function(data) {

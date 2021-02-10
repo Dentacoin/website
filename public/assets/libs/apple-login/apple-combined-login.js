@@ -76,7 +76,6 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
         data: register_data,
         success: function(data) {
             console.log(data, 'data');
-            console.log(data.data.id, 'data');
             if (data.success) {
                 if (data.deleted) {
                     var redirectUrl;

@@ -186,6 +186,8 @@ function customAppleEvent(type, message, response_data, event_type, vanilla_js_e
         if (response_data != undefined) {
             event_obj.response_data = response_data;
         }
+
+        console.log(event_obj, 'event_obj');
         $.event.trigger(event_obj);
     }
 }

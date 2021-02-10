@@ -743,11 +743,6 @@ if (typeof jQuery == 'undefined') {
                     dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                 });
 
-                $(document).on('falseSoftwareVersion', function (event) {
-                    dcnGateway.utils.hideLoader();
-                    dcnGateway.utils.showPopup('Something went wrong, please update your software version. If the problem still appears, please contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
-                });
-
                 $(document).on('patientAuthErrorResponse', function (event) {
                     var error_popup_html = '';
                     if (event.response_data.errors) {
@@ -1305,6 +1300,11 @@ if (typeof jQuery == 'undefined') {
                                 $(document).on('receivedFacebookToken', async function (event) {
                                     dcnGateway.utils.hideGateway();
                                     dcnGateway.utils.showLoader('Receiving your details from Facebook...');
+                                });
+
+                                $(document).on('falseSoftwareVersion', function (event) {
+                                    dcnGateway.utils.hideLoader();
+                                    dcnGateway.utils.showPopup('Something went wrong, please update your software version. If the problem still appears, please contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                 });
 
                                 $(document).on('facebookCustomBtnClicked', function (event) {

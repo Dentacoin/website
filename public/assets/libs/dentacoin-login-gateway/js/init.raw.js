@@ -1302,7 +1302,9 @@ if (typeof jQuery == 'undefined') {
                                     dcnGateway.utils.showLoader('Receiving your details from Facebook...');
                                 });
 
+                                console.log('=================== falseSoftwareVersion inited ===================');
                                 $(document).on('falseSoftwareVersion', function (event) {
+                                    console.log('falseSoftwareVersion');
                                     dcnGateway.utils.hideLoader();
                                     dcnGateway.utils.showPopup('Something went wrong, please update your software version. If the problem still appears, please contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                 });

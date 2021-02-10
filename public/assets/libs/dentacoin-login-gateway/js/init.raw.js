@@ -743,6 +743,11 @@ if (typeof jQuery == 'undefined') {
                     dcnGateway.utils.showPopup('Something went wrong, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                 });
 
+                $(document).on('falseSoftwareVersion', function (event) {
+                    dcnGateway.utils.hideLoader();
+                    dcnGateway.utils.showPopup('Something went wrong, please update your software version. If the problem still appears, please contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                });
+
                 $(document).on('patientAuthErrorResponse', function (event) {
                     var error_popup_html = '';
                     if (event.response_data.errors) {
@@ -799,6 +804,7 @@ if (typeof jQuery == 'undefined') {
                     $(document).off('cannotLoginBecauseOfMissingCookies');
                     $(document).off('noUserIdReceived');
                     $(document).off('noCoreDBApiConnection');
+                    $(document).off('falseSoftwareVersion');
                     $(document).off('customCivicFbStopperTriggered');
                     $(document).off('registeredAccountMissingEmail');
                     $(document).off('patientProceedWithCreatingSession');

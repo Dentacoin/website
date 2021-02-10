@@ -28,17 +28,17 @@ $('body').on('click', '.apple-custom-btn', function() {
                     },
                     function(error) {
                         console.log(error, 'error');
-                        alert('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.');
+                        customAppleEvent('falseSoftwareVersion', 'Request to CoreDB-API failed.');
                     }
                 )
             } else {
                 console.error('Missing Apple login cordova plugin, please install cordova-plugin-sign-in-with-apple.');
-                alert('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.');
+                alert('Something went wrong with the external login provider, please try again later or contact admin@dentacoin.com.');
             }
         }
     } else {
         console.error('Not a cordova project.');
-        alert('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.');
+        alert('Something went wrong with the external login provider, please try again later or contact admin@dentacoin.com.');
     }
 });
 

@@ -775,6 +775,9 @@ if (typeof jQuery == 'undefined') {
                             platform_type: params.platform,
                             time: new Date()
                         });
+
+                        dcnGateway.utils.hideLoader();
+                        dcnGateway.utils.hideGateway();
                     } else {
                         dcnGateway.utils.hideLoader();
                         dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
@@ -1357,6 +1360,7 @@ if (typeof jQuery == 'undefined') {
                                         });
 
                                         dcnGateway.utils.hideLoader();
+                                        dcnGateway.utils.hideGateway();
                                     } else {
                                         var ajaxLink = currentPlatformDomain + 'authenticate-user';
 
@@ -1373,6 +1377,9 @@ if (typeof jQuery == 'undefined') {
                                                 platform_type: params.platform,
                                                 time: new Date()
                                             });
+
+                                            dcnGateway.utils.hideLoader();
+                                            dcnGateway.utils.hideGateway();
                                         } else {
                                             dcnGateway.utils.hideLoader();
                                             dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');

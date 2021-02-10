@@ -1070,9 +1070,6 @@ if (typeof jQuery == 'undefined') {
 
                                     // =============================================== APPLE ====================================================
                                     if (loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
-                                        if ($('.apple-custom-btn.social-login-btn').length) {
-                                            $('.apple-custom-btn.social-login-btn').removeClass('hide');
-                                        }
                                         await $.getScript(dcnLibsDomain + '/assets/libs/apple-login/apple-combined-login.js?v='+new Date().getTime(), function() {});
                                     }
                                     loadedSocialLibs = true;
@@ -1082,6 +1079,12 @@ if (typeof jQuery == 'undefined') {
                                 dcnGateway.utils.hideGateway(true);
 
                                 $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
+
+                                if (loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                    if ($('.apple-custom-btn.social-login-btn').length) {
+                                        $('.apple-custom-btn.social-login-btn').removeClass('hide');
+                                    }
+                                }
 
                                 // setup platform
                                 $('.patient .social-login-btn').attr('data-platform', params.platform);

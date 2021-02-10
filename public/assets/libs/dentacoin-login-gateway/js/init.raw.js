@@ -1272,9 +1272,11 @@ if (typeof jQuery == 'undefined') {
                                     if ($(this).is(':checked') && $('.dentacoin-login-gateway-container .patient .form-register #agree-over-eighteen').is(':checked')) {
                                         $('.dentacoin-login-gateway-container .patient .form-register .facebook-custom-btn').removeAttr('custom-stopper');
                                         $('.dentacoin-login-gateway-container .patient .form-register .civic-custom-btn').removeAttr('custom-stopper');
+                                        $('.dentacoin-login-gateway-container .patient .form-register .apple-custom-btn').removeAttr('custom-stopper');
                                     } else {
                                         $('.dentacoin-login-gateway-container .patient .form-register .facebook-custom-btn').attr('custom-stopper', 'true');
                                         $('.dentacoin-login-gateway-container .patient .form-register .civic-custom-btn').attr('custom-stopper', 'true');
+                                        $('.dentacoin-login-gateway-container .patient .form-register .apple-custom-btn').attr('custom-stopper', 'true');
                                     }
                                 });
 
@@ -1282,9 +1284,11 @@ if (typeof jQuery == 'undefined') {
                                     if ($(this).is(':checked') && $('.dentacoin-login-gateway-container .patient .form-register #privacy-policy-registration-patient').is(':checked')) {
                                         $('.dentacoin-login-gateway-container .patient .form-register .facebook-custom-btn').removeAttr('custom-stopper');
                                         $('.dentacoin-login-gateway-container .patient .form-register .civic-custom-btn').removeAttr('custom-stopper');
+                                        $('.dentacoin-login-gateway-container .patient .form-register .apple-custom-btn').removeAttr('custom-stopper');
                                     } else {
                                         $('.dentacoin-login-gateway-container .patient .form-register .facebook-custom-btn').attr('custom-stopper', 'true');
                                         $('.dentacoin-login-gateway-container .patient .form-register .civic-custom-btn').attr('custom-stopper', 'true');
+                                        $('.dentacoin-login-gateway-container .patient .form-register .apple-custom-btn').attr('custom-stopper', 'true');
                                     }
                                 });
 

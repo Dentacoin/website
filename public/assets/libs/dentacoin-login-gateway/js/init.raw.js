@@ -768,7 +768,7 @@ if (typeof jQuery == 'undefined') {
                         type: 'patient'
                     });
 
-                    console.log(createDentistSessionResponse, 'createDentistSessionResponse');
+                    console.log(createPatientSessionResponse, 'createPatientSessionResponse');
 
                     if (createPatientSessionResponse.success) {
                         $.event.trigger({

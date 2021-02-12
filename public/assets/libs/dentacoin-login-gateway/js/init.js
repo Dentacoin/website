@@ -768,6 +768,8 @@ if (typeof jQuery == 'undefined') {
                         type: 'patient'
                     });
 
+                    console.log(createDentistSessionResponse, 'createDentistSessionResponse');
+
                     if (createPatientSessionResponse.success) {
                         $.event.trigger({
                             type: 'patientAuthSuccessResponse',
@@ -1363,12 +1365,13 @@ if (typeof jQuery == 'undefined') {
                                         dcnGateway.utils.hideGateway();
                                     } else {
                                         var ajaxLink = currentPlatformDomain + 'authenticate-user';
-
                                         var createDentistSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
                                             token: event.response_data.token,
                                             id: event.response_data.data.id,
                                             type: 'dentist'
                                         });
+
+                                        console.log(createDentistSessionResponse, 'createDentistSessionResponse');
 
                                         if (createDentistSessionResponse.success) {
                                             $.event.trigger({

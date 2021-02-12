@@ -110,7 +110,7 @@
     </noscript>
     <!-- End Facebook Pixel Code -->
 </head>
-<body data-current="one" class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif">
+<body data-current="one" class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif" data-environment="{{getenv('APP_ENVIRONMENT')}}">
     <svg class="svg-with-lines">
         <line class="first" x1="0" y1="0" x2="0" y2="0"/>
         <line class="second" x1="0" y1="0" x2="0" y2="0"/>

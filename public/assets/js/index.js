@@ -1576,15 +1576,27 @@ var projectData = {
             },
             gateway: function() {
                 if (typeof(dcnGateway) != 'undefined') {
-                    dcnGateway.init({
-                        'platform': 'dev.dentacoin',
-                        'environment' : 'staging',
-                        /*'platform': 'dentacoin',*/
-                        'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password',
-                        'callback' : function() {
-                            console.log('INITIATED')
-                        }
-                    });
+                    var dcnGatewayParams;
+                    if ($('body').attr('data-environment') == 'dev') {
+                        dcnGatewayParams = {
+                            'platform': 'dev.dentacoin',
+                            'environment' : 'staging',
+                            'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password',
+                            'callback' : function() {
+                                console.log('INITIATED')
+                            }
+                        };
+                    } else if ($('body').attr('data-environment') == 'prod') {
+                        dcnGatewayParams = {
+                            'platform': 'dentacoin',
+                            'forgotten_password_link': 'https://account.dentacoin.com/forgotten-password',
+                            'callback' : function() {
+                                console.log('INITIATED')
+                            }
+                        };
+                    }
+
+                    dcnGateway.init(dcnGatewayParams);
 
                     $(document).on('dentistAuthSuccessResponse', async function (event) {
                         console.log('dentistAuthSuccessResponse');

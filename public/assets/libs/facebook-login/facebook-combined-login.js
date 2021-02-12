@@ -144,6 +144,16 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
                             window.location.replace(redirectUrl);
                         }
                         return false;
+                    } else if (data.rejected_manual_verification) {
+                        var redirectUrl = 'https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id);
+
+                        if (type == 'mobile') {
+                            hideDcnGatewayLoader();
+                            window.open(redirectUrl);
+                        } else if (type == 'desktop') {
+                            window.location.replace(redirectUrl);
+                        }
+                        return false;
                     } else if (data.new_account) {
                         console.log('successfulFacebookPatientRegistration');
                         customFacebookEvent('successfulFacebookPatientRegistration', '', null, type, event_type);

@@ -356,6 +356,13 @@
                                             }
                                         }
                                         return false;
+                                    } else if (data.rejected_manual_verification) {
+                                        if (currentPlatform != undefined) {
+                                            window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id));
+                                        } else {
+                                            window.location.replace('https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id));
+                                        }
+                                        return false;
                                     } else if (data.new_account) {
                                         civicCombinedLogin.utils.customCivicEvent('successfulCivicPatientRegistration', '', undefined, civic_event_type);
                                     } else {

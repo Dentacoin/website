@@ -1075,7 +1075,8 @@ if (typeof jQuery == 'undefined') {
                                     await $.getScript(dcnLibsDomain + '/assets/libs/facebook-login/facebook-combined-login.js?v='+new Date().getTime(), function() {});
 
                                     // =============================================== APPLE ====================================================
-                                    if (loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                    // IF LOADED FROM browser or ios device
+                                    if (loadedFromMobileApp || dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                         await $.getScript(dcnLibsDomain + '/assets/libs/apple-login/apple-combined-login.js?v='+new Date().getTime(), function() {});
                                     }
                                     loadedSocialLibs = true;

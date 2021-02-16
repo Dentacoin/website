@@ -11,29 +11,55 @@ $('body').on('click', '.apple-custom-btn', function() {
                 return false;
             }
 
-            if (hasOwnProperty.call(window.cordova.plugins, 'SignInWithApple')) {
-                window.cordova.plugins.SignInWithApple.signin(
-                    { requestedScopes: [0, 1] },
-                    function(success) {
-                        // send token to backend
-                        if (this_btn.hasClass('vanilla-js-event')) {
-                            if (this_btn.hasClass('is-dcn-hub-app')) {
-                                proceedWithAppleLogin(success, this_btn, 'desktop', 'vanilla-js-event', true);
+            console.log(this_btn.hasClass('mobile-app'), 'this_btn.hasClass(\'mobile-app\')');
+            if (this_btn.hasClass('mobile-app')) {
+                // mobile app
+
+                if (hasOwnProperty.call(window.cordova.plugins, 'SignInWithApple')) {
+                    window.cordova.plugins.SignInWithApple.signin(
+                        { requestedScopes: [0, 1] },
+                        function(success) {
+                            // send token to backend
+                            if (this_btn.hasClass('vanilla-js-event')) {
+                                if (this_btn.hasClass('is-dcn-hub-app')) {
+                                    proceedWithAppleLogin(success, this_btn, 'desktop', 'vanilla-js-event', true);
+                                } else {
+                                    proceedWithAppleLogin(success, this_btn, 'desktop', 'vanilla-js-event', false);
+                                }
                             } else {
-                                proceedWithAppleLogin(success, this_btn, 'desktop', 'vanilla-js-event', false);
+                                proceedWithAppleLogin(success, this_btn, 'desktop');
                             }
-                        } else {
-                            proceedWithAppleLogin(success, this_btn, 'desktop');
+                        },
+                        function(error) {
+                            console.log(error, 'error');
+                            customAppleEvent('falseSoftwareVersion', 'Request to CoreDB-API failed.');
                         }
-                    },
-                    function(error) {
-                        console.log(error, 'error');
-                        customAppleEvent('falseSoftwareVersion', 'Request to CoreDB-API failed.');
-                    }
-                )
+                    )
+                } else {
+                    console.error('Missing Apple login cordova plugin, please install cordova-plugin-sign-in-with-apple.');
+                    alert('Something went wrong with the external login provider, please try again later or contact admin@dentacoin.com.');
+                }
             } else {
-                console.error('Missing Apple login cordova plugin, please install cordova-plugin-sign-in-with-apple.');
-                alert('Something went wrong with the external login provider, please try again later or contact admin@dentacoin.com.');
+                $.getScript('https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js', function( data, textStatus, jqxhr ) {
+                    var clientId;
+
+                    // browser
+                    if (this_btn.hasClass('is-dcn-hub-app')) {
+                        clientId = 'com.dentacoin.hub';
+                    } else if (this_btn.hasClass('is-dv-app')) {
+                        clientId = 'com.dentacoin.dentavox';
+                    }
+
+                    console.log(clientId, 'clientId');
+
+                    AppleID.auth.init({
+                        clientId: clientId,
+                        scope: 'name email',
+                        redirectURI: 'https://account.dentacoin.com/save-dummy-log'
+                    });
+                }).fail(function() {
+                    alert('Looks like your browser is blocking Apple login. Please check and edit your privacy settings in order to login in Dentacoin tools.');
+                });
             }
         }
     } else {

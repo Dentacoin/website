@@ -1,5 +1,5 @@
 $('body').on('click', '.apple-custom-btn', function() {
-    if(document.cookie.indexOf('strictly_necessary_policy=') == -1 && !$(this).hasClass('mobile-app')) {
+    if(document.cookie.indexOf('strictly_necessary_policy=') == -1 && !$(this).hasClass('pass-cookie')) {
         customAppleEvent('cannotLoginBecauseOfMissingCookies', '');
     } else {
         var this_btn = $(this);

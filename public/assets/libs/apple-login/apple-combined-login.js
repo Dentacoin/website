@@ -1,20 +1,20 @@
 $('body').on('click', '.apple-custom-btn', function() {
-    if (hasOwnProperty.call(window, 'cordova')) {
-        if(document.cookie.indexOf('strictly_necessary_policy=') == -1 && !$(this).hasClass('mobile-app')) {
-            customAppleEvent('cannotLoginBecauseOfMissingCookies', '');
-        } else {
-            var this_btn = $(this);
+    if(document.cookie.indexOf('strictly_necessary_policy=') == -1 && !$(this).hasClass('mobile-app')) {
+        customAppleEvent('cannotLoginBecauseOfMissingCookies', '');
+    } else {
+        var this_btn = $(this);
 
-            //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the apple login won't proceed
-            if ($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
-                customAppleEvent('customCivicFbStopperTriggered', '');
-                return false;
-            }
+        //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the apple login won't proceed
+        if ($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
+            customAppleEvent('customCivicFbStopperTriggered', '');
+            return false;
+        }
 
-            console.log(this_btn.hasClass('mobile-app'), 'this_btn.hasClass(\'mobile-app\')');
-            if (this_btn.hasClass('mobile-app')) {
-                // mobile app
+        console.log(this_btn.hasClass('mobile-app'), 'this_btn.hasClass(\'mobile-app\')');
+        if (this_btn.hasClass('mobile-app')) {
+            // mobile app
 
+            if (hasOwnProperty.call(window, 'cordova')) {
                 if (hasOwnProperty.call(window.cordova.plugins, 'SignInWithApple')) {
                     window.cordova.plugins.SignInWithApple.signin(
                         { requestedScopes: [0, 1] },
@@ -40,31 +40,31 @@ $('body').on('click', '.apple-custom-btn', function() {
                     alert('Something went wrong with the external login provider, please try again later or contact admin@dentacoin.com.');
                 }
             } else {
-                $.getScript('https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js', function( data, textStatus, jqxhr ) {
-                    var clientId;
-
-                    // browser
-                    if (this_btn.hasClass('is-dcn-hub-app')) {
-                        clientId = 'com.dentacoin.hub';
-                    } else if (this_btn.hasClass('is-dv-app')) {
-                        clientId = 'com.dentacoin.dentavox';
-                    }
-
-                    console.log(clientId, 'clientId');
-
-                    AppleID.auth.init({
-                        clientId: clientId,
-                        scope: 'name email',
-                        redirectURI: 'https://account.dentacoin.com/save-dummy-log'
-                    });
-                }).fail(function() {
-                    alert('Looks like your browser is blocking Apple login. Please check and edit your privacy settings in order to login in Dentacoin tools.');
-                });
+                console.error('Not a cordova project.');
+                alert('Something went wrong with the external login provider, please try again later or contact admin@dentacoin.com.');
             }
+        } else {
+            $.getScript('https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js', function( data, textStatus, jqxhr ) {
+                var clientId;
+
+                // browser
+                if (this_btn.hasClass('is-dcn-hub-app')) {
+                    clientId = 'com.dentacoin.hub';
+                } else if (this_btn.hasClass('is-dv-app')) {
+                    clientId = 'com.dentacoin.dentavox';
+                }
+
+                console.log(clientId, 'clientId');
+
+                AppleID.auth.init({
+                    clientId: clientId,
+                    scope: 'name email',
+                    redirectURI: 'https://account.dentacoin.com/save-dummy-log'
+                });
+            }).fail(function() {
+                alert('Looks like your browser is blocking Apple login. Please check and edit your privacy settings in order to login in Dentacoin tools.');
+            });
         }
-    } else {
-        console.error('Not a cordova project.');
-        alert('Something went wrong with the external login provider, please try again later or contact admin@dentacoin.com.');
     }
 });
 

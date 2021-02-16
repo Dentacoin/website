@@ -1076,7 +1076,7 @@ if (typeof jQuery == 'undefined') {
 
                                     // =============================================== APPLE ====================================================
                                     // IF LOADED FROM browser or ios device
-                                    if (loadedFromMobileApp || dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                    if (loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                         await $.getScript(dcnLibsDomain + '/assets/libs/apple-login/apple-combined-login.js?v='+new Date().getTime(), function() {});
                                     }
                                     loadedSocialLibs = true;

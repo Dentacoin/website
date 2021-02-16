@@ -769,6 +769,8 @@ if (typeof jQuery == 'undefined') {
                     });
 
                     console.log(createPatientSessionResponse, 'createPatientSessionResponse');
+                    console.log(event.response_data, 'event.response_data');
+                    console.log(params.platform, 'params.platform');
 
                     if (createPatientSessionResponse.success) {
                         $.event.trigger({

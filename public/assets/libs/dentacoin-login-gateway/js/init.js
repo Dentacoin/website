@@ -895,14 +895,12 @@ if (typeof jQuery == 'undefined') {
                 });
             },
             iOSFileUpload: function(callback) {
-                window.imagePicker.getPictures(
-                    function(results) {
-                        console.log(results, 'results');
-                        for (var i = 0; i < results.length; i++) {
-                            console.log('Image URI: ' + results[i]);
-                        }
-                    }, function (error) {
-                        console.log('Error: ' + error);
+                Photos.photos(
+                    function(photos) {
+                        console.log(photos);
+                    },
+                    function(error) {
+                        console.error("Error: " + error);
                     }
                 );
 

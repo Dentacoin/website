@@ -895,7 +895,17 @@ if (typeof jQuery == 'undefined') {
                 });
             },
             iOSFileUpload: function(callback) {
-                FilePicker.pickFile(function (path) {
+                window.imagePicker.getPictures(
+                    function(results) {
+                        console.log(results, 'results');
+                    }, function (error) {
+                        console.log('Error: ' + error);
+                    }, {
+                        maximumImagesCount: 1
+                    }
+                );
+
+                /*FilePicker.pickFile(function (path) {
                     var fileDir = cordova.file.tempDirectory.replace('file://', '');
                     var fileName = path.replace(fileDir, '');
 
@@ -911,7 +921,7 @@ if (typeof jQuery == 'undefined') {
                     });
                 }, function (err) {
                     alert('File importing failed. Please update to one of the latest iOS versions in order to have file importing working.');
-                });
+                });*/
             }
         },
         init: async function(params) {

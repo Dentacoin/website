@@ -900,8 +900,6 @@ if (typeof jQuery == 'undefined') {
                         console.log(results, 'results');
                     }, function (error) {
                         console.log('Error: ' + error);
-                    }, {
-                        maximumImagesCount: 1
                     }
                 );
 

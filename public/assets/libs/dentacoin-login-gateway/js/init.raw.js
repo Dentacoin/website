@@ -895,19 +895,7 @@ if (typeof jQuery == 'undefined') {
                 });
             },
             iOSFileUpload: function(callback) {
-                console.log(cordova, 'imagePicker');
-                window.imagePicker.getPictures(
-                    function(results) {
-                        console.log(results, 'results');
-                        for (var i = 0; i < results.length; i++) {
-                            console.log('Image URI: ' + results[i]);
-                        }
-                    }, function (error) {
-                        console.log('Error: ' + error);
-                    }
-                );
-
-                /*FilePicker.pickFile(function (path) {
+                FilePicker.pickFile(function (path) {
                     var fileDir = cordova.file.tempDirectory.replace('file://', '');
                     var fileName = path.replace(fileDir, '');
 
@@ -923,7 +911,7 @@ if (typeof jQuery == 'undefined') {
                     });
                 }, function (err) {
                     alert('File importing failed. Please update to one of the latest iOS versions in order to have file importing working.');
-                });*/
+                });
             }
         },
         init: async function(params) {
@@ -1730,6 +1718,10 @@ if (typeof jQuery == 'undefined') {
                                 //FOURTH STEP INIT LOGIC
                                 if (loadedFromMobileApp) {
                                     $('.step.fourth .btn-wrapper').append('<label class="custom-upload-avatar" role="button"><div class="inner"><svg aria-hidden="true" style="width: 50px;" focusable="false" data-prefix="fas" data-icon="plus" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-plus fa-w-14 fa-5x"><path fill="currentColor" d="M416 208H272V64c0-17.67-14.33-32-32-32h-32c-17.67 0-32 14.33-32 32v144H32c-17.67 0-32 14.33-32 32v32c0 17.67 14.33 32 32 32h144v144c0 17.67 14.33 32 32 32h32c17.67 0 32-14.33 32-32V304h144c17.67 0 32-14.33 32-32v-32c0-17.67-14.33-32-32-32z" class=""></path></svg><div class="inner-label">'+$('.popup-body.translations').attr('data-translation-add-profile-photo')+'</div></div></label>');
+
+                                    if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                        $('.ios-photos-not-supported').show();
+                                    }
 
                                     $('.step.fourth .custom-upload-avatar').click(function() {
                                         $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').find('.error-handle').remove();

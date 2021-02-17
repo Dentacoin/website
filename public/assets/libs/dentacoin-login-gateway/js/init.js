@@ -898,6 +898,9 @@ if (typeof jQuery == 'undefined') {
                 window.imagePicker.getPictures(
                     function(results) {
                         console.log(results, 'results');
+                        for (var i = 0; i < results.length; i++) {
+                            console.log('Image URI: ' + results[i]);
+                        }
                     }, function (error) {
                         console.log('Error: ' + error);
                     }

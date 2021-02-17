@@ -59,7 +59,8 @@ $('body').on('click', '.apple-custom-btn', function() {
                 AppleID.auth.init({
                     clientId: clientId,
                     scope: 'name email',
-                    redirectURI: '*'
+                    redirectURI: 'https://hubapp.dentacoin.com/en/apple/callback',
+                    usePopup: true
                 });
 
                 AppleID.auth.signIn();

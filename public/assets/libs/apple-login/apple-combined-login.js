@@ -49,7 +49,7 @@ $('body').on('click', '.apple-custom-btn', function() {
 
                 // browser
                 if (this_btn.hasClass('is-dcn-hub-app')) {
-                    clientId = 'com.dentacoin.hub';
+                    clientId = 'com.dentacoin.hubapp';
                 } else if (this_btn.hasClass('is-dv-app')) {
                     clientId = 'com.dentacoin.dentavox';
                 }

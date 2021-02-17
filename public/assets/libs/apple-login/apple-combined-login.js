@@ -110,12 +110,19 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
         register_data.country_id = JSON.parse(decodeURIComponent(getCookie('first_test')))['location'];
     }
 
-    if (this_btn.attr('data-inviter') != undefined) {
-        register_data.invited_by = this_btn.attr('data-inviter');
-    }
+    if (this_btn.hasClass('type-register') && this_btn.attr('data-inviter') == undefined && this_btn.attr('data-inviteid') == undefined) {
+        hideDcnGatewayLoader();
+        customAppleEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', {success: false, errors: {cannotRegisterWithoutInvite: 'Registration without invite is not possible.'}}, type, event_type);
 
-    if (this_btn.attr('data-inviteid') != undefined) {
-        register_data.inviteid = this_btn.attr('data-inviteid');
+        return false;
+    } else {
+        if (this_btn.attr('data-inviter') != undefined) {
+            register_data.invited_by = this_btn.attr('data-inviter');
+        }
+
+        if (this_btn.attr('data-inviteid') != undefined) {
+            register_data.inviteid = this_btn.attr('data-inviteid');
+        }
     }
 
     //exchanging the token for user data

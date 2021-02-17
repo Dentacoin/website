@@ -1078,8 +1078,8 @@ if (typeof jQuery == 'undefined') {
                                     await $.getScript(dcnLibsDomain + '/assets/libs/facebook-login/facebook-combined-login.js?v='+new Date().getTime(), function() {});
 
                                     // =============================================== APPLE ====================================================
-                                    // IF LOADED FROM browser or ios device
-                                    if (loadedFromMobileApp || (!loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS' && hasOwnProperty.call(getParams, 'invite') && hasOwnProperty.call(getParams, 'inviteid'))) {
+                                    // IF LOADED FROM ios device
+                                    if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                         await $.getScript(dcnLibsDomain + '/assets/libs/apple-login/apple-combined-login.js?v='+new Date().getTime(), function() {});
                                     }
                                     loadedSocialLibs = true;
@@ -1096,7 +1096,7 @@ if (typeof jQuery == 'undefined') {
                                     }
                                 }
 
-                                if (loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                     if ($('.apple-custom-btn.social-login-btn').length) {
                                         $('.apple-custom-btn.social-login-btn').removeClass('hide');
                                     }

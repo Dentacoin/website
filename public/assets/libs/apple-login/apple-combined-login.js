@@ -59,7 +59,20 @@ $('body').on('click', '.apple-custom-btn', function() {
                 AppleID.auth.init({
                     clientId: clientId,
                     scope: 'name email',
-                    redirectURI: 'https://account.dentacoin.com/save-dummy-log'
+                    redirectURI: '*'
+                });
+
+                AppleID.auth.signIn();
+
+                //Listen for authorization success
+                document.addEventListener('AppleIDSignInOnSuccess', (data) => {
+                    //handle successful response
+                    console.log(data, 'data');
+                });
+                //Listen for authorization failures
+                document.addEventListener('AppleIDSignInOnFailure', (error) => {
+                    //handle error.
+                    console.log(error, 'error');
                 });
             }).fail(function() {
                 alert('Looks like your browser is blocking Apple login. Please check and edit your privacy settings in order to login in Dentacoin tools.');

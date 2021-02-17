@@ -44,7 +44,7 @@ $('body').on('click', '.apple-custom-btn', function() {
                 alert('Something went wrong with the external login provider, please try again later or contact admin@dentacoin.com.');
             }
         } else {
-            $.getScript('https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js', function( data, textStatus, jqxhr ) {
+            $.getScript('https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js', async function( data, textStatus, jqxhr ) {
                 var clientId;
 
                 // browser
@@ -59,14 +59,20 @@ $('body').on('click', '.apple-custom-btn', function() {
                 var appleParams = {
                     clientId: clientId,
                     scope: 'name email',
-                    redirectURI: 'https://hubapp.dentacoin.com/handle-apple-login',
-                    usePopup: true
+                    redirectURI: 'https://hubapp.dentacoin.com/handle-apple-login'
                 };
                 console.log(appleParams, 'appleParams');
 
                 AppleID.auth.init(appleParams);
 
-                AppleID.auth.signIn();
+                try {
+                    console.log('Fire appleID');
+                    const data = await AppleID.auth.signIn();
+                    console.log(data, 'data');
+                } catch ( error ) {
+                    //handle error.
+                    console.log(error, 'error');
+                }
 
                 //Listen for authorization success
                 document.addEventListener('AppleIDSignInOnSuccess', (data) => {

@@ -59,7 +59,7 @@ $('body').on('click', '.apple-custom-btn', function() {
                 var appleParams = {
                     clientId: clientId,
                     scope: 'name email',
-                    redirectURI: 'https://hubapp.dentacoin.com/en/apple/callback',
+                    redirectURI: 'https://hubapp.dentacoin.com/handle-apple-login',
                     usePopup: true
                 };
                 console.log(appleParams, 'appleParams');

@@ -1079,7 +1079,7 @@ if (typeof jQuery == 'undefined') {
 
                                     // =============================================== APPLE ====================================================
                                     // IF LOADED FROM ios device
-                                    if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                    if (loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                         await $.getScript(dcnLibsDomain + '/assets/libs/apple-login/apple-combined-login.js?v='+new Date().getTime(), function() {});
                                     }
                                     loadedSocialLibs = true;
@@ -1096,7 +1096,7 @@ if (typeof jQuery == 'undefined') {
                                     }
                                 }
 
-                                if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                if (loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                     if ($('.apple-custom-btn.social-login-btn').length) {
                                         $('.apple-custom-btn.social-login-btn').removeClass('hide');
                                     }

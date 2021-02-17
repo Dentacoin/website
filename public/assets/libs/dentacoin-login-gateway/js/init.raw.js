@@ -1063,6 +1063,7 @@ if (typeof jQuery == 'undefined') {
                         if (environment == 'staging') {
                             getGatewayHtmlUrl = 'https://dev.dentacoin.com/dentacoin-login-gateway';
                         }
+
                         await dcnGateway.dcnGatewayRequests.getGatewayHtml(getGatewayHtmlUrl, gatewayData, async function(gatewayHtml) {
                             if (gatewayHtml.success) {
                                 if (!loadedSocialLibs) {
@@ -1088,6 +1089,12 @@ if (typeof jQuery == 'undefined') {
                                 dcnGateway.utils.hideGateway(true);
 
                                 $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
+
+                                if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
+                                    if ($('.apple-custom-btn.social-login-btn').length) {
+                                        $('.apple-custom-btn.social-login-btn').addClass('is-dv-app');
+                                    }
+                                }
 
                                 if (loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                     if ($('.apple-custom-btn.social-login-btn').length) {

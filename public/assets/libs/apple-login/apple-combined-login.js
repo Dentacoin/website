@@ -46,12 +46,21 @@ $('body').on('click', '.apple-custom-btn', function() {
         } else {
             $.getScript('https://appleid.cdn-apple.com/appleauth/static/jsapi/appleid/1/en_US/appleid.auth.js', async function( data, textStatus, jqxhr ) {
                 var clientId;
+                var redirectURI;
+                var eventType;
+                var is_dcn_hub_app;
 
                 // browser
                 if (this_btn.hasClass('is-dcn-hub-app')) {
                     clientId = 'com.dentacoin.hubapp';
+                    redirectURI = 'https://hubapp.dentacoin.com/handle-apple-login';
+                    eventType = 'vanilla-js-event';
+                    is_dcn_hub_app = true;
                 } else if (this_btn.hasClass('is-dv-app')) {
                     clientId = 'com.dentacoin.dentavox';
+                    redirectURI = 'https://dentavox.dentacoin.com/handle-apple-login';
+                    eventType = undefined;
+                    is_dcn_hub_app = false;
                 }
 
                 console.log(clientId, 'clientId');
@@ -59,7 +68,7 @@ $('body').on('click', '.apple-custom-btn', function() {
                 var appleParams = {
                     clientId: clientId,
                     scope: 'name email',
-                    redirectURI: 'https://hubapp.dentacoin.com/handle-apple-login',
+                    redirectURI: redirectURI,
                     usePopup : true
                 };
                 console.log(appleParams, 'appleParams');
@@ -70,7 +79,7 @@ $('body').on('click', '.apple-custom-btn', function() {
                     console.log('Fire appleID');
                     const data = await AppleID.auth.signIn();
 
-                    proceedWithAppleLogin(data.authorization.id_token, this_btn, 'desktop', 'vanilla-js-event', true);
+                    proceedWithAppleLogin(data.authorization.id_token, this_btn, 'desktop', eventType, is_dcn_hub_app);
                 } catch ( error ) {
                     //handle error.
                     console.log(error, 'error');

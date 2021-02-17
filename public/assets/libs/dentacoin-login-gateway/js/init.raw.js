@@ -761,7 +761,7 @@ if (typeof jQuery == 'undefined') {
                 });
 
                 $(document).on('patientProceedWithCreatingSession', async function (event) {
-                    var ajaxLink = currentPlatformDomain + 'authenticate-user/';
+                    var ajaxLink = currentPlatformDomain + 'authenticate-user';
                     var createPatientSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
                         token: event.response_data.token,
                         id: event.response_data.data.id,
@@ -1367,7 +1367,7 @@ if (typeof jQuery == 'undefined') {
                                         dcnGateway.utils.hideLoader();
                                         dcnGateway.utils.hideGateway();
                                     } else {
-                                        var ajaxLink = currentPlatformDomain + 'authenticate-user/';
+                                        var ajaxLink = currentPlatformDomain + 'authenticate-user';
                                         var createDentistSessionResponse = await dcnGateway.dcnGatewayRequests.createUserSession(ajaxLink, {
                                             token: event.response_data.token,
                                             id: event.response_data.data.id,

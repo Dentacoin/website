@@ -70,7 +70,7 @@ $('body').on('click', '.apple-custom-btn', function() {
                     console.log('Fire appleID');
                     const data = await AppleID.auth.signIn();
 
-                    proceedWithAppleLogin(data.authorization.id_token, this_btn, 'desktop');
+                    proceedWithAppleLogin(data.authorization.id_token, this_btn, 'desktop', true);
                 } catch ( error ) {
                     //handle error.
                     console.log(error, 'error');

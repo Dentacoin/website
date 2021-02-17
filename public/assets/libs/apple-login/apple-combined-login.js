@@ -22,12 +22,12 @@ $('body').on('click', '.apple-custom-btn', function() {
                             // send token to backend
                             if (this_btn.hasClass('vanilla-js-event')) {
                                 if (this_btn.hasClass('is-dcn-hub-app')) {
-                                    proceedWithAppleLogin(success, this_btn, 'desktop', 'vanilla-js-event', true);
+                                    proceedWithAppleLogin(success.identityToken, this_btn, 'desktop', 'vanilla-js-event', true);
                                 } else {
-                                    proceedWithAppleLogin(success, this_btn, 'desktop', 'vanilla-js-event', false);
+                                    proceedWithAppleLogin(success.identityToken, this_btn, 'desktop', 'vanilla-js-event', false);
                                 }
                             } else {
-                                proceedWithAppleLogin(success, this_btn, 'desktop');
+                                proceedWithAppleLogin(success.identityToken, this_btn, 'desktop');
                             }
                         },
                         function(error) {
@@ -69,22 +69,13 @@ $('body').on('click', '.apple-custom-btn', function() {
                 try {
                     console.log('Fire appleID');
                     const data = await AppleID.auth.signIn();
-                    console.log(data, 'data');
+
+                    proceedWithAppleLogin(data.authorization.id_token, this_btn, 'desktop');
                 } catch ( error ) {
                     //handle error.
                     console.log(error, 'error');
+                    alert('Something went wrong with the external login provider, please try again later or contact admin@dentacoin.com.');
                 }
-
-                //Listen for authorization success
-                document.addEventListener('AppleIDSignInOnSuccess', (data) => {
-                    //handle successful response
-                    console.log(data, 'data');
-                });
-                //Listen for authorization failures
-                document.addEventListener('AppleIDSignInOnFailure', (error) => {
-                    //handle error.
-                    console.log(error, 'error');
-                });
             }).fail(function() {
                 alert('Looks like your browser is blocking Apple login. Please check and edit your privacy settings in order to login in Dentacoin tools.');
             });
@@ -97,7 +88,7 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
 
     var register_data = {
         platform: this_btn.attr('data-platform'),
-        auth_token: response.identityToken,
+        auth_token: response,
         social_network: 'apple',
         type: 'patient'
     };

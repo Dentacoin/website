@@ -1149,7 +1149,11 @@ if (typeof jQuery == 'undefined') {
                                         }
 
                                         if (!$('#iframe-civic-popup').length) {
-                                            $('body').append('<iframe src="'+dcnLibsDomain+'/iframe-civic-popup?type=login&app-type=" id="iframe-civic-popup"></iframe>');
+                                            var appType;
+                                            if (params.platform == 'urgent.dentavox' || params.platform == 'dentavox') {
+                                                appType = 'dentavox';
+                                            }
+                                            $('body').append('<iframe src="'+dcnLibsDomain+'/iframe-civic-popup?type=login&app-type='+appType+'" id="iframe-civic-popup"></iframe>');
                                         }
                                     });
                                 }

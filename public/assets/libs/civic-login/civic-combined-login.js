@@ -79,6 +79,7 @@
         if (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && civicCombinedLogin.utils.property_exists(get_params, 'auth_type')) {
             // running civic from mobile application
 
+            console.log(get_params, 'get_params');
             if (get_params.environment_type == 'civic-from-mobile-app') {
 
                 if (civicCombinedLogin.utils.property_exists(get_params, 'dev')) {
@@ -452,7 +453,8 @@ var civicCombinedLogin = {
             } else if (event_type == 'event-from-iframe-to-parent') {
                 window.parent.postMessage(
                     {
-                        event_id: type
+                        event_id: type,
+                        data: response_data
                     },
                     "*"
                 );

@@ -452,8 +452,7 @@ var civicCombinedLogin = {
             } else if (event_type == 'event-from-iframe-to-parent') {
                 window.parent.postMessage(
                     {
-                        event_id: type,
-                        data: data
+                        event_id: type
                     },
                     "*"
                 );

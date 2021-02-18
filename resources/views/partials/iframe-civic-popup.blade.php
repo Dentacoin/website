@@ -49,12 +49,12 @@
             $(document).on('civicLibLoaded', function() {
                 if ($('.type-login').hasClass('active')) {
                     console.log('type-login clicked');
-                    $('.type-login').click();
+                    //$('.type-login').click();
                 }
 
                 if ($('.type-register').hasClass('active')) {
                     console.log('type-register clicked');
-                    $('.type-register').click();
+                    //$('.type-register').click();
                 }
             });
         }

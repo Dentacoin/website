@@ -931,10 +931,17 @@ if (typeof jQuery == 'undefined') {
                     return false;
                 }
 
+                console.log(params, 'params');
+
                 if (hasOwnProperty.call(params, 'environment') && params.environment == 'staging') {
                     apiDomain = 'https://dev-api.dentacoin.com';
                     dcnLibsDomain = 'https://dev.dentacoin.com';
                     environment = 'staging';
+                }
+
+                if (hasOwnProperty.call(params, 'mobile_app') && params.mobile_app == true) {
+                    loadedFromMobileApp = true;
+                    googleKey = 'AIzaSyAq7ie77jwp2ydsmjM0yvo69f0yyrx-9QA';
                 }
 
                 await dcnGateway.dcnGatewayRequests.getPlatformsData(async function(platformsData) {
@@ -1085,7 +1092,7 @@ if (typeof jQuery == 'undefined') {
                                 $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container"><div class="dentacoin-login-gateway-wrapper">'+gatewayHtml.data+'</div></div>');
 
                                 if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
-                                    if ($('.apple-custom-btn.social-login-btn').length && (params.platform == 'urgent.dentavox' || params.platform == 'dentavox')) {
+                                    if ($('.apple-custom-btn.social-login-btn').length) {
                                         $('.apple-custom-btn.social-login-btn').addClass('is-dv-app');
                                     }
                                 }
@@ -1142,11 +1149,7 @@ if (typeof jQuery == 'undefined') {
                                         }
 
                                         if (!$('#iframe-civic-popup').length) {
-                                            var appType;
-                                            if (params.platform == 'urgent.dentavox' || params.platform == 'dentavox') {
-                                                appType = 'dentavox';
-                                            }
-                                            $('body').append('<iframe src="'+dcnLibsDomain+'/iframe-civic-popup?type=login&app-type='+appType+'" id="iframe-civic-popup"></iframe>');
+                                            $('body').append('<iframe src="'+dcnLibsDomain+'/iframe-civic-popup?type=login&app-type=" id="iframe-civic-popup"></iframe>');
                                         }
                                     });
                                 }

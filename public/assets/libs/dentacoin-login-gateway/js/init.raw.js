@@ -939,13 +939,15 @@ if (typeof jQuery == 'undefined') {
                     environment = 'staging';
                 }
 
+                console.log(hasOwnProperty.call(params, 'mobile_app') && params.mobile_app == true, 'hasOwnProperty.call(params, \'mobile_app\') && params.mobile_app == true');
                 if (hasOwnProperty.call(params, 'mobile_app') && params.mobile_app == true) {
+                    console.log('ADDD CLASSESS!!!!!!!!!!');
                     loadedFromMobileApp = true;
                     $('body').addClass('mobile-app-loaded');
                     googleKey = 'AIzaSyAq7ie77jwp2ydsmjM0yvo69f0yyrx-9QA';
 
                     if (params.platform == 'urgent.dentavox' || params.platform == 'dentavox') {
-                        $('body').hasClass('dentavox-app-loaded');
+                        $('body').addClass('dentavox-app-loaded');
                     }
                 }
 

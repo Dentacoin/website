@@ -19,11 +19,19 @@
     //init civic
     var civicSipObject = {};
     if ($('body').hasClass('mobile-app-loaded')) {
-        civicSipObject = {
-            appId: civic_config.app_id,
-            mobileRedirectUrl: 'hubapp://',
-            skipMobileDetectedScreen: true
-        };
+        if ($('body').hasClass('dentavox-app-loaded')) {
+            civicSipObject = {
+                appId: civic_config.app_id,
+                mobileRedirectUrl: 'dentavoxapp://',
+                skipMobileDetectedScreen: true
+            };
+        } else {
+            civicSipObject = {
+                appId: civic_config.app_id,
+                mobileRedirectUrl: 'hubapp://',
+                skipMobileDetectedScreen: true
+            };
+        }
     } else {
         civicSipObject = {
             appId: civic_config.app_id

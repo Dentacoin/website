@@ -931,6 +931,8 @@ if (typeof jQuery == 'undefined') {
                     return false;
                 }
 
+                console.log(params, 'params');
+
                 if (hasOwnProperty.call(params, 'environment') && params.environment == 'staging') {
                     apiDomain = 'https://dev-api.dentacoin.com';
                     dcnLibsDomain = 'https://dev.dentacoin.com';
@@ -941,6 +943,10 @@ if (typeof jQuery == 'undefined') {
                     loadedFromMobileApp = true;
                     $('body').addClass('mobile-app-loaded');
                     googleKey = 'AIzaSyAq7ie77jwp2ydsmjM0yvo69f0yyrx-9QA';
+
+                    if (params.platform == 'urgent.dentavox' || params.platform == 'dentavox') {
+                        $('body').hasClass('dentavox-app-loaded');
+                    }
                 }
 
                 await dcnGateway.dcnGatewayRequests.getPlatformsData(async function(platformsData) {

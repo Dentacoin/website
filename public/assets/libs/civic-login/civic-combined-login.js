@@ -38,6 +38,7 @@
         };
     }
 
+    console.log(civicSipObject, 'civicSipObject');
     var civicSip = new civic.sip(civicSipObject);
 
     //bind click event for the civic button
@@ -477,6 +478,8 @@ var civicCombinedLogin = {
                 if (response_data != undefined) {
                     event_obj.response_data = response_data;
                 }
+
+                console.log(event_obj, 'event_obj');
                 $.event.trigger(event_obj);
             }
         },

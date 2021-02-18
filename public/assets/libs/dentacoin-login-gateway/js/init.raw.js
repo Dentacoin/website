@@ -2111,8 +2111,11 @@ if (typeof jQuery == 'undefined') {
                                             if (!errors) {
                                                 dcnGateway.utils.fireGoogleAnalyticsEvent('DentistRegistration', 'ClickNext', 'DentistRegistrationStep2');
                                                 dcnGateway.utils.fireFacebookPixelEvent('DentistRegistrationStep2');
+
                                                 // save incomplete account creation data
-                                                await dcnGateway.dcnGatewayRequests.saveIncompleteRegistration(collectFirstAndSecondStepData());
+                                                if (!loadedFromMobileApp) {
+                                                    await dcnGateway.dcnGatewayRequests.saveIncompleteRegistration(collectFirstAndSecondStepData());
+                                                }
 
                                                 $('.dentacoin-login-gateway-container .dentist .form-register .step').removeClass('visible');
                                                 $('.dentacoin-login-gateway-container .dentist .form-register .step.third').addClass('visible');
@@ -2180,7 +2183,10 @@ if (typeof jQuery == 'undefined') {
                                                         thirdStepIncompleteRegistrationParams.address = $('.dentacoin-login-gateway-container .step.third #dentist-register-address').val().trim();
                                                         thirdStepIncompleteRegistrationParams.website = $('.dentacoin-login-gateway-container .step.third #dentist-register-website').val().trim();
                                                         thirdStepIncompleteRegistrationParams.phone = $('.dentacoin-login-gateway-container .step.third #dentist-register-phone').val().trim();
-                                                        await dcnGateway.dcnGatewayRequests.saveIncompleteRegistration(thirdStepIncompleteRegistrationParams);
+
+                                                        if (!loadedFromMobileApp) {
+                                                            await dcnGateway.dcnGatewayRequests.saveIncompleteRegistration(thirdStepIncompleteRegistrationParams);
+                                                        }
 
                                                         $('.dentacoin-login-gateway-container .dentist .form-register .step').removeClass('visible');
                                                         $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').addClass('visible');
@@ -2199,7 +2205,10 @@ if (typeof jQuery == 'undefined') {
                                                     thirdStepIncompleteRegistrationParams.address = $('.dentacoin-login-gateway-container .step.third #dentist-register-address').val().trim();
                                                     thirdStepIncompleteRegistrationParams.website = $('.dentacoin-login-gateway-container .step.third #dentist-register-website').val().trim();
                                                     thirdStepIncompleteRegistrationParams.phone = $('.dentacoin-login-gateway-container .step.third #dentist-register-phone').val().trim();
-                                                    await dcnGateway.dcnGatewayRequests.saveIncompleteRegistration(thirdStepIncompleteRegistrationParams);
+
+                                                    if (!loadedFromMobileApp) {
+                                                        await dcnGateway.dcnGatewayRequests.saveIncompleteRegistration(thirdStepIncompleteRegistrationParams);
+                                                    }
 
                                                     $('.dentacoin-login-gateway-container .dentist .form-register .step').removeClass('visible');
                                                     $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').addClass('visible');

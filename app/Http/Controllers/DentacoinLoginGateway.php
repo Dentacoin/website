@@ -50,7 +50,7 @@ class DentacoinLoginGateway extends Controller
         $params['api_enums'] = (new \App\Http\Controllers\APIRequestsController())->getAllEnums();
         $params['countries'] = (new \App\Http\Controllers\APIRequestsController())->getAllCountries();
 
-        var_dump($params['countries'][0]->phone_code);
+        var_dump($params['countries']);
         var_dump($params);
         die('asd');
 

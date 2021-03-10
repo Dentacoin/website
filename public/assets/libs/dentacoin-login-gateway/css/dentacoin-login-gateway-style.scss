@@ -1109,13 +1109,13 @@
     margin: 0 auto;
 }
 
-.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .patient .custom-hide, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .popup-body .dentist .custom-hide {
+.dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .custom-hide, .dentacoin-login-gateway-container .dentacoin-login-gateway-wrapper .custom-hide {
     visibility: hidden;
     display: none;
 }
 
 #iframe-civic-popup {
-    position: fixed;
+    position: fixed; 
     top: 0;
     left: 0;
     width: 100%;

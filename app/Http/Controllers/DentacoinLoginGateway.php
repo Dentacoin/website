@@ -46,11 +46,11 @@ class DentacoinLoginGateway extends Controller
         if (!empty($mobile_app)) {
             $params['mobile_app'] = true;
         }
-        die('asd1');
 
         $params['api_enums'] = (new \App\Http\Controllers\APIRequestsController())->getAllEnums();
         $params['countries'] = (new \App\Http\Controllers\APIRequestsController())->getAllCountries();
 
+        die('asd2');
         var_dump($params);
         die('asd');
 

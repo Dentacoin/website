@@ -149,8 +149,6 @@ class APIRequestsController extends Controller {
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
         $resp = json_decode(curl_exec($curl));
         curl_close($curl);
-var_dump($resp);
-        die('asd');
 
         if(!empty($resp))   {
             return $resp->data;

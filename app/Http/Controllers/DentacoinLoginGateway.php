@@ -47,6 +47,9 @@ class DentacoinLoginGateway extends Controller
             $params['mobile_app'] = true;
         }
 
+        var_dump((new \App\Http\Controllers\APIRequestsController())->getAllEnums());
+        die();
+
         $view = view('partials/dentacoin-login-gateway', $params);
         $view = $view->render();
         var_dump($view);

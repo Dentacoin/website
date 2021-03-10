@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Lang;
 class DentacoinLoginGateway extends Controller
 {
     public function getView(Request $request)   {
+        die('asd');
         $params = array(
             'type' => $request->input('type'),
             'recaptcha_public' => getenv('GOOGLE_reCAPTCHA_PUBLIC'),

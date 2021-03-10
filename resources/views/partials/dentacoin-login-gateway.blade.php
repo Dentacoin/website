@@ -1,5 +1,4 @@
 @php($api_enums = (new \App\Http\Controllers\APIRequestsController())->getAllEnums())
-{{die('asd')}}
 @if(!empty($incompletedRegistrationData))
     @if(property_exists($incompletedRegistrationData, 'phone') && !empty($incompletedRegistrationData->phone) && property_exists($incompletedRegistrationData, 'website') && !empty($incompletedRegistrationData->website) && property_exists($incompletedRegistrationData, 'address')  && !empty($incompletedRegistrationData->address) && property_exists($incompletedRegistrationData, 'country_id') && !empty($incompletedRegistrationData->country_id))
         @php($currentActiveStep = 'fourth')

@@ -49,6 +49,7 @@ class DentacoinLoginGateway extends Controller
 
         $view = view('partials/dentacoin-login-gateway', $params);
         $view = $view->render();
+        var_dump($view);
         die('asd3');
 
         return response()->json(['success' => true, 'data' => $view]);

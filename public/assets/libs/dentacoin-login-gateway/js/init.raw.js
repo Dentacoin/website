@@ -1099,7 +1099,7 @@ if (typeof jQuery == 'undefined') {
 
                                 if (loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                     if ($('.apple-custom-btn.social-login-btn').length) {
-                                        $('.apple-custom-btn.social-login-btn').removeClass('hide');
+                                        $('.apple-custom-btn.social-login-btn').removeClass('custom-hide');
                                     }
                                 }
 

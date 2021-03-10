@@ -46,10 +46,10 @@ class DentacoinLoginGateway extends Controller
         if (!empty($mobile_app)) {
             $params['mobile_app'] = true;
         }
+        die('asd3');
 
         $view = view('partials/dentacoin-login-gateway', $params);
         $view = $view->render();
-        die('asd2');
 
         return response()->json(['success' => true, 'data' => $view]);
     }

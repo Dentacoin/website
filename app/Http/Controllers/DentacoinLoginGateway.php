@@ -31,7 +31,6 @@ class DentacoinLoginGateway extends Controller
                 $params['incompletedRegistrationData'] = $incompletedRegistrationData->data;
             }
         }
-        die('asd1');
 
         $inviter = $request->input('inviter');
         if (!empty($inviter)) {
@@ -50,6 +49,7 @@ class DentacoinLoginGateway extends Controller
 
         $view = view('partials/dentacoin-login-gateway', $params);
         $view = $view->render();
+        die('asd2');
 
         return response()->json(['success' => true, 'data' => $view]);
     }

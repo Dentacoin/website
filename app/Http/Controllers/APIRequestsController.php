@@ -138,6 +138,9 @@ class APIRequestsController extends Controller {
     }
 
     public function getAllEnums() {
+        var_dump(getenv('API_DOMAIN'));
+        var_dump(getenv('API_DOMAIN').'/api/enums/');
+        die('asd');
         $curl = curl_init();
         curl_setopt_array($curl, array(
             CURLOPT_RETURNTRANSFER => 1,

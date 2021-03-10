@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Lang;
 class DentacoinLoginGateway extends Controller
 {
     public function getView(Request $request)   {
-        die('asd');
         $params = array(
             'type' => $request->input('type'),
             'recaptcha_public' => getenv('GOOGLE_reCAPTCHA_PUBLIC'),
@@ -47,6 +46,7 @@ class DentacoinLoginGateway extends Controller
         if (!empty($mobile_app)) {
             $params['mobile_app'] = true;
         }
+        die('asd1');
 
         $params['api_enums'] = (new \App\Http\Controllers\APIRequestsController())->getAllEnums();
         $params['countries'] = (new \App\Http\Controllers\APIRequestsController())->getAllCountries();

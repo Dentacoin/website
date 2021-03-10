@@ -239,7 +239,6 @@
                 <div class="step third address-suggester-wrapper @if(!empty($currentActiveStep) && $currentActiveStep == 'third') visible @endif" data-step="third">
                     <div class="padding-bottom-20 field-parent prepend-notice-popup">
                         <div class="custom-gateway-google-select-style module">
-                            @php($countries = (new \App\Http\Controllers\APIRequestsController())->getAllCountries())
                             <label class="gateway-platform-color">{{ __('login-register.select-country-field') }}</label>
                             @php($current_phone_code = '+'.$countries[0]->phone_code)
                             <select name="country-code" id="dentist-country" class="form-field required country-select gateway-platform-border-color">

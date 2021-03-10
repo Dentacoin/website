@@ -50,14 +50,11 @@ class DentacoinLoginGateway extends Controller
         $params['api_enums'] = (new \App\Http\Controllers\APIRequestsController())->getAllEnums();
         $params['countries'] = (new \App\Http\Controllers\APIRequestsController())->getAllCountries();
 
-        die('asd2');
         var_dump($params);
         die('asd');
 
         $view = view('partials/dentacoin-login-gateway', $params);
         $view = $view->render();
-        var_dump($view);
-        die('asd3');
 
         return response()->json(['success' => true, 'data' => $view]);
     }

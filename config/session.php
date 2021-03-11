@@ -176,6 +176,6 @@ return [
     |
     */
 
-    'http_only' => true,
+    'http_only' => env('HTTP_ONLY', true),
 
 ];

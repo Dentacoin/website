@@ -1149,11 +1149,11 @@ if (typeof jQuery == 'undefined') {
                                         }
 
                                         if (!$('#iframe-civic-popup').length) {
-                                            var appType;
+                                            var appType = '&app-type=';
                                             if (params.platform == 'urgent.dentavox' || params.platform == 'dentavox') {
-                                                appType = 'dentavox';
+                                                appType += 'dentavox';
                                             }
-                                            $('body').append('<iframe sandbox="allow-same-origin allow-forms allow-popups allow-scripts allow-top-navigation allow-top-navigation-by-user-activation" src="'+dcnLibsDomain+'/iframe-civic-popup?type=login&app-type='+appType+'" id="iframe-civic-popup"></iframe>');
+                                            $('body').append('<iframe sandbox="allow-same-origin allow-forms allow-popups allow-scripts allow-top-navigation allow-top-navigation-by-user-activation" src="'+dcnLibsDomain+'/iframe-civic-popup?type=login'+appType+'" id="iframe-civic-popup"></iframe>');
                                         }
                                     });
                                 }

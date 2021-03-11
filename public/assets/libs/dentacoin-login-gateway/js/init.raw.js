@@ -855,16 +855,18 @@ if (typeof jQuery == 'undefined') {
             },
             androidFileUpload: function(callback) {
                 fileChooser.open(function (file_uri) {
+                    console.log(file_uri, 'file_uri');
                     window.FilePath.resolveNativePath(file_uri, successNative, failNative);
 
                     function successNative(finalPath) {
+                        console.log(finalPath, 'finalPath');
                         window.resolveLocalFileSystemURL(finalPath, function (entry) {
-                            console.log(entry, 'entry1');
+                            console.log(entry, 'entry');
                             window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function (rootEntry) {
-                                console.log(rootEntry, 'rootEntry1');
+                                console.log(rootEntry, 'rootEntry');
                                 //checking external storage
                                 rootEntry.getFile(decodeURIComponent(entry.fullPath), {create: false}, function (fileEntry) {
-                                    console.log(fileEntry, 'fileEntry1');
+                                    console.log(fileEntry, 'fileEntry');
                                     fileEntry.file(function (file) {
                                         callback(file);
                                     }, function (err) {

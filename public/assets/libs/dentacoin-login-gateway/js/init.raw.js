@@ -1660,6 +1660,7 @@ if (typeof jQuery == 'undefined') {
                                     });
 
                                     function hybridAppFileUpload(file) {
+                                        console.log(file, 'file');
                                         if (2 < dcnGateway.utils.bytesToMegabytes(file.size)) {
                                             $('.gateway-avatar.module').append('<div class="error-handle task-error">The file you selected is large. Max size: 2MB.</div>');
                                             return false;
@@ -1700,6 +1701,7 @@ if (typeof jQuery == 'undefined') {
                                                     };
 
                                                     gateway_croppie_instance = $('#gateway-cropper-container').croppie(croppieParams);
+                                                    console.log(gateway_croppie_instance, 'gateway_croppie_instance');
 
                                                     $('.destroy-croppie').unbind().click(function() {
                                                         gateway_croppie_instance.croppie('destroy');
@@ -1712,6 +1714,8 @@ if (typeof jQuery == 'undefined') {
                                                     });
 
                                                     $('.gateway-avatar.module .btn-wrapper').hide();
+
+                                                    console.log(file.localURL, 'file.localURL');
 
                                                     gateway_croppie_instance.croppie('bind', {
                                                         url: file.localURL,

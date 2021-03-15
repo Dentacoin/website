@@ -452,6 +452,7 @@ class UserController extends Controller {
     }
 
     protected function authenticateUser(Request $request) {
+        die('asd');
         $logData = $request->input();
         // removing token from logs
         unset($logData['token']);

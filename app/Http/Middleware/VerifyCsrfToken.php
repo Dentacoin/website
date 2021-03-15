@@ -14,16 +14,15 @@ class VerifyCsrfToken extends BaseVerifier
      * @var array
      */
     protected $except = [
-        'get-holiday-calendar-participants', 'dentacoin-login-gateway', 'dentacoin-login-gateway/*', 'check-dentist-account', 'get-country-code', 'combined-hub/*', 'info/get-clinics-for-wallet'
+        'get-holiday-calendar-participants', 'dentacoin-login-gateway', 'dentacoin-login-gateway/*', 'check-dentist-account', 'get-country-code', 'combined-hub/*', 'info/get-clinics-for-wallet', 'take-homepage-data'
     ];
 
     protected function addCookieToResponse($request, $response) {
         $config = config('session');
-
         $response->headers->setCookie(
             new Cookie(
                 'XSRF-TOKEN', $request->session()->token(), Carbon::now()->getTimestamp() + 60 * $config['lifetime'],
-                $config['path'], $config['domain'], $config['secure'], true
+                $config['path'], $config['domain'], $config['secure'], $config['http_only']
             )
         );
 

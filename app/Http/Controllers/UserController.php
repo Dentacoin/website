@@ -452,7 +452,6 @@ class UserController extends Controller {
     }
 
     protected function authenticateUser(Request $request) {
-        die('asd');
         $logData = $request->input();
         // removing token from logs
         unset($logData['token']);
@@ -468,8 +467,6 @@ class UserController extends Controller {
         ]);
 
         $checkToken = (new APIRequestsController())->checkUserIdAndToken($request->input('id'), $request->input('token'));
-        var_dump($checkToken);
-        die();
         if(is_object($checkToken) && property_exists($checkToken, 'success') && $checkToken->success) {
             $session_arr = [
                 'token' => $request->input('token'),

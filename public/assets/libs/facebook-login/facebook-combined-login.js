@@ -110,8 +110,10 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
                     if (data.deleted) {
                         var redirectUrl;
                         if (data.appeal) {
+                            customFacebookEvent('hideLoader', '', null, type, event_type);
                             redirectUrl = 'https://account.dentacoin.com/blocked-account-thank-you?platform=' + this_btn.attr('data-platform');
                         } else {
+                            customFacebookEvent('hideLoader', '', null, type, event_type);
                             redirectUrl = 'https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id);
                         }
 
@@ -132,8 +134,10 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
 
                         var redirectUrl;
                         if (data.appeal) {
+                            customFacebookEvent('hideLoader', '', null, type, event_type);
                             redirectUrl = 'https://account.dentacoin.com/account-on-hold-thank-you?platform=' + this_btn.attr('data-platform');
                         } else {
+                            customFacebookEvent('hideLoader', '', null, type, event_type);
                             redirectUrl = 'https://account.dentacoin.com/account-on-hold?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type;
                         }
 
@@ -145,6 +149,7 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
                         }
                         return false;
                     } else if (data.rejected_manual_verification) {
+                        customFacebookEvent('hideLoader', '', null, type, event_type);
                         var redirectUrl = 'https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id);
 
                         if (type == 'mobile') {

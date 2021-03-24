@@ -331,12 +331,15 @@
                                 if (data.success) {
                                     if (data.deleted) {
                                         if (currentPlatform != undefined) {
+                                            civicCombinedLogin.utils.customCivicEvent('hideLoader', '', null, civic_event_type);
                                             if (data.appeal) {
                                                 window.location.replace('https://account.dentacoin.com/blocked-account-thank-you?platform=' + currentPlatform);
                                             } else {
+                                                // type, message, response_data, event_type
                                                 window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id));
                                             }
                                         } else {
+                                            civicCombinedLogin.utils.customCivicEvent('hideLoader', '', null, civic_event_type);
                                             if (data.appeal) {
                                                 window.location.replace('https://account.dentacoin.com/blocked-account-thank-you');
                                             } else {
@@ -353,12 +356,14 @@
                                         }
 
                                         if (currentPlatform != undefined) {
+                                            civicCombinedLogin.utils.customCivicEvent('hideLoader', '', null, civic_event_type);
                                             if (data.appeal) {
                                                 window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you?platform=' + currentPlatform);
                                             } else {
                                                 window.location.replace('https://account.dentacoin.com/account-on-hold?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id) + on_hold_type);
                                             }
                                         } else {
+                                            civicCombinedLogin.utils.customCivicEvent('hideLoader', '', null, civic_event_type);
                                             if (data.appeal) {
                                                 window.location.replace('https://account.dentacoin.com/account-on-hold-thank-you');
                                             } else {
@@ -367,6 +372,7 @@
                                         }
                                         return false;
                                     } else if (data.rejected_manual_verification) {
+                                        civicCombinedLogin.utils.customCivicEvent('hideLoader', '', null, civic_event_type);
                                         if (currentPlatform != undefined) {
                                             window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id));
                                         } else {

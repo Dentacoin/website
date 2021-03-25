@@ -266,6 +266,10 @@
                         type: 'patient'
                     };
 
+                    console.log('===================== TEST ====================');
+                    console.log(civicCombinedLogin.utils.property_exists(get_params, 'environment_type'), 'civicCombinedLogin.utils.property_exists(get_params, \'environment_type\')');
+                    console.log(get_params.environment_type == 'civic-from-mobile-app', 'get_params.environment_type == \'civic-from-mobile-app\')');
+
                     if (redirectedFromCivicApp || (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && get_params.environment_type == 'civic-from-mobile-app')) {
                         loginRegisterData.redirectedFromCivicApp = true;
                     }

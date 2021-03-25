@@ -90,7 +90,6 @@
 
             console.log(get_params, 'get_params');
             if (get_params.environment_type == 'civic-from-mobile-app') {
-
                 if (civicCombinedLogin.utils.property_exists(get_params, 'dev')) {
                     if (get_params.auth_type == 'login') {
                         civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login';
@@ -267,7 +266,7 @@
                         type: 'patient'
                     };
 
-                    if (redirectedFromCivicApp || civicCombinedLogin.utils.property_exists(civicSipObject, 'mobileRedirectUrl')) {
+                    if (redirectedFromCivicApp || (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && get_params.environment_type == 'civic-from-mobile-app')) {
                         loginRegisterData.redirectedFromCivicApp = true;
                     }
 

@@ -267,7 +267,7 @@
                         type: 'patient'
                     };
 
-                    if (redirectedFromCivicApp) {
+                    if (redirectedFromCivicApp || civicCombinedLogin.utils.property_exists(civicSipObject, 'mobileRedirectUrl')) {
                         loginRegisterData.redirectedFromCivicApp = true;
                     }
 

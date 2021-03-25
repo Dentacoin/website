@@ -123,6 +123,10 @@
                                 type: 'patient'
                             };
 
+                            if (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && get_params.environment_type == 'civic-from-mobile-app') {
+                                loginRegisterData.redirectedFromCivicApp = true;
+                            }
+
                             var currentPlatform;
                             if (get_params.platform_type == 'hubapp') {
                                 currentPlatform = 'dentacoin';

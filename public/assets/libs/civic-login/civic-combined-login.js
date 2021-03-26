@@ -246,6 +246,8 @@
     });
 
     function proceedWithDentacoinAuth(jwtToken, redirectedFromCivicApp) {
+        var get_params = civicCombinedLogin.utils.getGETParameters();
+        
         $.ajax({
             type: 'POST',
             url: civic_config.url_exchange_token_for_data,

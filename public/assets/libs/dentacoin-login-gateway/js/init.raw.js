@@ -744,6 +744,7 @@ if (typeof jQuery == 'undefined') {
                 });
 
                 $(document).on('patientAuthErrorResponse', function (event) {
+                    console.log(event, 'patientAuthErrorResponse');
                     var error_popup_html = '';
                     if (event.response_data.errors) {
                         for(var key in event.response_data.errors) {

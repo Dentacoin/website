@@ -747,9 +747,9 @@ if (typeof jQuery == 'undefined') {
                     console.log(event, 'patientAuthErrorResponse');
                     var eventObject;
                     var error_popup_html = '';
-                    if (event.response_data.errors) {
+                    if (event.response_data && event.response_data.errors) {
                         eventObject = event;
-                    } else if (event.originalEvent.detail) {
+                    } else if (event.originalEvent && event.originalEvent.detail) {
                         eventObject = event.originalEvent.detail;
                     }
 

@@ -745,15 +745,22 @@ if (typeof jQuery == 'undefined') {
 
                 $(document).on('patientAuthErrorResponse', function (event) {
                     console.log(event, 'patientAuthErrorResponse');
+                    var eventObject;
                     var error_popup_html = '';
                     if (event.response_data.errors) {
-                        for(var key in event.response_data.errors) {
-                            error_popup_html += event.response_data.errors[key]+'<br>';
+                        eventObject = event;
+                    } else if (event.originalEvent.detail) {
+                        eventObject = event.originalEvent.detail;
+                    }
+
+                    if (eventObject.response_data.errors) {
+                        for(var key in eventObject.response_data.errors) {
+                            error_popup_html += eventObject.response_data.errors[key]+'<br>';
                         }
                     }
 
                     var params = {};
-                    if (event.response_data.log_button) {
+                    if (eventObject.response_data.log_button) {
                         params.log_button = true;
                     }
 

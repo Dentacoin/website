@@ -753,6 +753,11 @@ if (typeof jQuery == 'undefined') {
                         eventObject = event.originalEvent.detail;
                     }
 
+                    console.log(event.originalEvent, 'event.originalEvent');
+                    console.log(event.originalEvent.response_data, 'event.originalEvent.response_data');
+                    console.log(event.originalEvent.detail, 'event.originalEvent.detail');
+                    console.log(eventObject, 'eventObject');
+
                     if (eventObject.response_data.errors) {
                         for(var key in eventObject.response_data.errors) {
                             error_popup_html += eventObject.response_data.errors[key]+'<br>';

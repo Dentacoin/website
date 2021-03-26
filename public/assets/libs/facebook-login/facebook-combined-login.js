@@ -221,6 +221,7 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
 
 //custom function for firing events
 function customFacebookEvent(type, message, response_data, device_type, event_type) {
+    console.log(type, message, response_data, device_type, event_type);
     if ((device_type != undefined && device_type == 'mobile') || event_type == 'vanilla-js-event') {
         var event_obj = {
             message: message,

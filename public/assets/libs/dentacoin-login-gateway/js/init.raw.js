@@ -723,7 +723,6 @@ if (typeof jQuery == 'undefined') {
                     dcnGateway.utils.showPopup('<div class="warning-icon"><?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/"><!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/"><!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/"><!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/"><!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/"><!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/"><!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/"><!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/"><svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 82" style="enable-background:new 0 0 64 82;" xml:space="preserve"><metadata><sfw xmlns="&ns_sfw;"><slices></slices><sliceSourceBounds bottomLeftOrigin="true" height="82.1" width="63.9" x="0.1" y="-0.1"></sliceSourceBounds></sfw></metadata><g transform="translate(0,-952.36218)"><g><path style="fill:#3AB03E;" d="M31.8,952.4c-0.1,0-0.3,0.1-0.4,0.1l-30,11c-0.8,0.3-1.3,1-1.3,1.9v33c0,7.8,4.4,14.3,10.3,20c5.9,5.7,13.5,10.7,20.5,15.7c0.7,0.5,1.6,0.5,2.3,0c7-5,14.6-10,20.5-15.7c5.9-5.7,10.3-12.2,10.3-20v-33c0-0.8-0.5-1.6-1.3-1.9l-30-11C32.5,952.4,32.1,952.3,31.8,952.4z M32.1,956.5l28,10.3v31.6c0,6.3-3.5,11.8-9.1,17.1c-5.2,5-12.2,9.7-18.9,14.4c-6.7-4.7-13.7-9.4-18.9-14.4c-5.5-5.3-9.1-10.8-9.1-17.1v-31.6L32.1,956.5z"/></g></g><text transform="matrix(1 0 0 1 22.2637 60.0695)" style="fill:#3AB03E;font-size:58.497px;">!</text></svg></div><div class="popup-text">CIVIC Identity app has been replaced by the new upgraded CIVIC Wallet app. Get it on <a href="https://play.google.com/store/apps/details?id=com.civic.wallet&referrer=utm_source%3Dhomepage%26utm_medium%3Dwebsite&_branch_match_id=827481124251595050&utm_source=homepage&utm_campaign=android&utm_medium=download" class="gateway-platform-color-important data-external-link" target="_blank">GooglePlay</a> or <a href="https://l.civic.com/1RP0bpRMg7" class="gateway-platform-color-important data-external-link" target="_blank">AppStore</a>.</div><div class="text-center padding-bottom-15"><a href="javascript:void(0);" class="continue-with-civic-wallet-app platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20">CONTINUE WITH CIVIC WALLET APP</a></div>', 'forbidden-civic-warning');
 
                     $('.continue-with-civic-wallet-app').click(function() {
-                        console.log('continue with civic wallet app');
                         dcnGateway.utils.hideGateway();
 
                         $.event.trigger({
@@ -744,7 +743,6 @@ if (typeof jQuery == 'undefined') {
                 });
 
                 $(document).on('patientAuthErrorResponse', function (event) {
-                    console.log(event, 'patientAuthErrorResponse');
                     var eventObject;
                     var error_popup_html = '';
                     if (event.response_data && event.response_data.errors) {
@@ -752,11 +750,6 @@ if (typeof jQuery == 'undefined') {
                     } else if (event.originalEvent && event.originalEvent.detail) {
                         eventObject = event.originalEvent.detail;
                     }
-
-                    console.log(event.originalEvent, 'event.originalEvent');
-                    console.log(event.originalEvent.response_data, 'event.originalEvent.response_data');
-                    console.log(event.originalEvent.detail, 'event.originalEvent.detail');
-                    console.log(eventObject, 'eventObject');
 
                     if (eventObject.response_data.errors) {
                         for(var key in eventObject.response_data.errors) {
@@ -780,10 +773,6 @@ if (typeof jQuery == 'undefined') {
                         id: event.response_data.data.id,
                         type: 'patient'
                     });
-
-                    console.log(createPatientSessionResponse, 'createPatientSessionResponse');
-                    console.log(event.response_data, 'event.response_data');
-                    console.log(params.platform, 'params.platform');
 
                     if (createPatientSessionResponse.success) {
                         $.event.trigger({
@@ -946,8 +935,6 @@ if (typeof jQuery == 'undefined') {
                     return false;
                 }
 
-                console.log(params, 'params');
-
                 if (hasOwnProperty.call(params, 'environment') && params.environment == 'staging') {
                     apiDomain = 'https://dev-api.dentacoin.com';
                     dcnLibsDomain = 'https://dev.dentacoin.com';
@@ -1037,7 +1024,6 @@ if (typeof jQuery == 'undefined') {
 
                     // if trying to reach civic from mobile phone
                     if (getParams.hasOwnProperty('uuid') && !loadedCivicLib) {
-                        console.log('init civic lib for mobile civic');
                         loadedCivicLib = true;
                         await $.getScript(dcnLibsDomain + '/assets/libs/civic-login/civic-combined-login.js?v='+new Date().getTime(), function() {});
                     }
@@ -1250,9 +1236,7 @@ if (typeof jQuery == 'undefined') {
                                     dcnGateway.utils.showLoader('Receiving your details from Facebook...');
                                 });
 
-                                console.log('=================== falseSoftwareVersion inited ===================');
                                 $(document).on('falseSoftwareVersion', function (event) {
-                                    console.log('falseSoftwareVersion');
                                     dcnGateway.utils.hideLoader();
                                     dcnGateway.utils.showPopup('Something went wrong, please update your software version. If the problem still appears, please contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                 });

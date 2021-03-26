@@ -38,7 +38,6 @@
         };
     }
 
-    console.log(civicSipObject, 'civicSipObject');
     var civicSip = new civic.sip(civicSipObject);
 
     //bind click event for the civic button
@@ -82,13 +81,9 @@
         var jwtToken = event.response;
         civicApiVersion = event.clientVersion;
 
-        console.log(event, 'event');
-
         var get_params = civicCombinedLogin.utils.getGETParameters();
         if (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && civicCombinedLogin.utils.property_exists(get_params, 'auth_type')) {
             // running civic from mobile application
-
-            console.log(get_params, 'get_params');
             if (get_params.environment_type == 'civic-from-mobile-app') {
                 if (civicCombinedLogin.utils.property_exists(get_params, 'dev')) {
                     if (get_params.auth_type == 'login') {
@@ -270,10 +265,6 @@
                         type: 'patient'
                     };
 
-                    console.log('===================== TEST ====================');
-                    console.log(civicCombinedLogin.utils.property_exists(get_params, 'environment_type'), 'civicCombinedLogin.utils.property_exists(get_params, \'environment_type\')');
-                    console.log(get_params.environment_type == 'civic-from-mobile-app', 'get_params.environment_type == \'civic-from-mobile-app\')');
-
                     if (redirectedFromCivicApp || (civicCombinedLogin.utils.property_exists(get_params, 'environment_type') && get_params.environment_type == 'civic-from-mobile-app')) {
                         loginRegisterData.redirectedFromCivicApp = true;
                     }
@@ -297,8 +288,6 @@
                         }
                         loginRegisterData.platform = currentPlatform;
                     }
-
-                    console.log(currentPlatform, 'Civic lib - currentPlatform');
 
                     if (typeof(dcnGateway) != 'undefined') {
                         if (dcnGateway.utils.cookies.get('first_test') != '') {
@@ -334,7 +323,6 @@
                             dataType: 'json',
                             data: loginRegisterData,
                             success: async function(data) {
-                                console.log(data, 'data');
                                 if (data.success) {
                                     if (data.deleted) {
                                         if (currentPlatform != undefined) {
@@ -452,11 +440,6 @@
 var civicCombinedLogin = {
     utils: {
         customCivicEvent: function(type, message, response_data, event_type) {
-            console.log(type, 'type');
-            console.log(message, 'message');
-            console.log(response_data, 'response_data');
-            console.log(event_type, 'event_type');
-
             if (event_type == 'vanilla-js-event') {
                 var event_obj = {
                     message: message,
@@ -492,7 +475,6 @@ var civicCombinedLogin = {
                     event_obj.response_data = response_data;
                 }
 
-                console.log(event_obj, 'event_obj');
                 $.event.trigger(event_obj);
             }
         },

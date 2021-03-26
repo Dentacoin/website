@@ -10,7 +10,6 @@ $('body').on('click', '.apple-custom-btn', function() {
             return false;
         }
 
-        console.log(this_btn.hasClass('mobile-app'), 'this_btn.hasClass(\'mobile-app\')');
         if (this_btn.hasClass('mobile-app')) {
             // mobile app
 
@@ -63,20 +62,16 @@ $('body').on('click', '.apple-custom-btn', function() {
                     is_dcn_hub_app = false;
                 }
 
-                console.log(clientId, 'clientId');
-
                 var appleParams = {
                     clientId: clientId,
                     scope: 'name email',
                     redirectURI: redirectURI,
                     usePopup : true
                 };
-                console.log(appleParams, 'appleParams');
 
                 AppleID.auth.init(appleParams);
 
                 try {
-                    console.log('Fire appleID');
                     const data = await AppleID.auth.signIn();
 
                     proceedWithAppleLogin(data.authorization.id_token, this_btn, 'desktop', eventType, is_dcn_hub_app);
@@ -132,7 +127,6 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
         url: this_btn.attr('data-url'),
         data: register_data,
         success: function(data) {
-            console.log(data, 'data');
             if (data.success) {
                 if (data.deleted) {
                     var redirectUrl;
@@ -231,7 +225,6 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
 
 //custom function for firing events
 function customAppleEvent(type, message, response_data, event_type, vanilla_js_event) {
-    console.log(vanilla_js_event, 'customAppleEvent');
     if ((event_type != undefined && event_type == 'mobile') || vanilla_js_event) {
         var event_obj = {
             message: message,
@@ -259,7 +252,6 @@ function customAppleEvent(type, message, response_data, event_type, vanilla_js_e
             event_obj.response_data = response_data;
         }
 
-        console.log(event_obj, 'event_obj');
         $.event.trigger(event_obj);
     }
 }

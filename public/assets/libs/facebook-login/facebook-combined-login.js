@@ -203,7 +203,7 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
         //}, 5000);
     } else {
         console.log('noExternalLoginProviderConnection');
-        customCivicEvent('noExternalLoginProviderConnection', 'Request to Facebook failed while exchanging token for data.', null, type);
+        customFacebookEvent('noExternalLoginProviderConnection', 'Request to Facebook failed while exchanging token for data.', null, type);
     }
 }
 

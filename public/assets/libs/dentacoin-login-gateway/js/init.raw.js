@@ -106,7 +106,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: apiDomain + '/api/check-email',
+                        url: apiDomain + '/api/check-email/',
                         dataType: 'json',
                         data: data
                     });
@@ -121,7 +121,7 @@ if (typeof jQuery == 'undefined') {
 
                     var ajaxCall = await $.ajax({
                         type: 'POST',
-                        url: apiDomain + '/api/claim-email',
+                        url: apiDomain + '/api/claim-email/',
                         dataType: 'json',
                         data: data
                     });

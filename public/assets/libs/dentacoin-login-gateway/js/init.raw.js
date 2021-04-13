@@ -1647,14 +1647,14 @@ if (typeof jQuery == 'undefined') {
                                     $('.step.fourth .custom-upload-avatar').click(function() {
                                         $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').find('.error-handle').remove();
                                         if (dcnGateway.utils.getMobileOperatingSystem() == 'Android') {
-                                            dcnGateway.utils.androidFileUpload(function (file) {
+                                            dcnGateway.utils.androidFileUpload(function (file, file_uri) {
                                                 console.log('androidFileUpload');
-                                                hybridAppFileUpload(file);
+                                                hybridAppFileUpload(file, file_uri);
                                             });
                                         } else if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
-                                            dcnGateway.utils.iOSFileUpload(function (file) {
+                                            dcnGateway.utils.iOSFileUpload(function (file, file_uri) {
                                                 console.log('iOSFileUpload');
-                                                hybridAppFileUpload(file);
+                                                hybridAppFileUpload(file, file_uri);
                                             });
                                         }
                                     });

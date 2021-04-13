@@ -865,7 +865,12 @@ if (typeof jQuery == 'undefined') {
                         console.log(finalPath, 'finalPath');
                         window.resolveLocalFileSystemURL(finalPath, function (entry) {
                             console.log(entry, 'entry');
-                            callback(entry);
+                            entry.file(function (file) {
+                                console.log(file, 'file1');
+                                callback(file);
+                            }, function (err) {
+                                failNative();
+                            });
                             /*window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function (rootEntry) {
                                 console.log(rootEntry, 'rootEntry');
                                 //checking external storage

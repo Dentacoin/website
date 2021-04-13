@@ -857,8 +857,10 @@ if (typeof jQuery == 'undefined') {
             },
             androidFileUpload: function(callback) {
                 fileChooser.open(function (file_uri) {
-                    console.log(file_uri, 'file_uri');
-                    window.FilePath.resolveNativePath(file_uri, successNative, failNative);
+                    console.log(file_uri, 'file_uri', 'TEST');
+
+                    callback(file_uri);
+                    /*window.FilePath.resolveNativePath(file_uri, successNative, failNative);
 
                     function successNative(finalPath) {
                         console.log(finalPath, 'finalPath');
@@ -891,7 +893,7 @@ if (typeof jQuery == 'undefined') {
                                 });
                             });
                         });
-                    }
+                    }*/
 
                     function failNative(e) {
                         alert('Something went wrong with uploading your file. Please contact admin@dentacoin.com.');

@@ -858,26 +858,19 @@ if (typeof jQuery == 'undefined') {
             androidFileUpload: function(callback) {
                 fileChooser.open(function (file_uri) {
                     console.log(file_uri, 'file_uri');
-
                     window.FilePath.resolveNativePath(file_uri, successNative, failNative);
 
                     function successNative(finalPath) {
                         console.log(finalPath, 'finalPath');
                         window.resolveLocalFileSystemURL(finalPath, function (entry) {
                             console.log(entry, 'entry');
-                            entry.file(function (file) {
-                                console.log(file, 'file1');
-                                callback(file);
-                            }, function (err) {
-                                failNative();
-                            });
-                            /*window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function (rootEntry) {
+                            window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function (rootEntry) {
                                 console.log(rootEntry, 'rootEntry');
                                 //checking external storage
                                 rootEntry.getFile(decodeURIComponent(entry.fullPath), {create: false}, function (fileEntry) {
                                     console.log(fileEntry, 'fileEntry');
                                     fileEntry.file(function (file) {
-                                        callback(file);
+                                        callback(file, file_uri);
                                     }, function (err) {
                                         failNative();
                                     });
@@ -889,14 +882,14 @@ if (typeof jQuery == 'undefined') {
                                             console.log(fileEntry, 'fileEntry2');
                                             fileEntry.file(function (file) {
                                                 console.log(file, 'file2');
-                                                callback(file);
+                                                callback(file, file_uri);
                                             }, function (err) {
                                                 failNative();
                                             });
                                         });
                                     });
                                 });
-                            });*/
+                            });
                         });
                     }
 
@@ -907,6 +900,7 @@ if (typeof jQuery == 'undefined') {
             },
             iOSFileUpload: function(callback) {
                 FilePicker.pickFile(function (path) {
+                    console.log(path, 'path');
                     var fileDir = cordova.file.tempDirectory.replace('file://', '');
                     var fileName = path.replace(fileDir, '');
 
@@ -914,7 +908,7 @@ if (typeof jQuery == 'undefined') {
                         console.log(rootEntry, 'rootEntry');
                         rootEntry.getFile(fileName, {create: false}, function (fileEntry) {
                             fileEntry.file(function (file) {
-                                callback(file);
+                                callback(file, path);
                             });
                         }, function (err) {
                             alert('Something went wrong with reading your cached file (Core error 2). Please contact admin@dentacoin.com.');
@@ -1665,8 +1659,9 @@ if (typeof jQuery == 'undefined') {
                                         }
                                     });
 
-                                    function hybridAppFileUpload(file) {
+                                    function hybridAppFileUpload(file, file_uri) {
                                         console.log(file, 'file');
+                                        console.log(file_uri, 'file_uri');
                                         if (2 < dcnGateway.utils.bytesToMegabytes(file.size)) {
                                             $('.gateway-avatar.module').append('<div class="error-handle task-error">The file you selected is large. Max size: 2MB.</div>');
                                             return false;
@@ -1721,10 +1716,8 @@ if (typeof jQuery == 'undefined') {
 
                                                     $('.gateway-avatar.module .btn-wrapper').hide();
 
-                                                    console.log(file.localURL, 'file.localURL');
-
                                                     gateway_croppie_instance.croppie('bind', {
-                                                        url: file.localURL,
+                                                        url: file_uri,
                                                         zoom: 1
                                                     });
 

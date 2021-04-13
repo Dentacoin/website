@@ -858,15 +858,15 @@ if (typeof jQuery == 'undefined') {
             androidFileUpload: function(callback) {
                 fileChooser.open(function (file_uri) {
                     console.log(file_uri, 'file_uri');
-                    
+
                     window.FilePath.resolveNativePath(file_uri, successNative, failNative);
 
                     function successNative(finalPath) {
                         console.log(finalPath, 'finalPath');
-                        callback(finalPath);
-                        /*window.resolveLocalFileSystemURL(finalPath, function (entry) {
+                        window.resolveLocalFileSystemURL(finalPath, function (entry) {
                             console.log(entry, 'entry');
-                            window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function (rootEntry) {
+                            callback(entry);
+                            /*window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function (rootEntry) {
                                 console.log(rootEntry, 'rootEntry');
                                 //checking external storage
                                 rootEntry.getFile(decodeURIComponent(entry.fullPath), {create: false}, function (fileEntry) {
@@ -891,8 +891,8 @@ if (typeof jQuery == 'undefined') {
                                         });
                                     });
                                 });
-                            });
-                        });*/
+                            });*/
+                        });
                     }
 
                     function failNative(e) {

@@ -42,9 +42,9 @@
                 <div class="padding-bottom-10">
                     <a href="javascript:void(0)" class="civic-custom-btn type-register social-login-btn @if (!empty($mobile_app)) mobile-app @endif calibri-regular dentacoin-login-gateway-fs-20" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-civic') }}</a>
                 </div>
-                <div>
+                {{--<div>
                     <a href="javascript:void(0)" class="apple-custom-btn type-register social-login-btn custom-hide @if (!empty($mobile_app)) mobile-app @endif calibri-regular dentacoin-login-gateway-fs-20" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="" @if(isset($inviter)) data-inviter="{{$inviter}}" @endif @if(isset($inviteid)) data-inviteid="{{$inviteid}}" @endif custom-stopper="true">{{ __('login-register.continue-with-apple') }}</a>
-                </div>
+                </div>--}}
                 <div class="padding-top-20">
                     <div class="custom-checkbox-style">
                         <input type="checkbox" class="custom-checkbox-input" id="agree-over-eighteen"/>

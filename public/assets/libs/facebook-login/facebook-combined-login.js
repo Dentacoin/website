@@ -74,6 +74,9 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 });
 
 function proceedWithFacebookLogin(response, this_btn, type, event_type) {
+    console.log(response.authResponse, 'response.authResponse');
+    console.log(response.status, 'response.status');
+
     if (response.authResponse && response.status == 'connected') {
         //fbGetData();
 

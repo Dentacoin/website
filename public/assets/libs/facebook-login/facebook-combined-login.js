@@ -57,7 +57,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
                         appId: fb_config.app_id,
                         cookie: true,
                         xfbml: true,
-                        version: 'v10'
+                        version: 'v2.8'
                     });
                 };
 

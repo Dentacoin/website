@@ -29,6 +29,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 
                 openFB.login(
                     function(response) {
+                        console.log(response, 'response');
                         proceedWithFacebookLogin(response, this_btn, 'mobile');
                     },
                     obj
@@ -61,6 +62,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
                 };
 
                 FB.login(function (response) {
+                    console.log(response, 'response');
                     // class vanilla-js-event is used when we are using the facebook combined login library without going thru the Dentacoin gateway
                     if (this_btn.hasClass('vanilla-js-event')) {
                         proceedWithFacebookLogin(response, this_btn, 'desktop', 'vanilla-js-event');

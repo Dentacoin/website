@@ -17,7 +17,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 
         var obj = {
             //scope: 'email,first_name,last_name,user_gender,user_birthday,user_location'
-            scope: 'email,public_profile',
+            scope: 'email',
             auth_type: 'rerequest'
         };
 

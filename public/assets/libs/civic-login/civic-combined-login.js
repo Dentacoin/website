@@ -210,6 +210,7 @@
                         }
                     },
                     error: function (ret) {
+                        console.log(ret, 'ret');
                         civicCombinedLogin.utils.customCivicEvent('noExternalLoginProviderConnection', null, null, 'event-from-iframe-to-parent');
                     }
                 });
@@ -417,6 +418,7 @@
                 }
             },
             error: function (ret) {
+                console.log(ret, 'ret');
                 civicCombinedLogin.utils.customCivicEvent('noExternalLoginProviderConnection', 'Request to Civic NodeJS API failed while exchanging token for data.', undefined, civic_event_type);
             }
         });

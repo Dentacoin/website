@@ -56,8 +56,7 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
                     FB.init({
                         appId: fb_config.app_id,
                         cookie: true,
-                        xfbml: true,
-                        version: 'v2.8'
+                        xfbml: true
                     });
                 };
 

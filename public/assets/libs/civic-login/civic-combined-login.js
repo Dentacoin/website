@@ -87,15 +87,15 @@
             if (get_params.environment_type == 'civic-from-mobile-app') {
                 if (civicCombinedLogin.utils.property_exists(get_params, 'dev')) {
                     if (get_params.auth_type == 'login') {
-                        civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login/';
+                        civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login';
                     } else if (get_params.auth_type == 'register') {
-                        civicAjaxUrl = 'https://dev-api.dentacoin.com/api/register/';
+                        civicAjaxUrl = 'https://dev-api.dentacoin.com/api/register';
                     }
                 } else {
                     if (get_params.auth_type == 'login') {
-                        civicAjaxUrl = 'https://api.dentacoin.com/api/login/';
+                        civicAjaxUrl = 'https://api.dentacoin.com/api/login';
                     } else if (get_params.auth_type == 'register') {
-                        civicAjaxUrl = 'https://api.dentacoin.com/api/register/';
+                        civicAjaxUrl = 'https://api.dentacoin.com/api/register';
                     }
                 }
 
@@ -222,9 +222,9 @@
 
                 // overriding civicAjaxUrl is civic library is called from one of the DEV environments
                 if (location.hostname == 'dev.dentacoin.com' || location.hostname == 'urgent.dentavox.dentacoin.com' || location.hostname == 'urgent.reviews.dentacoin.com') {
-                    civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login/';
+                    civicAjaxUrl = 'https://dev-api.dentacoin.com/api/login';
                 } else {
-                    civicAjaxUrl = 'https://api.dentacoin.com/api/login/';
+                    civicAjaxUrl = 'https://api.dentacoin.com/api/login';
                 }
 
                 proceedWithDentacoinAuth(jwtToken, true);

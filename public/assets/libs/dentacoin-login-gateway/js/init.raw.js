@@ -1371,7 +1371,7 @@ if (typeof jQuery == 'undefined') {
 
                                 $(document).on('noExternalLoginProviderConnection', function (event) {
                                     dcnGateway.utils.hideLoader();
-                                    dcnGateway.utils.showPopup('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
+                                    dcnGateway.utils.showPopup('Please first go to <a href="https://www.facebook.com/" target="_blank">https://www.facebook.com/</a> and login. Then, come back to our tools to proceed with signing in your account. If the problem still exists please contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.', 'alert');
                                 });
 
                                 $(document).on('civicSipError', function (event) {

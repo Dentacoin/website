@@ -105,7 +105,7 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
         register_data.country_id = JSON.parse(decodeURIComponent(getCookie('first_test')))['location'];
     }
 
-    if (this_btn.hasClass('type-register') && this_btn.attr('data-inviter') == undefined && this_btn.attr('data-inviteid') == undefined) {
+    if (this_btn.hasClass('type-register') && !this_btn.hasClass('is-dv-app') && this_btn.attr('data-inviter') == undefined && this_btn.attr('data-inviteid') == undefined) {
         hideDcnGatewayLoader();
         customAppleEvent('patientAuthErrorResponse', 'Request to CoreDB-API succeed, but conditions failed.', {success: false, errors: {cannotRegisterWithoutInvite: 'Registration without invite is not possible.'}}, type, event_type);
 

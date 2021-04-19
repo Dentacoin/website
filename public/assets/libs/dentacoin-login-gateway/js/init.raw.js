@@ -400,13 +400,13 @@ if (typeof jQuery == 'undefined') {
                         buttonHtml = '<button class="platform-button gateway-platform-background-color cancel-custom-popup open-dentacoin-gateway patient-login">LOG IN</button>';
                     }
 
-                    $('body').append('<div class="dentacoin-login-gateway-container popup"><div class="dentacoin-login-gateway-wrapper dcn-gateway-popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons">'+buttonHtml+'</div></div></div>');
+                    $('body').append('<div class="dentacoin-login-gateway-container dcn-popup"><div class="dentacoin-login-gateway-wrapper dcn-gateway-popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons">'+buttonHtml+'</div></div></div>');
 
                     $('.cancel-custom-popup').click(function() {
                         $(this).closest('.dentacoin-login-gateway-container').remove();
                     });
                 } else if (type == 'warning') {
-                    $('body').append('<div class="dentacoin-login-gateway-container popup"><div class="dentacoin-login-gateway-wrapper dcn-gateway-popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button proceed-custom-popup green-button">YES</button><button class="platform-button cancel-custom-popup red-button">NO</button></div></div></div>');
+                    $('body').append('<div class="dentacoin-login-gateway-container dcn-popup"><div class="dentacoin-login-gateway-wrapper dcn-gateway-popup dentacoin-login-gateway-fs-18">'+message+'<div class="popup-buttons"><button class="platform-button proceed-custom-popup green-button">YES</button><button class="platform-button cancel-custom-popup red-button">NO</button></div></div></div>');
 
 
                     $('.proceed-custom-popup').click(function() {
@@ -469,7 +469,7 @@ if (typeof jQuery == 'undefined') {
                         }
                     });
                 } else if (type == 'forbidden-civic-warning') {
-                    $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container popup"><div class="dentacoin-login-gateway-wrapper forbidden-civic-warning">'+message+'</div></div>');
+                    $('body').addClass('dentacoin-login-gateway-overflow-hidden').append('<div class="dentacoin-login-gateway-container dcn-popup"><div class="dentacoin-login-gateway-wrapper forbidden-civic-warning">'+message+'</div></div>');
                 }
             },
             bytesToMegabytes: function(bytes) {

@@ -484,12 +484,12 @@
     z-index: 9999;
     overflow: auto;
     font-family: "Calibri-Regular";
-    &.popup {
+    &.dcn-popup {
         a {
             text-decoration: underline;
             font-weight: bold;
         }
-    }
+    }  
     ul, li, ol {
         margin: 0;
         padding: 0;

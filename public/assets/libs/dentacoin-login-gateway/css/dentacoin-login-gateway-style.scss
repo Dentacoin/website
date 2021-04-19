@@ -312,7 +312,7 @@
 .social-login-btn.civic-custom-btn, .social-login-btn.civic-style {
     background-image: url(/assets/images/civic.svg);
     border: 1px solid #3bb03f;
-    color: black !important; 
+    color: black !important;
     &:hover, &:active, &:visited, &:focus {
         color: black !important;
     }
@@ -484,9 +484,11 @@
     z-index: 9999;
     overflow: auto;
     font-family: "Calibri-Regular";
-    .open-dentacoin-gateway {
-        text-decoration: underline;
-        font-weight: bold;
+    &.popup {
+        a {
+            text-decoration: underline;
+            font-weight: bold;
+        }
     }
     ul, li, ol {
         margin: 0;

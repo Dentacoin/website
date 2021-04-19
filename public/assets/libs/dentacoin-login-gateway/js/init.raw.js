@@ -810,13 +810,14 @@ if (typeof jQuery == 'undefined') {
                 if (removeEvents != undefined && removeEvents == true) {
                     // reset the event listeners
                     $(document).off('civicCustomBtnClicked');
+                    $(document).off('facebookCustomBtnClicked');
+                    $(document).off('appleCustomBtnClicked');
                     $(document).off('civicRead');
                     $(document).off('hideGateway');
                     $(document).off('hideGatewayLoader');
                     /*$(document).off('CivicLegacyAppForbiddenLogging');*/
                     $(document).off('CivicLegacyAppForbiddenRegistrations');
                     $(document).off('receivedFacebookToken');
-                    $(document).off('facebookCustomBtnClicked');
                     $(document).off('cannotLoginBecauseOfMissingCookies');
                     $(document).off('noUserIdReceived');
                     $(document).off('noCoreDBApiConnection');
@@ -1255,6 +1256,11 @@ if (typeof jQuery == 'undefined') {
                                 });
 
                                 $(document).on('facebookCustomBtnClicked', function (event) {
+                                    $('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder').html('');
+                                });
+
+
+                                $(document).on('appleCustomBtnClicked', function (event) {
                                     $('.dentacoin-login-gateway-container .patient .form-register .step-errors-holder').html('');
                                 });
 

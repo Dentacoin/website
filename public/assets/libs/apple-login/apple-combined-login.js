@@ -4,6 +4,8 @@ $('body').on('click', '.apple-custom-btn', function() {
     } else {
         var this_btn = $(this);
 
+        customFacebookEvent('appleCustomBtnClicked', 'Button #apple-custom-btn was clicked.');
+
         //based on some logic and conditions you can add or remove this attribute, if custom-stopped="true" the apple login won't proceed
         if ($(this).attr('custom-stopper') && $(this).attr('custom-stopper') == 'true') {
             customAppleEvent('customCivicFbStopperTriggered', '');

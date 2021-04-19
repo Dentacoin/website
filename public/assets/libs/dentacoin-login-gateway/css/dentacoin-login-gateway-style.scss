@@ -312,17 +312,18 @@
 .social-login-btn.civic-custom-btn, .social-login-btn.civic-style {
     background-image: url(/assets/images/civic.svg);
     border: 1px solid #3bb03f;
+    color: black !important; 
     &:hover, &:active, &:visited, &:focus {
-        color: black;
+        color: black !important;
     }
 }
 
 .social-login-btn.facebook-custom-btn {
     background-color: #4267B2;
     background-image: url(/assets/images/facebook-icon.svg);
-    color: white;
+    color: white !important;
     &:hover, &:active, &:visited, &:focus {
-        color: white;
+        color: white !important;
     }
     @include breakpoint($md) {
         &:hover {
@@ -334,8 +335,11 @@
 .social-login-btn.apple-custom-btn {
     background-color: black;
     background-image: url(/assets/images/apple-icon.svg);
-    color: white;
+    color: white !important;
     background-size: 25px auto;
+    &:hover, &:active, &:visited, &:focus {
+        color: white !important;
+    }
     @include breakpoint($md) {
         &:hover {
             color: white;

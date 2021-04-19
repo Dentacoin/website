@@ -122,8 +122,8 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
         }
     }
 
-    if (this_btn.attr('data-unique-device-id') != undefined) {
-        register_data.uniqueDeviceId = this_btn.attr('data-unique-device-id');
+    if (window.localStorage.getItem('uniqueDeviceId') != null) {
+        register_data.uniqueDeviceId = window.localStorage.getItem('uniqueDeviceId');
     }
 
     //exchanging the token for user data

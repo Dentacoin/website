@@ -17,6 +17,18 @@ if (typeof jQuery == 'undefined') {
     var initCivicEvents = true;
     var googleKey = 'AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk';
     var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
+
+    // setup uniqueDeviceId
+    var uniqueDeviceId;
+    document.addEventListener('deviceready', function () {
+        if (hasOwnProperty.call(window.plugins, 'recaptcha')) {
+            uniqueDeviceId = device.uuid;
+            console.log(uniqueDeviceId, 'uniqueDeviceId');
+        } else {
+            console.error('Missing cordova plugin cordova-plugin-device.')
+        }
+    }, false);
+
     var dcnGateway = {
         dcnGatewayRequests: {
             getPlatformsData: async function(callback) {
@@ -1101,7 +1113,7 @@ if (typeof jQuery == 'undefined') {
 
                                 if (loadedFromMobileApp && dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                     if ($('.apple-custom-btn.social-login-btn').length) {
-                                        $('.apple-custom-btn.social-login-btn').removeClass('custom-hide');
+                                        $('.apple-custom-btn.social-login-btn').removeClass('custom-hide').attr('data-unique-device-id', uniqueDeviceId);
                                     }
                                 }
 

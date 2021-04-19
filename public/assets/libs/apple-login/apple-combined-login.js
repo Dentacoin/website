@@ -120,6 +120,10 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
         }
     }
 
+    if (this_btn.attr('data-unique-device-id') != undefined) {
+        register_data.uniqueDeviceId = this_btn.attr('data-unique-device-id');
+    }
+
     //exchanging the token for user data
     $.ajax({
         type: 'POST',

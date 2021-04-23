@@ -38,7 +38,7 @@ class PressCenterController extends Controller
     }
 
     protected function getPopupView()   {
-        $view = view('partials/media-inquiries-popup', ['footer_data' => $this->getFooterData()]);
+        $view = view('partials/media-inquiries-popup');
         $view = $view->render();
         return response()->json(['success' => $view]);
     }

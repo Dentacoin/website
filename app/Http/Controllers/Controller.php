@@ -307,7 +307,7 @@ class Controller extends BaseController
                 return json_encode($applications);
                 break;
             case 'exchanges':
-                $exchanges = DB::connection('mysql')->table('available_buying_options')->select('available_buying_options.title', 'available_buying_options.link')->where(array('type' => 'exchange-platforms'))->get()->orderBy('order_id')->toArray();
+                $exchanges = DB::connection('mysql')->table('available_buying_options')->select('available_buying_options.title', 'available_buying_options.link')->where(array('type' => 'exchange-platforms'))->orderByRaw('available_buying_options.order_id ASC')->get()->toArray();
                 return json_encode($exchanges);
                 break;
             case 'platforms':

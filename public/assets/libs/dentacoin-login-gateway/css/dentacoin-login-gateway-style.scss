@@ -762,6 +762,7 @@
         width: 80px;
         border: 0;
         background: transparent;
+        font-size: 0;
         img {
             width: 75%;
             @include rounded(50%);

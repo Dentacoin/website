@@ -585,9 +585,66 @@ if (typeof jQuery == 'undefined') {
                                 }
                             }
 
-                            miniHubHtml += '</div></div></div><div class="hidden-box-footer"><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'">My Account</a></div></div></div></div>';
+                            miniHubHtml += '</div></div></div>';
+
+                            var branchesHtml = '';
+                            // load branches logic for clinics, currently visible only on TRP
+                            if (params.platform == 'trusted-reviews') {
+                                if ($('#add-branches-popup-link').length) {
+                                    var branches;
+                                    if ($('#clinic-branches').val()) {
+                                        var jsonBranches = JSON.parse($('#clinic-branches').val());
+                                        if (Object.keys(jsonBranches).length) {
+                                            branches = jsonBranches;
+                                        }
+                                    }
+
+                                    branchesHtml += '<div class="branches-container" style="display: none">';
+                                    if (branches != undefined) {
+                                        branchesHtml += '<ul class="branches-list">';
+                                        for (var key of Object.keys(branches)) {
+                                            console.log(key);
+                                            console.log(branches[key].avatar);
+                                            console.log(branches[key].name);
+                                            console.log(branches[key].notification);
+                                            branchesHtml += '<li class="' + (branches[key].notification ? 'notification' : '') + '"><a href="javascript:void(0);" class="switch-to-branch" data-id="'+key+'"><div class="img"></div><span class="text"></span><span class="switch-icon"></span></a></li>';
+                                        }
+                                        branchesHtml += '</ul>';
+                                    }
+                                    branchesHtml += '<div><a href="'+$('#add-branches-popup-link').val()+'" class="add-new-branch" target="_blank"><img src="https://dentacoin.com/assets/libs/dentacoin-package/assets/add-new-icon.svg" alt="Add icon"/> <span>Add another branch</span></a></div><div class="line"><hr/></div></div>';
+                                }
+                            }
+
+                            miniHubHtml += branchesHtml;
+                            miniHubHtml += '<div class="hidden-box-footer"><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'">My Account</a></div></div></div></div>';
 
                             jQuery('body').append(miniHubHtml);
+
+                            if ($('.switch-to-branch').length) {
+                                $('.switch-to-branch').click(function() {
+                                    var thisBtn = $(this);
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: 'https://reviews.dentacoin.com/en/loginas/',
+                                        data: {
+                                            'branch_id' : thisBtn.attr('data-id')
+                                        },
+                                        dataType: 'json',
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        success: function (response) {
+                                            console.log(response, 'response');
+                                            if (response.success) {
+
+                                            } else if (response.error) {
+
+                                            }
+                                        }
+                                    });
+                                });
+                            }
+
                             playApplicationsAnimation();
 
                             jQuery(document).on('click', '.go-back', function() {

@@ -144,21 +144,21 @@
                             -o-transition: .3s;
                             -ms-transition: .3s;
                             transition: .3s;
-                            padding: 10px 35px;
-                            font-size: 0;
+                            padding: 5px 35px;
+                            font-size: 0;  
                             display: block;
                             .img, .text, .switch-icon {
                                 display: inline-block;
                                 vertical-align: middle;
                             }
                             .img {
-                                width: 50px;
+                                width: 40px;
                                 img {
                                     max-width: 100%;
                                 }
                             }
                             .text {
-                                width: calc(100% - 90px);
+                                width: calc(100% - 80px);
                                 padding-left: 20px;
                                 padding-right: 15px;
                                 font-size: 18px;
@@ -169,7 +169,7 @@
                                 background-image: url('https://dentacoin.com/assets/libs/dentacoin-package/assets/switch-acc.svg');
                                 background-position: center center;
                                 background-repeat: no-repeat;
-                                background-size: cover;
+                                background-size: auto 100%;
                             }
                         }
                         &.notification {
@@ -211,7 +211,7 @@
                 -o-transition: .3s;
                 -ms-transition: .3s;
                 transition: .3s;
-                padding: 10px 35px;
+                padding: 5px 35px;
                 display: block;
                 img {
                     margin-right: 20px;
@@ -232,7 +232,7 @@
             .line {
                 padding-left: 35px;
                 padding-right: 35px;
-                margin-top: 15px;
+                margin-top: 10px;
                 hr {
                     border: 0;
                     border-bottom: 1px solid #e1e1e1;

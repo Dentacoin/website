@@ -599,7 +599,7 @@ if (typeof jQuery == 'undefined') {
                                         }
                                     }
 
-                                    branchesHtml += '<div class="branches-container" style="display: none">';
+                                    branchesHtml += '<div class="branches-container">';
                                     if (branches != undefined) {
                                         branchesHtml += '<div class="branches-list"><ul>';
                                         for (var key of Object.keys(branches)) {

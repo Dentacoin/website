@@ -133,6 +133,7 @@
             }
         }
         .branches-container {
+            background-color: white;
             .branches-list {
                 max-height: 125px;
                 overflow-y: auto;
@@ -238,6 +239,7 @@
                 padding-right: 35px;
                 margin-top: 10px;
                 hr {
+                    margin: 0;
                     border: 0;
                     border-bottom: 1px solid #e1e1e1;
                 }

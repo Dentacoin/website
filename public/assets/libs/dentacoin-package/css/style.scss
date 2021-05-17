@@ -134,63 +134,68 @@
         }
         .branches-container {
             .branches-list {
-                li {
-                    a {
-                        -webkit-transition: .3s;
-                        -moz-transition: .3s;
-                        -o-transition: .3s;
-                        -ms-transition: .3s;
-                        transition: .3s;
-                        padding: 10px 35px;
-                        font-size: 0;
-                        display: block;
-                        .img, .text, .switch-icon {
-                            display: inline-block;
-                            vertical-align: middle;
-                        }
-                        .img {
-                            width: 50px;
-                        }
-                        .text {
-                            width: calc(100% - 90px);
-                            padding-left: 20px;
-                            padding-right: 15px;
-                        }
-                        .switch-icon {
-                            width: 40px;
-                            height: 40px;
-                            background-image: url('https://dentacoin.com/assets/libs/dentacoin-package/assets/switch-acc.svg');
-                            background-position: center center;
-                            background-repeat: no-repeat;
-                            background-size: cover;
-                        }
-                    }
-                    &.notification {
+                max-height: 125px;
+                overflow-y: auto;
+                ul {
+                    li {
                         a {
+                            -webkit-transition: .3s;
+                            -moz-transition: .3s;
+                            -o-transition: .3s;
+                            -ms-transition: .3s;
+                            transition: .3s;
+                            padding: 10px 35px;
+                            font-size: 0;
+                            display: block;
+                            .img, .text, .switch-icon {
+                                display: inline-block;
+                                vertical-align: middle;
+                            }
                             .img {
-                                position: relative;
-                                &:after {
-                                    content: '';
-                                    width: 10px;
-                                    height: 10px;
-                                    background-color: red;
-                                    -webkit-border-radius: 50%;
-                                    -moz-border-radius: 50%;
-                                    -ms-border-radius: 50%;
-                                    border-radius: 50%;
-                                    position: absolute;
-                                    right: 0;
-                                    top: 5px;
+                                width: 50px;
+                            }
+                            .text {
+                                width: calc(100% - 90px);
+                                padding-left: 20px;
+                                padding-right: 15px;
+                                font-size: 18px;
+                            }
+                            .switch-icon {
+                                width: 40px;
+                                height: 40px;
+                                background-image: url('https://dentacoin.com/assets/libs/dentacoin-package/assets/switch-acc.svg');
+                                background-position: center center;
+                                background-repeat: no-repeat;
+                                background-size: cover;
+                            }
+                        }
+                        &.notification {
+                            a {
+                                .img {
+                                    position: relative;
+                                    &:after {
+                                        content: '';
+                                        width: 10px;
+                                        height: 10px;
+                                        background-color: red;
+                                        -webkit-border-radius: 50%;
+                                        -moz-border-radius: 50%;
+                                        -ms-border-radius: 50%;
+                                        border-radius: 50%;
+                                        position: absolute;
+                                        right: 0;
+                                        top: 5px;
+                                    }
                                 }
                             }
                         }
-                    }
-                    @media screen and (max-width: 1200px) {
-                        &:hover {
-                            a {
-                                background-color: #e9e9e9;
-                                .switch-icon {
-                                    background-image: url('https://dentacoin.com/assets/libs/dentacoin-package/assets/switch-acc-blue.svg');
+                        @media screen and (min-width: 1200px) {
+                            &:hover {
+                                a {
+                                    background-color: #e9e9e9;
+                                    .switch-icon {
+                                        background-image: url('https://dentacoin.com/assets/libs/dentacoin-package/assets/switch-acc-blue.svg');
+                                    }
                                 }
                             }
                         }
@@ -204,6 +209,7 @@
                 -ms-transition: .3s;
                 transition: .3s;
                 padding: 10px 35px;
+                display: block;
                 img {
                     margin-right: 20px;
                     vertical-align: middle;
@@ -211,10 +217,10 @@
                     width: 40px;
                 }
                 span {
-                    vertical-align: middle;
+                    vertical-align: middle; 
                     display: inline-block;
                 }
-                @media screen and (max-width: 1200px) {
+                @media screen and (min-width: 1200px) {
                     &:hover {
                         background-color: #e9e9e9;
                     }
@@ -224,6 +230,10 @@
                 padding-left: 35px;
                 padding-right: 35px;
                 margin-top: 15px;
+                hr {
+                    border: 0;
+                    border-bottom: 1px solid #e1e1e1;
+                }
             }
         }
         .hidden-box-footer {

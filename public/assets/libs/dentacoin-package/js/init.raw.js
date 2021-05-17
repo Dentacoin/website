@@ -601,15 +601,11 @@ if (typeof jQuery == 'undefined') {
 
                                     branchesHtml += '<div class="branches-container" style="display: none">';
                                     if (branches != undefined) {
-                                        branchesHtml += '<ul class="branches-list">';
+                                        branchesHtml += '<div class="branches-list"><ul>';
                                         for (var key of Object.keys(branches)) {
-                                            console.log(key);
-                                            console.log(branches[key].avatar);
-                                            console.log(branches[key].name);
-                                            console.log(branches[key].notification);
-                                            branchesHtml += '<li class="' + (branches[key].notification ? 'notification' : '') + '"><a href="javascript:void(0);" class="switch-to-branch" data-id="'+key+'"><div class="img"></div><span class="text"></span><span class="switch-icon"></span></a></li>';
+                                            branchesHtml += '<li class="' + (branches[key].notification ? 'notification' : '') + '"><a href="javascript:void(0);" class="switch-to-branch" data-id="'+key+'"><div class="img"><img src="'+branches[key].avatar+'" alt=""/></div><span class="text">'+branches[key].name+'</span><span class="switch-icon"></span></a></li>';
                                         }
-                                        branchesHtml += '</ul>';
+                                        branchesHtml += '</ul></div>';
                                     }
                                     branchesHtml += '<div><a href="'+$('#add-branches-popup-link').val()+'" class="add-new-branch" target="_blank"><img src="https://dentacoin.com/assets/libs/dentacoin-package/assets/add-new-icon.svg" alt="Add icon"/> <span>Add another branch</span></a></div><div class="line"><hr/></div></div>';
                                 }

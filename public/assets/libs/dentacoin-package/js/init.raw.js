@@ -603,6 +603,7 @@ if (typeof jQuery == 'undefined') {
                                     if (branches != undefined) {
                                         branchesHtml += '<div class="branches-list"><ul>';
                                         for (var key of Object.keys(branches)) {
+                                            console.log(branches[key].notification, 'branches[key].notification');
                                             branchesHtml += '<li class="' + (branches[key].notification ? 'notification' : '') + '"><a href="javascript:void(0);" class="switch-to-branch" data-id="'+key+'"><div class="img"><img src="'+branches[key].avatar+'" alt=""/></div><span class="text">'+branches[key].name+'</span><span class="switch-icon"></span></a></li>';
                                         }
                                         branchesHtml += '</ul></div>';
@@ -630,11 +631,10 @@ if (typeof jQuery == 'undefined') {
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         },
                                         success: function (response) {
-                                            console.log(response, 'response');
                                             if (response.success) {
-
+                                                window.location.reload();
                                             } else if (response.error) {
-
+                                                alert('Something went wrong with logging in, please try again a bit later. If the problem still appears please contact admin@dentacoin.com.');
                                             }
                                         }
                                     });

@@ -153,6 +153,9 @@
                             }
                             .img {
                                 width: 50px;
+                                img {
+                                    max-width: 100%;
+                                }
                             }
                             .text {
                                 width: calc(100% - 90px);
@@ -217,7 +220,7 @@
                     width: 40px;
                 }
                 span {
-                    vertical-align: middle; 
+                    vertical-align: middle;
                     display: inline-block;
                 }
                 @media screen and (min-width: 1200px) {

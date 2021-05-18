@@ -34,7 +34,7 @@ class ClaimDentacoin extends Controller
         }
     }
 
-    public function validateToothbrushzoneWithdraw(Request $request) {
+    /*public function validateToothbrushzoneWithdraw(Request $request) {
         $validator = Validator::make($request->all(), [
             'withdrawKey.required' => 'Key is required.',
             'walletAddress.required' => 'Wallet Address is required.',
@@ -63,5 +63,5 @@ class ClaimDentacoin extends Controller
 
         var_dump($resp);
         die('asd');
-    }
+    }*/
 }

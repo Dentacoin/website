@@ -94,6 +94,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::post('/check-captcha', 'UserController@checkCaptcha')->name('check-captcha');
 
     Route::post('/get-ip', 'Controller@getClientIpAsResponse')->name('get-ip');
+
     //======================================= REDIRECTS ========================================
 
     Route::get('partners', function() {
@@ -116,8 +117,16 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
         return Redirect::to('//wallet.dentacoin.com/');
     });
 
+    Route::get('corporate-design', function() {
+        return Redirect::to('/corporate-design/one-line-logo');
+    });
+
+    Route::get('holiday-calendar-2019', function() {
+        return Redirect::to('/holiday-calendar/2019');
+    });
+
     //redirecting old urls to homepage with popups opening
-    Route::get('dentacare-mobile-app-intro', function() {
+    /*Route::get('dentacare-mobile-app-intro', function() {
         return Redirect::to('/?application=dentacare-mobile-app-intro');
     });
 
@@ -159,15 +168,7 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('buy-dentacoin', function() {
         return Redirect::to('/?section=buy-dentacoin');
-    });
-
-    Route::get('corporate-design', function() {
-        return Redirect::to('/corporate-design/one-line-logo');
-    });
-
-    Route::get('holiday-calendar-2019', function() {
-        return Redirect::to('/holiday-calendar/2019');
-    });
+    });*/
 });
 
 Route::post('/get-holiday-calendar-participants', 'ChristmasCalendarController@getHolidayCalendarParticipants')->name('get-holiday-calendar-participants');

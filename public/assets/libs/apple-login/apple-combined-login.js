@@ -186,6 +186,17 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
                         window.location.replace(redirectUrl);
                     }
                     return false;
+                } else if (data.is_vpn) {
+                    customAppleEvent('hideLoader', '', null, type, event_type);
+                    var redirectUrl = 'https://account.dentacoin.com/vpn-block?platform=' + this_btn.attr('data-platform');
+
+                    if (type == 'mobile') {
+                        hideDcnGatewayLoader();
+                        window.open(redirectUrl);
+                    } else if (type == 'desktop') {
+                        window.location.replace(redirectUrl);
+                    }
+                    return false;
                 } else if (data.new_account) {
                     console.log('successfulApplePatientRegistration');
                     customAppleEvent('successfulApplePatientRegistration', '', null, type, event_type);

@@ -176,6 +176,21 @@
                                                 }
                                             }
                                             return false;
+                                        } else if (data.rejected_manual_verification) {
+                                            if (currentPlatform != undefined) {
+                                                civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id)}, 'event-from-iframe-to-parent');
+                                            } else {
+                                                civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id)}, 'event-from-iframe-to-parent');
+                                            }
+                                            return false;
+                                        } else if (data.is_vpn) {
+                                            if (currentPlatform != undefined) {
+                                                civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/vpn-block?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id)}, 'event-from-iframe-to-parent');
+                                            } else {
+                                                civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/vpn-block'}, 'event-from-iframe-to-parent');
+                                            }
+
+                                            return false;
                                         } else if (data.new_account) {
                                             civicCombinedLogin.utils.customCivicEvent('successfulCivicPatientRegistration', null, null, 'event-from-iframe-to-parent');
                                         } else {
@@ -372,6 +387,14 @@
                                         window.location.replace('https://account.dentacoin.com/blocked-account?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id));
                                     } else {
                                         window.location.replace('https://account.dentacoin.com/blocked-account?key=' + encodeURIComponent(data.data.encrypted_id));
+                                    }
+                                    return false;
+                                } else if (data.is_vpn) {
+                                    civicCombinedLogin.utils.customCivicEvent('hideLoader', '', null, civic_event_type);
+                                    if (currentPlatform != undefined) {
+                                        window.location.replace('https://account.dentacoin.com/vpn-block?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id));
+                                    } else {
+                                        window.location.replace('https://account.dentacoin.com/vpn-block');
                                     }
                                     return false;
                                 } else if (data.new_account) {

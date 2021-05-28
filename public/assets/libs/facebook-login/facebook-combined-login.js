@@ -164,6 +164,17 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
                             window.location.replace(redirectUrl);
                         }
                         return false;
+                    } else if (data.is_vpn) {
+                        customFacebookEvent('hideLoader', '', null, type, event_type);
+                        var redirectUrl = 'https://account.dentacoin.com/vpn-block?platform=' + this_btn.attr('data-platform');
+
+                        if (type == 'mobile') {
+                            hideDcnGatewayLoader();
+                            window.open(redirectUrl);
+                        } else if (type == 'desktop') {
+                            window.location.replace(redirectUrl);
+                        }
+                        return false;
                     } else if (data.new_account) {
                         console.log('successfulFacebookPatientRegistration');
                         customFacebookEvent('successfulFacebookPatientRegistration', '', null, type, event_type);

@@ -3,7 +3,7 @@ body.price {
     height: 100vh;
     .top-section {
         position: absolute;;
-        left: 0; 
+        left: 0;
         width: 100%;
         bottom: 25%;
         .dentacoin-logo {
@@ -26,5 +26,15 @@ body.price {
         left: 0;
         bottom: 0;
         border: 0;
+    }
+    @include breakpoint($lgll) {
+        .top-section {
+            bottom: 30%;
+            .dentacoin-logo {
+                img {
+                    max-width: 800px;
+                }
+            }
+        }
     }
 }

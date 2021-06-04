@@ -76,7 +76,7 @@
             <div class="inline-block"><img src="{{URL::asset('assets/images/' . $icon) }}" alt="{{$currencyLabel}} icon" class="width-100 max-width-130 margin-right-10 inline-block"/> <span class="inline-block">{{number_format(1000 * $price, 4, '.', "")}} {{$currencyLabel}}</span></div>
         </div>
     </section>
-    <footer class="text-center padding-top-50 padding-bottom-30 color-white">
+    <footer class="text-center padding-top-50 padding-bottom-30 color-white price-footer">
         <div class="fs-20 fs-lgll-30 lato-black padding-bottom-15">{{$accepted}}</div>
         <div class="fs-10 fs-lgll-14">© 2021 Dentacoin Foundation. All rights reserved.</div>
     </footer>

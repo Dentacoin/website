@@ -70,9 +70,9 @@
             <img src="{{URL::asset('assets/uploads/text-logo.svg') }}" alt="Dentacoin logo" itemprop="contentUrl"/>
         </figure>
         <h1 class="fs-66 fs-md-50 fs-lgll-90 padding-top-10 padding-bottom-65 padding-left-15 padding-right-15">{{$subtitle}}</h1>
-        <div class="shadowed-line padding-top-70 padding-bottom-70 lato-black fs-70 fs-lgll-92 padding-left-15 padding-right-15">
+        <div class="shadowed-line padding-top-70 padding-bottom-70 lato-black fs-70 fs-md-50 fs-lgll-92 padding-left-15 padding-right-15">
             <div class="inline-block"><img src="{{URL::asset('assets/images/dcn-icon.svg') }}" alt="DCN icon" class="width-100 max-width-130 margin-right-10 inline-block"/> <span class="inline-block">1000 DCN</span></div>
-            <div class="inline-block padding-left-15 padding-right-15">=</div>
+            <div class="inline-block padding-left-15 padding-right-15 delimeter">=</div>
             <div class="inline-block"><img src="{{URL::asset('assets/images/' . $icon) }}" alt="{{$currencyLabel}} icon" class="width-100 max-width-130 margin-right-10 inline-block"/> <span class="inline-block">{{number_format(1000 * $price, 4, '.', "")}} {{$currencyLabel}}</span></div>
         </div>
     </section>

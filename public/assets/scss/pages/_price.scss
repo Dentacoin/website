@@ -51,6 +51,9 @@ body.price {
         }
     }
     @include breakpoint($sm-down) {
+        .delimeter {
+            display: block;
+        }
         footer {
             margin-top: 50px;
             position: static;

@@ -69,16 +69,16 @@
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="dentacoin-logo">
             <img src="{{URL::asset('assets/uploads/text-logo.svg') }}" alt="Dentacoin logo" itemprop="contentUrl"/>
         </figure>
-        <h1 class="fs-66 fs-lgll-78 padding-top-10 padding-bottom-65">{{$subtitle}}</h1>
-        <div class="shadowed-line padding-top-70 padding-bottom-70 lato-black fs-70 fs-lgll-85">
+        <h1 class="fs-66 fs-lgll-90 padding-top-10 padding-bottom-65">{{$subtitle}}</h1>
+        <div class="shadowed-line padding-top-70 padding-bottom-70 lato-black fs-70 fs-lgll-92">
             <div class="inline-block"><img src="{{URL::asset('assets/images/dcn-icon.svg') }}" alt="DCN icon" class="width-100 max-width-130 margin-right-10 inline-block"/> <span class="inline-block">1000 DCN</span></div>
             <div class="inline-block padding-left-15 padding-right-15">=</div>
             <div class="inline-block"><img src="{{URL::asset('assets/images/' . $icon) }}" alt="{{$currencyLabel}} icon" class="width-100 max-width-130 margin-right-10 inline-block"/> <span class="inline-block">{{number_format(1000 * $price, 4, '.', "")}} {{$currencyLabel}}</span></div>
         </div>
     </section>
     <footer class="text-center padding-top-50 padding-bottom-30 color-white">
-        <div class="fs-20 lato-black padding-bottom-15">{{$accepted}}</div>
-        <div class="fs-10">© 2021 Dentacoin Foundation. All rights reserved.</div>
+        <div class="fs-20 fs-lgll-30 lato-black padding-bottom-15">{{$accepted}}</div>
+        <div class="fs-10 fs-lgll-14">© 2021 Dentacoin Foundation. All rights reserved.</div>
     </footer>
 </body>
 </html>

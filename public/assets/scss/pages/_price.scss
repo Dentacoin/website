@@ -37,7 +37,7 @@ body.price {
             }
         }
         footer.price-footer {
-            background-size: 480px;
+            background-size: 450px; 
         }
     }
     @include breakpoint($md-down) {

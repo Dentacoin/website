@@ -1,14 +1,20 @@
 body.price {
     position: relative;
     height: 100vh;
-    .dentacoin-logo {
-        img {
-            max-width: 700px;
-            margin: 0 auto;
+    .top-section {
+        position: absolute;;
+        left: 100%;
+        width: 100%; 
+        bottom: 25%;
+        .dentacoin-logo {
+            img {
+                max-width: 700px;
+                margin: 0 auto;
+            }
         }
-    }
-    .shadowed-line {
-        @include box-shadow(0px 0px 50px -15px rgba(0, 0, 0, 0.7));
+        .shadowed-line {
+            @include box-shadow(0px 0px 50px -15px rgba(0, 0, 0, 0.7));
+        }
     }
     footer {
         background-image: url(/assets/images/black-accepted-here.png);

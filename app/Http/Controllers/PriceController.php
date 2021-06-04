@@ -51,6 +51,6 @@ class PriceController extends Controller
                 break;
         }
 
-        return view('pages/press-center', ['price' => $price, 'subtitle' => $subtitle, 'accepted' => $accepted, 'icon' => $icon, 'currencyLabel' => $currencyLabel]);
+        return view('pages/price', ['price' => $price, 'subtitle' => $subtitle, 'accepted' => $accepted, 'icon' => $icon, 'currencyLabel' => $currencyLabel]);
     }
 }

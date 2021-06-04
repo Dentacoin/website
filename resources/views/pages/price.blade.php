@@ -66,10 +66,10 @@
 </head>
 <body class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif" data-environment="{{getenv('APP_ENVIRONMENT')}}">
     <section class="top-section text-center color-black">
-        <figure itemscope="" itemtype="http://schema.org/ImageObject">
-            <img src="{{URL::asset('assets/uploads/text-logo.svg') }}" alt="Dentacoin logo" itemprop="contentUrl" class="dentacoin-logo"/>
+        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="dentacoin-logo">
+            <img src="{{URL::asset('assets/uploads/text-logo.svg') }}" alt="Dentacoin logo" itemprop="contentUrl"/>
         </figure>
-        <h1 class="fs-66 padding-bottom-100">{{$subtitle}}</h1>
+        <h1 class="fs-60 padding-top-20 padding-bottom-100">{{$subtitle}}</h1>
         <div class="shadowed-line padding-top-80 padding-bottom-80 lato-black fs-70">
             <div class="inline-block"><img src="{{URL::asset('assets/images/dcn-icon.svg') }}" alt="DCN icon" class="width-100 max-width-140 margin-right-10"/> 1000 DCN</div>
             <div class="inline-block padding-left-15 padding-right-15">=</div>
@@ -77,8 +77,8 @@
         </div>
     </section>
     <footer class="text-center padding-top-50 padding-bottom-30 color-white">
-        <div class="fs-30 lato-black padding-bottom-20">{{$accepted}}</div>
-        <div class="fs-14">© 2021 Dentacoin Foundation. All rights reserved.</div>
+        <div class="fs-21 lato-black padding-bottom-20">{{$accepted}}</div>
+        <div class="fs-12">© 2021 Dentacoin Foundation. All rights reserved.</div>
     </footer>
 </body>
 </html>

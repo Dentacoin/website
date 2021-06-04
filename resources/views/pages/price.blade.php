@@ -67,13 +67,13 @@
 <body class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif" data-environment="{{getenv('APP_ENVIRONMENT')}}">
     <section class="top-section text-center color-black">
         <figure itemscope="" itemtype="http://schema.org/ImageObject">
-            <img src="{{URL::asset('assets/uploads/text-logo.svg') }}" alt="Dentacoin logo" itemprop="contentUrl"/>
+            <img src="{{URL::asset('assets/uploads/text-logo.svg') }}" alt="Dentacoin logo" itemprop="contentUrl" class="dentacoin-logo"/>
         </figure>
         <h1 class="fs-66 padding-bottom-100">{{$subtitle}}</h1>
-        <div class="shadowed-line padding-top-80 padding-bottom-80 lato-black fs-80">
-            <div class="inline-block"><img src="{{URL::asset('assets/uploads/dcn-icon.svg') }}" alt="DCN icon" class="width-100 max-width-140 margin-right-10"/> 1000 DCN</div>
+        <div class="shadowed-line padding-top-80 padding-bottom-80 lato-black fs-70">
+            <div class="inline-block"><img src="{{URL::asset('assets/images/dcn-icon.svg') }}" alt="DCN icon" class="width-100 max-width-140 margin-right-10"/> 1000 DCN</div>
             <div class="inline-block padding-left-15 padding-right-15">=</div>
-            <div class="inline-block"><img src="{{URL::asset('assets/uploads/' . $icon) }}" alt="{{$currencyLabel}} icon" class="width-100 max-width-140 margin-right-10"/> {{$price}} {{$currencyLabel}}</div>
+            <div class="inline-block"><img src="{{URL::asset('assets/images/' . $icon) }}" alt="{{$currencyLabel}} icon" class="width-100 max-width-140 margin-right-10"/> {{$price}} {{$currencyLabel}}</div>
         </div>
     </section>
     <footer class="text-center padding-top-50 padding-bottom-30 color-white">

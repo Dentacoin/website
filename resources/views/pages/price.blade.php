@@ -77,7 +77,7 @@
         </div>
     </section>
     <footer class="text-center padding-top-50 padding-bottom-30 color-white">
-        <div class="fs-21 lato-black padding-bottom-20">{{$accepted}}</div>
+        <div class="fs-21 lato-black padding-bottom-15">{{$accepted}}</div>
         <div class="fs-12">© 2021 Dentacoin Foundation. All rights reserved.</div>
     </footer>
 </body>

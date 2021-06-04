@@ -10,8 +10,8 @@ class PriceController extends Controller
         var_dump($lang);
         $priceFile = file_get_contents(ASSETS . 'jsons' . DS . 'dcn-price.json');
         //var_dump(json_decode($priceFile)->data{0}->quote->USD->price);
-        $arrayKey = array_key_first((array)json_decode($priceFile)->data);
-        var_dump(json_decode($priceFile)->data[$arrayKey]);
+        $array = (array)json_decode($priceFile)->data;
+        var_dump($array[array_key_first($array)]);
         die();
 
 

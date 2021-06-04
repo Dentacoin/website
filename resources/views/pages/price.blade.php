@@ -65,7 +65,7 @@
     <!-- End Facebook Pixel Code -->
 </head>
 <body class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif" data-environment="{{getenv('APP_ENVIRONMENT')}}">
-    <section class="top-section text-center color-black">
+    <section class="top-section text-center color-black padding-top-25">
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="dentacoin-logo">
             <img src="{{URL::asset('assets/uploads/text-logo.svg') }}" alt="Dentacoin logo" itemprop="contentUrl"/>
         </figure>

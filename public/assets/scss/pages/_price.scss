@@ -51,12 +51,21 @@ body.price {
         }
     }
     @include breakpoint($sm-down) {
-        .delimeter {
+        .delimeter { 
             display: block;
         }
         footer {
             margin-top: 50px;
             position: static;
+        }
+    }
+    @include breakpoint($xs) {
+        .top-section {
+            .dentacoin-logo {
+                img {
+                    max-width: 330px;
+                }
+            }
         }
     }
 }

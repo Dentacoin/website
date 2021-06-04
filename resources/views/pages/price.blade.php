@@ -67,7 +67,7 @@
 <body class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif" data-environment="{{getenv('APP_ENVIRONMENT')}}">
     <section class="top-section text-center color-black padding-top-25 padding-top-xs-40 padding-top-sm-40">
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="dentacoin-logo padding-left-15 padding-right-15">
-            <img src="{{URL::asset('assets/uploads/text-logo.svg') }}" alt="Dentacoin logo" itemprop="contentUrl" class="max-width-xs-330"/>
+            <img src="{{URL::asset('assets/uploads/text-logo.svg') }}" alt="Dentacoin logo" itemprop="contentUrl"/>
         </figure>
         <h1 class="fs-66 fs-md-50 fs-sm-50 fs-xs-28 fs-lgll-90 padding-top-10 padding-bottom-65 padding-left-15 padding-right-15">{{$subtitle}}</h1>
         <div class="shadowed-line padding-top-70 padding-bottom-70 lato-black fs-70 fs-md-50 fs-sm-50 fs-xs-45 fs-lgll-92 padding-left-15 padding-right-15">

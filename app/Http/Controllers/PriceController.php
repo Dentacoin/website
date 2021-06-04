@@ -7,17 +7,50 @@ use Illuminate\Http\Request;
 class PriceController extends Controller
 {
     protected function getView($lang)   {
-        var_dump($lang);
+        $acceptedLangs = ['en', 'de', 'es', 'br'];
+        if (empty($lang) || !in_array($lang, $acceptedLangs)) {
+            return abort(404);
+        }
+
         $priceFile = file_get_contents(ASSETS . 'jsons' . DS . 'dcn-price.json');
-        //var_dump(json_decode($priceFile)->data{0}->quote->USD->price);
         $array = json_decode($priceFile,true);
-        var_dump($array['data'][array_key_first($array['data'])]['quote']['USD']['price']);
-        var_dump(number_format($array['data'][array_key_first($array['data'])]['quote']['USD']['price'],strlen($array['data'][array_key_first($array['data'])]['quote']['USD']['price']) - 1));
-        //var_dump((float)number_format($array[array_key_first($array)]->quote->USD->price,10));
-        //echo (float)$array[array_key_first($array)]->quote->USD->price;
-        die();
 
+        switch($lang) {
+            case 'en':
+                $subtitle = 'The Bitcoin of Dentistry';
+                $accepted = 'ACCEPTED HERE';
+                $currencyLabel = 'USD';
+                $icon = 'usd-icon.svg';
+                $price = number_format($array['data'][array_key_first($array['data'])]['quote']['USD']['price'],strlen($array['data'][array_key_first($array['data'])]['quote']['USD']['price']) - 1);
+                break;
+            case 'de':
+                $subtitle = 'Das Bitcoin der Zahnmedizin';
+                $accepted = 'HIER ANGENOMMEN';
+                $currencyLabel = 'EUR';
+                $icon = 'euro-icon.svg';
+                $coingeckoCall = (new APIRequestsController())->getCurrentDcnRateByCoingecko();
+                if (!empty($coingeckoCall)) {
+                    $price = $coingeckoCall['EUR'];
+                } else {
+                    $price = 0;
+                }
+                break;
+            case 'es':
+                $subtitle = 'El Bitcoin de la Odontología';
+                $accepted = 'ACEPTADO AQUÍ';
+                $currencyLabel = 'USD';
+                $icon = 'usd-icon.svg';
+                $price = number_format($array['data'][array_key_first($array['data'])]['quote']['USD']['price'],strlen($array['data'][array_key_first($array['data'])]['quote']['USD']['price']) - 1);
+                break;
+            case 'br':
+                $subtitle = 'A Bitcoin da Odontologia';
+                $accepted = 'AQUI ACEITADO';
+                $currencyLabel = 'USD';
+                $icon = 'usd-icon.svg';
+                $price = number_format($array['data'][array_key_first($array['data'])]['quote']['USD']['price'],strlen($array['data'][array_key_first($array['data'])]['quote']['USD']['price']) - 1);
+                break;
+        }
 
-        return view('pages/press-center');
+        return view('pages/press-center', ['price' => $price, 'subtitle' => $subtitle, 'accepted' => $accepted, 'icon' => $icon, 'currencyLabel' => $currencyLabel]);
     }
 }

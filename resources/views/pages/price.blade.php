@@ -69,7 +69,7 @@
         <figure itemscope="" itemtype="http://schema.org/ImageObject" class="dentacoin-logo">
             <img src="{{URL::asset('assets/uploads/text-logo.svg') }}" alt="Dentacoin logo" itemprop="contentUrl"/>
         </figure>
-        <h1 class="fs-66 padding-top-10 padding-bottom-80">{{$subtitle}}</h1>
+        <h1 class="fs-66 padding-top-10 padding-bottom-65">{{$subtitle}}</h1>
         <div class="shadowed-line padding-top-70 padding-bottom-70 lato-black fs-70">
             <div class="inline-block"><img src="{{URL::asset('assets/images/dcn-icon.svg') }}" alt="DCN icon" class="width-100 max-width-130 margin-right-10 inline-block"/> <span class="inline-block">1000 DCN</span></div>
             <div class="inline-block padding-left-15 padding-right-15">=</div>

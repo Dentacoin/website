@@ -63,7 +63,9 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     //Route::post('/submit-berlin-roundtable-form', 'BerlinRoundtableController@submitForm')->name('submit-berlin-roundtable-form');
 
-    Route::get('careers/{slug?}', function($slug = null)    {
+    Route::any('/{lang}/price', 'Controller@handleApiEndpoints')->name('price');
+
+    Route::get('/careers/{slug?}', function($slug = null)    {
         if(empty($slug))   {
             return (new \App\Http\Controllers\CareersController())->getView();
         }else {

@@ -8,8 +8,8 @@ class PriceController extends Controller
 {
     protected function getView($lang)   {
         var_dump($lang);
-        $priceFile = readfile(ASSETS . 'jsons' . DS . 'dcn-price.json');
-        var_dump(json_encode($priceFile));
+        $priceFile = file_get_contents(ASSETS . 'jsons' . DS . 'dcn-price.json');
+        var_dump($priceFile);
         die();
 
 

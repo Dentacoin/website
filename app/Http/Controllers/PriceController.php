@@ -12,7 +12,7 @@ class PriceController extends Controller
         //var_dump(json_decode($priceFile)->data{0}->quote->USD->price);
         $array = (array)json_decode($priceFile)->data;
         var_dump($array[array_key_first($array)]->quote);
-        echo $array[array_key_first($array)]->quote->USD->price;
+        echo (float)$array[array_key_first($array)]->quote->USD->price;
         die();
 
 

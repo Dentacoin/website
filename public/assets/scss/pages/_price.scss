@@ -40,4 +40,20 @@ body.price {
             background-size: 480px;
         }
     }
+    @include breakpoint($md-down) {
+        .top-section {
+            position: static;
+            .dentacoin-logo {
+                img {
+                    max-width: 500px;
+                }
+            }
+        }
+    }
+    @include breakpoint($sm-down) {
+        footer {
+            margin-top: 50px;
+            position: static;
+        }
+    }
 }

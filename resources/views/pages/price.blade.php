@@ -65,12 +65,12 @@
     <!-- End Facebook Pixel Code -->
 </head>
 <body class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif" data-environment="{{getenv('APP_ENVIRONMENT')}}">
-    <section class="top-section text-center color-black padding-top-25">
-        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="dentacoin-logo">
+    <section class="top-section text-center color-black padding-top-25 padding-top-xs-40 padding-top-sm-40">
+        <figure itemscope="" itemtype="http://schema.org/ImageObject" class="dentacoin-logo padding-left-15 padding-right-15">
             <img src="{{URL::asset('assets/uploads/text-logo.svg') }}" alt="Dentacoin logo" itemprop="contentUrl"/>
         </figure>
-        <h1 class="fs-66 fs-lgll-90 padding-top-10 padding-bottom-65">{{$subtitle}}</h1>
-        <div class="shadowed-line padding-top-70 padding-bottom-70 lato-black fs-70 fs-lgll-92">
+        <h1 class="fs-66 fs-md-50 fs-lgll-90 padding-top-10 padding-bottom-65 padding-left-15 padding-right-15">{{$subtitle}}</h1>
+        <div class="shadowed-line padding-top-70 padding-bottom-70 lato-black fs-70 fs-lgll-92 padding-left-15 padding-right-15">
             <div class="inline-block"><img src="{{URL::asset('assets/images/dcn-icon.svg') }}" alt="DCN icon" class="width-100 max-width-130 margin-right-10 inline-block"/> <span class="inline-block">1000 DCN</span></div>
             <div class="inline-block padding-left-15 padding-right-15">=</div>
             <div class="inline-block"><img src="{{URL::asset('assets/images/' . $icon) }}" alt="{{$currencyLabel}} icon" class="width-100 max-width-130 margin-right-10 inline-block"/> <span class="inline-block">{{number_format(1000 * $price, 4, '.', "")}} {{$currencyLabel}}</span></div>

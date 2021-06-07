@@ -37,7 +37,25 @@ body.price {
             }
         }
         footer.price-footer {
-            background-size: 450px; 
+            background-size: 450px;
+        }
+    }
+    @media screen and (max-width: 1500px) and (min-width: 1200px) {
+        .top-section {
+            .dentacoin-logo {
+                img {
+                    max-width: 500px;
+                }
+            }
+            h1 {
+                padding-bottom: 30px !important;
+                font-size: 50px !important;
+            }
+        }
+        .shadowed-line {
+            font-size: 55px !important;
+            padding-top: 40px !important;
+            padding-bottom: 40px !important;
         }
     }
     @include breakpoint($md-down) {

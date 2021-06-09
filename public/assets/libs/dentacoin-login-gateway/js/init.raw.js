@@ -297,10 +297,10 @@ if (typeof jQuery == 'undefined') {
                         type: 'POST',
                         url: url,
                         dataType: 'json',
-                        data: data,
+                        data: data/*,
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        }
+                        }*/
                     });
 
                     fireAjax = true;

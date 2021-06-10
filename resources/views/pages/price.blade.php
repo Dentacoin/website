@@ -80,5 +80,7 @@
         <div class="fs-20 fs-lgll-26 lato-black padding-bottom-15">{{$accepted}}</div>
         <div class="fs-10 fs-lgll-12">© 2021 Dentacoin Foundation. All rights reserved.</div>
     </footer>
+    <script src="/dist/js/front-libs-script.js?v=1.1.23"></script>
+    <script src="/dist/js/front-script.js?v=1.1.23"></script>
 </body>
 </html>

@@ -702,6 +702,7 @@ var projectData = {
             },
             pricePage: function() {
                 if ($('body').hasClass('price')) {
+                    // update price every 5 minutes
                     setInterval(function() {
                         if ($('.fiat-price').length) {
                             $.ajax({
@@ -721,7 +722,7 @@ var projectData = {
                                 }
                             });
                         }
-                    }, 10000);
+                    }, 300000);
                 }
             },
             pressCenter: function() {

@@ -6,9 +6,10 @@ use Illuminate\Http\Request;
 
 class PriceController extends Controller
 {
+    const languages = ['en', 'de', 'es', 'br'];
+
     protected function getView($lang)   {
-        $acceptedLangs = ['en', 'de', 'es', 'br'];
-        if (empty($lang) || !in_array($lang, $acceptedLangs)) {
+        if (empty($lang) || !in_array($lang, SELF::languages)) {
             return abort(404);
         }
 
@@ -51,6 +52,43 @@ class PriceController extends Controller
                 break;
         }
 
-        return view('pages/price', ['price' => $price, 'subtitle' => $subtitle, 'accepted' => $accepted, 'icon' => $icon, 'currencyLabel' => $currencyLabel]);
+        return view('pages/price', ['price' => $price, 'subtitle' => $subtitle, 'accepted' => $accepted, 'icon' => $icon, 'currencyLabel' => $currencyLabel, 'lang' => $lang]);
+    }
+
+    protected function getCurrentFiatPrice(Request $request) {
+        $this->validate($request, [
+            'language' => 'required|max:2'
+        ], [
+            'language.required' => 'Language is required.',
+        ]);
+
+        if (!in_array($request->input('language'), SELF::languages)) {
+            return abort(404);
+        }
+
+        $priceFile = file_get_contents(ASSETS . 'jsons' . DS . 'dcn-price.json');
+        $array = json_decode($priceFile,true);
+
+        switch($request->input('language')) {
+            case 'en':
+                $price = number_format($array['data'][array_key_first($array['data'])]['quote']['USD']['price'],strlen($array['data'][array_key_first($array['data'])]['quote']['USD']['price']) - 1);
+                break;
+            case 'de':
+                $coingeckoCall = (new APIRequestsController())->getCurrentDcnRateByCoingecko();
+                if (!empty($coingeckoCall)) {
+                    $price = $coingeckoCall['EUR'];
+                } else {
+                    $price = 0;
+                }
+                break;
+            case 'es':
+                $price = number_format($array['data'][array_key_first($array['data'])]['quote']['USD']['price'],strlen($array['data'][array_key_first($array['data'])]['quote']['USD']['price']) - 1);
+                break;
+            case 'br':
+                $price = number_format($array['data'][array_key_first($array['data'])]['quote']['USD']['price'],strlen($array['data'][array_key_first($array['data'])]['quote']['USD']['price']) - 1);
+                break;
+        }
+
+        return response()->json(['success' => true, 'data' => number_format(1000 * $price, 4, '.', '')]);
     }
 }

@@ -97,6 +97,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::post('/get-ip', 'Controller@getClientIpAsResponse')->name('get-ip');
 
+    Route::post('/get-current-fiat-price', 'PriceController@getCurrentFiatPrice')->name('get-current-fiat-price');
+
     //======================================= REDIRECTS ========================================
 
     Route::get('partners', function() {

@@ -94,6 +94,7 @@ var projectData = {
             projectData.pages.data.careers();
             projectData.pages.data.team();
             projectData.pages.data.pressCenter();
+            projectData.pages.data.pricePage();
             projectData.pages.data.howToCreateWallet();
         },
         logged_in: function() {
@@ -106,6 +107,7 @@ var projectData = {
             projectData.pages.data.careers();
             projectData.pages.data.team();
             projectData.pages.data.pressCenter();
+            projectData.pages.data.pricePage();
             projectData.pages.data.howToCreateWallet();
             projectData.pages.data.christmasCalendar();
         },
@@ -696,6 +698,27 @@ var projectData = {
                         $(this).closest('.more-advisors').find('.list').slideDown(300);
                         $(this).closest('.read-more').slideUp(300);
                     });
+                }
+            },
+            pricePage: function() {
+                if ($('body').hasClass('price')) {
+                    setInterval(function() {
+                        if ($('.fiat-price').length) {
+                            $.ajax({
+                                type: 'POST',
+                                url: HOME_URL + '/get-current-fiat-price',
+                                dataType: 'json',
+                                data: {
+                                    language: $('.fiat-price').attr('data-lang')
+                                },
+                                success: function (response) {
+                                    if (response.success) {
+                                        console.log(response.data);
+                                    }
+                                }
+                            });
+                        }
+                    }, 10000);
                 }
             },
             pressCenter: function() {

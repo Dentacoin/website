@@ -711,6 +711,9 @@ var projectData = {
                                 data: {
                                     language: $('.fiat-price').attr('data-lang')
                                 },
+                                headers: {
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
                                 success: function (response) {
                                     if (response.success) {
                                         console.log(response.data);

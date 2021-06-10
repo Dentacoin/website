@@ -716,7 +716,7 @@ var projectData = {
                                 },
                                 success: function (response) {
                                     if (response.success) {
-                                        console.log(response.data);
+                                        $('.fiat-price .value').html(response.data);
                                     }
                                 }
                             });

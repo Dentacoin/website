@@ -15,6 +15,4 @@ define('JOB_APPLIES_EMAIL_RECEIVER', array('donika.kraeva@dentacoin.com', 'petya
 // define('JOB_APPLIES_EMAIL_RECEIVER', array('miroslav.nedelchev@dentacoin.com'));
 define('MAX_UPL_SIZE', 52428800);
 define('DEFAULT_IMG_ON_LOAD', 'data:image/png;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=');
-
 define('EMAIL_SENDER', 'no-reply@dentacoin.com');
-

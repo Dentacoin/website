@@ -1024,6 +1024,7 @@ if (typeof jQuery == 'undefined') {
 
                     // show login gateway by url
                     var getParams = dcnGateway.utils.getGETParameters();
+                    var urlInstance = new URL(window.location.href);
 
                     // if trying to reach civic from mobile phone
                     if (getParams.hasOwnProperty('uuid') && !loadedCivicLib) {
@@ -1050,13 +1051,13 @@ if (typeof jQuery == 'undefined') {
                         }
 
                         // if inviter in the URL pass it to the gateway
-                        if (getParams.hasOwnProperty('inviter')) {
-                            gatewayData.inviter = getParams.inviter;
+                        if (urlInstance.searchParams.get('inviter') != null) {
+                            gatewayData.inviter = urlInstance.searchParams.get('inviter');
                         }
 
                         // if inviteid in the URL pass it to the gateway
-                        if (getParams.hasOwnProperty('inviteid')) {
-                            gatewayData.inviteid = getParams.inviteid;
+                        if (urlInstance.searchParams.get('inviteid') != null) {
+                            gatewayData.inviteid = urlInstance.searchParams.get('inviteid');
                         }
 
                         // if loading the gateway from mobile app do not ask cookies

@@ -478,6 +478,10 @@ padding: 8px;
                 die();
 
                 break;
+            case 'coingecko-dcn-price':
+                $coingeckoData = (new APIRequestsController())->getCurrentDcnRateByCoingecko();
+                return $coingeckoData['USD'];
+                break;
             default:
                 $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
                 if (!empty($additional_data)) {

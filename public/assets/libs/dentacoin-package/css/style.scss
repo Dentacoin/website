@@ -267,7 +267,30 @@
                 }
             }
             .my-account-btn-parent {
-                a {
+                .notifications-link {
+                    margin-right: 10px;
+                    position: relative;
+                    img {
+                        width: 30px;
+                    }
+                    .unseen-notifications-count {
+                        position: absolute;
+                        text-align: center;
+                        top: 0;
+                        right: 0;
+                        z-index: 100;
+                        color: white;
+                        font-size: 12px;
+                        background-color: #f46464;
+                        width: 18px;
+                        height: 18px;
+                        -webkit-border-radius: 50%;
+                        -moz-border-radius: 50%;
+                        -ms-border-radius: 50%;
+                        border-radius: 50%;
+                    }
+                }
+                .my-account-link {
                     padding: 7px 10px;
                     display: inline-block;
                     background-color: #041e42;

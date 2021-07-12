@@ -268,8 +268,10 @@
             }
             .my-account-btn-parent {
                 .notifications-link {
-                    margin-right: 10px;
+                    margin-right: 10px; 
                     position: relative;
+                    display: inline-block;
+                    vertical-align: middle;
                     img {
                         width: 30px;
                     }

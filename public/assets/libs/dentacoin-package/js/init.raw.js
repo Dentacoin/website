@@ -617,7 +617,7 @@ if (typeof jQuery == 'undefined') {
 
                             jQuery('body').append(miniHubHtml);
 
-                            setInterval(function() {
+                            /*setInterval(function() {
                                 $.ajax({
                                     type: 'POST',
                                     url: 'https://account.dentacoin.com/get-unseen-notifications-count',
@@ -629,7 +629,7 @@ if (typeof jQuery == 'undefined') {
                                         }
                                     }
                                 });
-                            }, 3000);
+                            }, 3000);*/
 
                             if ($('.switch-to-branch').length) {
                                 $('.switch-to-branch').click(function() {

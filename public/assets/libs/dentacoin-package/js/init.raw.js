@@ -528,7 +528,7 @@ if (typeof jQuery == 'undefined') {
 
                     function enableNotificationsCounter() {
                         if (hasOwnProperty.call(params, 'notifications_counter') && params.notifications_counter) {
-                            setInterval(function() {
+                            function fireGetNotificationsCountRequest() {
                                 $.ajax({
                                     type: 'POST',
                                     url: '/get-unseen-notifications-count',
@@ -553,7 +553,12 @@ if (typeof jQuery == 'undefined') {
                                         }
                                     }
                                 });
+                            }
+
+                            setInterval(function() {
+                                fireGetNotificationsCountRequest();
                             }, 3000);
+                            fireGetNotificationsCountRequest();
                         }
                     }
 

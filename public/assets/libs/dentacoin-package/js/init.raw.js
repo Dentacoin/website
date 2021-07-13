@@ -629,7 +629,7 @@ if (typeof jQuery == 'undefined') {
 
                                                 if ($('.header-avatar').length) {
                                                     $('.header-avatar').css({'position' : 'relative'});
-                                                    $('.header-avatar').append('<span style="position: absolute;text-align: center;top: 0;right: 0;z-index: 100;color: white;font-size: 12px;background-color: #f46464;width: 18px;height: 18px;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;border-radius: 50%;">54</span>');
+                                                    $('.header-avatar').append('<span style="position: absolute;text-align: center;top: 0;right: 0;z-index: 100;color: white;font-size: 12px;background-color: #f46464;width: 18px;height: 18px;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;border-radius: 50%;">'+response.data+'</span>');
                                                 }
                                             }
                                         }

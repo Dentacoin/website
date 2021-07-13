@@ -1697,11 +1697,11 @@ var projectData = {
                     loadedLibs.dentacoinPackageJs = true;
                 }
 
-                // /assets/libs/dentacoin-package/js/init.js?v=
                 var miniHubParams = {
                     'element_id_to_bind': 'header-avatar',
                     'platform': 'dentacoin',
-                    'log_out_link': 'https://dentacoin.com/user-logout'
+                    'log_out_link': 'https://dentacoin.com/user-logout',
+                    'notifications_counter': true
                 };
 
                 if ($('body').hasClass('logged-patient')) {

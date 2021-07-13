@@ -617,19 +617,25 @@ if (typeof jQuery == 'undefined') {
 
                             jQuery('body').append(miniHubHtml);
 
-                            /*setInterval(function() {
-                                $.ajax({
-                                    type: 'POST',
-                                    url: 'https://account.dentacoin.com/get-unseen-notifications-count',
-                                    dataType: 'json',
-                                    success: function (response) {
-                                        console.log(response, 'response');
-                                        if (response.success) {
-                                            $('.notifications-link').html('<img src="https://account.dentacoin.com/assets/uploads/notifications.png" alt="Notification icon"/><span class="unseen-notifications-count">'+response.data+'</span>');
+                            if (hasOwnProperty.call(params, 'notifications_counter') && params.notifications_counter) {
+                                setInterval(function() {
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/get-unseen-notifications-count',
+                                        dataType: 'json',
+                                        success: function (response) {
+                                            if (response.success) {
+                                                $('.notifications-link').html('<img src="https://account.dentacoin.com/assets/uploads/notifications.png" alt="Notification icon"/><span class="unseen-notifications-count">'+response.data+'</span>');
+
+                                                if ($('.header-avatar').length) {
+                                                    $('.header-avatar').css({'position' : 'relative'});
+                                                    $('.header-avatar').append('<span style="position: absolute;text-align: center;top: 0;right: 0;z-index: 100;color: white;font-size: 12px;background-color: #f46464;width: 18px;height: 18px;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;border-radius: 50%;">54</span>');
+                                                }
+                                            }
                                         }
-                                    }
-                                });
-                            }, 3000);*/
+                                    });
+                                }, 3000);
+                            }
 
                             if ($('.switch-to-branch').length) {
                                 $('.switch-to-branch').click(function() {

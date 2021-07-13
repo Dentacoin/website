@@ -602,7 +602,7 @@ class APIRequestsController extends Controller {
         }
     }
 
-    public function getUnseenNotificationsCount()  {
+    public function getUnseenNotificationsCount($returnAsJson = false)  {
         $header = array();
         $header[] = 'Accept: */*';
         $header[] = 'Authorization: Bearer ' . session('logged_user')['token'];
@@ -620,7 +620,11 @@ class APIRequestsController extends Controller {
         curl_close($curl);
 
         if (!empty($resp))   {
-            return $resp;
+            if ($returnAsJson) {
+                return response()->json($resp);
+            } else {
+                return $resp;
+            }
         } else {
             return false;
         }

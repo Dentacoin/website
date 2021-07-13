@@ -85,7 +85,9 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     //======================================= AJAX ========================================
 
-    Route::post('/get-unseen-notifications-count', 'APIRequestsController@getUnseenNotificationsCount')->middleware('HandleUserSession')->name('get-unseen-notifications-count');
+    Route::post('/get-unseen-notifications-count', function() {
+        return (new \App\Http\Controllers\APIRequestsController())->getUnseenNotificationsCount(true);
+    })->middleware('HandleUserSession')->name('get-unseen-notifications-count');
 
     Route::post('/press-center-popup', 'PressCenterController@getPopupView')->name('press-center-popup');
 

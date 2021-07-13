@@ -631,8 +631,12 @@ if (typeof jQuery == 'undefined') {
                                                 $('.notifications-link').html('<img src="https://account.dentacoin.com/assets/uploads/notifications.png" alt="Notification icon"/><span class="unseen-notifications-count">'+response.data+'</span>');
 
                                                 if ($('.header-avatar').length) {
-                                                    $('.header-avatar').css({'position' : 'relative'});
-                                                    $('.header-avatar').append('<span style="position: absolute;text-align: center;top: 0;right: 0;z-index: 100;color: white;font-size: 12px;background-color: #f46464;width: 18px;height: 18px;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;border-radius: 50%;">'+response.data+'</span>');
+                                                    if (!$('.header-avatar .header-avatar-notifications-counter').length) {
+                                                        $('.header-avatar').css({'position' : 'relative'});
+                                                        $('.header-avatar').append('<span style="position: absolute;text-align: center;top: 0;right: 0;z-index: 100;color: white;font-size: 12px;background-color: #f46464;width: 18px;height: 18px;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;border-radius: 50%;" class="header-avatar-notifications-counter">'+response.data+'</span>');
+                                                    } else {
+                                                        $('.header-avatar .header-avatar-notifications-counter').html(response.data);
+                                                    }
                                                 }
                                             }
                                         }

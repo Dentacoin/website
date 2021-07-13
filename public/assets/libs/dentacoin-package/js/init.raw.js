@@ -526,6 +526,37 @@ if (typeof jQuery == 'undefined') {
                         });
                     }
 
+                    function enableNotificationsCounter() {
+                        if (hasOwnProperty.call(params, 'notifications_counter') && params.notifications_counter) {
+                            setInterval(function() {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/get-unseen-notifications-count',
+                                    dataType: 'json',
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function (response) {
+                                        if (response.success) {
+                                            if ($('.notifications-link').length) {
+                                                $('.notifications-link').html('<img src="https://account.dentacoin.com/assets/uploads/notifications.png" alt="Notification icon"/><span class="unseen-notifications-count">'+response.data+'</span>');
+                                            }
+
+                                            if ($('.header-avatar').length) {
+                                                if (!$('.header-avatar .header-avatar-notifications-counter').length) {
+                                                    $('.header-avatar').css({'position' : 'relative'});
+                                                    $('.header-avatar').append('<span style="position: absolute;text-align: center;top: 0;right: 0;z-index: 100;color: white;font-size: 12px;background-color: #f46464;width: 18px;height: 18px;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;border-radius: 50%;" class="header-avatar-notifications-counter">'+response.data+'</span>');
+                                                } else {
+                                                    $('.header-avatar .header-avatar-notifications-counter').html(response.data);
+                                                }
+                                            }
+                                        }
+                                    }
+                                });
+                            }, 3000);
+                        }
+                    }
+
                     async function showMiniHub() {
                         if (hasOwnProperty.call(params, 'without_apps') && params.without_apps) {
                             var platformMenu = '';
@@ -547,6 +578,8 @@ if (typeof jQuery == 'undefined') {
                             var miniHubHtml = '<div class="dcn-hub-mini without-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"><div class="hidden-box-footer">'+platformMenu+'<div class="hidden-box-wrapper"><div class="home-btn"><a href="'+platform_home_link+'"><img src="//dentacoin.com/assets/images/home-btn-dentacoin-hub.svg" alt="Home button"/></a></div><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'" class="my-account-link">My Account</a></div></div></div></div></div>';
 
                             jQuery('body').append(miniHubHtml);
+
+                            enableNotificationsCounter();
                         } else if (hasOwnProperty.call(params, 'type_hub')) {
                             var miniHubHtml = '<div class="dcn-hub-mini with-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"> <div class="hidden-box-hub"><div class="dcn-hub-mini-close-btn"><a href="javascript:void(0)">Close <span>X</span></a></div><div class="list-with-apps"><div class="apps-wrapper">';
 
@@ -617,32 +650,7 @@ if (typeof jQuery == 'undefined') {
 
                             jQuery('body').append(miniHubHtml);
 
-                            if (hasOwnProperty.call(params, 'notifications_counter') && params.notifications_counter) {
-                                setInterval(function() {
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/get-unseen-notifications-count',
-                                        dataType: 'json',
-                                        headers: {
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        success: function (response) {
-                                            if (response.success) {
-                                                $('.notifications-link').html('<img src="https://account.dentacoin.com/assets/uploads/notifications.png" alt="Notification icon"/><span class="unseen-notifications-count">'+response.data+'</span>');
-
-                                                if ($('.header-avatar').length) {
-                                                    if (!$('.header-avatar .header-avatar-notifications-counter').length) {
-                                                        $('.header-avatar').css({'position' : 'relative'});
-                                                        $('.header-avatar').append('<span style="position: absolute;text-align: center;top: 0;right: 0;z-index: 100;color: white;font-size: 12px;background-color: #f46464;width: 18px;height: 18px;-webkit-border-radius: 50%;-moz-border-radius: 50%;-ms-border-radius: 50%;border-radius: 50%;" class="header-avatar-notifications-counter">'+response.data+'</span>');
-                                                    } else {
-                                                        $('.header-avatar .header-avatar-notifications-counter').html(response.data);
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    });
-                                }, 3000);
-                            }
+                            enableNotificationsCounter();
 
                             if ($('.switch-to-branch').length) {
                                 $('.switch-to-branch').click(function() {

@@ -623,6 +623,9 @@ if (typeof jQuery == 'undefined') {
                                         type: 'POST',
                                         url: '/get-unseen-notifications-count',
                                         dataType: 'json',
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
                                         success: function (response) {
                                             if (response.success) {
                                                 $('.notifications-link').html('<img src="https://account.dentacoin.com/assets/uploads/notifications.png" alt="Notification icon"/><span class="unseen-notifications-count">'+response.data+'</span>');

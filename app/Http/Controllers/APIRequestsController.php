@@ -621,6 +621,8 @@ class APIRequestsController extends Controller {
 
         if (!empty($resp))   {
             if ($returnAsJson) {
+                var_dump($resp);
+                die();
                 return response()->json($resp);
             } else {
                 return $resp;

@@ -651,7 +651,7 @@ if (typeof jQuery == 'undefined') {
                             }
 
                             miniHubHtml += branchesHtml;
-                            miniHubHtml += '<div class="hidden-box-footer"><div class="logout-btn-parent"><a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a></div><div class="my-account-btn-parent"><a href="//account.dentacoin.com/notifications?platform=dentacoin" class="notifications-link inline-block"><img src="https://account.dentacoin.com/assets/uploads/notifications.png" alt="Notification icon"/></a><a href="//account.dentacoin.com?platform='+params.platform+'" class="my-account-link">My Account</a></div></div></div></div>';
+                            miniHubHtml += '<div class="hidden-box-footer"><div class="logout-btn-parent"><a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a></div><div class="my-account-btn-parent"><a href="//account.dentacoin.com/notifications?platform='+params.platform+'" class="notifications-link inline-block"><img src="https://account.dentacoin.com/assets/uploads/notifications.png" alt="Notification icon"/></a><a href="//account.dentacoin.com?platform='+params.platform+'" class="my-account-link">My Account</a></div></div></div></div>';
 
                             jQuery('body').append(miniHubHtml);
 

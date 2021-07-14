@@ -538,7 +538,7 @@ if (typeof jQuery == 'undefined') {
                                     },
                                     success: function (response) {
                                         if (response.success) {
-                                            if (parseInt(response.data) > 1) {
+                                            if (parseInt(response.data) > 0) {
                                                 if ($('.notifications-link').length) {
                                                     $('.notifications-link').html('<img src="https://account.dentacoin.com/assets/uploads/notifications.png" alt="Notification icon"/><span class="unseen-notifications-count">'+response.data+'</span>');
                                                 }

@@ -41,7 +41,6 @@ class Controller extends BaseController
             View::share('meta_data', $this->getMetaData());
             View::share('parent_titles', $this->getParentDbTitles());
             View::share('parent_sections', $this->getParentDbSections());
-            View::share('titles', $this->getDbTitles());
             View::share('sections', $this->getDbSections());
             View::share('socials', $this->getSocials());
             View::share('social_engagement_cookie', $this->checkIfSocialEngagementCookie());
@@ -113,16 +112,6 @@ class Controller extends BaseController
     protected function getSocials()
     {
         return Social::all()->sortBy('order_id');
-    }
-
-    protected function getDbTitles()
-    {
-        $meta_data = $this->getMetaData();
-        if (!empty($meta_data)) {
-            return PagesHtmlSection::where(array('page_id' => $meta_data->id, 'type' => 'title'))->get()->all();
-        } else {
-            return null;
-        }
     }
 
     protected function getDbSections()

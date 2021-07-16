@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
     @if(!empty($meta_data))
-        <title>{{$meta_data->title}}</title>
+        <title>{{$meta_data->meta_title}}</title>
         <meta name="description" content="{{$meta_data->description}}" />
         <meta name="keywords" content="{{$meta_data->keywords}}" />
         <meta property="og:url" content="{{Request::url()}}"/>

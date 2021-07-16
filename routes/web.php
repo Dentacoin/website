@@ -27,6 +27,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');
 
+    Route::get('/privacy-policy-dv-ios', 'PrivacyPolicyController@getViewDVIOSPrivacyPolicy')->name('privacy-policy-dv-ios');
+
     Route::get('/press-center/page/{page}', 'PressCenterController@getView')->name('press-center');
 
     Route::get('/testimonials/page/{page}', 'UserExpressionsController@getView')->name('testimonials');

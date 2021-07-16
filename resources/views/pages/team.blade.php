@@ -4,7 +4,7 @@
     <section class="team-container">
         <div class="container team">
             <div class="row">
-                <h2 class="col-xs-12 page-h1-title">{{ $titles[0]->html }}</h2>
+                <h2 class="col-xs-12 page-h1-title">DENTACOIN TEAM</h2>
             </div>
             <div class="row list">
                 @php($first = false)
@@ -51,7 +51,7 @@
         @if(sizeof($advisors) > 0)
             <div class="container advisors">
                 <div class="row">
-                    <h2 class="col-xs-12 section-title">{{ $titles[1]->html }}</h2>
+                    <h2 class="col-xs-12 section-title">ADVISORS & PART-TIME</h2>
                 </div>
                 <div class="row">
                     <div class="col-xs-12 advisors-slider slider-with-arrows">

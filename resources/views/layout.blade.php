@@ -24,7 +24,7 @@
             <meta property="og:image:height" content="630"/>
         @endif
     @elseif(!empty($meta_data))
-        <title>{{$meta_data->meta_title}}</title>
+        <title>{{$meta_data->title}}</title>
         <meta name="description" content="{{$meta_data->description}}" />
         <meta name="keywords" content="{{$meta_data->keywords}}" />
         <meta property="og:url" content="{{Request::url()}}"/>

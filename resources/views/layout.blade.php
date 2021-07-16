@@ -133,37 +133,40 @@
         <line class="nineteenth" x1="0" y1="0" x2="0" y2="0"/>
         <line class="twentieth" x1="0" y1="0" x2="0" y2="0"/>
     </svg>
-    <header class="hide-on-map-open hide-on-hub-open">
-        <div class="container">
-            <div class="row fs-0">
-                <figure itemscope="" itemtype="http://schema.org/Organization" class="col-xs-3 logo-container inline-block">
-                    <a itemprop="url" @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('foundation') }}" @else  href="{{ route('home') }}" @endif @if(!empty(Route::current())) @if(Route::current()->getName() == "home") tabindex="=-1" @endif @endif>
-                        <img src="@if((new \App\Http\Controllers\UserController())->checkSession() && Route::current()->getName() == 'traders') {{URL::asset('assets/images/round-logo-white.svg') }} @else {{URL::asset('assets/images/logo.svg') }} @endif" itemprop="logo" alt="Dentacoin logo"/>
-                        @if(!empty(Route::current()))
-                            @if(Route::current()->getName() == 'careers' || Route::current()->getName() == 'corporate-design')
-                                <div class="first-dot logo-dot fs-16 inline-block">&nbsp;</div>
+    @php($mobileApp = \Illuminate\Support\Facades\Input::get('mobile-app'))
+    @if(empty($mobileApp))
+        <header class="hide-on-map-open hide-on-hub-open">
+            <div class="container">
+                <div class="row fs-0">
+                    <figure itemscope="" itemtype="http://schema.org/Organization" class="col-xs-3 logo-container inline-block">
+                        <a itemprop="url" @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('foundation') }}" @else  href="{{ route('home') }}" @endif @if(!empty(Route::current())) @if(Route::current()->getName() == "home") tabindex="=-1" @endif @endif>
+                            <img src="@if((new \App\Http\Controllers\UserController())->checkSession() && Route::current()->getName() == 'traders') {{URL::asset('assets/images/round-logo-white.svg') }} @else {{URL::asset('assets/images/logo.svg') }} @endif" itemprop="logo" alt="Dentacoin logo"/>
+                            @if(!empty(Route::current()))
+                                @if(Route::current()->getName() == 'careers' || Route::current()->getName() == 'corporate-design')
+                                    <div class="first-dot logo-dot fs-16 inline-block">&nbsp;</div>
+                                @endif
                             @endif
-                        @endif
-                    </a>
-                </figure>
-                @if(!(new \App\Http\Controllers\UserController())->checkSession())
-                    <div class="col-xs-9 btn-container inline-block">
-                        <div class="inline-block btn-and-line">
-                            <a href="javascript:void(0)" class="white-black-btn open-dentacoin-gateway patient-login" tabindex="-1">SIGN IN</a>
-                            <span class="first-dot custom-dot">&nbsp;</span>
-                            @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
-                                <figure itemscope="" itemtype="http://schema.org/ImageObject" class="christmas-ball">
-                                    <img src="/assets/images/christmas-calendar-campaign/christmas-ball.svg" class="width-100 max-width-40" alt="Christmas ball" itemprop="contentUrl"/>
-                                </figure>
-                            @endif
+                        </a>
+                    </figure>
+                    @if(!(new \App\Http\Controllers\UserController())->checkSession())
+                        <div class="col-xs-9 btn-container inline-block">
+                            <div class="inline-block btn-and-line">
+                                <a href="javascript:void(0)" class="white-black-btn open-dentacoin-gateway patient-login" tabindex="-1">SIGN IN</a>
+                                <span class="first-dot custom-dot">&nbsp;</span>
+                                @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
+                                    <figure itemscope="" itemtype="http://schema.org/ImageObject" class="christmas-ball">
+                                        <img src="/assets/images/christmas-calendar-campaign/christmas-ball.svg" class="width-100 max-width-40" alt="Christmas ball" itemprop="contentUrl"/>
+                                    </figure>
+                                @endif
+                            </div>
                         </div>
-                    </div>
-                @else
-                    @include('partials.logged-user-desktop-header-menu')
-                @endif
+                    @else
+                        @include('partials.logged-user-desktop-header-menu')
+                    @endif
+                </div>
             </div>
-        </div>
-    </header>
+        </header>
+    @endif
     <main @if(!empty(Route::current()) && (Route::current()->getName() != 'home' && Route::current()->getName() != 'foundation' && Route::current()->getName() != 'users' && Route::current()->getName() != 'dentists' && Route::current()->getName() != 'traders')) class="main-container" @endif>@yield("content")</main>
     <footer class="padding-bottom-80 hide-on-map-open hide-on-hub-open @if(!empty(Route::current()) && Route::current()->getName() == 'traders') black-style @endif">
         <div class="container">

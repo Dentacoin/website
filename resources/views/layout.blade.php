@@ -134,7 +134,7 @@
         <line class="twentieth" x1="0" y1="0" x2="0" y2="0"/>
     </svg>
     @php($mobileApp = \Illuminate\Support\Facades\Input::get('mobile-app'))
-    @if(empty($mobileApp))
+    @if (empty($mobileApp))
         <header class="hide-on-map-open hide-on-hub-open">
             <div class="container">
                 <div class="row fs-0">
@@ -167,7 +167,7 @@
             </div>
         </header>
     @endif
-    <main @if(!empty(Route::current()) && (Route::current()->getName() != 'home' && Route::current()->getName() != 'foundation' && Route::current()->getName() != 'users' && Route::current()->getName() != 'dentists' && Route::current()->getName() != 'traders')) class="main-container" @endif>@yield("content")</main>
+    <main @if(!empty(Route::current()) && (Route::current()->getName() != 'home' && Route::current()->getName() != 'foundation' && Route::current()->getName() != 'users' && Route::current()->getName() != 'dentists' && Route::current()->getName() != 'traders')) class="main-container @if (!empty($mobileApp)) padding-top-10 @endif" @endif>@yield("content")</main>
     <footer class="padding-bottom-80 hide-on-map-open hide-on-hub-open @if(!empty(Route::current()) && Route::current()->getName() == 'traders') black-style @endif">
         <div class="container">
             @if(!empty($socials))

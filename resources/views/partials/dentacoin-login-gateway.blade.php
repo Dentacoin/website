@@ -232,7 +232,7 @@
                                 <label for="privacy-policy-registration" class="custom-checkbox gateway-platform-background-color-important">✓</label>
                             @endif
                             <input type="checkbox" class="custom-checkbox-input" id="privacy-policy-registration" @if(!empty($incompletedRegistrationData)) checked @endif/>
-                            <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registration">{{ __('login-register.i-ve-read') }} <a href="https://dentacoin.com/privacy-policy" class="gateway-platform-color data-external-link" target="_blank">{{ __('login-register.privacy-policy') }}</a></label>
+                            <label class="dentacoin-login-gateway-fs-15 custom-checkbox-label" for="privacy-policy-registration">{{ __('login-register.i-ve-read') }} <a href="" class="gateway-platform-color data-external-link privacy-policy-link" target="_blank">{{ __('login-register.privacy-policy') }}</a></label>
                         </div>
                     </div>
                 </div>

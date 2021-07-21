@@ -15,6 +15,7 @@
     var civicActionType;
     var civicAjaxUrl;
     var civic_event_type = 'jquery-event';
+    var currentUrl = new URL(window.location.href);
 
     //init civic
     var civicSipObject = {};
@@ -131,6 +132,11 @@
                                 currentPlatform = 'dentacoin';
                             }
                             loginRegisterData.platform = currentPlatform;
+
+                            if (currentUrl.searchParams.get('invite') != null && currentUrl.searchParams.get('inviteid') != null) {
+                                loginRegisterData.invited_by = currentUrl.searchParams.get('invite');
+                                loginRegisterData.inviteid = currentUrl.searchParams.get('inviteid');
+                            }
 
                             $.ajax({
                                 type: 'POST',

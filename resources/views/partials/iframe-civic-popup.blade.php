@@ -46,7 +46,7 @@
             return params;
         }
 
-        /*var getParams = getGETParameters();
+        var getParams = getGETParameters();
         if (!getParams.hasOwnProperty('uuid')) {
             $(document).on('civicLibLoaded', function() {
                 if ($('.type-login').hasClass('active')) {
@@ -59,7 +59,7 @@
                     $('.type-register').click();
                 }
             });
-        }*/
+        }
     </script>
 </body>
 </html>

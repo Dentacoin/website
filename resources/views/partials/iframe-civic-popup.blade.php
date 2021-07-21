@@ -19,10 +19,12 @@
     </style>
 </head>
 @php($type = \Illuminate\Support\Facades\Input::get('type'))
+@php($invite = \Illuminate\Support\Facades\Input::get('invite'))
+@php($inviteid = \Illuminate\Support\Facades\Input::get('inviteid'))
 @php($appType = \Illuminate\Support\Facades\Input::get('app-type'))
 <body class="mobile-app-loaded @if(!empty($appType)) @if ($appType == 'dentavox') dentavox-app-loaded @endif  @endif">
-    <a href="javascript:void(0)" class="civic-custom-btn type-login social-login-btn mobile-app visual-hide @if ($type == 'login') active @endif" data-url="{{getenv('API_DOMAIN')}}/api/login" data-platform="">{{ __('login-register.continue-with-civic') }}</a>
-    <a href="javascript:void(0)" class="civic-custom-btn type-register social-login-btn mobile-app visual-hide @if ($type == 'register') active @endif" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="">{{ __('login-register.continue-with-civic') }}</a>
+    <a href="javascript:void(0)" class="civic-custom-btn type-login social-login-btn mobile-app visual-hide @if ($type == 'login') active @endif" data-url="{{getenv('API_DOMAIN')}}/api/login" data-platform="" @if (!empty($invite)) data-inviter="{{$invite}}" @endif @if (!empty($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
+    <a href="javascript:void(0)" class="civic-custom-btn type-register social-login-btn mobile-app visual-hide @if ($type == 'register') active @endif" data-url="{{getenv('API_DOMAIN')}}/api/register" data-platform="" @if (!empty($invite)) data-inviter="{{$invite}}" @endif @if (!empty($inviteid)) data-inviteid="{{$inviteid}}" @endif>{{ __('login-register.continue-with-civic') }}</a>
 
     <div class="camping-loader"><div class="response-layer"><div class="wrapper"><picture itemscope="" itemtype="http://schema.org/ImageObject"><source media="(max-width: 768px)" srcset="/assets/uploads/dcn-flipping-coin-logo-loader-v3-mobile.gif"><img itemprop="contentUrl" src="/assets/uploads/dcn-flipping-coin-logo-loader-v3_desktop.gif" alt="Loader"></picture></div></div></div>
 

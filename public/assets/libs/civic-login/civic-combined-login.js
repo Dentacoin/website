@@ -191,8 +191,10 @@
                                             return false;
                                         } else if (data.is_vpn) {
                                             if (currentPlatform != undefined) {
+                                                console.log(1);
                                                 civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/vpn-block?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id)}, 'event-from-iframe-to-parent');
                                             } else {
+                                                console.log(2);
                                                 civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/vpn-block'}, 'event-from-iframe-to-parent');
                                             }
 

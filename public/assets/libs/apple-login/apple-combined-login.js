@@ -33,7 +33,6 @@ $('body').on('click', '.apple-custom-btn', function() {
                         },
                         function(error) {
                             console.log(error, 'error');
-                            this_btn.html(error);
                             customAppleEvent('falseSoftwareVersion', 'Request to CoreDB-API failed.');
                         }
                     )

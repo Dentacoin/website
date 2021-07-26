@@ -24,7 +24,20 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
         if (this_btn.hasClass('mobile-app')) {
             // loading facebook from mobile app
 
-            if (typeof(openFB) != 'undefined') {
+            if (typeof(facebookConnectPlugin) != 'undefined') {
+                console.log('Facebook login type - facebookConnectPlugin');
+                facebookConnectPlugin.login(['email'],
+                    function(response) {
+                        console.log('response: ', response);
+                        proceedWithFacebookLogin(response, this_btn, 'mobile');
+                    },
+                    function loginError (error) {
+                        console.log(error);
+                        alert('Something went wrong with the external login provider, please try again later or contact <a href="mailto:admin@dentacoin.com">admin@dentacoin.com</a>.');
+                    }
+                );
+            } else if (typeof(openFB) != 'undefined') {
+                console.log('Facebook login type - openFB');
                 openFB.init({appId: fb_config.app_id});
 
                 openFB.login(
@@ -76,9 +89,6 @@ $('body').on('click', '.facebook-custom-btn', function(rerequest){
 });
 
 function proceedWithFacebookLogin(response, this_btn, type, event_type) {
-    console.log(response.authResponse, 'response.authResponse');
-    console.log(response.status, 'response.status');
-
     if (response.authResponse && response.status == 'connected') {
         //fbGetData();
 

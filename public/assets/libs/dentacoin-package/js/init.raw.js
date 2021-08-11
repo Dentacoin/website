@@ -592,7 +592,7 @@ if (typeof jQuery == 'undefined') {
                                 platform_home_link = '//dentacoin.com/foundation';
                             }
 
-                            var miniHubHtml = '<div class="dcn-hub-mini without-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"><div class="hidden-box-footer">'+platformMenu+'<div class="hidden-box-wrapper"><div class="home-btn"><a href="'+platform_home_link+'"><img src="//dentacoin.com/assets/images/home-btn-dentacoin-hub.svg" alt="Home button"/></a></div><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'" class="my-account-link">My Account</a></div></div></div></div></div>';
+                            var miniHubHtml = '<div class="dcn-hub-mini without-apps" id="dcn-hub-mini"><span class="up-arrow">▲</span><div class="hidden-box"><div class="hidden-box-footer">'+platformMenu+'<div class="hidden-box-wrapper"><div class="home-btn"><a href="'+platform_home_link+'"><img src="//dentacoin.com/assets/images/home-btn-dentacoin-hub.svg" alt="Home button"/></a></div><div class="logout-btn-parent"> <a href="'+params.log_out_link+'"><img src="//dentacoin.com/assets/images/power.png" alt="Power button"/> Log out</a> </div> <div class="my-account-btn-parent"><a href="//account.dentacoin.com?platform='+params.platform+'" class="my-account-link">My Account</a></div></div></div></div></div>';
 
                             jQuery('body').append(miniHubHtml);
 
@@ -663,7 +663,7 @@ if (typeof jQuery == 'undefined') {
                             }
 
                             miniHubHtml += branchesHtml;
-                            miniHubHtml += '<div class="hidden-box-footer"><div class="logout-btn-parent"><a href="'+params.log_out_link+'"><i class="fa fa-power-off" aria-hidden="true"></i> Log out</a></div><div class="my-account-btn-parent"><a href="//account.dentacoin.com/notifications?platform='+params.platform+'" class="notifications-link inline-block"><img src="https://account.dentacoin.com/assets/uploads/notifications.png" alt="Notification icon"/></a><a href="//account.dentacoin.com?platform='+params.platform+'" class="my-account-link">My Account</a></div></div></div></div>';
+                            miniHubHtml += '<div class="hidden-box-footer"><div class="logout-btn-parent"><a href="'+params.log_out_link+'"><img src="//dentacoin.com/assets/images/power.png" alt="Power button"/> Log out</a></div><div class="my-account-btn-parent"><a href="//account.dentacoin.com/notifications?platform='+params.platform+'" class="notifications-link inline-block"><img src="https://account.dentacoin.com/assets/uploads/notifications.png" alt="Notification icon"/></a><a href="//account.dentacoin.com?platform='+params.platform+'" class="my-account-link">My Account</a></div></div></div></div>';
 
                             jQuery('body').append(miniHubHtml);
 

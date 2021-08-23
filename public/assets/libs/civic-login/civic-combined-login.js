@@ -68,6 +68,10 @@
                 }
             }
 
+            if (currentUrl.searchParams.get('inviter') != null) {
+                window.localStorage.setItem('temp_inviter_data', currentUrl.searchParams.get('inviter'));
+            }
+
             civicSip.signup({
                 style: 'popup',
                 scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
@@ -191,10 +195,8 @@
                                             return false;
                                         } else if (data.is_vpn) {
                                             if (currentPlatform != undefined) {
-                                                console.log(1);
                                                 civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/vpn-block?platform=' + currentPlatform + '&key=' + encodeURIComponent(data.data.encrypted_id)}, 'event-from-iframe-to-parent');
                                             } else {
-                                                console.log(2);
                                                 civicCombinedLogin.utils.customCivicEvent('removeCivicIframeAndRedirectToAccountPage', null, {redirect: 'https://account.dentacoin.com/vpn-block'}, 'event-from-iframe-to-parent');
                                             }
 
@@ -330,14 +332,15 @@
                         }
                     }
 
-                    if (civic_custom_btn != undefined) {
-                        if (civic_custom_btn.attr('data-inviter') != undefined) {
-                            loginRegisterData.invited_by = civic_custom_btn.attr('data-inviter');
-                        }
+                    if (civic_custom_btn != undefined && civic_custom_btn.attr('data-inviter') != undefined) {
+                        loginRegisterData.invited_by = civic_custom_btn.attr('data-inviter');
+                    } else if (window.localStorage.getItem('temp_inviter_data') != null) {
+                        loginRegisterData.invited_by = window.localStorage.getItem('temp_inviter_data');
+                        window.localStorage.removeItem('temp_inviter_data');
+                    }
 
-                        if (civic_custom_btn.attr('data-inviteid') != undefined) {
-                            loginRegisterData.inviteid = civic_custom_btn.attr('data-inviteid');
-                        }
+                    if (civic_custom_btn != undefined && civic_custom_btn.attr('data-inviteid') != undefined) {
+                        loginRegisterData.inviteid = civic_custom_btn.attr('data-inviteid');
                     }
 
                     $.ajax({

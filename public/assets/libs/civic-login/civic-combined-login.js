@@ -68,10 +68,6 @@
                 }
             }
 
-            if (currentUrl.searchParams.get('inviter') != null) {
-                window.localStorage.setItem('temp_inviter_data', currentUrl.searchParams.get('inviter'));
-            }
-
             civicSip.signup({
                 style: 'popup',
                 scopeRequest: civicSip.ScopeRequests.BASIC_SIGNUP
@@ -334,9 +330,8 @@
 
                     if (civic_custom_btn != undefined && civic_custom_btn.attr('data-inviter') != undefined) {
                         loginRegisterData.invited_by = civic_custom_btn.attr('data-inviter');
-                    } else if (window.localStorage.getItem('temp_inviter_data') != null) {
-                        loginRegisterData.invited_by = window.localStorage.getItem('temp_inviter_data');
-                        window.localStorage.removeItem('temp_inviter_data');
+                    } else if (currentUrl.searchParams.get('inviter') != null) {
+                        loginRegisterData.invited_by = currentUrl.searchParams.get('inviter');
                     }
 
                     if (civic_custom_btn != undefined && civic_custom_btn.attr('data-inviteid') != undefined) {

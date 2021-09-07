@@ -161,7 +161,7 @@ class DentacoinMapController extends Controller
                 break;
             case 'get-partners-stats-by-country':
                 $code = $request->input('data');
-                $partnersCountByCountry = (new APIRequestsController())->getMapData(array('action' => 'all-partners-count-by-country', 'country' => $code));
+                    $partnersCountByCountry = (new APIRequestsController())->getMapData(array('action' => 'all-partners-count-by-country', 'country' => $code));
 
                 if (!empty($partnersCountByCountry) && is_object($partnersCountByCountry) && property_exists($partnersCountByCountry, 'success') && $partnersCountByCountry->success) {
                     return response()->json(['success' => true, 'data' => $partnersCountByCountry->data]);

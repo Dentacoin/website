@@ -34,12 +34,12 @@ class DentacoinLoginGateway extends Controller
 
         $inviter = $request->input('inviter');
         if (!empty($inviter)) {
-            $params['inviter'] = urldecode($inviter);
+            $params['inviter'] = $inviter;
         }
 
         $inviteid = $request->input('inviteid');
         if (!empty($inviteid)) {
-            $params['inviteid'] = urldecode($inviteid);
+            $params['inviteid'] = $inviteid;
         }
 
         $mobile_app = $request->input('mobile_app');

@@ -332,6 +332,10 @@
                         loginRegisterData.invited_by = civic_custom_btn.attr('data-inviter');
                     } else if (currentUrl.searchParams.get('inviter') != null) {
                         loginRegisterData.invited_by = currentUrl.searchParams.get('inviter');
+
+                        if (currentUrl.searchParams.get('is-dentist-patient-relation-creation') != null) {
+                            loginRegisterData.invited_by = true;
+                        }
                     }
 
                     if (civic_custom_btn != undefined && civic_custom_btn.attr('data-inviteid') != undefined) {

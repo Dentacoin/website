@@ -110,6 +110,10 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
             register_data.invited_by = this_btn.attr('data-inviter');
         }
 
+        if (this_btn.attr('data-is-dentist-patient-relation-creation') != undefined) {
+            register_data.is_dentist_patient_relation_creation = true;
+        }
+
         if (this_btn.attr('data-inviteid') != undefined) {
             register_data.inviteid = this_btn.attr('data-inviteid');
         }

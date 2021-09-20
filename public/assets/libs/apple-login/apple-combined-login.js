@@ -120,6 +120,10 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
         if (this_btn.attr('data-inviteid') != undefined) {
             register_data.inviteid = this_btn.attr('data-inviteid');
         }
+
+        if (this_btn.attr('data-is-dentist-patient-relation-creation') != undefined) {
+            register_data.is_dentist_patient_relation_creation = true;
+        }
     }
 
     if (window.localStorage.getItem('uniqueDeviceId') != null) {

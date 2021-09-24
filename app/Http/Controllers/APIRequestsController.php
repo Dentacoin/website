@@ -558,6 +558,43 @@ class APIRequestsController extends Controller {
         }
     }
 
+    public function getDCNSubscribers() {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => 'https://dentacoin.com/info/subscribed-users',
+            CURLOPT_SSL_VERIFYPEER => 0
+        ));
+
+        $resp = curl_exec($curl);
+        curl_close($curl);
+
+        if(!empty($resp))   {
+            return $resp;
+        } else {
+            return 0;
+        }
+    }
+
+    public function getDCNTransactionsCount() {
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_POST => 1,
+            CURLOPT_URL => 'https://payment-server-info.dentacoin.com/get-dcn-events-history-count',
+            CURLOPT_SSL_VERIFYPEER => 0
+        ));
+
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+
+        if(!empty($resp))   {
+            return $resp;
+        } else {
+            return false;
+        }
+    }
+
     public function checkIfCivicEmailTryingToLoginFromMobileApp($email) {
         $curl = curl_init();
         curl_setopt_array($curl, array(

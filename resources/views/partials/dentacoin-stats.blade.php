@@ -6,7 +6,7 @@
 @php($industryPartners = (new \App\Http\Controllers\DentacoinMapController())->getDentacoinLocations(4))
 @if ($dcnStatsCombinedData && property_exists($dcnStatsCombinedData, 'success') && $dcnStatsCombinedData->success)
     @php($dentistsCount = $dcnStatsCombinedData->data->non_partners + $dcnStatsCombinedData->data->partners)
-    @php($usersCount = substr($dcnStatsCombinedData->data->patients + $dcnSubscribers, 0, -3) . 'K-')
+    @php($usersCount = substr($dcnStatsCombinedData->data->patients + $dcnSubscribers, 0, -3) . 'K+')
     @php($locations = sizeof($labs) + sizeof($suppliers) + sizeof($industryPartners) + $dcnStatsCombinedData->data->partners)
 @else
     @php($dentistsCount = '1.9K+')
@@ -14,7 +14,7 @@
     @php($locations = sizeof($labs) + sizeof($suppliers) + sizeof($industryPartners))
 @endif
 @if ($dcnTransactions && property_exists($dcnTransactions, 'success') && $dcnTransactions->success)
-    @php($dcnTransactionsCount = substr($dcnTransactions->success, 0, -3) . 'K-')
+    @php($dcnTransactionsCount = substr($dcnTransactions->success, 0, -3) . 'K+')
 @else
     @php($dcnTransactionsCount = '230K+')
 @endif

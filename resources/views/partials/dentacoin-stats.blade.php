@@ -10,13 +10,13 @@
     @php($locations = sizeof($labs) + sizeof($suppliers) + sizeof($industryPartners) + $dcnStatsCombinedData->data->partners)
 @else
     @php($dentistsCount = '1.9K+')
-    @php($usersCount = '200K+')
+    @php($usersCount = '300K+')
     @php($locations = sizeof($labs) + sizeof($suppliers) + sizeof($industryPartners))
 @endif
 @if ($dcnTransactions && property_exists($dcnTransactions, 'success') && $dcnTransactions->success)
     @php($dcnTransactionsCount = substr($dcnTransactions->success, 0, -3) . 'K+')
 @else
-    @php($dcnTransactionsCount = '230K+')
+    @php($dcnTransactionsCount = '260K+')
 @endif
 <div class="container">
     <div class="row fs-0 text-center">

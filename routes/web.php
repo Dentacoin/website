@@ -17,6 +17,11 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
+    /*Route::get('/test', function() {
+        var_dump((new \App\Http\Controllers\APIRequestsController())->getMapData(array('action' => 'combined-count-data')));
+        die();
+    })->name('test');*/
+
     Route::get('/users', 'HomeController@getUsersPageView')->name('users');
 
     Route::get('/dentists', 'HomeController@getDentistsPageView')->name('dentists');

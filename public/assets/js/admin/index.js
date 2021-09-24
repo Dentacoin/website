@@ -31,18 +31,18 @@ if($('body').hasClass('add-job-offer')) {
 
     bindDontSubmitFormOnEnter();
 } else if($('body').hasClass('additionals')) {
-    $('.box.api-endpoints .remove-box').unbind().click(function()   {
+    $('.remove-box').unbind().click(function()   {
         $(this).closest('.custom-box').remove();
     });
 
-    $('.box.api-endpoints .add-new-api-endpoint').click(function() {
-        if($('.box.api-endpoints .new-api-endpoint-name').val().trim() == '' || $('.box.api-endpoints .new-api-endpoint-value').val().trim() == '') {
+    $('.add-new-api-endpoint').click(function() {
+        if($('.new-api-endpoint-name').val().trim() == '' || $('.new-api-endpoint-value').val().trim() == '') {
             basic.showAlert('Please enter name and value for API Endpoint.');
         }else {
-            $('.box.api-endpoints .appending-body').append('<div class="box"><div class="box-header with-border"><h3 class="box-title">'+$('.box.api-endpoints .new-api-endpoint-name').val().trim()+'</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="form-group"><input type="text" class="form-control" name="api-endpoints['+generateUrl($('.box.api-endpoints .new-api-endpoint-name').val().trim())+'][data]" placeholder="Enter circulating supply" value="'+$('.box.api-endpoints .new-api-endpoint-value').val().trim()+'"><input type="hidden" class="form-control" name="api-endpoints['+generateUrl($('.box.api-endpoints .new-api-endpoint-name').val().trim())+'][name]" placeholder="Enter circulating supply" value="'+$('.box.api-endpoints .new-api-endpoint-name').val().trim()+'"></div></div></div>');
-            $('.box.api-endpoints .new-api-endpoint-name').val('');
-            $('.box.api-endpoints .new-api-endpoint-value').val('');
-            $('.box.api-endpoints .remove-box').unbind().click(function()   {
+            $('.appending-body').append('<div class="box"><div class="box-header with-border"><h3 class="box-title">'+$('.new-api-endpoint-name').val().trim()+'</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="form-group"><input type="text" class="form-control" name="api-endpoints['+generateUrl($('.new-api-endpoint-name').val().trim())+'][data]" placeholder="Enter circulating supply" value="'+$('.new-api-endpoint-value').val().trim()+'"><input type="hidden" class="form-control" name="api-endpoints['+generateUrl($('.new-api-endpoint-name').val().trim())+'][name]" placeholder="Enter circulating supply" value="'+$('.new-api-endpoint-name').val().trim()+'"></div></div></div>');
+            $('.new-api-endpoint-name').val('');
+            $('.new-api-endpoint-value').val('');
+            $('.remove-box').unbind().click(function()   {
                 $(this).closest('.custom-box').remove();
             });
         }

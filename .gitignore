@@ -8,6 +8,7 @@
 /.env
 /.htaccess
 /public/assets/videos/dentacoin-explainer-video.mp4
+/public/assets/nfts
 Homestead.json
 Homestead.yaml
 npm-debug.log

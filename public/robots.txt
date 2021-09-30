@@ -4,3 +4,4 @@ Disallow: /iframe-civic-popup
 Disallow: /dcn-admin-access/
 Disallow: /info/
 Disallow: /test-combined-login/
+Disallow: /assets/nfts/

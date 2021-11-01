@@ -96,6 +96,20 @@ return [
             'engine' => 'InnoDB',
         ],
 
+        'mysql5' => [
+            'driver'    => env('DB_CONNECTION_FIFTH'),
+            'host'      => env('DB_HOST_FIFTH'),
+            'port'      => env('DB_PORT_FIFTH'),
+            'database'  => env('DB_DATABASE_FIFTH'),
+            'username'  => env('DB_USERNAME_FIFTH'),
+            'password'  => env('DB_PASSWORD_FIFTH'),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
+            'prefix' => '',
+            'strict' => false,
+            'engine' => 'InnoDB',
+        ],
+
         'pgsql' => [
             'driver' => 'pgsql',
             'host' => env('DB_HOST', '127.0.0.1'),

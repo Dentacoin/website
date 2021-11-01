@@ -26,6 +26,8 @@
     "keythereum": "^1.0.4",
     "laravel-mix": "^4.0.16",
     "slick-carousel": "^1.8.1",
-    "webpack-obfuscator": "^0.18.0"
+    "webpack-obfuscator": "^0.18.0",
+    "ethers": "^5.5.1",
+    "@eth-optimism/contracts": "canary"
   }
 }

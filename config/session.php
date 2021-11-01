@@ -161,7 +161,7 @@ return [
     |
     */
 
-    'same_site' => 'none',
+    'same_site' => env('SAME_SITE', NULL),
 
     'secure' => env('SESSION_SECURE_COOKIE', true),
 

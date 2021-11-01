@@ -1,323 +1,25 @@
-jQuery(window).on('load', function()   {
-
-});
-
-jQuery(window).on('resize', function(){
-
-});
-
 jQuery(document).ready(function()   {
     addHTMLEditor();
     initDataTable();
 });
 
-jQuery(window).on('scroll', function () {
-
-});
-
-
-// =========================================== PAGES ===========================================
-
-if($('body').hasClass('add-job-offer')) {
-    $('body.add-job-offer input[name="title"]').on('input', function() {
-        $('body.add-job-offer input[name="slug"]').val(generateUrl($(this).val().trim()));
-    });
-
-    initSkillsLogic();
-
-    bindDontSubmitFormOnEnter();
-} else if($('body').hasClass('edit-job-offer'))    {
-    initSkillsLogic();
-
-    bindDontSubmitFormOnEnter();
-} else if($('body').hasClass('additionals')) {
-    $('.remove-box').unbind().click(function()   {
-        $(this).closest('.custom-box').remove();
-    });
-
-    $('.add-new-api-endpoint').click(function() {
-        if($('.new-api-endpoint-name').val().trim() == '' || $('.new-api-endpoint-value').val().trim() == '') {
-            basic.showAlert('Please enter name and value for API Endpoint.');
-        }else {
-            $('.appending-body').append('<div class="box"><div class="box-header with-border"><h3 class="box-title">'+$('.new-api-endpoint-name').val().trim()+'</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="form-group"><input type="text" class="form-control" name="api-endpoints['+generateUrl($('.new-api-endpoint-name').val().trim())+'][data]" placeholder="Enter circulating supply" value="'+$('.new-api-endpoint-value').val().trim()+'"><input type="hidden" class="form-control" name="api-endpoints['+generateUrl($('.new-api-endpoint-name').val().trim())+'][name]" placeholder="Enter circulating supply" value="'+$('.new-api-endpoint-name').val().trim()+'"></div></div></div>');
-            $('.new-api-endpoint-name').val('');
-            $('.new-api-endpoint-value').val('');
-            $('.remove-box').unbind().click(function()   {
-                $(this).closest('.custom-box').remove();
-            });
-        }
-    });
-} else if($('body').hasClass('add-location'))  {
-    addLocationMap();
-} else if($('body').hasClass('edit-location'))  {
-    addLocationMap(true);
-} else if($('body').hasClass('add-clinic') || $('body').hasClass('edit-clinic')) {
-    $('.add-edit-clinic #featured').change(function() {
-        if($(this).is(':checked')) {
-            $('.add-edit-clinic .clinic-text').removeClass('hide');
-        } else {
-            $('.add-edit-clinic .clinic-text').addClass('hide');
-        }
-    });
-
-    $('select[name="type"]').on('change', function() {
-        $('select[name="subtype"] .subtype-option').addClass('hide');
-        $('select[name="subtype"] .subtype-option[data-type-id="'+$(this).val()+'"]').removeClass('hide');
-    });
-} else if($('body').hasClass('add-type') || $('body').hasClass('edit-type') || $('body').hasClass('add-platform') || $('body').hasClass('edit-platform')) {
-    var color_picker_options = {
-        preferredFormat: "hex",
-        showInput: true,
-        clickoutFiresChange: true,
-        showButtons: false,
-        move: function(color) {
-            $('input[name="color"]').val(color.toHexString());
-        },
-        change: function(color) {
-            $('input[name="color"]').val(color.toHexString());
-        }
-    };
-
-    if($('input[name="color"]').attr('data-color') != undefined) {
-        color_picker_options.color = $('input[name="color"]').attr('data-color');
-    }
-
-    $('input[name="color"]').spectrum(color_picker_options);
-} else if($('body').hasClass('view-christmas-calendar-participant')) {
-    $('.approve-user-calendar-participation').click(function() {
-        var thisBtn = $(this);
-        var approvedTasksLength = $('tr.passed-not-payed-task').length;
-        if(approvedTasksLength) {
-            var dcnAmount = 0;
-            var ticketAmount = 0;
-            var doubleReward = false;
-            var tasksToApprove = [];
-            for(var i = 0; i < approvedTasksLength; i+=1) {
-                if($('tr.passed-not-payed-task').eq(i).attr('data-type') == 'dcn-reward') {
-                    dcnAmount += parseInt($('tr.passed-not-payed-task').eq(i).attr('data-value'));
-                } else if($('tr.passed-not-payed-task').eq(i).attr('data-type') == 'ticket-reward') {
-                    ticketAmount += parseInt($('tr.passed-not-payed-task').eq(i).attr('data-value'));
-                }
-                tasksToApprove.push($('tr.passed-not-payed-task').eq(i).attr('data-id'));
-            }
-
-            var warningMsg = 'Are you sure you want to approve these user tasks? They make in total ' + dcnAmount + ' DCN and ' + ticketAmount + ' tickets.';
-
-            if ($('tr.passed-not-payed-task.on-time').length == 31) {
-                doubleReward = true;
-                warningMsg += ' This user has also completed all tasks in the tasks days so he will receive x2 DCN reward => ' + (dcnAmount*2) + ' DCN.';
-            }
-
-            var confirm_obj = {};
-            confirm_obj.callback = function (result) {
-                if(result) {
-                    $.ajax({
-                        type: 'POST',
-                        url: SITE_URL + '/christmas-calendar-participants/' + thisBtn.attr('data-year') + '/approve-tasks',
-                        data: {
-                            'tasksToApprove' : tasksToApprove,
-                            'participant' : $('table').attr('data-participant-id'),
-                            'doubleReward' : doubleReward
-                        },
-                        dataType: 'json',
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        },
-                        success: function (response) {
-                            if (response.success) {
-                                basic.showAlert(response.success, '', true);
-
-                                $('tr.passed-not-payed-task').find('.reward-sent-td').html('<i class="fa fa-check text-success" aria-hidden="true"></i>').removeClass('passed-not-payed-task');
-                                $('tr.passed-not-payed-task').removeClass('passed-not-payed-task');
-                            } else if (response.error) {
-                                basic.showAlert(response.error, '', true);
-                            }
-                        }
-                    });
-                }
-            };
-            basic.showConfirm(warningMsg, '', confirm_obj, true);
-        } else {
-            basic.showAlert('This user has no tasks to approve.', '', true);
-        }
-    });
-} else if($('body').hasClass('add-available-buying-option') || $('body').hasClass('edit-available-buying-option')) {
-    $('select[name="type"]').on('change', function() {
-        if ($(this).val() == 'exchange-platforms') {
-            $('.camping-for-exchange-platform-type').show();
-            $('[name="clear-exchange-pairs"]').val(false);
-        } else {
-            $('.camping-for-exchange-platform-type').hide();
-            $('[name="clear-exchange-pairs"]').val(true);
-        }
-    });
-
-    $(document).on('click', '.remove-pair', function() {
-        $(this).closest('.single-child').remove();
-
-        if ($('.sortable-container .single-child').length == 0) {
-            $('.no-pairs').removeClass('hide');
-            $('.sortable-container').addClass('hide');
-        }
-    });
-
-    $('.sortable-container').sortable();
-    $('.add-new-exchange-pair').click(function() {
-        if ($('.pair-title').val().trim() == '') {
-            basic.showDialog('Please enter pair title.', '', true);
-        } else {
-            var url = '';
-            if ($('.sortable-container').hasClass('hide')) {
-                $('.sortable-container').removeClass('hide');
-                $('.no-pairs').addClass('hide');
-            }
-
-            if ($('.pair-url').val().trim() != '') {
-                url = '<div><label>URL:</label> <a href="'+$('.pair-url').val().trim()+'" target="_blank">'+$('.pair-url').val().trim()+'</a></div>';
-            }
-
-            var time = (new Date()).getTime();
-
-            $('.sortable-container').append('<div class="single-child clearfix"><div style="float: left;"><div><label>Title:</label> '+$('.pair-title').val().trim()+'</div>'+url+'</div><div style="float: right;"><a href="javascript:void(0);" class="btn remove-pair">Remove</a><input type="hidden" name="pairs['+time+'][title]" value="'+$('.pair-title').val().trim()+'"/><input type="hidden" name="pairs['+time+'][url]" value="'+$('.pair-url').val().trim()+'"/></div></div>');
-
-            $('.pair-title').val('');
-            $('.pair-url').val('');
-        }
-    });
-} else if($('body').hasClass('add-roadmap-year') || $('body').hasClass('edit-roadmap-year') || $('body').hasClass('edit-roadmap-year-event')) {
-    function initColorPicker() {
-        var color_picker_options = {
-            preferredFormat: "hex",
-            showInput: true,
-            clickoutFiresChange: true,
-            showButtons: false,
-            move: function(color) {
-                $('.event-color').val(color.toHexString());
-                if ($('[name="predefined-color"]').length) {
-                    $('[name="predefined-color"]').prop('checked', false);
-                }
-            },
-            change: function(color) {
-                $('.event-color').val(color.toHexString());
-                if ($('[name="predefined-color"]').length) {
-                    $('[name="predefined-color"]').prop('checked', false);
-                }
-            }
-        };
-
-        $('.event-color').spectrum(color_picker_options);
-    }
-
-    initColorPicker();
-
-    $(document).on('click', '.remove-event', function() {
-        $(this).closest('.single-child').remove();
-
-        if ($('.sortable-container .single-child').length == 0) {
-            $('.no-pairs').removeClass('hide');
-            $('.sortable-container').addClass('hide');
-        }
-    });
-
-    if ($('[name="predefined-color"]').length) {
-        $('[name="predefined-color"]').on('change', function() {
-            if ($(this).val() != '') {
-                $('.event-color').val($(this).val());
-
-                initColorPicker();
-            }
-        });
-    }
-
-    $('.clear-label-color').click(function() {
-        if ($('[name="predefined-color"]').length) {
-            $('[name="predefined-color"]').prop('checked', false);
-        }
-
-        $('.event-color').val('');
-        initColorPicker();
-    });
-
-    $('.sortable-container').sortable();
-    $('.add-new-roadmap-event').click(function() {
-        var roadmapEventTitle = CKEDITOR.instances['event-title'].getData().trim();
-
-        if (roadmapEventTitle == '') {
-            basic.showDialog('Please enter title.', '', true);
-        } else if (roadmapEventTitle.length > 1000) {
-            basic.showDialog('Please enter title within max length limit of 1000 symbols.', '', true);
-        } else if ($('.event-label').val().trim() != '' && $('.event-color').val().trim() == '') {
-            basic.showDialog('You have entered label value, but you did not select label color.', '', true);
-        } else if ($('.event-label').val().trim() == '' && $('.event-color').val().trim() != '') {
-            basic.showDialog('You have entered label color, but you did not select label value.', '', true);
-        } else {
-            if ($('.sortable-container').hasClass('hide')) {
-                $('.sortable-container').removeClass('hide');
-                $('.no-pairs').addClass('hide');
-            }
-
-            var time = (new Date()).getTime();
-            var eventLabel = '';
-            var eventLabelColor = '';
-            var eventChecked = '<div><label>Checked:</label> No</div>';
-            var eventBorder = '<div><label>Bottom border:</label> No</div>';
-            if ($('.event-label').val().trim() != '') {
-                eventLabel = '<div><label>Label:</label> '+$('.event-label').val().trim()+'</div><input type="hidden" name="events['+time+'][label]" value="'+$('.event-label').val().trim()+'"/>';
-            }
-
-            if ($('.event-color').val().trim() != '') {
-                eventLabelColor = '<div><label>Label color:</label> <span style="display: inline-block; width: 30px; height: 30px; background-color: '+$('.event-color').val().trim()+';"></span></div><input type="hidden" name="events['+time+'][color]" value="'+$('.event-color').val().trim()+'"/>';
-            }
-
-            if ($('.event-checked').is(':checked')) {
-                eventChecked = '<div><label>Checked:</label> Yes</div><input type="hidden" name="events['+time+'][checked]" value="true"/>';
-            }
-
-            if ($('.event-border').is(':checked')) {
-                eventBorder = '<div><label>Bottom border:</label> Yes</div><input type="hidden" name="events['+time+'][border]" value="true"/>';
-            }
-
-            if ($('.event-coin-burn').is(':checked')) {
-                eventBorder = '<div><label>Coin burn:</label> Yes</div><input type="hidden" name="events['+time+'][coin-burn]" value="true"/>';
-            }
-
-            $('.sortable-container').append('<div class="single-child clearfix"><div style="float: left;"><div><label>Title:</label> '+roadmapEventTitle+'</div>'+eventLabel+eventLabelColor+eventChecked+eventBorder+'</div><div style="float: right;"><a href="javascript:void(0);" class="btn remove-event">Remove</a><input type="hidden" name="events['+time+'][title]" class="event-'+time+'"/></div></div>');
-
-            $('.event-'+time).val(roadmapEventTitle);
-
-            CKEDITOR.instances['event-title'].setData('');
-            $('.event-label').val('');
-            $('.event-checked').prop('checked', false);
-            $('.event-border').prop('checked', false);
-            if ($('[name="predefined-color"]').length) {
-                $('[name="predefined-color"]').prop('checked', false);
-            }
-
-            $('.event-color').val('');
-            initColorPicker();
-        }
-    });
-}
-
-// =========================================== /PAGES ===========================================
-
 function initDataTable()    {
-    if($('table.table.table-without-reorder').length > 0) {
-        if($('table.table.table-without-reorder').hasClass('media-table'))  {
+    if ($('table.table.table-without-reorder').length > 0) {
+        if ($('table.table.table-without-reorder').hasClass('media-table'))  {
             $('table.table.table-without-reorder.media-table').DataTable().on('draw.dt', function (){
                 var pagination_id = null;
-                if($(this).attr('data-id-in-action') != undefined) {
+                if ($(this).attr('data-id-in-action') != undefined) {
                     pagination_id = $(this).attr('data-id-in-action');
                 }
                 var close_button;
-                if($(this).attr('data-close-btn') == 'false')   {
+                if ($(this).attr('data-close-btn') == 'false')   {
                     close_button = false;
-                }else if($(this).attr('data-close-btn') == 'true')   {
+                } else if ($(this).attr('data-close-btn') == 'true')   {
                     close_button = true;
                 }
                 useMediaEvent(pagination_id, close_button);
             });
-        } else if($('table.table.table-without-reorder').hasClass('holiday-calendar-participants'))  {
+        } else if ($('table.table.table-without-reorder').hasClass('holiday-calendar-participants'))  {
             $('table.table.table-without-reorder').DataTable({
                 ordering: true,
                 order: [],
@@ -332,7 +34,7 @@ function initDataTable()    {
                 sort: false
             });
         }
-    } else if($('table.table.table-with-reorder').length > 0) {
+    } else if ($('table.table.table-with-reorder').length > 0) {
         var table = $('table.table.table-with-reorder').DataTable({
             rowReorder: true
         });
@@ -353,7 +55,7 @@ function initDataTable()    {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function (response) {
-                    if(response.success)    {
+                    if (response.success)    {
                         basic.showAlert(response.success);
                     }
                 }
@@ -363,7 +65,7 @@ function initDataTable()    {
 }
 
 function addHTMLEditor(){
-    if($('.ckeditor-init').length > 0)   {
+    if ($('.ckeditor-init').length > 0)   {
         $('.ckeditor-init').each(function() {
             var options = $.extend({
                     height: 350,
@@ -409,18 +111,18 @@ function addHTMLEditor(){
 //opening media popup with all the images in the DB
 function openMedia(id, close_btn, type, editor)    {
     var data = {};
-    if(id === undefined) {
+    if (id === undefined) {
         id = null;
     }
-    if(close_btn === undefined) {
+    if (close_btn === undefined) {
         close_btn = false;
     }
-    if(type === undefined) {
+    if (type === undefined) {
         type = null;
-    }else {
+    } else {
         data['type'] = type;
     }
-    if(editor === undefined) {
+    if (editor === undefined) {
         editor = null;
     }
     $.ajax({
@@ -432,7 +134,7 @@ function openMedia(id, close_btn, type, editor)    {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function (response) {
-            if(response.success) {
+            if (response.success) {
                 basic.showDialog(response.success, 'media-popup');
                 initDataTable();
                 $('table.table.table-without-reorder.media-table').attr('data-id-in-action', id).attr('data-close-btn', close_btn);
@@ -448,39 +150,39 @@ function openMedia(id, close_btn, type, editor)    {
 function useMediaEvent(id, close_btn, editor) {
     $('.media-popup .use-media').click(function()   {
         var type = $(this).attr('data-type');
-        if(editor != null)  {
-            if(type == 'file') {
+        if (editor != null)  {
+            if (type == 'file') {
                 editor.insertHtml('<a href="'+$(this).closest('tr').attr('data-src')+'">'+$(this).closest('tr').attr('data-src')+'</a>');
-            }else if(type == 'image')   {
+            } else if (type == 'image')   {
                 editor.insertHtml('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
             }
-        }else {
-            if(type == 'file')  {
-                if(id != null)	{
+        } else {
+            if (type == 'file')  {
+                if (id != null)	{
                     $('.media[data-id="'+id+'"] .image-visualization').html('<a href="'+$(this).closest('tr').attr('data-src')+'">'+$(this).closest('tr').attr('data-src')+'</a>');
                     $('.media[data-id="'+id+'"] input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
                     $('.media[data-id="'+id+'"] input.hidden-input-url').val($(this).closest('tr').attr('data-src'));
-                    if(close_btn) {
+                    if (close_btn) {
                         $('.media[data-id="'+id+'"] .image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
                     }
-                }else {
+                } else {
                     $('.image-visualization').html('<a href="'+$(this).closest('tr').attr('data-src')+'">'+$(this).closest('tr').attr('data-src')+'</a>');
                     $('input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
                     $('input.hidden-input-url').val($(this).closest('tr').attr('data-src'));
-                    if(close_btn) {
+                    if (close_btn) {
                         $('.image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
                     }
                 }
-            }else if(type == 'image')    {
-                if(id != null)	{
+            } else if (type == 'image')    {
+                if (id != null)	{
                     $('.media[data-id="'+id+'"] .image-visualization').html('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
                     $('.media[data-id="'+id+'"] input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
-                }else {
+                } else {
                     $('.image-visualization').html('<img class="small-image" src="'+$(this).closest('tr').attr('data-src')+'"/>');
                     $('input.hidden-input-image').val($(this).closest('tr').attr('data-id'));
                 }
-                if(close_btn) {
-                    if(id != null)	{
+                if (close_btn) {
+                    if (id != null)	{
                         $('.media[data-id="'+id+'"] .image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
                     } else {
                         $('.image-visualization').append('<span class="inline-block-top remove-image"><i class="fa fa-times" aria-hidden="true"></i></span>');
@@ -513,10 +215,10 @@ function deleteMedia() {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function (response) {
-                    if(response.success)    {
+                    if (response.success)    {
                         basic.showAlert(response.success, '', true);
                         this_btn.closest('tr').remove();
-                    } else if(response.error) {
+                    } else if (response.error) {
                         basic.showAlert(response.error, '', true);
                     }
                 }
@@ -528,7 +230,7 @@ deleteMedia();
 
 //saving image alts on media listing pages
 function saveImageAltsEvent()   {
-    if($('.save-image-alts').length > 0)    {
+    if ($('.save-image-alts').length > 0)    {
         $('.save-image-alts').click(function()  {
             var alts_object = {};
             for(let i = 0, len = $('.media-table tbody tr').length; i < len; i+=1)  {
@@ -547,7 +249,7 @@ function saveImageAltsEvent()   {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 success: function (response) {
-                    if(response.success)    {
+                    if (response.success)    {
                         basic.showAlert(response.success);
                     }
                 }
@@ -558,7 +260,7 @@ function saveImageAltsEvent()   {
 saveImageAltsEvent();
 
 //refreshing captcha on trying to log in admin
-if($('.refresh-captcha').length > 0)    {
+if ($('.refresh-captcha').length > 0)    {
     $('.refresh-captcha').click(function()  {
         $.ajax({
             type: 'GET',
@@ -574,111 +276,6 @@ if($('.refresh-captcha').length > 0)    {
     });
 }
 
-//creating job offer slug from the title on input
-if($('body').hasClass('add-application'))   {
-    $("input[name='title']").on('input', function()    {
-        $("input[name='slug']").val(generateUrl($(this).val()));
-    });
-} else if($('body').hasClass('add-dcn-hub-element') || $('body').hasClass('edit-dcn-hub-element'))   {
-    if ($('body').hasClass('add-dcn-hub-element')) {
-        $("input[name='title']").on('input', function()    {
-            $("input[name='slug']").val(generateUrl($(this).val()));
-        });
-    }
-
-    $("input[name='type']").on('change', function()    {
-        if ($(this).val() == 'folder') {
-            $('.if-folder-type').removeClass('hide');
-        } else {
-            $('.if-folder-type').addClass('hide');
-        }
-    });
-
-    $(document).on('click', '.remove-hub-element', function() {
-        $(this).closest('.single-child').remove();
-    });
-
-    $('.add-hub-element-to-folder').click(function() {
-        if ($('select.all-hub-elements option:selected').attr('value') != undefined) {
-            var selectedOption = $('select.all-hub-elements option:selected');
-            var imgHtml = '';
-            if (selectedOption.attr('data-image') != undefined) {
-                imgHtml = '<img src="/assets/uploads/'+selectedOption.attr('data-image')+'" style="margin-right: 15px;width: 100px;"/>';
-            }
-
-            if ($('.content').attr('data-post') != undefined) {
-                // if editing
-                $.ajax({
-                    type: 'POST',
-                    url: SITE_URL + '/dcn-hub-elements/add-dcn-element-to-folder/'+$('select.all-hub-elements').attr('data-dcn-folder')+'/'+selectedOption.val(),
-                    dataType: 'json',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (response) {
-                        if(response.success) {
-                            selectedOption.addClass('hide');
-
-                            $('.sortable-container').append('<div class="single-child" data-id="'+selectedOption.val()+'">'+imgHtml+selectedOption.html()+'<div style="float: right;"><a href="'+SITE_URL+'/dcn-hub-elements/edit/'+selectedOption.val()+'" target="_blank" class="btn">Edit</a> <a href="'+SITE_URL+'/dcn-hub-elements/remove-dcn-element-from-folder/'+$('select.all-hub-elements').attr('data-dcn-folder')+'/'+selectedOption.val()+'" onclick="return confirm(\'Are you sure you want to delete this resource?\')" class="btn">Remove</a></div></div>');
-                        } else {
-                            basic.showAlert(response.error, '', true);
-                        }
-                    }
-                });
-            } else {
-                // if adding
-                $('.sortable-container').append('<div class="single-child" data-id="'+selectedOption.val()+'"><input type="hidden" name="sub_elements[]" value="'+selectedOption.val()+'"/>'+imgHtml+selectedOption.html()+'<div style="float: right;"><a href="'+SITE_URL+'/dcn-hub-elements/edit/'+selectedOption.val()+'" class="btn" target="_blank">Edit</a> <a href="javascript:void(0);" class="btn remove-hub-element">Remove</a></div></div>');
-            }
-        } else {
-            basic.showAlert('Please select hub element.', '', true);
-        }
-    });
-} else if($('body').hasClass('view-dcn-hub'))   {
-    if ($('.add-hub-element').length) {
-        $('.add-hub-element').click(function() {
-            if ($('select.all-hub-elements option:selected').attr('value') != undefined) {
-                var selectedOption = $('select.all-hub-elements option:selected');
-                var imgHtml = '';
-                if (selectedOption.attr('data-image') != undefined) {
-                    imgHtml = '<img src="/assets/uploads/'+selectedOption.attr('data-image')+'" style="margin-right: 15px;width: 100px;"/>';
-                }
-
-                $.ajax({
-                    type: 'POST',
-                    url: SITE_URL + '/dcn-hub-elements/add-dcn-element-to-dcn-hub/'+$('select.all-hub-elements').attr('data-dcn-hub')+'/'+selectedOption.val(),
-                    dataType: 'json',
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function (response) {
-                        if(response.success) {
-                            selectedOption.addClass('hide');
-                            $('.sortable-container').append('<div class="single-child" data-id="'+selectedOption.val()+'">'+imgHtml+selectedOption.html()+'<div style="float: right;"><a href="'+SITE_URL+'/dcn-hub-elements/edit/'+selectedOption.val()+'" target="_blank" class="btn">Edit</a> <a href="'+SITE_URL+'/dcn-hub-elements/remove-dcn-element-from-dcn-hub/'+$('select.all-hub-elements').attr('data-dcn-hub')+'/'+selectedOption.val()+'" onclick="return confirm(\'Are you sure you want to delete this resource?\')" class="btn">Remove</a></div></div>');
-
-                            var changedValue = false;
-                            for (var i = 0, len = $('select.all-hub-elements option[value]').length; i < len; i+=1) {
-                                if (!$('select.all-hub-elements option[value]').eq(i).hasClass('hide')) {
-                                    $('select.all-hub-elements').val($('select.all-hub-elements option[value]').eq(i).val());
-                                    changedValue = true;
-                                    break;
-                                }
-                            }
-
-                            if (!changedValue) {
-                                $('select.all-hub-elements').prop('selectedIndex', 0);
-                            }
-                        } else {
-                            basic.showAlert(response.error, '', true);
-                        }
-                    }
-                });
-            } else {
-                basic.showAlert('Please select hub element.', '', true);
-            }
-        });
-    }
-}
-
 function generateUrl(str)  {
     var str_arr = str.toLowerCase().split('');
     var cyr = [
@@ -689,7 +286,7 @@ function generateUrl(str)  {
     ];
     for(var i = 0; i < str_arr.length; i+=1)  {
         for(var y = 0; y < cyr.length; y+=1)    {
-            if(str_arr[i] == cyr[y])    {
+            if (str_arr[i] == cyr[y])    {
                 str_arr[i] = lat[y];
             }
         }
@@ -697,7 +294,7 @@ function generateUrl(str)  {
     return str_arr.join('').replace(/-+/g, '-');
 }
 
-if($('.datepicker').length > 0) {
+if ($('.datepicker').length > 0) {
     $('.datepicker').datepicker({
         format: 'dd-mm-yyyy',
         startDate: '-3d'
@@ -705,7 +302,7 @@ if($('.datepicker').length > 0) {
 }
 
 function addLocationMap(edit) {
-    if(edit === undefined) {
+    if (edit === undefined) {
         edit = false;
     }
 
@@ -729,10 +326,10 @@ function addLocationMap(edit) {
             dataTitle = $this.data('title'),
             dataContent = "";
 
-        if(edit)    {
+        if (edit)    {
             var dataLat = $('input[type="number"][name="lat"]').val().trim();
             var dataLng = $('input[type="number"][name="lng"]').val().trim();
-        }else {
+        } else {
             var dataLat = 42.7825182;
             var dataLng = 25.6929199;
         }
@@ -792,7 +389,7 @@ function addLocationMap(edit) {
     });
 }
 
-if($('.add-edit-menu-element select[name="type"]').length > 0) {
+if ($('.add-edit-menu-element select[name="type"]').length > 0) {
     $('.add-edit-menu-element select[name="type"]').on('change', function() {
         var type = $(this).val();
         $.ajax({
@@ -806,7 +403,7 @@ if($('.add-edit-menu-element select[name="type"]').length > 0) {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             },
             success: function (response) {
-                if(response.success) {
+                if (response.success) {
                     $('.add-edit-menu-element .type-result').html(response.success);
                 }
             }
@@ -825,10 +422,10 @@ function initSkillsLogic()  {
 }
 
 function addSkillFromInput() {
-    if($('.skills-section input[type="text"]').val().trim() == '') {
+    if ($('.skills-section input[type="text"]').val().trim() == '') {
         alert('Please enter skill in the field.');
         return false;
-    }else {
+    } else {
         $('.skills-section .skills-body').append('<div class="single-skill"><div class="skill-text">'+$('.skills-section input[type="text"]').val().trim()+'<input type="hidden" name="skills[]" value="'+$('.skills-section input[type="text"]').val().trim()+'"/></div><div class="skill-action"><a href="javascript:void(0);" class="remove-skill"><i class="fa fa-times" aria-hidden="true"></i></a></div></div>');
         bindSingleSkillActions();
         $('.skills-section input[type="text"]').val('');
@@ -843,21 +440,21 @@ function bindSingleSkillActions()   {
 
 function bindDontSubmitFormOnEnter()    {
     $('form').keydown(function(event){
-        if(event.keyCode == 13) {
+        if (event.keyCode == 13) {
             event.preventDefault();
             return false;
         }
     });
 
     $('.skills-section input[type="text"]').keydown(function(event){
-        if(event.keyCode == 13) {
+        if (event.keyCode == 13) {
             addSkillFromInput();
         }
     });
 }
 
 function initUploadMediaLogic() {
-    if($('form#upload-media').length) {
+    if ($('form#upload-media').length) {
         $('form#upload-media').submit(function(event) {
             $('.response-layer').addClass('show-this');
             event.preventDefault();
@@ -873,17 +470,17 @@ function initUploadMediaLogic() {
                     contentType: false,
                     dataType: 'json',
                     success: function (response) {
-                        if(response.success) {
+                        if (response.success) {
                             basic.showAlert(response.success, '', true);
 
-                            if($('.media-table').length) {
+                            if ($('.media-table').length) {
                                 $('.media-table tbody').prepend(response.html_with_images);
 
-                                if($('table.table.table-without-reorder.media-table').attr('data-id-in-action') != undefined) {
+                                if ($('table.table.table-without-reorder.media-table').attr('data-id-in-action') != undefined) {
                                     useMediaEvent($('table.table.table-without-reorder.media-table').attr('data-id-in-action'), $('table.table.table-without-reorder.media-table').attr('data-close-btn'), null);
                                 }
                             }
-                        } else if(response.error) {
+                        } else if (response.error) {
                             basic.showAlert(response.error, '', true);
                         }
 
@@ -898,7 +495,7 @@ function initUploadMediaLogic() {
 }
 initUploadMediaLogic();
 
-if($('.sortable-container.update-menu-children-order').length) {
+if ($('.sortable-container.update-menu-children-order').length) {
     for(var i = 0, len = $('.sortable-container.update-menu-children-order').length; i < len; i+=1) {
         $('.sortable-container.update-menu-children-order').eq(i).sortable({
             stop: function() {
@@ -916,7 +513,7 @@ if($('.sortable-container.update-menu-children-order').length) {
                     },
                     dataType: 'json',
                     success: function (response) {
-                        if(response.success)    {
+                        if (response.success)    {
                             basic.showAlert(response.success, '', true);
                         }
                     },
@@ -927,4 +524,537 @@ if($('.sortable-container.update-menu-children-order').length) {
             }
         });
     }
+}
+
+var projectData = {
+    pages: {
+        logged_in: function () {
+            projectData.pages.data.add_job_offer();
+            projectData.pages.data.edit_job_offer();
+            projectData.pages.data.additionals();
+            projectData.pages.data.add_location();
+            projectData.pages.data.edit_location();
+            projectData.pages.data.add_edit_clinic();
+            projectData.pages.data.add_edit_type_platform();
+            projectData.pages.data.christmas_calendar_participant();
+            projectData.pages.data.add_edit_available_buying_option();
+            projectData.pages.data.add_edit_roadmap_year();
+            projectData.pages.data.view_dcn_hub();
+            projectData.pages.data.add_edit_dcn_hub_element();
+            projectData.pages.data.add_application();
+            projectData.pages.data.deposit();
+            projectData.pages.data.withdraw();
+        },
+        data: {
+            add_job_offer: async function () {
+                if ($('body').hasClass('add-job-offer')) {
+                    $('body.add-job-offer input[name="title"]').on('input', function() {
+                        $('body.add-job-offer input[name="slug"]').val(generateUrl($(this).val().trim()));
+                    });
+
+                    initSkillsLogic();
+
+                    bindDontSubmitFormOnEnter();
+                }
+            },
+            edit_job_offer: async function () {
+                if ($('body').hasClass('edit-job-offer'))    {
+                    initSkillsLogic();
+
+                    bindDontSubmitFormOnEnter();
+                }
+            },
+            additionals: async function () {
+                if ($('body').hasClass('additionals')) {
+                    $('.remove-box').unbind().click(function()   {
+                        $(this).closest('.custom-box').remove();
+                    });
+
+                    $('.add-new-api-endpoint').click(function() {
+                        if ($('.new-api-endpoint-name').val().trim() == '' || $('.new-api-endpoint-value').val().trim() == '') {
+                            basic.showAlert('Please enter name and value for API Endpoint.');
+                        } else {
+                            $('.appending-body').append('<div class="box"><div class="box-header with-border"><h3 class="box-title">'+$('.new-api-endpoint-name').val().trim()+'</h3><div class="box-tools pull-right"><button type="button" class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="" data-original-title="Remove"><i class="fa fa-times"></i></button></div></div><div class="box-body"><div class="form-group"><input type="text" class="form-control" name="api-endpoints['+generateUrl($('.new-api-endpoint-name').val().trim())+'][data]" placeholder="Enter circulating supply" value="'+$('.new-api-endpoint-value').val().trim()+'"><input type="hidden" class="form-control" name="api-endpoints['+generateUrl($('.new-api-endpoint-name').val().trim())+'][name]" placeholder="Enter circulating supply" value="'+$('.new-api-endpoint-name').val().trim()+'"></div></div></div>');
+                            $('.new-api-endpoint-name').val('');
+                            $('.new-api-endpoint-value').val('');
+                            $('.remove-box').unbind().click(function()   {
+                                $(this).closest('.custom-box').remove();
+                            });
+                        }
+                    });
+                }
+            },
+            add_location: async function () {
+                if ($('body').hasClass('add-location'))  {
+                    addLocationMap();
+                }
+            },
+            edit_location: async function () {
+                if ($('body').hasClass('edit-location'))  {
+                    addLocationMap(true);
+                }
+            },
+            add_edit_clinic: async function () {
+                if ($('body').hasClass('add-clinic') || $('body').hasClass('edit-clinic')) {
+                    $('.add-edit-clinic #featured').change(function() {
+                        if ($(this).is(':checked')) {
+                            $('.add-edit-clinic .clinic-text').removeClass('hide');
+                        } else {
+                            $('.add-edit-clinic .clinic-text').addClass('hide');
+                        }
+                    });
+
+                    $('select[name="type"]').on('change', function() {
+                        $('select[name="subtype"] .subtype-option').addClass('hide');
+                        $('select[name="subtype"] .subtype-option[data-type-id="'+$(this).val()+'"]').removeClass('hide');
+                    });
+                }
+            },
+            add_edit_type_platform: async function () {
+                if ($('body').hasClass('add-type') || $('body').hasClass('edit-type') || $('body').hasClass('add-platform') || $('body').hasClass('edit-platform')) {
+                    var color_picker_options = {
+                        preferredFormat: "hex",
+                        showInput: true,
+                        clickoutFiresChange: true,
+                        showButtons: false,
+                        move: function(color) {
+                            $('input[name="color"]').val(color.toHexString());
+                        },
+                        change: function(color) {
+                            $('input[name="color"]').val(color.toHexString());
+                        }
+                    };
+
+                    if ($('input[name="color"]').attr('data-color') != undefined) {
+                        color_picker_options.color = $('input[name="color"]').attr('data-color');
+                    }
+
+                    $('input[name="color"]').spectrum(color_picker_options);
+                }
+            },
+            christmas_calendar_participant: async function () {
+                if ($('body').hasClass('view-christmas-calendar-participant')) {
+                    $('.approve-user-calendar-participation').click(function() {
+                        var thisBtn = $(this);
+                        var approvedTasksLength = $('tr.passed-not-payed-task').length;
+                        if (approvedTasksLength) {
+                            var dcnAmount = 0;
+                            var ticketAmount = 0;
+                            var doubleReward = false;
+                            var tasksToApprove = [];
+                            for(var i = 0; i < approvedTasksLength; i+=1) {
+                                if ($('tr.passed-not-payed-task').eq(i).attr('data-type') == 'dcn-reward') {
+                                    dcnAmount += parseInt($('tr.passed-not-payed-task').eq(i).attr('data-value'));
+                                } else if ($('tr.passed-not-payed-task').eq(i).attr('data-type') == 'ticket-reward') {
+                                    ticketAmount += parseInt($('tr.passed-not-payed-task').eq(i).attr('data-value'));
+                                }
+                                tasksToApprove.push($('tr.passed-not-payed-task').eq(i).attr('data-id'));
+                            }
+
+                            var warningMsg = 'Are you sure you want to approve these user tasks? They make in total ' + dcnAmount + ' DCN and ' + ticketAmount + ' tickets.';
+
+                            if ($('tr.passed-not-payed-task.on-time').length == 31) {
+                                doubleReward = true;
+                                warningMsg += ' This user has also completed all tasks in the tasks days so he will receive x2 DCN reward => ' + (dcnAmount*2) + ' DCN.';
+                            }
+
+                            var confirm_obj = {};
+                            confirm_obj.callback = function (result) {
+                                if (result) {
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: SITE_URL + '/christmas-calendar-participants/' + thisBtn.attr('data-year') + '/approve-tasks',
+                                        data: {
+                                            'tasksToApprove' : tasksToApprove,
+                                            'participant' : $('table').attr('data-participant-id'),
+                                            'doubleReward' : doubleReward
+                                        },
+                                        dataType: 'json',
+                                        headers: {
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        success: function (response) {
+                                            if (response.success) {
+                                                basic.showAlert(response.success, '', true);
+
+                                                $('tr.passed-not-payed-task').find('.reward-sent-td').html('<i class="fa fa-check text-success" aria-hidden="true"></i>').removeClass('passed-not-payed-task');
+                                                $('tr.passed-not-payed-task').removeClass('passed-not-payed-task');
+                                            } else if (response.error) {
+                                                basic.showAlert(response.error, '', true);
+                                            }
+                                        }
+                                    });
+                                }
+                            };
+                            basic.showConfirm(warningMsg, '', confirm_obj, true);
+                        } else {
+                            basic.showAlert('This user has no tasks to approve.', '', true);
+                        }
+                    });
+                }
+            },
+            add_edit_available_buying_option: async function () {
+                if ($('body').hasClass('add-available-buying-option') || $('body').hasClass('edit-available-buying-option')) {
+                    $('select[name="type"]').on('change', function() {
+                        if ($(this).val() == 'exchange-platforms') {
+                            $('.camping-for-exchange-platform-type').show();
+                            $('[name="clear-exchange-pairs"]').val(false);
+                        } else {
+                            $('.camping-for-exchange-platform-type').hide();
+                            $('[name="clear-exchange-pairs"]').val(true);
+                        }
+                    });
+
+                    $(document).on('click', '.remove-pair', function() {
+                        $(this).closest('.single-child').remove();
+
+                        if ($('.sortable-container .single-child').length == 0) {
+                            $('.no-pairs').removeClass('hide');
+                            $('.sortable-container').addClass('hide');
+                        }
+                    });
+
+                    $('.sortable-container').sortable();
+                    $('.add-new-exchange-pair').click(function() {
+                        if ($('.pair-title').val().trim() == '') {
+                            basic.showDialog('Please enter pair title.', '', true);
+                        } else {
+                            var url = '';
+                            if ($('.sortable-container').hasClass('hide')) {
+                                $('.sortable-container').removeClass('hide');
+                                $('.no-pairs').addClass('hide');
+                            }
+
+                            if ($('.pair-url').val().trim() != '') {
+                                url = '<div><label>URL:</label> <a href="'+$('.pair-url').val().trim()+'" target="_blank">'+$('.pair-url').val().trim()+'</a></div>';
+                            }
+
+                            var time = (new Date()).getTime();
+
+                            $('.sortable-container').append('<div class="single-child clearfix"><div style="float: left;"><div><label>Title:</label> '+$('.pair-title').val().trim()+'</div>'+url+'</div><div style="float: right;"><a href="javascript:void(0);" class="btn remove-pair">Remove</a><input type="hidden" name="pairs['+time+'][title]" value="'+$('.pair-title').val().trim()+'"/><input type="hidden" name="pairs['+time+'][url]" value="'+$('.pair-url').val().trim()+'"/></div></div>');
+
+                            $('.pair-title').val('');
+                            $('.pair-url').val('');
+                        }
+                    });
+                }
+            },
+            add_edit_roadmap_year: async function () {
+                if ($('body').hasClass('add-roadmap-year') || $('body').hasClass('edit-roadmap-year') || $('body').hasClass('edit-roadmap-year-event')) {
+                    function initColorPicker() {
+                        var color_picker_options = {
+                            preferredFormat: "hex",
+                            showInput: true,
+                            clickoutFiresChange: true,
+                            showButtons: false,
+                            move: function(color) {
+                                $('.event-color').val(color.toHexString());
+                                if ($('[name="predefined-color"]').length) {
+                                    $('[name="predefined-color"]').prop('checked', false);
+                                }
+                            },
+                            change: function(color) {
+                                $('.event-color').val(color.toHexString());
+                                if ($('[name="predefined-color"]').length) {
+                                    $('[name="predefined-color"]').prop('checked', false);
+                                }
+                            }
+                        };
+
+                        $('.event-color').spectrum(color_picker_options);
+                    }
+
+                    initColorPicker();
+
+                    $(document).on('click', '.remove-event', function() {
+                        $(this).closest('.single-child').remove();
+
+                        if ($('.sortable-container .single-child').length == 0) {
+                            $('.no-pairs').removeClass('hide');
+                            $('.sortable-container').addClass('hide');
+                        }
+                    });
+
+                    if ($('[name="predefined-color"]').length) {
+                        $('[name="predefined-color"]').on('change', function() {
+                            if ($(this).val() != '') {
+                                $('.event-color').val($(this).val());
+
+                                initColorPicker();
+                            }
+                        });
+                    }
+
+                    $('.clear-label-color').click(function() {
+                        if ($('[name="predefined-color"]').length) {
+                            $('[name="predefined-color"]').prop('checked', false);
+                        }
+
+                        $('.event-color').val('');
+                        initColorPicker();
+                    });
+
+                    $('.sortable-container').sortable();
+                    $('.add-new-roadmap-event').click(function() {
+                        var roadmapEventTitle = CKEDITOR.instances['event-title'].getData().trim();
+
+                        if (roadmapEventTitle == '') {
+                            basic.showDialog('Please enter title.', '', true);
+                        } else if (roadmapEventTitle.length > 1000) {
+                            basic.showDialog('Please enter title within max length limit of 1000 symbols.', '', true);
+                        } else if ($('.event-label').val().trim() != '' && $('.event-color').val().trim() == '') {
+                            basic.showDialog('You have entered label value, but you did not select label color.', '', true);
+                        } else if ($('.event-label').val().trim() == '' && $('.event-color').val().trim() != '') {
+                            basic.showDialog('You have entered label color, but you did not select label value.', '', true);
+                        } else {
+                            if ($('.sortable-container').hasClass('hide')) {
+                                $('.sortable-container').removeClass('hide');
+                                $('.no-pairs').addClass('hide');
+                            }
+
+                            var time = (new Date()).getTime();
+                            var eventLabel = '';
+                            var eventLabelColor = '';
+                            var eventChecked = '<div><label>Checked:</label> No</div>';
+                            var eventBorder = '<div><label>Bottom border:</label> No</div>';
+                            if ($('.event-label').val().trim() != '') {
+                                eventLabel = '<div><label>Label:</label> '+$('.event-label').val().trim()+'</div><input type="hidden" name="events['+time+'][label]" value="'+$('.event-label').val().trim()+'"/>';
+                            }
+
+                            if ($('.event-color').val().trim() != '') {
+                                eventLabelColor = '<div><label>Label color:</label> <span style="display: inline-block; width: 30px; height: 30px; background-color: '+$('.event-color').val().trim()+';"></span></div><input type="hidden" name="events['+time+'][color]" value="'+$('.event-color').val().trim()+'"/>';
+                            }
+
+                            if ($('.event-checked').is(':checked')) {
+                                eventChecked = '<div><label>Checked:</label> Yes</div><input type="hidden" name="events['+time+'][checked]" value="true"/>';
+                            }
+
+                            if ($('.event-border').is(':checked')) {
+                                eventBorder = '<div><label>Bottom border:</label> Yes</div><input type="hidden" name="events['+time+'][border]" value="true"/>';
+                            }
+
+                            if ($('.event-coin-burn').is(':checked')) {
+                                eventBorder = '<div><label>Coin burn:</label> Yes</div><input type="hidden" name="events['+time+'][coin-burn]" value="true"/>';
+                            }
+
+                            $('.sortable-container').append('<div class="single-child clearfix"><div style="float: left;"><div><label>Title:</label> '+roadmapEventTitle+'</div>'+eventLabel+eventLabelColor+eventChecked+eventBorder+'</div><div style="float: right;"><a href="javascript:void(0);" class="btn remove-event">Remove</a><input type="hidden" name="events['+time+'][title]" class="event-'+time+'"/></div></div>');
+
+                            $('.event-'+time).val(roadmapEventTitle);
+
+                            CKEDITOR.instances['event-title'].setData('');
+                            $('.event-label').val('');
+                            $('.event-checked').prop('checked', false);
+                            $('.event-border').prop('checked', false);
+                            if ($('[name="predefined-color"]').length) {
+                                $('[name="predefined-color"]').prop('checked', false);
+                            }
+
+                            $('.event-color').val('');
+                            initColorPicker();
+                        }
+                    });
+                }
+            },
+            view_dcn_hub: async function () {
+                if ($('body').hasClass('view-dcn-hub'))   {
+                    if ($('.add-hub-element').length) {
+                        $('.add-hub-element').click(function() {
+                            if ($('select.all-hub-elements option:selected').attr('value') != undefined) {
+                                var selectedOption = $('select.all-hub-elements option:selected');
+                                var imgHtml = '';
+                                if (selectedOption.attr('data-image') != undefined) {
+                                    imgHtml = '<img src="/assets/uploads/'+selectedOption.attr('data-image')+'" style="margin-right: 15px;width: 100px;"/>';
+                                }
+
+                                $.ajax({
+                                    type: 'POST',
+                                    url: SITE_URL + '/dcn-hub-elements/add-dcn-element-to-dcn-hub/'+$('select.all-hub-elements').attr('data-dcn-hub')+'/'+selectedOption.val(),
+                                    dataType: 'json',
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function (response) {
+                                        if (response.success) {
+                                            selectedOption.addClass('hide');
+                                            $('.sortable-container').append('<div class="single-child" data-id="'+selectedOption.val()+'">'+imgHtml+selectedOption.html()+'<div style="float: right;"><a href="'+SITE_URL+'/dcn-hub-elements/edit/'+selectedOption.val()+'" target="_blank" class="btn">Edit</a> <a href="'+SITE_URL+'/dcn-hub-elements/remove-dcn-element-from-dcn-hub/'+$('select.all-hub-elements').attr('data-dcn-hub')+'/'+selectedOption.val()+'" onclick="return confirm(\'Are you sure you want to delete this resource?\')" class="btn">Remove</a></div></div>');
+
+                                            var changedValue = false;
+                                            for (var i = 0, len = $('select.all-hub-elements option[value]').length; i < len; i+=1) {
+                                                if (!$('select.all-hub-elements option[value]').eq(i).hasClass('hide')) {
+                                                    $('select.all-hub-elements').val($('select.all-hub-elements option[value]').eq(i).val());
+                                                    changedValue = true;
+                                                    break;
+                                                }
+                                            }
+
+                                            if (!changedValue) {
+                                                $('select.all-hub-elements').prop('selectedIndex', 0);
+                                            }
+                                        } else {
+                                            basic.showAlert(response.error, '', true);
+                                        }
+                                    }
+                                });
+                            } else {
+                                basic.showAlert('Please select hub element.', '', true);
+                            }
+                        });
+                    }
+                }
+            },
+            add_edit_dcn_hub_element: async function () {
+                if ($('body').hasClass('add-dcn-hub-element') || $('body').hasClass('edit-dcn-hub-element'))   {
+                    if ($('body').hasClass('add-dcn-hub-element')) {
+                        $("input[name='title']").on('input', function()    {
+                            $("input[name='slug']").val(generateUrl($(this).val()));
+                        });
+                    }
+
+                    $("input[name='type']").on('change', function()    {
+                        if ($(this).val() == 'folder') {
+                            $('.if-folder-type').removeClass('hide');
+                        } else {
+                            $('.if-folder-type').addClass('hide');
+                        }
+                    });
+
+                    $(document).on('click', '.remove-hub-element', function() {
+                        $(this).closest('.single-child').remove();
+                    });
+
+                    $('.add-hub-element-to-folder').click(function() {
+                        if ($('select.all-hub-elements option:selected').attr('value') != undefined) {
+                            var selectedOption = $('select.all-hub-elements option:selected');
+                            var imgHtml = '';
+                            if (selectedOption.attr('data-image') != undefined) {
+                                imgHtml = '<img src="/assets/uploads/'+selectedOption.attr('data-image')+'" style="margin-right: 15px;width: 100px;"/>';
+                            }
+
+                            if ($('.content').attr('data-post') != undefined) {
+                                // if editing
+                                $.ajax({
+                                    type: 'POST',
+                                    url: SITE_URL + '/dcn-hub-elements/add-dcn-element-to-folder/'+$('select.all-hub-elements').attr('data-dcn-folder')+'/'+selectedOption.val(),
+                                    dataType: 'json',
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function (response) {
+                                        if (response.success) {
+                                            selectedOption.addClass('hide');
+
+                                            $('.sortable-container').append('<div class="single-child" data-id="'+selectedOption.val()+'">'+imgHtml+selectedOption.html()+'<div style="float: right;"><a href="'+SITE_URL+'/dcn-hub-elements/edit/'+selectedOption.val()+'" target="_blank" class="btn">Edit</a> <a href="'+SITE_URL+'/dcn-hub-elements/remove-dcn-element-from-folder/'+$('select.all-hub-elements').attr('data-dcn-folder')+'/'+selectedOption.val()+'" onclick="return confirm(\'Are you sure you want to delete this resource?\')" class="btn">Remove</a></div></div>');
+                                        } else {
+                                            basic.showAlert(response.error, '', true);
+                                        }
+                                    }
+                                });
+                            } else {
+                                // if adding
+                                $('.sortable-container').append('<div class="single-child" data-id="'+selectedOption.val()+'"><input type="hidden" name="sub_elements[]" value="'+selectedOption.val()+'"/>'+imgHtml+selectedOption.html()+'<div style="float: right;"><a href="'+SITE_URL+'/dcn-hub-elements/edit/'+selectedOption.val()+'" class="btn" target="_blank">Edit</a> <a href="javascript:void(0);" class="btn remove-hub-element">Remove</a></div></div>');
+                            }
+                        } else {
+                            basic.showAlert('Please select hub element.', '', true);
+                        }
+                    });
+                }
+            },
+            add_application: async function () {
+                if ($('body').hasClass('add-application'))   {
+                    $("input[name='title']").on('input', function()    {
+                        $("input[name='slug']").val(generateUrl($(this).val()));
+                    });
+                }
+            },
+            deposit: async function () {
+                if ($('body').hasClass('deposit'))   {
+                    var {config_variable} = require('../config');
+                    const ethers = require('../../../../node_modules/ethers');
+                    const {predeploys, getContractInterface} = require('../../../../node_modules/@eth-optimism/contracts');
+
+                    if (window.ethereum) {
+                        var chainId = await ethereum.request({method: 'eth_chainId'});
+                        if (parseInt(chainId, 16) == config_variable.l1.chain_id) {
+                            var accountsOnEnable = await ethereum.request({method: 'eth_requestAccounts'});
+                            if (accountsOnEnable.length) {
+                                $('.connected-with').html('<i style="padding-bottom: 25px; display: block;">Connected with <b><a style="text-decoration: underline;" href="' + config_variable.etherscan_domain + '/address/' + accountsOnEnable[0] + '" target="_blank">' + accountsOnEnable[0] + '</a></b></i>');
+                            }
+
+                            const l1_provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
+                            await l1_provider.send('eth_requestAccounts', []);
+                            const l1Wallet = l1_provider.getSigner();
+
+                            const factory__L1_ERC20 = new ethers.ContractFactory(config_variable.l1.abi_definitions.dcn_contract_abi, config_variable.l1.bytecodes.dcn_contract_bytecode);
+                            const L1_ERC20 = new ethers.Contract(config_variable.l1.addresses.dcn_contract_address, factory__L1_ERC20.interface, l1Wallet);
+                            const l1StandardBridgeArtifact = require(`../../../../node_modules/@eth-optimism/contracts/artifacts/contracts/L1/messaging/L1StandardBridge.sol/L1StandardBridge.json`);
+                            const factory__L1StandardBridge = new ethers.ContractFactory(l1StandardBridgeArtifact.abi, l1StandardBridgeArtifact.bytecode);
+                            const L1StandardBridge = factory__L1StandardBridge.connect(l1Wallet).attach(config_variable.l1.addresses.Proxy__OVM_L1StandardBridge);
+
+                            $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));
+
+                            var currentAllowance = parseInt(await L1_ERC20.allowance(accountsOnEnable[0], config_variable.l1.addresses.Proxy__OVM_L1StandardBridge));
+                            if (currentAllowance > 0) {
+                                /*const tx2 = await L1StandardBridge.depositERC20(
+                                    config_variable.l1.addresses.dcn_contract_address,
+                                    config_variable.l2.addresses.dcn_contract_address,
+                                    currentAllowance,
+                                    2000000,
+                                    '0x');
+                                await tx2.wait();
+                                basic.showAlert('Deposit transaction has been executed successfully! Tokens should be visible on L2 network soon. <a href="'+config_variable.etherscan_domain+'/tx/'+tx2.hash+'" target="_blank">Check transaction here.</a>', '', true);
+                                console.log(tx2, 'tx2');
+
+                                $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));*/
+                            } else {
+                                depositL1DCNAction();
+                            }
+
+                            function depositL1DCNAction() {
+                                $('.deposit-btn').click(async function() {
+                                    var currentL1DCNBalance = parseInt(await L1_ERC20.balanceOf(accountsOnEnable[0]));
+                                    $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + currentL1DCNBalance);
+
+                                    var desiredAmountToDeposit = parseInt($('.l1-dcn-amount').val().trim());
+                                    console.log(desiredAmountToDeposit, 'desiredAmountToDeposit');
+
+                                    if (desiredAmountToDeposit > currentL1DCNBalance || desiredAmountToDeposit <= 10 || desiredAmountToDeposit == 0 || desiredAmountToDeposit == '') {
+                                        basic.showAlert('Not enough L1 DCN balance in order to execute the deposit.', '', true);
+                                    } else {
+                                        const tx1 = await L1_ERC20.approve(config_variable.l1.addresses.Proxy__OVM_L1StandardBridge, desiredAmountToDeposit);
+                                        await tx1.wait();
+
+                                        if (parseInt(await L1_ERC20.allowance(accountsOnEnable[0], config_variable.l1.addresses.Proxy__OVM_L1StandardBridge)) == desiredAmountToDeposit) {
+                                            const tx2 = await L1StandardBridge.depositERC20(
+                                                config_variable.l1.addresses.dcn_contract_address,
+                                                config_variable.l2.addresses.dcn_contract_address,
+                                                desiredAmountToDeposit,
+                                                2000000,
+                                                '0x');
+                                            await tx2.wait();
+                                            console.log(tx2, 'tx2');
+
+                                            $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));
+                                        }
+                                    }
+                                });
+                            }
+                        } else {
+                            basic.showAlert('Before using this page please switch your MetaMask to L1 network.', '', true);
+                        }
+                    } else {
+                        basic.showAlert('Before using this page please download MetaMask.', '', true);
+                    }
+                }
+            },
+            withdraw: async function () {
+                if ($('body').hasClass('withdraw'))   {
+                    
+                }
+            }
+        }
+    }
+};
+
+if ($('body').hasClass('logged-in')) {
+    projectData.pages.logged_in();
 }

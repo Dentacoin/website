@@ -691,6 +691,58 @@ var projectData = {
                             basic.showAlert('This user has no tasks to approve.', '', true);
                         }
                     });
+
+                    $(document).on('click', '.remove-disqualification', function() {
+                        var thisBtn = $(this);
+
+                        var confirm_obj = {};
+                        confirm_obj.callback = function (result) {
+                            if (result) {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: SITE_URL + 'christmas-calendar-participants/' + thisBtn.attr('data-year') + '/disqualify/' + thisBtn.attr('data-passedTask'),
+                                    dataType: 'json',
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function (response) {
+                                        if (response.success) {
+                                            basic.showAlert('Task has been disqualified successfully.', '', true);
+                                        } else {
+                                            basic.showAlert('Something went wrong.', '', true);
+                                        }
+                                    }
+                                });
+                            }
+                        };
+                        basic.showConfirm('Are you sure you want to remove this disqualification?', '', confirm_obj, true);
+                    });
+
+                    $(document).on('click', '.disqualify-btn', function() {
+                        var thisBtn = $(this);
+
+                        var confirm_obj = {};
+                        confirm_obj.callback = function (result) {
+                            if (result) {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: SITE_URL + 'christmas-calendar-participants/' + thisBtn.attr('data-year') + '/disqualify/' + thisBtn.attr('data-passedTask'),
+                                    dataType: 'json',
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function (response) {
+                                        if (response.success) {
+                                            basic.showAlert('Task has been disqualified successfully.', '', true);
+                                        } else {
+                                            basic.showAlert('Something went wrong.', '', true);
+                                        }
+                                    }
+                                });
+                            }
+                        };
+                        basic.showConfirm('Are you sure you want to disqualify this user task?', '', confirm_obj, true);
+                    });
                 }
             },
             add_edit_available_buying_option: async function () {
@@ -968,13 +1020,22 @@ var projectData = {
             },
             deposit: async function () {
                 if ($('body').hasClass('deposit'))   {
-                    var {config_variable} = require('../config');
+                    const {config_variable} = require('../config');
                     const ethers = require('../../../../node_modules/ethers');
-                    const {predeploys, getContractInterface} = require('../../../../node_modules/@eth-optimism/contracts');
 
                     if (window.ethereum) {
-                        var chainId = await ethereum.request({method: 'eth_chainId'});
-                        if (parseInt(chainId, 16) == config_variable.l1.chain_id) {
+                        window.ethereum.on('chainChanged', function (chainId) {
+                            if (parseInt(chainId, 16) == config_variable.l1.chain_id) {
+                                initiateDepositPageLogic();
+                            } else {
+                                basic.showAlert('Before using this page please switch your MetaMask to L1 network.', '', true);
+                            }
+                        });
+
+                        async function initiateDepositPageLogic() {
+                            basic.closeDialog();
+                            $('.response-layer').addClass('show-this');
+
                             var accountsOnEnable = await ethereum.request({method: 'eth_requestAccounts'});
                             if (accountsOnEnable.length) {
                                 $('.connected-with').html('<i style="padding-bottom: 25px; display: block;">Connected with <b><a style="text-decoration: underline;" href="' + config_variable.etherscan_domain + '/address/' + accountsOnEnable[0] + '" target="_blank">' + accountsOnEnable[0] + '</a></b></i>');
@@ -992,63 +1053,186 @@ var projectData = {
 
                             $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));
 
-                            var currentAllowance = parseInt(await L1_ERC20.allowance(accountsOnEnable[0], config_variable.l1.addresses.Proxy__OVM_L1StandardBridge));
-                            if (currentAllowance > 0) {
-                                /*const tx2 = await L1StandardBridge.depositERC20(
-                                    config_variable.l1.addresses.dcn_contract_address,
-                                    config_variable.l2.addresses.dcn_contract_address,
-                                    currentAllowance,
-                                    2000000,
-                                    '0x');
-                                await tx2.wait();
-                                basic.showAlert('Deposit transaction has been executed successfully! Tokens should be visible on L2 network soon. <a href="'+config_variable.etherscan_domain+'/tx/'+tx2.hash+'" target="_blank">Check transaction here.</a>', '', true);
-                                console.log(tx2, 'tx2');
 
-                                $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));*/
+                            async function initDepositHistory() {
+                                var depositHistory = await L1StandardBridge.queryFilter(L1StandardBridge.filters.ERC20DepositInitiated(config_variable.l1.addresses.dcn_contract_address, config_variable.l2.addresses.dcn_contract_address, accountsOnEnable[0]));
+                                if (depositHistory.length) {
+                                    depositHistory.reverse();
+                                    var depositHistoryHtml = '<div style="text-align: center; padding-bottom: 15px; font-size: 20px; font-weight: bold;">Deposit history</div><table class="table table-without-reorder table-bordered table-striped text-left"><thead><tr><th>Amount</th><th>Transaction hash</th></tr></thead><tbody>';
+                                    for (var i = 0, len = depositHistory.length; i < len; i+=1) {
+                                        depositHistoryHtml += '<tr><td>'+depositHistory[i].args._amount+' DCN</td><td><a href="'+config_variable.etherscan_domain+'/tx/'+depositHistory[i].transactionHash+'" target="_blank" class="btn">Etherscan</a></td></tr>';
+                                    }
+                                    depositHistoryHtml += '</table>';
+                                    $('.deposit-history').html(depositHistoryHtml);
+                                }
+                            }
+                            initDepositHistory();
+
+                            var currentAllowance = parseInt(await L1_ERC20.allowance(accountsOnEnable[0], config_variable.l1.addresses.Proxy__OVM_L1StandardBridge));
+                            $('.response-layer').removeClass('show-this');
+                            if (currentAllowance > 0) {
+                                $('.changeable-content').removeClass('hide');
+
+                                $('.current-deposit').unbind().click(async function() {
+                                    $('.response-layer').addClass('show-this');
+                                    $('.changeable-content').addClass('hide');
+                                    setTimeout(async function() {
+                                        const tx2 = await L1StandardBridge.depositERC20(
+                                            config_variable.l1.addresses.dcn_contract_address,
+                                            config_variable.l2.addresses.dcn_contract_address,
+                                            currentAllowance,
+                                            2000000,
+                                            '0x');
+                                        await tx2.wait();
+                                        basic.showAlert('Deposit transaction has been executed successfully! Tokens should be visible on L2 network soon. <a href="'+config_variable.etherscan_domain+'/tx/'+tx2.hash+'" target="_blank">Check transaction here.</a>', '', true);
+                                        initDepositHistory();
+
+                                        $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));
+                                        depositL1DCNAction();
+                                    }, 500);
+                                });
+
+                                $('.new-deposit').unbind().click(function() {
+                                    $('.changeable-content').addClass('hide');
+
+                                    depositL1DCNAction();
+                                });
                             } else {
                                 depositL1DCNAction();
                             }
 
                             function depositL1DCNAction() {
-                                $('.deposit-btn').click(async function() {
+                                $('.deposit-box').removeClass('hide');
+                                $('.deposit-btn').unbind().click(async function() {
                                     var currentL1DCNBalance = parseInt(await L1_ERC20.balanceOf(accountsOnEnable[0]));
                                     $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + currentL1DCNBalance);
 
                                     var desiredAmountToDeposit = parseInt($('.l1-dcn-amount').val().trim());
-                                    console.log(desiredAmountToDeposit, 'desiredAmountToDeposit');
 
                                     if (desiredAmountToDeposit > currentL1DCNBalance || desiredAmountToDeposit <= 10 || desiredAmountToDeposit == 0 || desiredAmountToDeposit == '') {
                                         basic.showAlert('Not enough L1 DCN balance in order to execute the deposit.', '', true);
                                     } else {
-                                        const tx1 = await L1_ERC20.approve(config_variable.l1.addresses.Proxy__OVM_L1StandardBridge, desiredAmountToDeposit);
-                                        await tx1.wait();
+                                        $('.response-layer').addClass('show-this');
+                                        setTimeout(async function() {
+                                            const tx1 = await L1_ERC20.approve(config_variable.l1.addresses.Proxy__OVM_L1StandardBridge, desiredAmountToDeposit);
+                                            await tx1.wait();
+                                            console.log(tx1, 'tx1');
+                                            $('.l1-dcn-amount').val('');
 
-                                        if (parseInt(await L1_ERC20.allowance(accountsOnEnable[0], config_variable.l1.addresses.Proxy__OVM_L1StandardBridge)) == desiredAmountToDeposit) {
-                                            const tx2 = await L1StandardBridge.depositERC20(
-                                                config_variable.l1.addresses.dcn_contract_address,
-                                                config_variable.l2.addresses.dcn_contract_address,
-                                                desiredAmountToDeposit,
-                                                2000000,
-                                                '0x');
-                                            await tx2.wait();
-                                            console.log(tx2, 'tx2');
+                                            if (parseInt(await L1_ERC20.allowance(accountsOnEnable[0], config_variable.l1.addresses.Proxy__OVM_L1StandardBridge)) == desiredAmountToDeposit) {
+                                                const tx2 = await L1StandardBridge.depositERC20(
+                                                    config_variable.l1.addresses.dcn_contract_address,
+                                                    config_variable.l2.addresses.dcn_contract_address,
+                                                    desiredAmountToDeposit,
+                                                    2000000,
+                                                    '0x');
+                                                await tx2.wait();
+                                                console.log(tx2, 'tx2');
+                                                initDepositHistory();
+                                                $('.response-layer').removeClass('show-this');
+                                                basic.showAlert('Deposit transaction has been executed successfully! Tokens should be visible on L2 network soon. <a href="'+config_variable.etherscan_domain+'/tx/'+tx2.hash+'" target="_blank">Check transaction here.</a>', '', true);
 
-                                            $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));
-                                        }
+                                                $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));
+                                            }
+                                        }, 500);
                                     }
                                 });
                             }
+                        }
+
+                        var chainId = await ethereum.request({method: 'eth_chainId'});
+                        if (parseInt(chainId, 16) == config_variable.l1.chain_id) {
+                            initiateDepositPageLogic();
                         } else {
                             basic.showAlert('Before using this page please switch your MetaMask to L1 network.', '', true);
                         }
                     } else {
-                        basic.showAlert('Before using this page please download MetaMask.', '', true);
+                        basic.showAlert('Before using this page please download MetaMask and login into the extension.', '', true);
                     }
                 }
             },
             withdraw: async function () {
                 if ($('body').hasClass('withdraw'))   {
-                    
+                    const {config_variable} = require('../config');
+                    const ethers = require('../../../../node_modules/ethers');
+
+                    if (window.ethereum) {
+                        window.ethereum.on('chainChanged', function (chainId) {
+                            if (parseInt(chainId, 16) == config_variable.l2.chain_id) {
+                                initiateWithdrawPageLogic();
+                            } else {
+                                basic.showAlert('Before using this page please switch your MetaMask to L2 network.', '', true);
+                            }
+                        });
+
+                        async function initiateWithdrawPageLogic() {
+                            basic.closeDialog();
+                            // $('.response-layer').addClass('show-this');
+
+                            var accountsOnEnable = await ethereum.request({method: 'eth_requestAccounts'});
+                            if (accountsOnEnable.length) {
+                                $('.connected-with').html('<i style="padding-bottom: 25px; display: block;">Connected with <b><a style="text-decoration: underline;" href="' + config_variable.etherscan_domain + '/address/' + accountsOnEnable[0] + '" target="_blank">' + accountsOnEnable[0] + '</a></b></i>');
+                            }
+
+                            const l2_provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
+                            await l2_provider.send('eth_requestAccounts', []);
+                            const l2Wallet = l2_provider.getSigner();
+
+                            const factory__L2_ERC20 = new ethers.ContractFactory(config_variable.l2.abi_definitions.dcn_contract_abi, config_variable.l2.bytecodes.dcn_contract_bytecode);
+                            const L2_ERC20 = new ethers.Contract(config_variable.l2.addresses.dcn_contract_address, factory__L2_ERC20.interface, l2Wallet);
+                            const l2StandardBridgeArtifact = require(`../../../../node_modules/@eth-optimism/contracts/artifacts/contracts/L2/messaging/L2StandardBridge.sol/L2StandardBridge.json`);
+                            const factory__L2StandardBridge = new ethers.ContractFactory(l2StandardBridgeArtifact.abi, l2StandardBridgeArtifact.bytecode);
+                            const L2StandardBridge = factory__L2StandardBridge.connect(l2Wallet).attach(config_variable.l2.addresses.OVM_L2StandardBridge_address);
+
+                            $('.withdraw-box .max-amount').html('Current L2 DCN balance: ' + await L2_ERC20.balanceOf(accountsOnEnable[0]));
+                            $('.withdraw-btn').click(async function() {
+                                var currentL2DCNBalance = parseInt(await L2_ERC20.balanceOf(accountsOnEnable[0]));
+                                $('.withdraw-box .max-amount').html('Current L2 DCN balance: ' + currentL2DCNBalance);
+
+                                var desiredAmountToWithdraw = parseInt($('.l2-dcn-amount').val().trim());
+                                if (desiredAmountToWithdraw > currentL2DCNBalance || desiredAmountToWithdraw <= 10 || desiredAmountToWithdraw == 0 || desiredAmountToWithdraw == '') {
+                                    basic.showAlert('Not enough L2 DCN balance in order to execute the withdraw.', '', true);
+                                } else {
+                                    const tx3 = await L2StandardBridge.withdraw(
+                                        config_variable.l2.addresses.dcn_contract_address,
+                                        desiredAmountToWithdraw,
+                                        2000000,
+                                        '0x'
+                                    );
+                                    await tx3.wait();
+                                    console.log(tx3, 'tx3');
+
+                                    $('.l2-dcn-amount').val('');
+                                    basic.showAlert('Withdrawing DCN2.0 to DCN takes about a week. This is the standard process on the Optimistic Ethereum mainnet. Track the status of your withdraw <a href="'+config_variable.optimism_etherscan_domain+'/messagerelayer?search='+tx3.hash+'" target="_blank" style="font-weight: bold; text-decoration: underline;">here</a>', '', true);
+                                    $('.withdraw-box .max-amount').html('Current L2 DCN balance: ' + await L2_ERC20.balanceOf(accountsOnEnable[0]));
+                                    initWithdrawHistory();
+                                }
+                            });
+
+                            async function initWithdrawHistory() {
+                                var withdrawHistory = await L2StandardBridge.queryFilter(L2StandardBridge.filters.WithdrawalInitiated(config_variable.l1.addresses.dcn_contract_address, config_variable.l2.addresses.dcn_contract_address, accountsOnEnable[0]));
+                                if (withdrawHistory.length) {
+                                    withdrawHistory.reverse();
+                                    var withdrawHistoryHtml = '<div style="text-align: center; padding-bottom: 15px; font-size: 20px; font-weight: bold;">Withdraw history</div><table class="table table-without-reorder table-bordered table-striped text-left"><thead><tr><th>Amount</th><th>Transaction hash</th><th>Action</th></tr></thead><tbody>';
+                                    for (var i = 0, len = withdrawHistory.length; i < len; i+=1) {
+                                        withdrawHistoryHtml += '<tr><td>'+withdrawHistory[i].args._amount+' DCN</td><td><a href="'+config_variable.optimism_etherscan_domain+'/tx/'+withdrawHistory[i].transactionHash+'" target="_blank" class="btn">Etherscan</a></td><td><a href="'+config_variable.optimism_etherscan_domain+'/messagerelayer?search='+withdrawHistory[i].transactionHash+'" target="_blank" class="btn">Complete withdraw</a></td></tr>';
+                                    }
+                                    withdrawHistoryHtml += '</table>';
+                                    $('.withdraw-history').html(withdrawHistoryHtml);
+                                }
+                            }
+                            initWithdrawHistory();
+                        }
+
+                        var chainId = await ethereum.request({method: 'eth_chainId'});
+                        if (parseInt(chainId, 16) == config_variable.l2.chain_id) {
+                            initiateWithdrawPageLogic();
+                        } else {
+                            basic.showAlert('Before using this page please switch your MetaMask to L2 network.', '', true);
+                        }
+                    } else {
+                        basic.showAlert('Before using this page please download MetaMask and login into the extension.', '', true);
+                    }
                 }
             }
         }

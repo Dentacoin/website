@@ -1,8 +1,12 @@
-body.deposit {
+body.deposit, body.withdraw {
     h1 {
         padding-top: 20px;
+        padding-bottom: 15px;
     }
-    .deposit-box {
+    .changeable-content {
+        padding: 0 20px 100px 20px;
+    }
+    .deposit-box, .withdraw-box {
         padding: 10px 20px 50px;
         width: 350px;
         margin: 0 auto;
@@ -13,5 +17,8 @@ body.deposit {
         .btn-container {
             padding-top: 15px;
         }
+    }
+    .withdraw-history, .deposit-history {
+        padding: 20px;
     }
 }

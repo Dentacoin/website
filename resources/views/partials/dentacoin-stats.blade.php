@@ -9,8 +9,8 @@
     @php($usersCount = substr($dcnStatsCombinedData->data->patients + $dcnSubscribers, 0, -3) . 'K+')
     @php($locations = sizeof($labs) + sizeof($suppliers) + sizeof($industryPartners) + $dcnStatsCombinedData->data->partners)
 @else
-    @php($dentistsCount = '1.9K+')
-    @php($usersCount = '300K+')
+    @php($dentistsCount = '2.2K+')
+    @php($usersCount = '311K+')
     @php($locations = sizeof($labs) + sizeof($suppliers) + sizeof($industryPartners))
 @endif
 @if ($dcnTransactions && property_exists($dcnTransactions, 'success') && $dcnTransactions->success)

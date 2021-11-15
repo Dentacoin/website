@@ -634,6 +634,45 @@ var projectData = {
             },
             christmas_calendar_participant: async function () {
                 if ($('body').hasClass('view-christmas-calendar-participant')) {
+                    $('.type-btns.show-all').click(function() {
+                        $('.type-btns').removeClass('active-btn');
+                        $(this).addClass('active-btn');
+
+                        $('.tasks-table tbody tr').removeClass('hide');
+                    });
+
+                    $('.type-btns.type-not-passed').click(function() {
+                        $('.type-btns').removeClass('active-btn');
+                        $(this).addClass('active-btn');
+
+                        $('.tasks-table tbody tr').addClass('hide');
+                        $('.tasks-table tbody tr.type-not-passed').removeClass('hide');
+                    });
+
+                    $('.type-btns.type-disqualified-task').click(function() {
+                        $('.type-btns').removeClass('active-btn');
+                        $(this).addClass('active-btn');
+
+                        $('.tasks-table tbody tr').addClass('hide');
+                        $('.tasks-table tbody tr.type-disqualified-task').removeClass('hide');
+                    });
+
+                    $('.type-btns.type-passed-and-not-paid').click(function() {
+                        $('.type-btns').removeClass('active-btn');
+                        $(this).addClass('active-btn');
+
+                        $('.tasks-table tbody tr').addClass('hide');
+                        $('.tasks-table tbody tr.type-passed-and-not-paid').removeClass('hide');
+                    });
+
+                    $('.type-btns.type-passed-and-paid').click(function() {
+                        $('.type-btns').removeClass('active-btn');
+                        $(this).addClass('active-btn');
+
+                        $('.tasks-table tbody tr').addClass('hide');
+                        $('.tasks-table tbody tr.type-passed-and-paid').removeClass('hide');
+                    });
+
                     $('.approve-user-calendar-participation').click(function() {
                         var thisBtn = $(this);
                         var approvedTasksLength = $('tr.passed-not-payed-task').length;
@@ -677,7 +716,9 @@ var projectData = {
                                             if (response.success) {
                                                 basic.showAlert(response.success, '', true);
 
+                                                $('.type-passed-and-not-paid').addClass('type-passed-and-paid').removeClass('type-passed-and-not-paid');
                                                 $('tr.passed-not-payed-task').find('.reward-sent-td').html('<i class="fa fa-check text-success" aria-hidden="true"></i>').removeClass('passed-not-payed-task');
+                                                $('tr.passed-not-payed-task').find('.actions').html('This task is already approved and reward has been sent.');
                                                 $('tr.passed-not-payed-task').removeClass('passed-not-payed-task');
                                             } else if (response.error) {
                                                 basic.showAlert(response.error, '', true);
@@ -700,14 +741,20 @@ var projectData = {
                             if (result) {
                                 $.ajax({
                                     type: 'POST',
-                                    url: SITE_URL + 'christmas-calendar-participants/' + thisBtn.attr('data-year') + '/disqualify/' + thisBtn.attr('data-passedTask'),
+                                    url: SITE_URL + '/christmas-calendar-participants/' + thisBtn.attr('data-year') + '/remove-disqualification/' + thisBtn.attr('data-passedTask'),
                                     dataType: 'json',
                                     headers: {
                                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                     },
                                     success: function (response) {
                                         if (response.success) {
-                                            basic.showAlert('Task has been disqualified successfully.', '', true);
+                                            basic.showAlert('Disqualification has been removed successfully.', '', true);
+
+                                            thisBtn.closest('tr').addClass('type-passed-and-not-paid').removeClass('type-disqualified-task');
+                                            thisBtn.closest('tr').addClass('passed-and-not-disqualified passed-not-payed-task');
+                                            thisBtn.closest('tr').removeClass('disqualified-task');
+
+                                            thisBtn.closest('.disqualification-td').html('<a data-passedTask="'+thisBtn.attr('data-passedTask')+'" data-year="'+thisBtn.attr('data-year')+'" href="javascript:void(0);" class="btn background-orange-important disqualify-btn">Disqualify</a>');
                                         } else {
                                             basic.showAlert('Something went wrong.', '', true);
                                         }
@@ -726,7 +773,7 @@ var projectData = {
                             if (result) {
                                 $.ajax({
                                     type: 'POST',
-                                    url: SITE_URL + 'christmas-calendar-participants/' + thisBtn.attr('data-year') + '/disqualify/' + thisBtn.attr('data-passedTask'),
+                                    url: SITE_URL + '/christmas-calendar-participants/' + thisBtn.attr('data-year') + '/disqualify/' + thisBtn.attr('data-passedTask'),
                                     dataType: 'json',
                                     headers: {
                                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -734,6 +781,11 @@ var projectData = {
                                     success: function (response) {
                                         if (response.success) {
                                             basic.showAlert('Task has been disqualified successfully.', '', true);
+
+                                            thisBtn.closest('tr').removeClass('type-passed-and-not-paid').addClass('type-disqualified-task');
+                                            thisBtn.closest('tr').removeClass('passed-and-not-disqualified passed-not-payed-task');
+                                            thisBtn.closest('tr').addClass('disqualified-task');
+                                            thisBtn.closest('.disqualification-td').html('This task has been disqualified. <a href="javascript:void(0);" class="btn background-orange-important inline-block remove-disqualification" style="margin-top: 10px;" data-passedTask="'+thisBtn.attr('data-passedTask')+'" data-year="'+thisBtn.attr('data-year')+'">Remove disqualification</a>');
                                         } else {
                                             basic.showAlert('Something went wrong.', '', true);
                                         }
@@ -742,6 +794,37 @@ var projectData = {
                             }
                         };
                         basic.showConfirm('Are you sure you want to disqualify this user task?', '', confirm_obj, true);
+                    });
+
+                    $(document).on('click', '.delete-task', function() {
+                        var thisBtn = $(this);
+
+                        var confirm_obj = {};
+                        confirm_obj.callback = function (result) {
+                            if (result) {
+                                $.ajax({
+                                    type: 'POST',
+                                    url: SITE_URL + '/christmas-calendar-participants/' + thisBtn.attr('data-year') + '/delete-christmas-task/' + thisBtn.attr('data-passedTask'),
+                                    dataType: 'json',
+                                    headers: {
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    success: function (response) {
+                                        if (response.success) {
+                                            basic.showAlert(response.data, '', true);
+
+                                            thisBtn.closest('tr').find('.text-proof').html('User didn\'t finish this task yet.');
+                                            thisBtn.closest('tr').find('.ss-proof').html('User didn\'t finish this task yet.');
+                                            thisBtn.closest('tr').find('.disqualification-td').html('User didn\'t finish this task yet.');
+                                            thisBtn.closest('tr').find('.actions').html('User didn\'t finish this task yet.');
+                                        } else {
+                                            basic.showAlert('Something went wrong.', '', true);
+                                        }
+                                    }
+                                });
+                            }
+                        };
+                        basic.showConfirm('Are you sure you want to delete this user task?', '', confirm_obj, true);
                     });
                 }
             },

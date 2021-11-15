@@ -138,8 +138,16 @@ header.main-header {
 .btn {
     background-color: #3c8dbc !important;
     color: white !important;
+    border: 1.5px solid #3c8dbc;
     &:hover {
         color: white !important;
+    }
+}
+
+.type-btns {
+    &.active-btn {
+        color: #3c8dbc !important;
+        background-color: white !important;
     }
 }
 
@@ -192,6 +200,35 @@ header.main-header {
 
 .background-orange-important {
     background-color: orange !important;
+}
+
+.background-green-important {
+    background-color: green !important;
+    border: 1.5px solid green;
+    @include simple_transition(.3s);
+    &.with-hover {
+        &:hover {
+            color: green !important;
+            background-color: white !important;
+        }
+    }
+    &.with-focus {
+        &:focus {
+            -webkit-animation: flickerAnimation 1s infinite;
+            -moz-animation: flickerAnimation 1s infinite;
+            -o-animation: flickerAnimation 1s infinite;
+            animation: flickerAnimation 1s infinite;
+        }
+    }
+}
+
+.green-background-cell {
+    color: white;
+    background-color: green;
+}
+
+.disqualified-task, .didnt-require-text-proof {
+    opacity: 0.6;
 }
 
 .media-popup {

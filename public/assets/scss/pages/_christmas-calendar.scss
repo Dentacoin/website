@@ -1,4 +1,24 @@
 body.christmas-calendar {
+    .modal-backdrop.in {
+        opacity: 0.9;
+        background-color: #064d99;
+    }
+    footer {
+        background-color: white;
+        border: 0;
+    }
+    &.not-logged-in {
+        background-image: url(/assets/images/christmas-calendar-campaign/holiday-calendar-not-logged-background.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top center;
+    }
+    &.logged-in {
+        background-image: url(/assets/images/christmas-calendar-campaign/logged-in-bg.png);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: top center;
+    }
     .white-red-btn {
         background-color: $christmas_calendar_red;
         color: white;
@@ -32,6 +52,32 @@ body.christmas-calendar {
         }
     }
     .christmas-calendar-logged {
+        .presents-list {
+            background-image: url(/assets/images/christmas-calendar-campaign/snow-behind-cahracters-bottom.png);
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            background-position: center bottom;
+            .presents {
+                padding-bottom: 15% !important;
+                max-width: 700px;
+                .user, .dentist {
+                    width: 330px;
+                }
+            }
+        }
+        .spin-the-wheel-timer {
+            background-color: #4eb6eb;
+            padding: 8px 15px;
+            bottom: 0;
+            @include rounded(15px 15px 0 0);
+            @include horizontal-align(absolute);
+            img {
+                width: 40px;
+            }
+            .next-to-img {
+                padding-left: 10px;
+            }
+        }
         .christmas-calendar-campaign-stats {
             background-image: url(/assets/images/christmas-calendar-campaign/red-background.png);
             background-repeat: no-repeat;
@@ -39,6 +85,14 @@ body.christmas-calendar {
             background-position: center center;
             color: white;
             max-width: 1300px;
+            position: relative;
+            z-index: 100;
+            .snow-img {
+                position: absolute;
+                right: 40px;
+                width: 250px;
+                top: -13px;
+            }
             .single-stat {
                 text-align: center;
                 border-right: 1.5px solid black;
@@ -72,6 +126,19 @@ body.christmas-calendar {
         }
         .tasks-section {
             position: relative;
+            .box-background {
+                padding: 50px 50px 100px;
+                background-color: #f1fafd;
+                margin-top: -30px;
+                position: relative;
+                @include rounded(0 0 25px 25px);
+                .snow-img {
+                    position: absolute;
+                    left: 40px;
+                    width: 300px;
+                    bottom: -35px;
+                }
+            }
             .camping-custom-popups {
                 top: 50px;
                 width: 95%;
@@ -213,6 +280,19 @@ body.christmas-calendar {
                     box-shadow: 0 0 40px 0 rgba(0, 0, 0, 0.15);
                     cursor: pointer;
                     transition: all 0.2s ease-out;
+                    .custom-number {
+                        font-size: 16px;
+                        color: #cd532d;
+                        font-family: 'Lato-Black';
+                        z-index: 10;
+                        @include vertical-horizontal-align(absolute);
+                    }
+                    .user-wheel {
+                        width: 60%;
+                        bottom: 10%;
+                        position: absolute;
+                        left: 20%;
+                    }
                 }
                 .present__date {
                     width: 50px;
@@ -221,8 +301,8 @@ body.christmas-calendar {
                     font-size: 30px;
                     font-family: 'Lato-Black';
                     text-align: center;
-                    color: white;
-                    background: #d70a10;
+                    color: #4eb6eb;
+                    background: white;
                     box-shadow: inset 0 0 10px 5px rgba(0, 0, 0, 0.15);
                     @include rounded(50%);
                     @include vertical-horizontal-align(absolute);
@@ -238,7 +318,7 @@ body.christmas-calendar {
                     perspective-origin: 0;  
                     transition: all 0.25s ease-in;
                 }
-                &:hover .present__date {
+                &:hover .present__date, .user-wheel {
                     -webkit-backface-visibility: hidden;
                     backface-visibility: hidden;
                 }
@@ -303,7 +383,7 @@ body.christmas-calendar {
                         perspective-origin: 0;
                         transition: all 0.25s ease-in;
                     }
-                    .present__date {
+                    .present__date, .user-wheel {
                         -webkit-backface-visibility: hidden;
                         backface-visibility: hidden;
                     }
@@ -314,11 +394,7 @@ body.christmas-calendar {
     .bootbox {
         &.christmas-calendar-task, &.response-popup {
             .bootbox-close-button {
-                position: absolute;
-                right: 20px;
-                font-size: 30px;
-                top: 175px;
-                opacity: 1;
+                display: none;
             }
             .modal-dialog {
                 width: 95%;
@@ -333,24 +409,16 @@ body.christmas-calendar {
                     .modal-body {
                         padding: 0;
                         .popup-header {
-                            img {
-                                max-width: 250px;
-                            }
+                            position: relative;
+                            z-index: 100;
                             .lines-and-day {
                                 position: relative;
+                                margin-top: -15px;
                                 .lines {
                                     overflow: hidden;
                                     @include rounded(20px 20px 0 0);
-                                    .small-red-line {
-                                        background-color: $christmas_calendar_red;
-                                        height: 10px;
-                                    }
-                                    .small-yellow-line {
-                                        background-color: #f3b434;
-                                        height: 5px;
-                                    }
-                                    .big-red-line {
-                                        background-color: $christmas_calendar_red;
+                                    .big-blue-line {
+                                        background-color: #45b2f3;
                                         height: 35px;
                                     }
                                 }
@@ -360,10 +428,15 @@ body.christmas-calendar {
                                     color: white;
                                     font-family: 'Lato-Black';
                                     padding: 15px 30px;
-                                    background-color: $christmas_calendar_red;
+                                    background-color: #45b2f3;
                                     @include rounded(15px);
                                     @include box-shadow(0 2px 6px 0 rgba(0, 0, 0, 0.7));
                                     @include vertical-horizontal-align(absolute);
+                                    .day-snow {
+                                        width: 150px;
+                                        top: -15px;
+                                        @include horizontal-align(absolute);
+                                    }
                                     @include breakpoint($xs) {
                                         font-size: 32px;
                                     }
@@ -372,7 +445,122 @@ body.christmas-calendar {
                         }
                         .popup-body {
                             background-color: white;
+                            padding-top: 15px;
+                            padding-bottom: 50px;
+                            position: relative;
                             @include rounded(0 0 20px 20px);
+                            .custom-close {
+                                position: absolute;
+                                right: 20px;
+                                font-size: 30px;
+                                top: 10px;
+                                color: #000;
+                                font-weight: bold;
+                            }
+                            .bottom-snow {
+                                position: absolute;
+                                width: 95%;
+                                margin-left: 2.5%;
+                                top: calc(100% - 45px);
+                            }
+                            .wheel-parent {
+                                text-align: center;
+                                padding: 30px 15px;
+                                .wheel-wrapper {
+                                    display: inline-block;
+                                    position: relative;
+                                    .wheel {
+                                        width: 400px;
+                                        height: 400px;
+                                        background-color: red;
+                                        overflow: hidden;
+                                        position: relative;
+                                        @include rounded(50%);
+                                        @include simple_transition(.3s);
+                                    }
+                                    .wheel .reward {
+                                        width: 50%;
+                                        height: 50%;
+                                        position: absolute;
+                                    }
+                                    .wheel .reward .reward-text {
+                                        color: white;
+                                        text-align: center;
+                                        font-size: 16px;
+                                        font-family: 'Lato-Bold';
+                                        width: 75%;
+                                        position: absolute;
+                                        top: 50%;
+                                        left: 50%;
+                                    }
+                                    .wheel .reward .reward-text img {
+                                        width: 50px;
+                                        margin-bottom: 5px;
+                                    }
+                                    .wheel .reward.reward-1 {
+                                        top: 0;
+                                        left: 0;
+                                        background: #ff5858;
+                                    }
+                                    .wheel .reward.reward-1 .reward-text {
+                                        transform: translate(-50%, -50%) rotate(-45deg);
+                                    }
+                                    .wheel .reward.reward-2 {
+                                        top: 0;
+                                        right: 0;
+                                        background: #d72e2e;
+                                    }
+                                    .wheel .reward.reward-2 .reward-text {
+                                        transform: translate(-50%, -50%) rotate(45deg);
+                                    }
+                                    .wheel .reward.reward-3 {
+                                        bottom: 0;
+                                        left: 0;
+                                        background: #ff7878;
+                                    }
+                                    .wheel .reward.reward-3 .reward-text {
+                                        transform: translate(-50%, -50%) rotate(225deg);
+                                    }
+                                    .wheel .reward.reward-4 {
+                                        bottom: 0;
+                                        right: 0;
+                                        background: #ffbbbb;
+                                    }
+                                    .wheel .reward.reward-4 .reward-text {
+                                        transform: translate(-50%, -50%) rotate(135deg);
+                                    }
+                                    .selector {
+                                        background-color: #d72e2e;
+                                        width: 100px;
+                                        height: 100px;
+                                        border: 5px solid white;
+                                        position: absolute;
+                                        left: calc(50% - 55px);
+                                        top: calc(50% - 55px);
+                                        @include rounded(50%);
+                                        a {
+                                            width: 100%;
+                                            height: 100%;
+                                            display: block;
+                                            line-height: 90px;
+                                            color: white;
+                                            font-size: 22px;
+                                            font-family: 'Lato-Black';
+                                        }
+                                        &:after {
+                                            content: '';
+                                            width: 0;
+                                            height: 0;
+                                            border-left: 15px solid transparent;
+                                            border-right: 15px solid transparent;
+                                            border-bottom: 15px solid white;
+                                            position: absolute;
+                                            bottom: 100%;
+                                            left: calc(50% - 12.5px);
+                                        }
+                                    }
+                                }
+                            }
                             .submit-btn {
                                 width: 180px;
                             }
@@ -540,6 +728,28 @@ body.christmas-calendar {
                                     }
                                 }
                                 .task-body {
+                                    .puzzle-task {
+                                        font-size: 0;
+                                        .draggable-square {
+                                            cursor: pointer;
+                                        }
+                                        .puzzle-container {
+                                            display: inline-block;
+                                            vertical-align: top;
+                                            width: 500px;
+                                            margin-left: calc(100% - 650px);
+                                        }
+                                        .puzzle-scroll {
+                                            width: 150px;
+                                            height: 500px;
+                                            overflow-y: scroll;
+                                            display: inline-block;
+                                            vertical-align: top;
+                                            .draggable-square {
+                                                margin: 2.5px 0;
+                                            }
+                                        }
+                                    }
                                     .gender-radio-btns {
                                         label {
                                             font-weight: normal;
@@ -722,6 +932,12 @@ body.christmas-calendar {
     }
     .christmas-calendar-not-logged {
         .tasks-section {
+            margin-top: -10px;
+            .box-background {
+                padding: 50px 50px 100px;
+                background-color: #f1fafd;
+                @include rounded(25px);
+            }
             .wrapper {
                 .present__content {
                     img {
@@ -743,7 +959,9 @@ body.christmas-calendar {
         }
         .santa-section {
             img {
-                margin-top: -150px;
+                margin-top: -8%;
+                margin-bottom: -8%;
+                position: relative;
                 @include breakpoint($xs) {
                     margin-top: 0;
                 }
@@ -755,7 +973,10 @@ body.christmas-calendar {
     }
     .presents-list {
         position: relative;
-        overflow-x: hidden;
+        background-image: url(/assets/images/christmas-calendar-campaign/not-registered-grey-snow.png);
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        background-position: center bottom;
         .presents {
             width: 100%;
             max-width: 600px;
@@ -771,8 +992,9 @@ body.christmas-calendar {
         .dentist {
             position: absolute;
             left: 0;
-            bottom: 20px;
+            bottom: -20px;
             width: 380px;
+            z-index: 100;
             @include breakpoint($lgll) {
                 width: 500px;
             }
@@ -783,8 +1005,9 @@ body.christmas-calendar {
         .user {
             position: absolute;
             right: 0;
-            bottom: 20px;
+            bottom: -20px;
             width: 380px;
+            z-index: 100;
             @include breakpoint($lgll) {
                 width: 500px;
             }

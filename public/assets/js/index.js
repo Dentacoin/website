@@ -5,7 +5,7 @@ var allowedDocumentExtensions = ['pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rt
 var get_params = basic.getGETParameters();
 var loadedLibs = {};
 var isFirefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-var christmasCalendarYear = 2020;
+var christmasCalendarYear = 2021;
 
 $(window).on('load', function () {
     if (($('body').hasClass('home') && !$('body').hasClass('logged-in')) || ($('body').hasClass('logged-in') && $('body').hasClass('foundation'))) {
@@ -864,12 +864,11 @@ var projectData = {
                         $('footer').css({'margin-top' : '-30px'});
                     }
 
-                    if (Date.now() > Math.floor(new Date(2020, 12, 1, 23, 59, 59, 0).getTime())) {
+                    if (Date.now() > Math.floor(new Date(2021, 12, 1, 23, 59, 59, 0).getTime())) {
                         initTasksEvent();
                     } else {
-                        console.log('! initTasksEvent');
                         if (basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
-                            $('.tasks-section .camping-custom-popups.rules').html('<div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2><ul class="lato-regular fs-18 line-height-30"><li><span class="lato-black">31 days = 31 gifts:</span> Unlock a new task every day, complete it and get various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days = 31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards will be gradually unlocked for withdrawal in the period <span class="lato-black">Jan 1-15, 2021.</span></li><li>Other gifts are sent via email <span class="lato-black">within 5 days after</span> the task is completed.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks get rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 11, 2021 - first in our Telegram group!</span></li></ul><div class="padding-top-20 padding-bottom-20 max-width-400 margin-0-auto checkboxes"><div class="padding-bottom-10 padding-top-15"><div class="checkbox-wrapper"><input id="christmas-calendar-terms" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-terms">I read and agree to the <a href="/holiday-calendar-terms" target="_blank" class="color-christmas-calendar-red">Terms & Conditions</a></label></div><div class="padding-bottom-10"><div class="checkbox-wrapper"><input id="christmas-calendar-privacy-policy" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the <a href="/privacy-policy" target="_blank" class="color-christmas-calendar-red">Privacy Policy</a></label></div><div><div class="checkbox-wrapper"><input id="christmas-calendar-years" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"><figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div></div>');
+                            $('.tasks-section .camping-custom-popups.rules').html('<div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2> <ul class="lato-regular fs-18 line-height-30"> <li><span class="lato-black">31 days=31 gifts:</span> Unlock a new task every day, complete it and get various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days=31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards will be gradually unlocked for withdrawal in the period <span class="lato-black">Jan 4 - 22, 2022.</span></li><li>You can spin Dentacoin’s festive wheel every Friday of the month. You get the chance to win one of four amazing prizes, as it follows:<br>- 5 000 DCN - 40% chance of winning<br>- Daily VIP pass for DentaVox* - 20% chance of winning<br>- 3 Raffle Tickets - 30 % chance of winning<br>- 15 000 DCN - 10% chance of winning<br>Keep in mind that the wheel is locked by the date of release. You can see how much time is left till the next spin on the special countdown clock on the website. </li><li>Other gifts are sent via email <span class="lato-black">within 7 days after</span> the task is completed.</li><li>All tasks are subject to manual approval to guarantee proper completion.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks get rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 17, 2022 - first in our Telegram group!</span></li></ul> <div class="padding-top-20 padding-bottom-20 max-width-400 margin-0-auto checkboxes"> <div class="padding-bottom-10 padding-top-15"> <div class="checkbox-wrapper"><input id="christmas-calendar-terms" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-terms">I read and agree to the <a href="/holiday-calendar-terms" target="_blank" class="color-christmas-calendar-red">Terms & Conditions</a></label></div><div class="padding-bottom-10"> <div class="checkbox-wrapper"><input id="christmas-calendar-privacy-policy" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the <a href="/privacy-policy" target="_blank" class="color-christmas-calendar-red">Privacy Policy</a></label></div><div> <div class="checkbox-wrapper"><input id="christmas-calendar-years" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"> <figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div></div>');
 
                             $('html, body').animate({scrollTop: $('.camping-custom-popups.rules').offset().top}, 300);
 
@@ -909,13 +908,36 @@ var projectData = {
                         }
                     }
 
+                    function initSpinningWheelTimer(htmlElement, timestamp) {
+                        var spinningWheelTimer = setInterval(function() {
+                            timestamp-=1;
+                            if (timestamp < 0) {
+                                clearInterval(spinningWheelTimer);
+                                $('.spin-the-wheel-timer').remove();
+                            } else {
+                                var days = Math.floor(timestamp / (24 * 60 * 60));
+                                var hours = Math.floor(timestamp / (60 * 60)) % 24;
+                                var	 minutes = Math.floor(timestamp / 60) % 60;
+
+                                htmlElement.html(days + 'd : ' + hours + 'h : ' + minutes + 'm');
+                            }
+                        }, 1000);
+                    }
+
                     function initTasksEvent() {
-                        console.log('initTasksEvent');
+                        if ($('.spinning-wheel-timer').length) {
+                            initSpinningWheelTimer($('.spinning-wheel-timer'), parseInt($('.spinning-wheel-timer').attr('data-time-left')));
+                        }
+
+                        $(document).on('click', '.custom-close', function() {
+                            basic.closeDialog();
+                        });
+
                         $('.tasks-section .single-task').click(function() {
                             var this_btn = $(this);
                             if (this_btn.hasClass('double-reward') && !this_btn.find('wrapper').hasClass('opened')) {
                                 basic.closeDialog();
-                                basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/popup-gifts-header.png" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="small-red-line"></div><div class="small-yellow-line"></div><div class="big-red-line"></div><div class="small-yellow-line"></div><div class="small-red-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20"><h2 class="fs-50 fs-xs-32 lato-black">DOUBLE REWARDS</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">IF YOU COMPLETE ALL 31 TASKS ON THE EXACT DATE</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="/assets/images/christmas-calendar-campaign/double-reward.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
+                                basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/tasks-pop-up-header-img.png" alt="" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="big-blue-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20"><h2 class="fs-50 fs-xs-32 lato-black">DOUBLE REWARDS</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">IF YOU COMPLETE ALL 31 TASKS ON THE EXACT DATE</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="/assets/images/christmas-calendar-campaign/double-reward.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
                             } else if (this_btn.hasClass('disqualified')) {
                                 var disqualifiedText = 'DISQUALIFIED';
                                 var disqualifiedImage = this_btn.find('img').attr('src');
@@ -924,7 +946,7 @@ var projectData = {
                                 }
 
                                 basic.closeDialog();
-                                basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/popup-gifts-header.png" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="small-red-line"></div><div class="small-yellow-line"></div><div class="big-red-line"></div><div class="small-yellow-line"></div><div class="small-red-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20"><h2 class="fs-50 fs-xs-32 lato-black">DISQUALIFIED</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You haven\'t completed the task as required.</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="'+disqualifiedImage+'" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="fs-18 lato-bold padding-top-10">'+disqualifiedText+'</div><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
+                                basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/tasks-pop-up-header-img.png" alt="" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="big-blue-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20"><h2 class="fs-50 fs-xs-32 lato-black">DISQUALIFIED</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You haven\'t completed the task as required.</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="'+disqualifiedImage+'" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="fs-18 lato-bold padding-top-10">'+disqualifiedText+'</div><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
                             } else {
                                 $.ajax({
                                     type: 'POST',
@@ -938,7 +960,305 @@ var projectData = {
                                             basic.closeDialog();
                                             basic.showDialog(response.success, 'christmas-calendar-task', null);
 
-                                            if (this_btn.attr('data-day-id') == '1') {
+                                            if (this_btn.attr('data-day-id') == '16' || this_btn.attr('data-day-id') == '26') {
+                                                var ajaxSent = false;
+                                                $('.popup-body form').on('submit', function(event) {
+                                                    event.preventDefault();
+
+                                                    var piecesCount = parseInt($('.puzzle-container').attr('data-pieces-count'));
+                                                    for (var i = 0; i < piecesCount; i+=1) {
+                                                        if ($('#div' + i).has($('#drag' + i)).length == 0) {
+                                                            basic.showAlert('You haven\'t solved the puzzle yet, please do and then submit the task.', '', true);
+                                                            break;
+                                                        }
+
+                                                        if (i == piecesCount - 1) {
+                                                            projectData.general_logic.data.showLoader();
+                                                            $('.draggable-square').removeAttr('draggable');
+                                                            $('.draggable-square').removeAttr('ondragstart');
+
+                                                            if (!ajaxSent) {
+                                                                ajaxSent = true;
+                                                                $.ajax({
+                                                                    type: 'POST',
+                                                                    url: '/holiday-calendar/'+christmasCalendarYear+'/complete-task/' + this_btn.attr('data-task'),
+                                                                    dataType: 'json',
+                                                                    headers: {
+                                                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                                    },
+                                                                    success: function (response) {
+                                                                        ajaxSent = false;
+
+                                                                        projectData.general_logic.data.hideLoader();
+                                                                        if (response.dcnAmount) {
+                                                                            $('.user-dcn-amount').html(response.dcnAmount);
+                                                                        }
+                                                                        if (response.ticketAmount) {
+                                                                            $('.user-ticket-amount').html(response.ticketAmount);
+                                                                        }
+                                                                        if (response.bonusTickets) {
+                                                                            $('.user-bonus-ticket-amount').html(response.bonusTickets);
+                                                                        }
+
+                                                                        this_btn.find('.wrapper').addClass('opened');
+                                                                        this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
+
+                                                                        basic.closeDialog();
+                                                                        basic.showDialog(response.success, 'response-popup', null);
+                                                                    }
+                                                                });
+                                                            }
+                                                        }
+                                                    }
+                                                });
+                                            } else if (this_btn.attr('data-day-id') == '3' || this_btn.attr('data-day-id') == '10' || this_btn.attr('data-day-id') == '17' || this_btn.attr('data-day-id') == '24') {
+                                                if (this_btn.attr('data-day-id') == '3') {
+                                                    if ($('.current-task-body').hasClass('from-beginning')) {
+                                                        var ajaxSent = false;
+                                                        $('.send-invites').click(function() {
+                                                            if (!ajaxSent) {
+                                                                ajaxSent = true;
+                                                                var namesArray = [];
+                                                                var emailsArray = [];
+                                                                for (var i = 0, len = $('[name="names[]"]').length; i < len; i+=1) {
+                                                                    if ($('[name="names[]"]').eq(i).val().trim() == '') {
+                                                                        basic.showAlert('Please enter valid names of your friends.', '', true);
+                                                                        return false;
+                                                                    } else {
+                                                                        namesArray.push($('[name="names[]"]').eq(i).val().trim());
+                                                                    }
+                                                                }
+
+                                                                for (var i = 0, len = $('[name="emails[]"]').length; i < len; i+=1) {
+                                                                    if ($('[name="emails[]"]').eq(i).val().trim() == '' || !basic.validateEmail($('[name="emails[]"]').eq(i).val().trim())) {
+                                                                        basic.showAlert('Please enter valid emails of your friends.', '', true);
+                                                                        return false;
+                                                                    } else {
+                                                                        emailsArray.push($('[name="emails[]"]').eq(i).val().trim());
+                                                                    }
+                                                                }
+
+                                                                if (namesArray.length == 5 && emailsArray.length == 5) {
+                                                                    $.ajax({
+                                                                        type: 'POST',
+                                                                        url: '/holiday-calendar/'+christmasCalendarYear+'/complete-task/' + this_btn.attr('data-task'),
+                                                                        dataType: 'json',
+                                                                        data: {
+                                                                            'namesArray' : namesArray,
+                                                                            'emailsArray' : emailsArray,
+                                                                            'text_proof' : [namesArray, emailsArray]
+                                                                        },
+                                                                        headers: {
+                                                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                                        },
+                                                                        success: function (response) {
+                                                                            ajaxSent = false;
+                                                                            if (response.success) {
+                                                                                spinningWheelLogic(response.finishedTask.id, response.finishedTask.task_id, response.rewards);
+                                                                            } else if (response.error) {
+                                                                                projectData.general_logic.data.hideLoader();
+                                                                                basic.showDialog(response.error, 'response-popup', null);
+                                                                            }
+                                                                        }
+                                                                    });
+                                                                }
+                                                            }
+                                                        });
+                                                    } else if ($('.current-task-body').hasClass('from-mid')) {
+                                                        spinningWheelLogic($('.current-task-body').attr('data-finishedTask'), $('.current-task-body').attr('data-task_id'), JSON.parse($('.current-task-body').attr('data-rewards')));
+                                                    }
+                                                } else if (this_btn.attr('data-day-id') == '10') {
+                                                    if ($('.current-task-body').hasClass('from-beginning')) {
+                                                        var ajaxSent = false;
+                                                        $('.next-step').click(function() {
+                                                            if (!ajaxSent) {
+                                                                if ($('[name="text_proof"]').val().trim() == '') {
+                                                                    basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
+                                                                    return false;
+                                                                } else {
+                                                                    ajaxSent = true;
+
+                                                                    $.ajax({
+                                                                        type: 'POST',
+                                                                        url: '/holiday-calendar/'+christmasCalendarYear+'/complete-task/' + this_btn.attr('data-task'),
+                                                                        dataType: 'json',
+                                                                        data: {
+                                                                            'text_proof' : $('[name="text_proof"]').val().trim()
+                                                                        },
+                                                                        headers: {
+                                                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                                        },
+                                                                        success: function (response) {
+                                                                            ajaxSent = false;
+                                                                            if (response.success) {
+                                                                                spinningWheelLogic(response.finishedTask.id, response.finishedTask.task_id, response.rewards);
+                                                                            } else if (response.error) {
+                                                                                projectData.general_logic.data.hideLoader();
+                                                                                basic.showDialog(response.error, 'response-popup', null);
+                                                                            }
+                                                                        }
+                                                                    });
+                                                                }
+                                                            }
+                                                        });
+                                                    } else if ($('.current-task-body').hasClass('from-mid')) {
+                                                        spinningWheelLogic($('.current-task-body').attr('data-finishedTask'), $('.current-task-body').attr('data-task_id'), JSON.parse($('.current-task-body').attr('data-rewards')));
+                                                    }
+                                                } else if (this_btn.attr('data-day-id') == '17') {
+                                                    if ($('.current-task-body').hasClass('from-beginning')) {
+                                                        var ajaxSent = false;
+                                                        $('.next-step').click(function() {
+                                                            if (!ajaxSent) {
+                                                                ajaxSent = true;
+                                                                $.ajax({
+                                                                    type: 'POST',
+                                                                    url: '/holiday-calendar/'+christmasCalendarYear+'/complete-task/' + this_btn.attr('data-task'),
+                                                                    dataType: 'json',
+                                                                    headers: {
+                                                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                                    },
+                                                                    success: function (response) {
+                                                                        ajaxSent = false;
+                                                                        if (response.success) {
+                                                                            spinningWheelLogic(response.finishedTask.id, response.finishedTask.task_id, response.rewards);
+                                                                        } else if (response.error) {
+                                                                            projectData.general_logic.data.hideLoader();
+                                                                            basic.showDialog(response.error, 'response-popup', null);
+                                                                        }
+                                                                    }
+                                                                });
+                                                            }
+                                                        });
+                                                    } else if ($('.current-task-body').hasClass('from-mid')) {
+                                                        spinningWheelLogic($('.current-task-body').attr('data-finishedTask'), $('.current-task-body').attr('data-task_id'), JSON.parse($('.current-task-body').attr('data-rewards')));
+                                                    }
+                                                } else if (this_btn.attr('data-day-id') == '24') {
+                                                    if ($('.current-task-body').hasClass('from-beginning')) {
+                                                        var ajaxSent = false;
+                                                        $('.next-step').click(function() {
+                                                            var warningReminderAboutTaskValidation = {};
+                                                            warningReminderAboutTaskValidation.callback = function (result) {
+                                                                if (result) {
+                                                                    if (!ajaxSent) {
+                                                                        ajaxSent = true;
+                                                                        $.ajax({
+                                                                            type: 'POST',
+                                                                            url: '/holiday-calendar/'+christmasCalendarYear+'/complete-task/' + this_btn.attr('data-task'),
+                                                                            dataType: 'json',
+                                                                            headers: {
+                                                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                                            },
+                                                                            success: function (response) {
+                                                                                ajaxSent = false;
+                                                                                if (response.success) {
+                                                                                    spinningWheelLogic(response.finishedTask.id, response.finishedTask.task_id, response.rewards);
+                                                                                } else if (response.error) {
+                                                                                    projectData.general_logic.data.hideLoader();
+                                                                                    basic.showDialog(response.error, 'response-popup', null);
+                                                                                }
+                                                                            }
+                                                                        });
+                                                                    }
+                                                                }
+                                                            };
+                                                            basic.showConfirm('<div class="fs-20 lato-bold text-center padding-bottom-20">WARNING</div><div class="fs-16 text-center padding-bottom-20">All entries are subject to manual approval. If your entry does not meet the requirements, you will be disqualified from today\'s task.</div><div class="fs-16 text-center padding-bottom-20">Are you sure you want to submit the task?</div>', '', warningReminderAboutTaskValidation, true);
+                                                        });
+                                                    } else if ($('.current-task-body').hasClass('from-mid')) {
+                                                        spinningWheelLogic($('.current-task-body').attr('data-finishedTask'), $('.current-task-body').attr('data-task_id'), JSON.parse($('.current-task-body').attr('data-rewards')));
+                                                    }
+                                                }
+
+                                                function spinningWheelLogic(finishedTask, taskId, rewards, html) {
+                                                    var rewardsHtml = '';
+                                                    for (var i = 0, len = rewards.length; i < len; i+=1) {
+                                                        var rewardImg;
+                                                        var rewardText;
+                                                        if (rewards[i] == '5000-dcn') {
+                                                            rewardImg = '/assets/images/christmas-calendar-campaign/dentacoins.svg';
+                                                            rewardText = '5000 DCN';
+                                                        } else if (rewards[i] == 'daily-vox-pass') {
+                                                            rewardImg = '/assets/images/christmas-calendar-campaign/dv-vip-pass-icon.png';
+                                                            rewardText = 'Daily VIP pass for DentaVox';
+                                                        } else if (rewards[i] == '3-raffle-tickets') {
+                                                            rewardImg = '/assets/images/christmas-calendar-campaign/ticket.svg';
+                                                            rewardText = '3 raffle tickets';
+                                                        } else if (rewards[i] == '15000-dcn') {
+                                                            rewardImg = '/assets/images/christmas-calendar-campaign/dentacoins.svg';
+                                                            rewardText = '15000 DCN';
+                                                        }
+                                                        rewardsHtml+='<div data-reward="'+rewards[i]+'" class="reward reward-'+(i + 1)+'"><div class="reward-text"><img src="'+rewardImg+'" alt=""/><div>'+rewardText+'</div></div></div>';
+                                                    }
+
+                                                    $('.current-task-body').html('<div class="fs-18 fs-xs-16 lato-bold padding-top-30 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Spin the wheel to win one of four amazing prizes!</div><div class="wheel-parent"><div class="wheel-wrapper"><div class="wheel"></div><div class="selector"><a href="javascript:void(0);" class="spin-the-wheel">SPIN</a></div></div></div>');
+                                                    $('.current-task-body .wheel-parent .wheel').html(rewardsHtml);
+
+                                                    $('.spin-the-wheel').click(function() {
+                                                        $(this).remove();
+                                                        var rotatingStep = 10;
+                                                        var interval = 30;
+
+                                                        function rotate() {
+                                                            $('.wheel-parent .wheel').css({'transform' : 'rotate('+rotatingStep+'deg)'});
+                                                            rotatingStep+=10;
+
+                                                            if (interval < 300) {
+                                                                if (rotatingStep > 700) {
+                                                                    interval+=10;
+                                                                }
+
+                                                                setTimeout(function() {
+                                                                    rotate();
+                                                                }, interval);
+                                                            } else {
+                                                                $.ajax({
+                                                                    type: 'POST',
+                                                                    url: '/holiday-calendar/' + christmasCalendarYear + '/complete-task-already-completed-task/' + finishedTask,
+                                                                    dataType: 'json',
+                                                                    headers: {
+                                                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                                    },
+                                                                    success: function (response) {
+                                                                        if (response.success) {
+                                                                            basic.closeDialog();
+                                                                            basic.showDialog(response.success, 'response-popup', null);
+
+                                                                            if (response.dcnAmount) {
+                                                                                $('.user-dcn-amount').html(response.dcnAmount);
+                                                                            }
+                                                                            if (response.ticketAmount) {
+                                                                                $('.user-ticket-amount').html(response.ticketAmount);
+                                                                            }
+                                                                            if (response.bonusTickets) {
+                                                                                $('.user-bonus-ticket-amount').html(response.bonusTickets);
+                                                                            }
+                                                                            if (response.finishedTask) {
+                                                                                var rewardImg;
+                                                                                var rewardText;
+                                                                                if (response.finishedTask.custom_reward_type == 'dcn-reward') {
+                                                                                    rewardImg = '/assets/images/christmas-calendar-campaign/dentacoins.svg';
+                                                                                    rewardText = response.finishedTask.custom_reward_value + ' DCN';
+                                                                                } else if (response.finishedTask.custom_reward_type == 'ticket-reward') {
+                                                                                    rewardImg = '/assets/images/christmas-calendar-campaign/ticket.svg';
+                                                                                    rewardText = '3 raffle tickets';
+                                                                                } else if (response.finishedTask.custom_reward_type == 'dv-pass') {
+                                                                                    rewardImg = '/assets/images/christmas-calendar-campaign/dv-vip-pass-icon.png';
+                                                                                    rewardText = 'Daily VIP pass for DentaVox';
+                                                                                }
+                                                                                $('.single-task[data-task="'+taskId+'"] .wrapper .present__content img').attr('src', rewardImg);
+                                                                                $('.single-task[data-task="'+taskId+'"] .wrapper figure').append('<figcaption class="color-white lato-bold padding-top-5">'+rewardText+'</figcaption>');
+                                                                            }
+
+                                                                            $('.single-task[data-task="'+taskId+'"] .wrapper').addClass('opened');
+                                                                            $('.single-task[data-task="'+taskId+'"]').find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
+                                                                        }
+                                                                    }
+                                                                });
+                                                            }
+                                                        }
+                                                        rotate();
+                                                    });
+                                                }
+                                            } else if (this_btn.attr('data-day-id') == '12') {
                                                 // face sticker generation task
                                                 var vertical_step = 0;
                                                 var horizontal_step = 0;
@@ -988,7 +1308,7 @@ var projectData = {
 
                                                                     resetImageStuff();
                                                                 }
-                                                            }
+                                                            };
                                                             reader.readAsDataURL(input.files[0]);
                                                         }
                                                     }, function() {
@@ -1156,17 +1476,10 @@ var projectData = {
                                                     event.preventDefault();
                                                     var form = $(this);
 
-                                                    var textProofArray = [];
-                                                    for (var i = 0, len = $('[name="text_proof[]"]').length; i < len; i+=1) {
-                                                        if ($('[name="text_proof[]"]').eq(i).val().trim() == '' || !basic.validateEmail($('[name="text_proof[]"]').eq(i).val().trim())) {
-                                                            basic.showAlert('Please enter valid emails of your friends.', '', true);
-                                                            return false;
-                                                        } else {
-                                                            textProofArray.push($('[name="text_proof[]"]').eq(i).val().trim());
-                                                        }
-                                                    }
-
-                                                    if (avatar_border != 1 && avatar_border != 2) {
+                                                    if (form.find('[name="text_proof"]').val().trim() == '') {
+                                                        basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
+                                                        return false;
+                                                    } else if (avatar_border != 1 && avatar_border != 2) {
                                                         basic.showAlert('Please select character gender.', '', true);
                                                     } else if (form.find('[name="avatar"]').val() == '') {
                                                         basic.showAlert('Please upload your photo.', '', true);
@@ -1189,7 +1502,7 @@ var projectData = {
                                                             url: '/holiday-calendar/'+christmasCalendarYear+'/complete-task/' + this_btn.attr('data-task'),
                                                             dataType: 'json',
                                                             data: {
-                                                                'text_proof' : textProofArray
+                                                                'text_proof' : $('[name="text_proof"]').val().trim()
                                                             },
                                                             headers: {
                                                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -1238,13 +1551,54 @@ var projectData = {
                                                         });
                                                     }
                                                 });
-                                            } else if (['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '25', '26', '28', '29', '30', '31'].indexOf(this_btn.attr('data-day-id')) > -1) {
+                                            } else if (this_btn.attr('data-day-id') == '15') {
                                                 $('.popup-body form').on('submit', function(event) {
                                                     event.preventDefault();
                                                     var form = $(this);
                                                     var this_form = this;
 
-                                                    if (['6', '12', '15', '25', '30'].indexOf(this_btn.attr('data-day-id')) > -1) {
+                                                    completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
+                                                        var post_data = {};
+                                                        post_data['user_slug'] = response.data;
+                                                        post_data['year'] = response.year;
+                                                        $.ajax({
+                                                            type: 'POST',
+                                                            url: 'https://christmas-calendar-api.dentacoin.com/generate-holiday-card',
+                                                            dataType: 'json',
+                                                            data: post_data,
+                                                            success: function (imageGenerationResponse) {
+                                                                projectData.general_logic.data.hideLoader();
+                                                                if (imageGenerationResponse.success) {
+                                                                    if (imageGenerationResponse.dcnAmount) {
+                                                                        $('.user-dcn-amount').html(imageGenerationResponse.dcnAmount);
+                                                                    }
+                                                                    if (imageGenerationResponse.ticketAmount) {
+                                                                        $('.user-ticket-amount').html(imageGenerationResponse.ticketAmount);
+                                                                    }
+                                                                    if (imageGenerationResponse.bonusTickets) {
+                                                                        $('.user-bonus-ticket-amount').html(imageGenerationResponse.bonusTickets);
+                                                                    }
+
+                                                                    this_btn.find('.wrapper').addClass('opened');
+                                                                    this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
+
+                                                                    basic.closeDialog();
+                                                                    basic.showDialog(response.success, 'response-popup', null);
+                                                                    //window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
+                                                                } else {
+                                                                    basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
+                                                                }
+                                                            }
+                                                        });
+                                                    });
+                                                });
+                                            } else if (['1', '2', '4', '5', '6', '7', '8', '9', '11', '13', '14', '15', '18', '19', '20', '21', '22', '23', '25', '27', '28', '29', '30', '31'].indexOf(this_btn.attr('data-day-id')) > -1) {
+                                                $('.popup-body form').on('submit', function(event) {
+                                                    event.preventDefault();
+                                                    var form = $(this);
+                                                    var this_form = this;
+
+                                                    if (['13', '30'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                         var warningReminderAboutTaskValidation = {};
                                                         warningReminderAboutTaskValidation.callback = function (result) {
                                                             if (result) {
@@ -1252,6 +1606,33 @@ var projectData = {
                                                             }
                                                         };
                                                         basic.showConfirm('<div class="fs-20 lato-bold text-center padding-bottom-20">WARNING</div><div class="fs-16 text-center padding-bottom-20">All entries are subject to manual approval. If your entry does not meet the requirements, you will be disqualified from today\'s task.</div><div class="fs-16 text-center padding-bottom-20">Are you sure you want to submit the task?</div>', '', warningReminderAboutTaskValidation, true);
+                                                    } else if (['18', '23', '28'].indexOf(this_btn.attr('data-day-id')) > -1) {
+                                                        // validation for treasure pieces tasks
+                                                        if (form.find('[name="text_proof"]').val().trim() == '') {
+                                                            basic.showAlert('Please enter text proof.', '', true);
+                                                            return false;
+                                                        } else {
+                                                            if (this_btn.attr('data-day-id') == '18' && 2279 <= parseInt(form.find('[name="text_proof"]').val().trim()) && parseInt(form.find('[name="text_proof"]').val().trim()) <= 2600) {
+                                                                submitFormForMostTasks(form, this_form, this_btn.attr('data-day-id'));
+                                                            } else if (this_btn.attr('data-day-id') == '23' && form.find('[name="text_proof"]').val().trim() == '70%') {
+                                                                submitFormForMostTasks(form, this_form, this_btn.attr('data-day-id'));
+                                                            } else if (this_btn.attr('data-day-id') == '28') {
+                                                                var possibleAnswers = [];
+                                                                for (var i = 289; i < 321; i+=1) {
+                                                                    possibleAnswers.push(i + 'K+');
+                                                                }
+
+                                                                if (possibleAnswers.indexOf(form.find('[name="text_proof"]').val().trim()) > -1) {
+                                                                    submitFormForMostTasks(form, this_form, this_btn.attr('data-day-id'));
+                                                                } else {
+                                                                    basic.showAlert('Incorrect answer, continue looking for the hidden treasure sticker!', '', true);
+                                                                    return false;
+                                                                }
+                                                            } else {
+                                                                basic.showAlert('Incorrect answer, continue looking for the hidden treasure sticker!', '', true);
+                                                                return false;
+                                                            }
+                                                        }
                                                     } else {
                                                         submitFormForMostTasks(form, this_form, this_btn.attr('data-day-id'));
                                                     }
@@ -1281,7 +1662,7 @@ var projectData = {
                                                         basic.showDialog(response.success, 'response-popup', null);
                                                     }, task_id);
                                                 }
-                                            } else if (['27'].indexOf(this_btn.attr('data-day-id')) > -1) {
+                                            }/* else if (['27'].indexOf(this_btn.attr('data-day-id')) > -1) {
                                                 // newsletter registration task
                                                 $('.newsletter-register form').on('submit', function(event)  {
                                                     var this_form = this;
@@ -1358,7 +1739,7 @@ var projectData = {
                                                         });
                                                     });
                                                 });
-                                            }
+                                            }*/
 
                                             var screenshotProofsLength = $('.screenshot_proof').length;
                                             //my_file_image.txt
@@ -1372,6 +1753,7 @@ var projectData = {
                                             }
 
                                             function completeTask(form, this_form, this_btn, data, callback, task_id) {
+                                                console.log(task_id, 'task_id');
                                                 $('.task-error').remove();
 
                                                 function proceedWithTaskFinishing() {
@@ -1404,12 +1786,21 @@ var projectData = {
                                                     });
                                                 }
 
-                                                if (task_id != undefined && task_id == '3') {
-                                                    // for this task text and screenshot proof are not both requires, just one of them
-                                                    if ((form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') && form.find('.screenshot_proof').val().trim() == '') {
-                                                        basic.showAlert('Please submit proof. You need to link your post/ tweet or attach a screenshot.', '', true);
+                                                //if (task_id != undefined) {
+                                                    if (form.find('[name="text_proof"]').length && form.find('.screenshot_proof').length) {
+                                                        if (form.find('[name="text_proof"]').val().trim() == '' && form.find('.screenshot_proof').val().trim() == '') {
+                                                            basic.showAlert('Please submit proof. You need to link your post/ tweet or attach a screenshot.', '', true);
+                                                            return false;
+                                                        } else {
+                                                            proceedWithTaskFinishing();
+                                                        }
+                                                    } else if (form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
+                                                        basic.showAlert('Please submit text field proof.', '', true);
                                                         return false;
-                                                    } else if (form.find('.screenshot_proof').val().trim() != '') {
+                                                    } else if (form.find('.screenshot_proof').length && form.find('.screenshot_proof').val().trim() == '') {
+                                                        basic.showAlert('Please submit screenshot proof.', '', true);
+                                                        return false;
+                                                    } else if (form.find('.screenshot_proof').length && form.find('.screenshot_proof').val().trim() != '') {
                                                         readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, function() {
 
                                                             proceedWithTaskFinishing();
@@ -1420,7 +1811,7 @@ var projectData = {
                                                     } else {
                                                         proceedWithTaskFinishing();
                                                     }
-                                                } else {
+                                                /*} else {
                                                     if (form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
                                                         basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
                                                         return false;
@@ -1460,7 +1851,7 @@ var projectData = {
                                                     } else {
                                                         proceedWithTaskFinishing();
                                                     }
-                                                }
+                                                }*/
                                             }
                                         } else if (response.error) {
                                             basic.showDialog(response.error, 'response-popup', null);

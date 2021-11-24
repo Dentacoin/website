@@ -1,16 +1,16 @@
 @extends("layout")
 @section("content")
-    @if(strtotime('2021/01/02 00:00:00') < time())
-        <div class="christmas-calendar-not-logged challenge-passed">
+    @if(strtotime('2022/01/02 00:00:00') < time())
+        <div class="christmas-calendar-not-logged challenge-passed color-white">
             <section class="container text-center">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto line-height-46">Dentacoin Holiday<br>CALENDAR CHALLENGE 2020 IS OVER!</h1>
+                        <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto line-height-46">Dentacoin Holiday<br>CALENDAR CHALLENGE 2021 IS OVER!</h1>
                         <p class="fs-22 fs-xs-20 lato-regular padding-bottom-xs-25">
-                            @if(time() < strtotime('2021/01/11 00:00:00'))
-                                We will pick 10 winners on January 11, 2021.
+                            @if(time() < strtotime('2022/01/17 00:00:00'))
+                                We will pick 10 winners on January 17, 2022.
                             @else
-                                We picked 10 winners on January 11, 2021.
+                                We picked 10 winners on January 17, 2022.
                             @endif
                         </p>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <p class="fs-22 fs-xs-20 padding-bottom-30 lato-regular max-width-470 margin-0-auto">
-                            @if(time() < strtotime('2021/01/11 00:00:00'))
+                            @if(time() < strtotime('2022/01/17 00:00:00'))
                                 The winners will be announced first in our Telegram group. Join now and stay tuned for the winners announcement.
                             @else
                                 See the winners in our Telegram group and be the first to know about future raffles!
@@ -52,24 +52,24 @@
             </section>
         </div>
     @else
-        <div class="christmas-calendar-not-logged">
+        <div class="christmas-calendar-not-logged color-white">
             <section class="container text-center">
                 <div class="row">
                     <div class="col-xs-12">
-                        <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto">Join Dentacoin Holiday CALENDAR CHALLENGE 2020</h1>
-                        <p class="fs-22 fs-xs-20 lato-regular">Unlock a new surprise every day from December 1 to 31!</p>
-                        <p class="fs-22 fs-xs-20 lato-regular">Be consistent and increase your chances to win the <br><span class="lato-black">RAFFLE PRIZES on January, 11:</span></p>
+                        <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto">Join Dentacoin Holiday CALENDAR CHALLENGE 2021</h1>
+                        <p class="fs-22 fs-xs-20 lato-regular">Unlock a new surprise every day and spin the wheel every Friday for a special prize!</p>
+                        <p class="fs-22 fs-xs-20 lato-regular">Be consistent and increase your chances to win the <br><span class="lato-black">RAFFLE PRIZES on January, 17:</span></p>
                     </div>
                 </div>
             </section>
             <section class="presents-list padding-top-40">
                 <img src="/assets/images/christmas-calendar-campaign/dentist-christmas.png" class="dentist" alt="Dentist" itemprop="contentUrl"/>
-                <picture itemscope="" itemtype="http://schema.org/ImageObject" class="presents padding-bottom-30">
-                    <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/mobile-prizes.png">
-                    <source media="(max-width: 992px)" srcset="/assets/images/christmas-calendar-campaign/tablet-prizes.png">
-                    <img src="/assets/images/christmas-calendar-campaign/holiday-calendar-2020-prizes.png" alt="Presents list" itemprop="contentUrl"/>
+                <picture itemscope="" itemtype="http://schema.org/ImageObject" class="presents">
+                    <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/mobile-prizes-img.png">
+                    <source media="(max-width: 992px)" srcset="/assets/images/christmas-calendar-campaign/tablet-prizes-img.png">
+                    <img src="/assets/images/christmas-calendar-campaign/holiday-calendar-2021-not-logged-prizes.png" alt="Presents list" itemprop="contentUrl"/>
                 </picture>
-                <img src="/assets/images/christmas-calendar-campaign/user-christmas.png" class="user" alt="User" itemprop="contentUrl"/>
+                <img src="/assets/images/christmas-calendar-campaign/user-christmas-2021.png" class="user" alt="User" itemprop="contentUrl"/>
                 <div class="padding-bottom-50 text-center">
                     <a href="javascript:void(0);" class="open-dentacoin-gateway patient-login">
                         <figure itemscope="" itemtype="http://schema.org/ImageObject">
@@ -80,7 +80,7 @@
             </section>
             <section class="container tasks-section">
                 <div class="row">
-                    <div class="col-xs-12 col-lg-10 col-lg-offset-1">
+                    <div class="col-xs-12 col-lg-10 col-lg-offset-1 box-background">
                         <div class="row fs-0 position-relative">
                             @for($i = 1; $i <= 31; $i+=1)
                                 @if($i == 31)
@@ -106,8 +106,7 @@
             </section>
             <section class="santa-section">
                 <picture itemscope="" itemtype="http://schema.org/ImageObject">
-                    <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/santa-flying-in-the-sky-mobile.png" />
-                    <img src="/assets/images/christmas-calendar-campaign/santa-flying-in-the-sky-1400.png" class="width-100" alt="Santa flying in the sky" itemprop="contentUrl"/>
+                    <img src="/assets/images/christmas-calendar-campaign/not-registered-trees-and-presents-footer.png" class="width-100" alt="Trees and presents" itemprop="contentUrl"/>
                 </picture>
             </section>
         </div>

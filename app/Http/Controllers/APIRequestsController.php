@@ -211,7 +211,7 @@ class APIRequestsController extends Controller {
         ));
 
         $resp = json_decode(curl_exec($curl));
-        curl_close($curl);;
+        curl_close($curl);
 
         if(!empty($resp))   {
             return $resp;
@@ -665,5 +665,26 @@ class APIRequestsController extends Controller {
         } else {
             return false;
         }
+    }
+
+    public function grantVipDVAccess($postData)  {
+        $header = array();
+        $header[] = 'Accept: */*';
+        $header[] = 'Authorization: Bearer ' . session('logged_user')['token'];
+        $header[] = 'Cache-Control: no-cache';
+
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_POST => 1,
+            CURLOPT_URL => getenv('API_DOMAIN').'/api/user',
+            CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_POSTFIELDS => $postData
+        ));
+
+        $resp = json_decode(curl_exec($curl));
+        curl_close($curl);
+
+        return $resp;
     }
 }

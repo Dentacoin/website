@@ -62,8 +62,8 @@
         <link rel="preload" href="/assets/fonts/Lato-Black.woff2" as="font" crossorigin>
     @endif
 
-    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.26">
-    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.26">
+    <link rel="stylesheet" type="text/css" href="/dist/css/front-libs-style.css?v=1.1.27">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=1.1.27">
 
     @if((new \App\Http\Controllers\UserController())->checkSession())
         <link rel="stylesheet" type="text/css" href="/assets/libs/dentacoin-package/css/style.css?v={{time()}}">
@@ -110,7 +110,7 @@
     </noscript>
     <!-- End Facebook Pixel Code -->
 </head>
-<body data-current="one" class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif" data-environment="{{getenv('APP_ENVIRONMENT')}}">
+<body data-current="one" class="@if((new \App\Http\Controllers\UserController())->checkSession()) logged-in @if((new \App\Http\Controllers\UserController())->checkPatientSession()) logged-patient @elseif((new \App\Http\Controllers\UserController())->checkDentistSession()) logged-dentist @endif @else not-logged-in @endif @if(!empty(Route::current())) {{Route::current()->getName()}} @else class-404 @endif" data-environment="{{getenv('APP_ENVIRONMENT')}}">
     <svg class="svg-with-lines">
         <line class="first" x1="0" y1="0" x2="0" y2="0"/>
         <line class="second" x1="0" y1="0" x2="0" y2="0"/>
@@ -140,7 +140,14 @@
                 <div class="row fs-0">
                     <figure itemscope="" itemtype="http://schema.org/Organization" class="col-xs-3 logo-container inline-block">
                         <a itemprop="url" @if((new \App\Http\Controllers\UserController())->checkSession()) href="{{ route('foundation') }}" @else  href="{{ route('home') }}" @endif @if(!empty(Route::current())) @if(Route::current()->getName() == "home") tabindex="=-1" @endif @endif>
-                            <img src="@if((new \App\Http\Controllers\UserController())->checkSession() && Route::current()->getName() == 'traders') {{URL::asset('assets/images/round-logo-white.svg') }} @else {{URL::asset('assets/images/logo.svg') }} @endif" itemprop="logo" alt="Dentacoin logo"/>
+                            @if((new \App\Http\Controllers\UserController())->checkSession() && Route::current()->getName() == 'traders')
+                                @php($logoUrl = 'assets/images/round-logo-white.svg')
+                            @elseif(!empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
+                                @php($logoUrl = 'assets/images/christmas-calendar-campaign/round-logo-white.svg')
+                            @else
+                                @php($logoUrl = 'assets/images/logo.svg')
+                            @endif
+                            <img src="{{URL::asset($logoUrl) }}" itemprop="logo" alt="Dentacoin logo"/>
                             @if(!empty(Route::current()))
                                 @if(Route::current()->getName() == 'careers' || Route::current()->getName() == 'corporate-design')
                                     <div class="first-dot logo-dot fs-16 inline-block">&nbsp;</div>
@@ -151,13 +158,8 @@
                     @if(!(new \App\Http\Controllers\UserController())->checkSession())
                         <div class="col-xs-9 btn-container inline-block">
                             <div class="inline-block btn-and-line">
-                                <a href="javascript:void(0)" class="white-black-btn open-dentacoin-gateway patient-login" tabindex="-1">SIGN IN</a>
+                                <a href="javascript:void(0)" class="@if(!empty(Route::current()) && Route::current()->getName() == 'christmas-calendar') black-white-btn @else white-black-btn @endif open-dentacoin-gateway patient-login" tabindex="-1">SIGN IN</a>
                                 <span class="first-dot custom-dot">&nbsp;</span>
-                                @if(!\App\Http\Controllers\UserController::instance()->checkSession() && !empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
-                                    <figure itemscope="" itemtype="http://schema.org/ImageObject" class="christmas-ball">
-                                        <img src="/assets/images/christmas-calendar-campaign/christmas-ball.svg" class="width-100 max-width-40" alt="Christmas ball" itemprop="contentUrl"/>
-                                    </figure>
-                                @endif
                             </div>
                         </div>
                     @else
@@ -233,14 +235,6 @@
             </div>
             @endif
         </div>
-        @if(!empty(Route::current()) && (Route::current()->getName() == 'christmas-calendar') && !\App\Http\Controllers\UserController::instance()->checkSession())
-            <a href="https://blog.dentacoin.com/new-partner-dr-trino-nuno-omaha-nebraska/" target="_blank" class="display-block margin-bottom-15">
-                <picture itemscope="" itemtype="http://schema.org/ImageObject" class="display-block">
-                    <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/dr-trino-nuno-banner-mobile.png"/>
-                    <img alt="dr. Trino Nuno banner" itemprop="contentUrl" class="width-100" src="/assets/images/christmas-calendar-campaign/dr-trino-nuno-banner.png"/>
-                </picture>
-            </a>
-        @endif
         <div class="container">
             <div class="row all-rights">
                 <div class="col-xs-12">
@@ -324,16 +318,14 @@
     @endif--}}
     {{----}}
     {{--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBd5xOHXvqHKf8ulbL8hEhFA4kb7H6u6D4" type="text/javascript"></script>
-    --}}<script src="/dist/js/front-libs-script.js?v=1.1.26"></script>
+    --}}<script src="/dist/js/front-libs-script.js?v=1.1.27"></script>
     @if (!(new \App\Http\Controllers\UserController())->checkSession())
         <script src="/assets/libs/dentacoin-login-gateway/js/init.js?v={{time()}}"></script>
     @endif
     @yield("script_block")
-    <script src="/dist/js/front-script.js?v=1.1.26"></script>
-    {{--<script src="/assets/js/markerclusterer-v2.js"></script>
-    <script src="/assets/js/google-map.js"></script>
-    <script src="/assets/js/address.js"></script>
-    <script src="/assets/js/index.js"></script>--}}
+    {{--<script src="/dist/js/front-script.js?v=1.1.27"></script>--}}
+    <script src="/assets/js/basic.js"></script>
+    <script src="/assets/js/index.js"></script>
 
     {{--Multiple errors from laravel validation--}}
     @if(!empty($errors) && count($errors) > 0)

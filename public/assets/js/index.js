@@ -1108,26 +1108,32 @@ var projectData = {
                                                     if ($('.current-task-body').hasClass('from-beginning')) {
                                                         var ajaxSent = false;
                                                         $('.next-step').click(function() {
-                                                            if (!ajaxSent) {
-                                                                ajaxSent = true;
-                                                                $.ajax({
-                                                                    type: 'POST',
-                                                                    url: '/holiday-calendar/'+christmasCalendarYear+'/complete-task/' + this_btn.attr('data-task'),
-                                                                    dataType: 'json',
-                                                                    headers: {
-                                                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                                    },
-                                                                    success: function (response) {
-                                                                        ajaxSent = false;
-                                                                        if (response.success) {
-                                                                            spinningWheelLogic(response.finishedTask.id, response.finishedTask.task_id, response.rewards);
-                                                                        } else if (response.error) {
-                                                                            projectData.general_logic.data.hideLoader();
-                                                                            basic.showDialog(response.error, 'response-popup', null);
-                                                                        }
+                                                            var warningReminderAboutTaskValidation = {};
+                                                            warningReminderAboutTaskValidation.callback = function (result) {
+                                                                if (result) {
+                                                                    if (!ajaxSent) {
+                                                                        ajaxSent = true;
+                                                                        $.ajax({
+                                                                            type: 'POST',
+                                                                            url: '/holiday-calendar/'+christmasCalendarYear+'/complete-task/' + this_btn.attr('data-task'),
+                                                                            dataType: 'json',
+                                                                            headers: {
+                                                                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                                            },
+                                                                            success: function (response) {
+                                                                                ajaxSent = false;
+                                                                                if (response.success) {
+                                                                                    spinningWheelLogic(response.finishedTask.id, response.finishedTask.task_id, response.rewards);
+                                                                                } else if (response.error) {
+                                                                                    projectData.general_logic.data.hideLoader();
+                                                                                    basic.showDialog(response.error, 'response-popup', null);
+                                                                                }
+                                                                            }
+                                                                        });
                                                                     }
-                                                                });
-                                                            }
+                                                                }
+                                                            };
+                                                            basic.showConfirm('<div class="fs-20 lato-bold text-center padding-bottom-20">WARNING</div><div class="fs-16 text-center padding-bottom-20">All entries are subject to manual approval. If your entry does not meet the requirements, you will be disqualified from today\'s task.</div><div class="fs-16 text-center padding-bottom-20">Are you sure you want to submit the task?</div>', '', warningReminderAboutTaskValidation, true);
                                                         });
                                                     } else if ($('.current-task-body').hasClass('from-mid')) {
                                                         spinningWheelLogic($('.current-task-body').attr('data-finishedTask'), $('.current-task-body').attr('data-task_id'), JSON.parse($('.current-task-body').attr('data-rewards')));

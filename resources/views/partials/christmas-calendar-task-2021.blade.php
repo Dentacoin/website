@@ -378,6 +378,7 @@
                                 </div>
                             </div>
                             <script>
+                                console.log('==== TEST ====');
                                 function allowDrop(ev) {
                                     console.log('allowDrop');
                                     ev.preventDefault();

@@ -414,7 +414,7 @@
                                 }
 
                                 function drop(ev, el) {
-                                    console.log('drop');
+                                    console.log(ev, el, 'drop');
                                     ev.preventDefault();
                                     var drag_element_id = ev.dataTransfer.getData('text');
                                     if (ev.target.id.indexOf('div') != -1) {

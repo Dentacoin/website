@@ -17,7 +17,7 @@ class ChristmasCalendarController extends Controller
         Log::useDailyFiles(storage_path().'/logs/holiday-calendar.log');
     }
 
-    const ALLOWED_ACCOUNTS = [70134, 186047, 82627, 191210];
+    const ALLOWED_ACCOUNTS = [70134, 186047, 82627, 191210, 69468];
     const CALENDAR_YEARS = [2019, 2020, 2021];
 
     public function getView($year)   {

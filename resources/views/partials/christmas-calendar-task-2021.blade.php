@@ -17,7 +17,7 @@
         </div>
     </div>
 </div>
-<div class="popup-body">
+<div class="popup-body" data-task-id="{{$dayId}}">
     <a href="javascript:void(0);" class="custom-close">×</a>
     @if ($type == 'task')
         <form enctype="multipart/form-data">
@@ -120,51 +120,51 @@
                                 <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Invite 5 friends to join Dentacoin Holiday challenge.</div>
                                 <div class="padding-bottom-20">
                                     <div class="padding-bottom-15">
-                                        <div class="custom-google-label-style module max-width-300 inline-block">
+                                        <div class="custom-google-label-style module max-width-300 max-width-xs-120 inline-block">
                                             <label for="names_1">Name:</label>
                                             <input type="text" id="names_1" name="names[]" maxlength="100" class="full-rounded required form-field"/>
                                         </div>
-                                        <div class="custom-google-label-style module max-width-300 inline-block margin-left-10">
+                                        <div class="custom-google-label-style module max-width-300 max-width-xs-120 inline-block margin-left-10">
                                             <label for="emails_1">Email:</label>
                                             <input type="text" id="emails_1" name="emails[]" maxlength="100" class="full-rounded required form-field"/>
                                         </div>
                                     </div>
                                     <div class="padding-bottom-15">
-                                        <div class="custom-google-label-style module max-width-300 inline-block">
+                                        <div class="custom-google-label-style module max-width-300 max-width-xs-120 inline-block">
                                             <label for="names_2">Name:</label>
                                             <input type="text" id="names_2" name="names[]" maxlength="100" class="full-rounded required form-field"/>
                                         </div>
-                                        <div class="custom-google-label-style module max-width-300 inline-block margin-left-10">
+                                        <div class="custom-google-label-style module max-width-300 max-width-xs-120 inline-block margin-left-10">
                                             <label for="emails_2">Email:</label>
                                             <input type="text" id="emails_2" name="emails[]" maxlength="100" class="full-rounded required form-field"/>
                                         </div>
                                     </div>
                                     <div class="padding-bottom-15">
-                                        <div class="custom-google-label-style module max-width-300 inline-block">
+                                        <div class="custom-google-label-style module max-width-300 max-width-xs-120 inline-block">
                                             <label for="names_3">Name:</label>
                                             <input type="text" id="names_3" name="names[]" maxlength="100" class="full-rounded required form-field"/>
                                         </div>
-                                        <div class="custom-google-label-style module max-width-300 inline-block margin-left-10">
+                                        <div class="custom-google-label-style module max-width-300 max-width-xs-120 inline-block margin-left-10">
                                             <label for="emails_3">Email:</label>
                                             <input type="text" id="emails_3" name="emails[]" maxlength="100" class="full-rounded required form-field"/>
                                         </div>
                                     </div>
                                     <div class="padding-bottom-15">
-                                        <div class="custom-google-label-style module max-width-300 inline-block">
+                                        <div class="custom-google-label-style module max-width-300 max-width-xs-120 inline-block">
                                             <label for="names_4">Name:</label>
                                             <input type="text" id="names_4" name="names[]" maxlength="100" class="full-rounded required form-field"/>
                                         </div>
-                                        <div class="custom-google-label-style module max-width-300 inline-block margin-left-10">
+                                        <div class="custom-google-label-style module max-width-300 max-width-xs-120 inline-block margin-left-10">
                                             <label for="emails_4">Email:</label>
                                             <input type="text" id="emails_4" name="emails[]" maxlength="100" class="full-rounded required form-field"/>
                                         </div>
                                     </div>
                                     <div>
-                                        <div class="custom-google-label-style module max-width-300 inline-block">
+                                        <div class="custom-google-label-style module max-width-300 max-width-xs-120 inline-block">
                                             <label for="names_5">Name:</label>
                                             <input type="text" id="names_5" name="names[]" maxlength="100" class="full-rounded required form-field"/>
                                         </div>
-                                        <div class="custom-google-label-style module max-width-300 inline-block margin-left-10">
+                                        <div class="custom-google-label-style module max-width-300 max-width-xs-120 inline-block margin-left-10">
                                             <label for="emails_5">Email:</label>
                                             <input type="text" id="emails_5" name="emails[]" maxlength="100" class="full-rounded required form-field"/>
                                         </div>
@@ -295,6 +295,7 @@
                             <div class="fs-16 padding-bottom-25">Attach a portrait photo and choose a character:</div>
                             <div class="text-center fs-18 padding-bottom-20 gender-radio-btns">
                                 <input type="radio" name="character-type" id="character-type-male" value="male"/> <label class="fs-18 lato-bold" for="character-type-male">Male character</label>
+                                <br class="show-xs">
                                 <input type="radio" name="character-type" id="character-type-female" class="margin-left-15" value="female"/> <label class="fs-18 lato-bold" for="character-type-female">Female character</label>
                             </div>
                             <div class="row">
@@ -366,15 +367,15 @@
                         @break
                     @case(16)
                         <div class="puzzle-task padding-top-30 padding-bottom-30">
-                            <div class="puzzle-scroll">
-                                <div id="square-container">
-                                    {!! $piecesHtml !!}
-                                </div>
-                            </div>
                             <div class="puzzle-container" id="puzzle-container" data-pieces-count="{{$piece_count}}">
                                 @for($i = 0; $i < $piece_count; $i+=1)
                                     <div id="div{{$i}}" class='empty-square' style='width: {{$piece_width}}px; height: {{$piece_height}}px;border: 1px solid #aaaaaa;display: inline-block;' ondrop='drop(event, this)' ondragover='allowDrop(event)'></div>
                                 @endfor
+                            </div>
+                            <div class="puzzle-scroll">
+                                <div id="square-container">
+                                    {!! $piecesHtml !!}
+                                </div>
                             </div>
                             <script>
                                 function allowDrop(ev) {
@@ -425,7 +426,7 @@
                             <div class="current-task-body from-beginning padding-bottom-50">
                                 <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Cast your vote for the Top Dentist of 2021 from the list of nominees and claim your daily prize.</div>
                                 <div><a href="https://forms.gle/6Zd7c6yw9yaMZo5f9" target="_blank" class="white-red-btn inline-block vote-now fs-22">VOTE NOW</a></div>
-                                <div class="padding-top-30 text-center">
+                                <div class="padding-top-50 text-center">
                                     <a href="javascript:void(0);" class="white-red-btn next-step">NEXT STEP</a>
                                 </div>
                             </div>
@@ -562,15 +563,15 @@
                         @break
                     @case(26)
                         <div class="puzzle-task padding-top-30 padding-bottom-30">
-                            <div class="puzzle-scroll">
-                                <div id="square-container">
-                                    {!! $piecesHtml !!}
-                                </div>
-                            </div>
                             <div class="puzzle-container" id="puzzle-container" data-pieces-count="{{$piece_count}}">
                                 @for($i = 0; $i < $piece_count; $i+=1)
                                     <div id="div{{$i}}" class='empty-square' style='width: {{$piece_width}}px; height: {{$piece_height}}px;border: 1px solid #aaaaaa;display: inline-block;' ondrop='drop(event, this)' ondragover='allowDrop(event)'></div>
                                 @endfor
+                            </div>
+                            <div class="puzzle-scroll">
+                                <div id="square-container">
+                                    {!! $piecesHtml !!}
+                                </div>
                             </div>
                             <script>
                                 function allowDrop(ev) {

@@ -57,11 +57,56 @@ body.christmas-calendar {
             background-repeat: no-repeat;
             background-size: 100% auto;
             background-position: center bottom;
+            font-size: 0;
             .presents {
                 padding-bottom: 15% !important;
-                max-width: 700px;
+                width: calc(100% - 600px);
+                text-align: center;
+                display: inline-block;
+                vertical-align: bottom;
+                img {
+                    max-width: 700px;
+                    width: 100%;
+                }
+            }
+            .user, .dentist {
+                width: 300px;
+                display: inline-block;
+                vertical-align: bottom;
+            }
+            @include breakpoint($lgll) {
+                .presents {
+                    padding-bottom: 15% !important;
+                    width: calc(100% - 800px);
+                    img {
+                        max-width: 800px;
+                    }
+                }
                 .user, .dentist {
-                    width: 330px;
+                    width: 400px;
+                }
+            }
+            @include breakpoint($md-only) {
+                .presents {
+                    width: calc(100% - 500px);
+                }
+                .user, .dentist {
+                    width: 250px;
+                }
+            }
+            @include breakpoint($sm-down) {
+                background-image: none;
+                .presents {
+                    max-width: 100%;
+                    width: 100%;
+                    padding-bottom: 0 !important;
+                    img {
+                        max-width: 100%;
+                        width: 100%;
+                    }
+                }
+                .dentist, .user {
+                    display: none;
                 }
             }
         }
@@ -92,6 +137,9 @@ body.christmas-calendar {
                 right: 40px;
                 width: 250px;
                 top: -13px;
+                @include breakpoint($sm-down) {
+                    top: -5px;
+                }
             }
             .single-stat {
                 text-align: center;
@@ -104,12 +152,6 @@ body.christmas-calendar {
                 }
                 &:last-child {
                     border: 0;
-                }
-                @include breakpoint($md-only) {
-                    .stats-text {
-                        display: block;
-                        padding-top: 5px;
-                    }
                 }
                 @include breakpoint($sm-down) {
                     padding-bottom: 20px;
@@ -137,6 +179,14 @@ body.christmas-calendar {
                     left: 40px;
                     width: 300px;
                     bottom: -35px;
+                    @include breakpoint($xs) {
+                        left: 20px;
+                        width: 250px;
+                        bottom: -30px;
+                    }
+                }
+                @include breakpoint($xs) {
+                    padding: 50px 15px 50px;
                 }
             }
             .camping-custom-popups {
@@ -202,6 +252,12 @@ body.christmas-calendar {
                         width: 80%;
                         max-height: 100%;
                         @include vertical-horizontal-align(absolute);
+                        figcaption {
+                            line-height: 16px;
+                            @include breakpoint($sm-only) {
+                                font-size: 14px;
+                            }
+                        }
                     }
                 }
             }
@@ -438,7 +494,7 @@ body.christmas-calendar {
                                         @include horizontal-align(absolute);
                                     }
                                     @include breakpoint($xs) {
-                                        font-size: 32px;
+                                        font-size: 28px;
                                     }
                                 }
                             }
@@ -449,6 +505,9 @@ body.christmas-calendar {
                             padding-bottom: 50px;
                             position: relative;
                             @include rounded(0 0 20px 20px);
+                            @include breakpoint($xs) {
+                                padding-bottom: 0;
+                            }
                             .custom-close {
                                 position: absolute;
                                 right: 20px;
@@ -462,6 +521,9 @@ body.christmas-calendar {
                                 width: 95%;
                                 margin-left: 2.5%;
                                 top: calc(100% - 45px);
+                                @include breakpoint($xs) {
+                                    display: none;
+                                }
                             }
                             .wheel-parent {
                                 text-align: center;
@@ -557,6 +619,31 @@ body.christmas-calendar {
                                             position: absolute;
                                             bottom: 100%;
                                             left: calc(50% - 12.5px);
+                                        }
+                                    }
+                                }
+                                @include breakpoint($xs) {
+                                    .wheel-wrapper {
+                                        .wheel {
+                                            width: 250px;
+                                            height: 250px;
+                                        }
+                                        .wheel .reward .reward-text {
+                                            font-size: 12px;
+                                            line-height: 12px;
+                                        }
+                                        .wheel .reward .reward-text img {
+                                            width: 30px;
+                                        }
+                                        .selector {
+                                            width: 80px;
+                                            height: 80px;
+                                            left: calc(50% - 40px);
+                                            top: calc(50% - 40px);
+                                            a {
+                                                line-height: 70px;
+                                                font-size: 20px;
+                                            }
                                         }
                                     }
                                 }
@@ -730,6 +817,7 @@ body.christmas-calendar {
                                 .task-body {
                                     .puzzle-task {
                                         font-size: 0;
+                                        display: flex;
                                         .draggable-square {
                                             cursor: pointer;
                                         }
@@ -738,6 +826,7 @@ body.christmas-calendar {
                                             vertical-align: top;
                                             width: 500px;
                                             margin-left: calc(100% - 650px);
+                                            order: 1;
                                         }
                                         .puzzle-scroll {
                                             width: 150px;
@@ -745,8 +834,37 @@ body.christmas-calendar {
                                             overflow-y: scroll;
                                             display: inline-block;
                                             vertical-align: top;
-                                            .draggable-square {
-                                                margin: 2.5px 0;
+                                            order: 0;
+                                            #square-container {
+                                                .draggable-square {
+                                                    margin: 2.5px 0;
+                                                }
+                                            }
+                                        }
+                                        @include breakpoint($xs) {
+                                            display: block;
+                                            .puzzle-container {
+                                                display: block;
+                                                width: 260px;
+                                                margin: 0 auto;
+                                            }
+                                            .puzzle-scroll {
+                                                 display: block;
+                                                 width: 100%;
+                                             }
+                                            .puzzle-scroll {
+                                                margin-top: 30px;
+                                                overflow-x: scroll;
+                                                overflow-y: visible;
+                                                height: auto;
+                                                #square-container {
+                                                    width: calc(16 * 70px);
+                                                    .draggable-square {
+                                                        display: inline-block !important;
+                                                        vertical-align: middle;
+                                                        margin: 2.5px;
+                                                    }
+                                                }
                                             }
                                         }
                                     }
@@ -924,6 +1042,13 @@ body.christmas-calendar {
                                     width: 90%;
                                 }
                             }
+                            @include breakpoint($sm-only) {
+                                &[data-task-id="16"], &[data-task-id="26"] {
+                                    form {
+                                        width: 95%;
+                                    }
+                                }
+                            }
                         }
                     }
                 }
@@ -967,65 +1092,73 @@ body.christmas-calendar {
                 }
             }
         }
-        &.challenge-passed {
-
-        }
-    }
-    .presents-list {
-        position: relative;
-        background-image: url(/assets/images/christmas-calendar-campaign/not-registered-grey-snow.png);
-        background-repeat: no-repeat;
-        background-size: 100% auto;
-        background-position: center bottom;
-        .presents {
-            width: 100%;
-            max-width: 600px;
-            display: block;
-            margin: 0 auto;
-            @include breakpoint($lgll) {
-                max-width: 900px;
+        .presents-list {
+            position: relative;
+            background-image: url(/assets/images/christmas-calendar-campaign/not-registered-grey-snow.png);
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            background-position: center bottom;
+            @include breakpoint($sm-down) {
+                background-image: none;
             }
-            @include breakpoint($md-only) {
-                max-width: 500px;
-            }
-        }
-        .dentist {
-            position: absolute;
-            left: 0;
-            bottom: -20px;
-            width: 380px;
-            z-index: 100;
-            @include breakpoint($lgll) {
-                width: 500px;
-            }
-            @include breakpoint($md-only) {
-                width: 300px;
-            }
-        }
-        .user {
-            position: absolute;
-            right: 0;
-            bottom: -20px;
-            width: 380px;
-            z-index: 100;
-            @include breakpoint($lgll) {
-                width: 500px;
-            }
-            @include breakpoint($md-only) {
-                width: 300px;
-            }
-        }
-        &.no-dentist-and-user-bottom {
-            .user, .dentist {
-                bottom: 0;
-            }
-        }
-        @include breakpoint($sm-down) {
             .presents {
-                max-width: 100%;
+                width: 100%;
+                max-width: 600px;
+                display: block;
+                margin: 0 auto;
+                @include breakpoint($lgll) {
+                    max-width: 900px;
+                }
+                @include breakpoint($md-only) {
+                    max-width: 500px;
+                }
+                @include breakpoint($sm-down) {
+                    max-width: 100%;
+                    width: 100%;
+                    img {
+                        max-width: 100%;
+                        width: 100%;
+                    }
+                }
             }
-            .dentist, .user {
-                display: none;
+            .dentist {
+                position: absolute;
+                left: 0;
+                bottom: -20px;
+                width: 380px;
+                z-index: 100;
+                @include breakpoint($lgll) {
+                    width: 500px;
+                }
+                @include breakpoint($md-only) {
+                    width: 300px;
+                }
+            }
+            .user {
+                position: absolute;
+                right: 0;
+                bottom: -20px;
+                width: 380px;
+                z-index: 100;
+                @include breakpoint($lgll) {
+                    width: 500px;
+                }
+                @include breakpoint($md-only) {
+                    width: 300px;
+                }
+            }
+            &.no-dentist-and-user-bottom {
+                .user, .dentist {
+                    bottom: 0;
+                }
+            }
+            @include breakpoint($sm-down) {
+                .presents {
+                    max-width: 100%;
+                }
+                .dentist, .user {
+                    display: none;
+                }
             }
         }
     }

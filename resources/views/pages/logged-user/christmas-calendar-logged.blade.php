@@ -129,16 +129,16 @@
                                                     <figcaption class="color-white lato-bold padding-top-5">Treasure piece</figcaption>
                                                 @elseif($task['type'] == 'oral-health-tips-and-tricks')
                                                     <img src="/assets/images/christmas-calendar-campaign/tips-and-tricks-pdf.png" class="width-100" alt="" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14">Oral Health Tips and Tricks</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-9">Oral Health Tips and Tricks</figcaption>
                                                 @elseif($task['type'] == 'jaws-calendar')
                                                     <img src="/assets/images/christmas-calendar-campaign/jaws-calendar.png" class="width-100" alt="" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14">Jaws Brushing Calendar</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-10">Jaws Brushing Calendar</figcaption>
                                                 @elseif($task['type'] == 'dcn-wallpaper')
                                                     <img src="/assets/images/christmas-calendar-campaign/dcn-wallpaper.png" class="width-100" alt="" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Dentacoin wallpaper</figcaption>
                                                 @elseif($task['type'] == 'dcn-2022-calendar')
                                                     <img src="/assets/images/christmas-calendar-campaign/dcn-2022-calendar.png" class="width-100" alt="" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14">Dentacoin 2022 Calendar</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-9">Dentacoin 2022 Calendar</figcaption>
                                                 @elseif($task['type'] == 'dental-horoscope')
                                                     <img src="/assets/images/christmas-calendar-campaign/dental-horoscope.png" class="width-100" alt="" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Dental Horoscope</figcaption>
@@ -155,7 +155,7 @@
                                                             </figcaption>
                                                         @elseif ($finishedTask->custom_reward_type == 'dv-pass')
                                                             <img src="/assets/images/christmas-calendar-campaign/dv-vip-pass-icon.png" class="width-100" alt="" itemprop="contentUrl"/>
-                                                            <figcaption class="color-white lato-bold padding-top-5">Daily VIP pass for DentaVox</figcaption>
+                                                            <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-10">Daily VIP pass for DentaVox</figcaption>
                                                         @endif
                                                     @else
                                                         <img src="/assets/images/christmas-calendar-campaign/registered-user-wheel.png" class="width-100" alt="Spinning wheel" itemprop="contentUrl"/>
@@ -294,16 +294,16 @@
                                                     <figcaption class="color-white lato-bold padding-top-5">Treasure piece</figcaption>
                                                 @elseif($task['type'] == 'oral-health-tips-and-tricks')
                                                     <img src="/assets/images/christmas-calendar-campaign/tips-and-tricks-pdf.png" class="width-100" alt="" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14">Oral Health Tips and Tricks</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-9">Oral Health Tips and Tricks</figcaption>
                                                 @elseif($task['type'] == 'jaws-calendar')
                                                     <img src="/assets/images/christmas-calendar-campaign/jaws-calendar.png" class="width-100" alt="" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14">Jaws Brushing Calendar</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-10">Jaws Brushing Calendar</figcaption>
                                                 @elseif($task['type'] == 'dcn-wallpaper')
                                                     <img src="/assets/images/christmas-calendar-campaign/dcn-wallpaper.png" class="width-100" alt="" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Dentacoin wallpaper</figcaption>
                                                 @elseif($task['type'] == 'dcn-2022-calendar')
                                                     <img src="/assets/images/christmas-calendar-campaign/dcn-2022-calendar.png" class="width-100" alt="" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14">Dentacoin 2022 Calendar</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-9">Dentacoin 2022 Calendar</figcaption>
                                                 @elseif($task['type'] == 'dental-horoscope')
                                                     <img src="/assets/images/christmas-calendar-campaign/dental-horoscope.png" class="width-100" alt="" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Dental Horoscope</figcaption>
@@ -320,7 +320,7 @@
                                                             </figcaption>
                                                         @elseif ($finishedTask->custom_reward_type == 'dv-pass')
                                                             <img src="/assets/images/christmas-calendar-campaign/dv-vip-pass-icon.png" class="width-100" alt="Dentacoins" itemprop="contentUrl"/>
-                                                            <figcaption class="color-white lato-bold padding-top-5">Daily VIP pass for DentaVox</figcaption>
+                                                            <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-10">Daily VIP pass for DentaVox</figcaption>
                                                         @endif
                                                     @else
                                                         <img src="/assets/images/christmas-calendar-campaign/registered-user-wheel.png" class="width-100" alt="Spinning wheel" itemprop="contentUrl"/>
@@ -352,7 +352,7 @@
                     </div>
                 </div>
             </section>
-            <section class="presents-list padding-top-70 no-dentist-and-user-bottom">
+            <section class="presents-list margin-top-70 no-dentist-and-user-bottom">
                 <p class="fs-22 fs-xs-20 lato-black padding-bottom-30 text-center padding-left-15 padding-right-15 color-white">We are picking 12 big winners on January 17, 2022:</p>
                 <img src="/assets/images/christmas-calendar-campaign/dentist-registered-screen.png" class="dentist" alt="Dentist" itemprop="contentUrl"/>
                 <picture itemscope="" itemtype="http://schema.org/ImageObject" class="presents padding-bottom-130">

@@ -17,7 +17,7 @@ class ChristmasCalendarController extends Controller
         Log::useDailyFiles(storage_path().'/logs/holiday-calendar.log');
     }
 
-    const ALLOWED_ACCOUNTS = [70134, 186047, 82627, 191210, 69468];
+    const ALLOWED_ACCOUNTS = [70134, 186047, 82627, 191210, 69468, 185056];
     const CALENDAR_YEARS = [2019, 2020, 2021];
 
     public function getView($year)   {
@@ -110,7 +110,7 @@ class ChristmasCalendarController extends Controller
         return ChristmasCalendarTask::where(array('year' => $year))->get()->all();
     }
 
-    public function getTaskPopup($year, $id) {
+    public function getTaskPopup($year, $id, Request $request) {
         if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
         //if ((new UserController())->checkSession() /*&& strtotime('12/01/2019') < time()*/) {
             $task = ChristmasCalendarTask::where(array('id' => $id, 'year' => $year))->get()->first();
@@ -178,11 +178,20 @@ class ChristmasCalendarController extends Controller
                 }
 
                 if ($task->id == 96 || $task->id == 106) {
+                    $mobile = $request->input('mobile');
                     $imgName = '';
                     if ($task->id == 96) {
-                        $imgName = 'puzzle-day-16.png';
+                        if (isset($mobile) && !empty($mobile)) {
+                            $imgName = 'puzzle-day-16-mobile.png';
+                        } else {
+                            $imgName = 'puzzle-day-16.png';
+                        }
                     } else if ($task->id == 106) {
-                        $imgName = 'puzzle-day-26.png';
+                        if (isset($mobile) && !empty($mobile)) {
+                            $imgName = 'puzzle-day-26-mobile.png';
+                        } else {
+                            $imgName = 'puzzle-day-26.png';
+                        }
                     }
                     list($mb_team_pic_width, $mb_team_pic_height) = getimagesize(URL::asset('assets/images/christmas-calendar-campaign/' . $imgName));
 

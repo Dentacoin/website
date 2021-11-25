@@ -948,10 +948,18 @@ var projectData = {
                                 basic.closeDialog();
                                 basic.showDialog('<div class="popup-header"><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center"><img src="/assets/images/christmas-calendar-campaign/tasks-pop-up-header-img.png" alt="" itemprop="contentUrl"/></figure><div class="lines-and-day"><div class="lines"><div class="big-blue-line"></div></div></div></div><div class="popup-body"><div class="text-center padding-top-50 padding-bottom-50 padding-left-20 padding-right-20"><h2 class="fs-50 fs-xs-32 lato-black">DISQUALIFIED</h2><div class="fs-20 fs-xs-18 lato-bold color-christmas-calendar-red padding-bottom-20">You haven\'t completed the task as required.</div><figure itemscope="" itemtype="http://schema.org/ImageObject" class="text-center max-width-150 margin-0-auto task-present-tile"><img src="'+disqualifiedImage+'" class="width-100" alt="Dentacoins" itemprop="contentUrl"/></figure><div class="fs-18 lato-bold padding-top-10">'+disqualifiedText+'</div><button type="button" class="white-red-btn custom-close-bootbox width-100 max-width-150 margin-top-30">CLOSE</button></div></div>', 'response-popup', null);
                             } else {
+                                var postData = {};
+                                $('body').addClass('overflow-hidden');
+                                if ($(window).width() < 768) {
+                                    postData.mobile = true;
+                                }
+                                $('body').removeClass('overflow-hidden');
+
                                 $.ajax({
                                     type: 'POST',
                                     url: '/holiday-calendar/'+christmasCalendarYear+'/get-task-popup/' + this_btn.attr('data-task'),
                                     dataType: 'json',
+                                    data: postData,
                                     headers: {
                                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                     },

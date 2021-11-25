@@ -379,14 +379,17 @@
                             </div>
                             <script>
                                 function allowDrop(ev) {
+                                    console.log('allowDrop');
                                     ev.preventDefault();
                                 }
 
                                 function drag(ev) {
+                                    console.log('drag');
                                     ev.dataTransfer.setData('text', ev.target.id);
                                 }
 
                                 function drop(ev, el) {
+                                    console.log('drop');
                                     ev.preventDefault();
                                     var drag_element_id = ev.dataTransfer.getData('text');
                                     if (ev.target.id.indexOf('div') != -1) {

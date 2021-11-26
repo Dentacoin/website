@@ -561,9 +561,11 @@
                         @else
                             <div class="current-task-body from-beginning padding-bottom-50">
                                 <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Complete our survey:</div>
-                                <a href="#" class="white-red-btn" target="_blank">TAKE SURVEY</a>
-                                <div class="fs-16 fs-xs-14 padding-top-10">If you’ve already completed this survey in the past, just proceed to next step.</div>
-                                <div class="padding-top-30 text-center">
+                                <div class="padding-bottom-50 text-center">
+                                    <a href="#" class="white-red-btn fs-22" target="_blank">TAKE SURVEY</a>
+                                    <div class="fs-16 fs-xs-14 padding-top-10">If you’ve already completed this survey in the past, just proceed to next step.</div>
+                                </div>
+                                <div class="padding-top-20">
                                     <a href="javascript:void(0);" class="white-red-btn next-step">NEXT STEP</a>
                                 </div>
                             </div>

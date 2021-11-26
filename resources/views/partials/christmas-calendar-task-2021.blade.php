@@ -378,7 +378,7 @@
                                 </div>
                             </div>
                             <script>
-                                var el = document.getElementsByClassName('draggable-square');
+                                /*var el = document.getElementsByClassName('draggable-square');
                                 for (var i = 0, len = el.length; i < len; i+=1) {
                                     el[i].addEventListener("touchstart", drag, false);
                                     el[i].addEventListener("touchend", drop, false);
@@ -400,7 +400,7 @@
 
                                 function handleMove() {
                                     console.log('handleMove');
-                                }
+                                }*/
 
                                 console.log('==== TEST ====');
                                 function allowDrop(ev) {
@@ -414,6 +414,7 @@
                                 }
 
                                 function drop(ev, el) {
+                                    console.log(ev, el, 'ev, el');
                                     console.log(ev.pageX , ev.pageY, 'drop');
                                     console.log(document.elementFromPoint(ev.pageX , ev.pageY), 'drop');
                                     ev.preventDefault();

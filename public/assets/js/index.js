@@ -855,6 +855,8 @@ var projectData = {
             },
             christmasCalendar: function() {
                 if ($('body').hasClass('christmas-calendar')) {
+                    projectData.general_logic.data.initTooltips();
+
                     // CHRISTMAS CALENDAR
                     $(document).on('click', '.custom-close-bootbox', function() {
                         basic.closeDialog();
@@ -967,6 +969,7 @@ var projectData = {
                                         if (response.success) {
                                             basic.closeDialog();
                                             basic.showDialog(response.success, 'christmas-calendar-task', null);
+                                            projectData.general_logic.data.initTooltips();
 
                                             if (this_btn.attr('data-day-id') == '16' || this_btn.attr('data-day-id') == '26') {
                                                 var ajaxSent = false;
@@ -1022,6 +1025,11 @@ var projectData = {
                                             } else if (this_btn.attr('data-day-id') == '3' || this_btn.attr('data-day-id') == '10' || this_btn.attr('data-day-id') == '17' || this_btn.attr('data-day-id') == '24') {
                                                 if (this_btn.attr('data-day-id') == '3') {
                                                     if ($('.current-task-body').hasClass('from-beginning')) {
+                                                        function hasDuplicates(a) {
+                                                            const noDups = new Set(a);
+                                                            return a.length !== noDups.size;
+                                                        }
+
                                                         var ajaxSent = false;
                                                         $('.send-invites').click(function() {
                                                             if (!ajaxSent) {
@@ -1031,6 +1039,7 @@ var projectData = {
                                                                 for (var i = 0, len = $('[name="names[]"]').length; i < len; i+=1) {
                                                                     if ($('[name="names[]"]').eq(i).val().trim() == '') {
                                                                         basic.showAlert('Please enter valid names of your friends.', '', true);
+                                                                        ajaxSent = false;
                                                                         return false;
                                                                     } else {
                                                                         namesArray.push($('[name="names[]"]').eq(i).val().trim());
@@ -1040,6 +1049,7 @@ var projectData = {
                                                                 for (var i = 0, len = $('[name="emails[]"]').length; i < len; i+=1) {
                                                                     if ($('[name="emails[]"]').eq(i).val().trim() == '' || !basic.validateEmail($('[name="emails[]"]').eq(i).val().trim())) {
                                                                         basic.showAlert('Please enter valid emails of your friends.', '', true);
+                                                                        ajaxSent = false;
                                                                         return false;
                                                                     } else {
                                                                         emailsArray.push($('[name="emails[]"]').eq(i).val().trim());
@@ -1047,28 +1057,38 @@ var projectData = {
                                                                 }
 
                                                                 if (namesArray.length == 5 && emailsArray.length == 5) {
-                                                                    $.ajax({
-                                                                        type: 'POST',
-                                                                        url: '/holiday-calendar/'+christmasCalendarYear+'/complete-task/' + this_btn.attr('data-task'),
-                                                                        dataType: 'json',
-                                                                        data: {
-                                                                            'namesArray' : namesArray,
-                                                                            'emailsArray' : emailsArray,
-                                                                            'text_proof' : [namesArray, emailsArray]
-                                                                        },
-                                                                        headers: {
-                                                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                                                        },
-                                                                        success: function (response) {
-                                                                            ajaxSent = false;
-                                                                            if (response.success) {
-                                                                                spinningWheelLogic(response.finishedTask.id, response.finishedTask.task_id, response.rewards);
-                                                                            } else if (response.error) {
-                                                                                projectData.general_logic.data.hideLoader();
-                                                                                basic.showDialog(response.error, 'response-popup', null);
-                                                                            }
-                                                                        }
-                                                                    });
+                                                                    if (hasDuplicates(emailsArray)) {
+                                                                        basic.showAlert('Please enter unique emails of your friends. You cannot invite same email more than once.', '', true);
+                                                                        ajaxSent = false;
+                                                                        return false;
+                                                                    } else {
+                                                                        projectData.general_logic.data.showLoader();
+                                                                        setTimeout(function() {
+                                                                            $.ajax({
+                                                                                type: 'POST',
+                                                                                url: '/holiday-calendar/'+christmasCalendarYear+'/complete-task/' + this_btn.attr('data-task'),
+                                                                                dataType: 'json',
+                                                                                data: {
+                                                                                    'namesArray' : namesArray,
+                                                                                    'emailsArray' : emailsArray,
+                                                                                    'text_proof' : [namesArray, emailsArray]
+                                                                                },
+                                                                                headers: {
+                                                                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                                                                },
+                                                                                success: function (response) {
+                                                                                    ajaxSent = false;
+                                                                                    projectData.general_logic.data.hideLoader();
+                                                                                    if (response.success) {
+                                                                                        spinningWheelLogic(response.finishedTask.id, response.finishedTask.task_id, response.rewards);
+                                                                                    } else if (response.error) {
+                                                                                        projectData.general_logic.data.hideLoader();
+                                                                                        basic.showDialog(response.error, 'response-popup', null);
+                                                                                    }
+                                                                                }
+                                                                            });
+                                                                        }, 1000);
+                                                                    }
                                                                 }
                                                             }
                                                         });
@@ -1235,6 +1255,7 @@ var projectData = {
                                                                         if (response.success) {
                                                                             basic.closeDialog();
                                                                             basic.showDialog(response.success, 'response-popup', null);
+                                                                            projectData.general_logic.data.initTooltips();
 
                                                                             if (response.dcnAmount) {
                                                                                 $('.user-dcn-amount').html(response.dcnAmount);
@@ -1628,7 +1649,7 @@ var projectData = {
                                                         } else {
                                                             if (this_btn.attr('data-day-id') == '18' && 2279 <= parseInt(form.find('[name="text_proof"]').val().trim()) && parseInt(form.find('[name="text_proof"]').val().trim()) <= 2600) {
                                                                 submitFormForMostTasks(form, this_form, this_btn.attr('data-day-id'));
-                                                            } else if (this_btn.attr('data-day-id') == '23' && form.find('[name="text_proof"]').val().trim() == '70%') {
+                                                            } else if (this_btn.attr('data-day-id') == '23' && (form.find('[name="text_proof"]').val().trim() == '70%' || form.find('[name="text_proof"]').val().trim() == '70' || form.find('[name="text_proof"]').val().trim() == 70)) {
                                                                 submitFormForMostTasks(form, this_form, this_btn.attr('data-day-id'));
                                                             } else if (this_btn.attr('data-day-id') == '28') {
                                                                 var possibleAnswers = [];
@@ -1639,11 +1660,11 @@ var projectData = {
                                                                 if (possibleAnswers.indexOf(form.find('[name="text_proof"]').val().trim()) > -1) {
                                                                     submitFormForMostTasks(form, this_form, this_btn.attr('data-day-id'));
                                                                 } else {
-                                                                    basic.showAlert('Incorrect answer, continue looking for the hidden treasure sticker!', '', true);
+                                                                    basic.showAlert('Oh, no! It seems like you have given a wrong answer! Please go back to the Dentacoin website and find the right answer to continue ahead.', '', true);
                                                                     return false;
                                                                 }
                                                             } else {
-                                                                basic.showAlert('Incorrect answer, continue looking for the hidden treasure sticker!', '', true);
+                                                                basic.showAlert('Oh, no! It seems like you have given a wrong answer! Please go back to the Dentacoin website and find the right answer to continue ahead.', '', true);
                                                                 return false;
                                                             }
                                                         }
@@ -1869,6 +1890,7 @@ var projectData = {
                                             }
                                         } else if (response.error) {
                                             basic.showDialog(response.error, 'response-popup', null);
+                                            projectData.general_logic.data.initTooltips();
                                         }
                                     }
                                 });
@@ -2081,6 +2103,7 @@ var projectData = {
                 $('.camping-loader .response-layer').hide();
             },
             initTooltips: function() {
+                console.log('initTooltips');
                 if ($('[data-toggle="tooltip"]').length) {
                     $('[data-toggle="tooltip"]').tooltip();
                 }

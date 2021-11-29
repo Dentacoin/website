@@ -138,7 +138,7 @@
                                                     <figcaption class="color-white lato-bold padding-top-5">Dentacoin wallpaper</figcaption>
                                                 @elseif($task['type'] == 'dcn-2022-calendar')
                                                     <img src="/assets/images/christmas-calendar-campaign/dcn-2022-calendar.png" class="width-100" alt="" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-9">Dentacoin 2022 Calendar</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-9">Dentacoin 2022 Weekly Planner</figcaption>
                                                 @elseif($task['type'] == 'dental-horoscope')
                                                     <img src="/assets/images/christmas-calendar-campaign/dental-horoscope.png" class="width-100" alt="" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Dental Horoscope</figcaption>
@@ -162,6 +162,14 @@
                                                     @endif
                                                 @endif
                                             </figure>
+                                            @if($task['type'] == 'spinning-wheel')
+                                                @php($finishedTask = (new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id, $year))
+                                                @if (empty($finishedTask) || empty($finishedTask->custom_reward_type))
+                                                    <div class="custom-tooltip" data-toggle="tooltip" title="Spin the Wheel for a chance to win one of four big prices. Wheel is unlocked every Friday. Also: The Box is locked unless Friday, the date of unlocking has come! [By locked meaning you cannot see the prize]">
+                                                        <i class="fa fa-info-circle color-white fs-20" aria-hidden="true"></i>
+                                                    </div>
+                                                @endif
+                                            @endif
                                             @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsDisqualified($task['id'], $participant->id, $year))
                                                 <i class="fa fa-times check-icon red" aria-hidden="true"></i>
                                             @elseif((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id, $year))
@@ -230,7 +238,14 @@
             <section class="container tasks-section">
                 <div class="row camping-custom-popups rules"></div>
                 @if(!empty($social_engagement_cookie))
-                    <div class="row camping-custom-popups socials"><div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-35">BEFORE YOU START:</h2><div class="fs-18 text-center lato-regular">01. Follow us on Twitter</div><div class="text-center padding-top-15 padding-bottom-35"><a class="twitter-follow-button" href="https://twitter.com/dentacoin" data-size="large" data-show-screen-name="true" data-show-count="true">Follow</a></div><div class="fs-18 text-center lato-regular">02. Like our Facebook pages: </div><div class="facebook-buttons text-center padding-top-15 padding-bottom-35"><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacoin</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacare</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">DentaVox</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Trusted Reviews</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.jaws/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Jaws of Battle</div></div></div><div class="padding-bottom-30 text-center"><a href="javascript:void(0);" class="christmas-calendar-get-started white-red-btn padding-left-30 padding-right-30 padding-top-15 padding-bottom-15 fs-20">GET STARTED</a></div></div></div>
+                    <div class="row camping-custom-popups socials"><div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-35">BEFORE YOU START:</h2><div class="fs-18 text-center lato-regular">01. Follow us on Twitter</div><div class="text-center padding-top-15 padding-bottom-25"><a class="twitter-follow-button" href="https://twitter.com/dentacoin" data-size="large" data-show-screen-name="true" data-show-count="true">Follow</a></div>
+                            <div class="fs-18 text-center lato-regular">02. Like our Facebook pages: </div>
+                            <div class="facebook-buttons text-center padding-top-5 padding-bottom-10"><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacoin</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacare</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">DentaVox</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Trusted Reviews</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.jaws/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Jaws of Battle</div></div></div>
+                            <div class="fs-18 text-center lato-regular">03. Join our Telegram group: </div>
+                            <div class="padding-top-15 padding-bottom-25 text-center"><a href="https://t.me/dentacoin" target="_blank" class="white-blue-btn padding-left-30 padding-right-30 inline-block">TELEGRAM</a></div>
+                            <div class="fs-18 text-center lato-regular">04. Follow our Instagram page:</div>
+                            <div class="padding-top-15 padding-bottom-50 text-center"><a href="https://www.instagram.com/dentacoin_official/" target="_blank" class="instagram-btn padding-left-30 padding-right-30 inline-block">INSTAGRAM</a></div>
+                            <div class="padding-bottom-30 text-center"><a href="javascript:void(0);" class="christmas-calendar-get-started white-red-btn padding-left-30 padding-right-30 padding-top-15 padding-bottom-15 fs-20 inline-block">GET STARTED</a></div></div></div>
                 @endif
                 <div class="row blurred-section active">
                     <div class="col-xs-12 col-lg-10 col-lg-offset-1 set-width-limit box-background">
@@ -303,7 +318,7 @@
                                                     <figcaption class="color-white lato-bold padding-top-5">Dentacoin wallpaper</figcaption>
                                                 @elseif($task['type'] == 'dcn-2022-calendar')
                                                     <img src="/assets/images/christmas-calendar-campaign/dcn-2022-calendar.png" class="width-100" alt="" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-9">Dentacoin 2022 Calendar</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-9">Dentacoin 2022 Weekly Planner</figcaption>
                                                 @elseif($task['type'] == 'dental-horoscope')
                                                     <img src="/assets/images/christmas-calendar-campaign/dental-horoscope.png" class="width-100" alt="" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Dental Horoscope</figcaption>
@@ -327,6 +342,14 @@
                                                     @endif
                                                 @endif
                                             </figure>
+                                            @if($task['type'] == 'spinning-wheel')
+                                                @php($finishedTask = (new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id, $year))
+                                                @if (empty($finishedTask) || empty($finishedTask->custom_reward_type))
+                                                    <div class="custom-tooltip" data-toggle="tooltip" title="Spin the Wheel for a chance to win one of four big prices. Wheel is unlocked every Friday. Also: The Box is locked unless Friday, the date of unlocking has come! [By locked meaning you cannot see the prize]">
+                                                        <i class="fa fa-info-circle color-white fs-20" aria-hidden="true"></i>
+                                                    </div>
+                                                @endif
+                                            @endif
                                             @if((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsDisqualified($task['id'], $participant->id, $year))
                                                 <i class="fa fa-times check-icon red" aria-hidden="true"></i>
                                             @elseif((new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id, $year))

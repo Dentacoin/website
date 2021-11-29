@@ -592,18 +592,26 @@ class ChristmasCalendarController extends Controller
                     }
                 } else if ($task->type == 'face-sticker') {
                     $reward = 'Face sticker';
-                } else if ($task->type == 'facebook-holiday-frame') {
-                    $reward = 'Facebook frame';
                 } else if ($task->type == 'custom-holiday-card') {
                     $reward = 'Holiday card';
-                } else if ($task->type == 'season-oral-guide') {
-                    $reward = 'Season\'s Oral Health Guide';
-                } else if ($task->type == 'kids-brushing-calendar') {
-                    $reward = 'Kid\'s Brushing Calendar 2021';
-                } else if ($task->type == 'kids-oral-care-calendar') {
-                    $reward = 'Kid\'s Oral Health Guide: Timeless Super Dentist\'s Tips';
-                } else if ($task->type == 'ebook-by-dr-trino-nuno') {
-                    $reward = 'The Microbiome In Your Mouth | A Beginners Guide: Discover Why The Futile War Against Germs Is Harmful To Your Health: by Dr. Trino Nuno';
+                } else if($task['type'] == 'treasure-piece-1') {
+                    $reward = 'Treasure piece';
+                } else if($task['type'] == 'treasure-piece-2') {
+                    $reward = 'Treasure piece';
+                } else if($task['type'] == 'treasure-piece-3') {
+                    $reward = 'Daily VIP pass for DentaVox';
+                } else if($task['type'] == 'oral-health-tips-and-tricks') {
+                    $reward = 'Oral Health Tips and Tricks';
+                } else if($task['type'] == 'jaws-calendar') {
+                    $reward = 'Jaws Brushing Calendar';
+                } else if($task['type'] == 'dcn-wallpaper') {
+                    $reward = 'Dentacoin wallpaper';
+                } else if($task['type'] == 'dcn-2022-calendar') {
+                    $reward = 'Dentacoin 2022 Weekly Planner';
+                } else if($task['type'] == 'dental-horoscope') {
+                    $reward = 'Dental Horoscope';
+                } else if($task['type'] == 'spinning-wheel') {
+                    $reward = 'the chance to win one of four amazing prizes ( 5 000 DCN; Daily VIP pass for DentaVox; 3 Raffle Tickets; 15 000 DCN )';
                 }
 
                 return response()->json([

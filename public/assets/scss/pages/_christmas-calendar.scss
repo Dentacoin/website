@@ -7,6 +7,18 @@ body.christmas-calendar {
         background-color: white;
         border: 0;
     }
+    .long-text-link {
+        /* Warning: Needed for oldIE support, but words are broken up letter-by-letter */
+        -ms-word-break: break-all;
+        word-break: break-all;
+        /* Non standard for webkit */
+        word-break: break-word;
+
+        -webkit-hyphens: auto;
+        -moz-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+    }
     &.not-logged-in {
         background-image: url(/assets/images/christmas-calendar-campaign/holiday-calendar-not-logged-background.png);
         background-repeat: no-repeat;
@@ -31,6 +43,31 @@ body.christmas-calendar {
         @include simple_transition(.3s);
         &:hover {
             color: $christmas_calendar_red;
+            background-color: white;
+            text-decoration: none;
+        }
+    }
+    .instagram-btn {
+        background: radial-gradient(circle farthest-corner at 35% 90%, #fec564, transparent 50%), radial-gradient(circle farthest-corner at 0 140%, #fec564, transparent 50%), radial-gradient(ellipse farthest-corner at 0 -25%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 20% -50%, #5258cf, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 0, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 60% -20%, #893dc2, transparent 50%), radial-gradient(ellipse farthest-corner at 100% 100%, #d9317a, transparent), linear-gradient(#6559ca, #bc318f 30%, #e33f5f 50%, #f77638 70%, #fec66d 100%);
+        color: white;
+        font-size: 16px;
+        padding: 6px 15px;
+        font-weight: bold;
+        text-decoration: none;
+        @include rounded(4px);
+    }
+    .white-blue-btn {
+        background-color: #0088CC;
+        color: white;
+        font-size: 16px;
+        padding: 6px 15px;
+        font-weight: bold;
+        border: 1.5px solid #0088CC;
+        text-decoration: none;
+        @include rounded(4px);
+        @include simple_transition(.3s);
+        &:hover {
+            color: #0088CC;
             background-color: white;
             text-decoration: none;
         }
@@ -141,27 +178,36 @@ body.christmas-calendar {
                     top: -5px;
                 }
             }
-            .single-stat {
-                text-align: center;
-                border-right: 1.5px solid black;
-                padding-left: 5px;
-                padding-right: 5px;
-                figure {
-                    margin-right: 10px;
-                    width: 50px;
-                }
-                &:last-child {
-                    border: 0;
-                }
-                @include breakpoint($sm-down) {
-                    padding-bottom: 20px;
-                    border: 0;
-                    .stats-text {
-                        display: inline-block;
-                        padding-top: 5px;
+            .row {
+                .single-stat {
+                    text-align: center;
+                    border-right: 1.5px solid black;
+                    padding-left: 5px;
+                    padding-right: 5px;
+                    figure {
+                        margin-right: 10px;
+                        width: 50px;
                     }
                     &:last-child {
-                        padding-bottom: 0;
+                        border: 0;
+                    }
+                    @include breakpoint($sm-down) {
+                        padding-bottom: 20px;
+                        border: 0;
+                        .stats-text {
+                            display: inline-block;
+                            padding-top: 5px;
+                        }
+                        &:last-child {
+                            padding-bottom: 0;
+                        }
+                    }
+                }
+                @include breakpoint($xs) {
+                    width: 300px;
+                    margin: 0 auto;
+                    .single-stat {
+                        text-align: left;
                     }
                 }
             }
@@ -388,6 +434,14 @@ body.christmas-calendar {
                     font-size: 16px;
                     img {
                         max-width: 70%;
+                    }
+                    .custom-tooltip {
+                        width: 100%;
+                        left: 0;
+                        top: 10px;
+                        text-align: right;
+                        position: absolute;
+                        padding: 0 10px;
                     }
                     .check-icon {
                         display: block;

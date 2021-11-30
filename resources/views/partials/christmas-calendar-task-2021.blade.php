@@ -671,7 +671,7 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Cover the requirements:</div>
                             <div class="fs-16">
-                                1. Post on Facebook/ Twitter/ Instagram what what have you learned from Dentacoin in 2022! We can’t wait to read all of your answers!<br>
+                                1. Post on Facebook/ Twitter/ Instagram what have you learned from Dentacoin in 2022! We can’t wait to read all of your answers!<br>
                                 2. Make the post public<br>
                                 3. Tag Dentacoin’s official account on social media
                             </div>

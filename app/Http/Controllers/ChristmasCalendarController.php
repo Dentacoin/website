@@ -25,8 +25,7 @@ class ChristmasCalendarController extends Controller
             return abort(404);
         }
 
-        if (in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
-        //if (strtotime('12/01/2019') < time()) {
+        if (strtotime('11/30/2021') < time() || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS))) {
             if ((new UserController())->checkSession()) {
                 $dcnAmount = 0;
                 $ticketAmount = 0;
@@ -111,8 +110,7 @@ class ChristmasCalendarController extends Controller
     }
 
     public function getTaskPopup($year, $id, Request $request) {
-        if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
-        //if ((new UserController())->checkSession() /*&& strtotime('12/01/2019') < time()*/) {
+        if ((new UserController())->checkSession() && strtotime('11/30/2021') < time() || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS))) {
             $task = ChristmasCalendarTask::where(array('id' => $id, 'year' => $year))->get()->first();
 
             //$participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
@@ -235,8 +233,7 @@ class ChristmasCalendarController extends Controller
     }
 
     public function completeTask($year, $id, Request $request) {
-        if ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS)) {
-        //if ((new UserController())->checkSession() && strtotime('12/01/2020') < time()) {
+        if (((new UserController())->checkSession() && strtotime('12/01/2021') < time()) || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS))) {
             $task = ChristmasCalendarTask::where(array('id' => $id))->get()->first();
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id'], 'year' => $year))->get()->first();
             $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
@@ -375,8 +372,9 @@ class ChristmasCalendarController extends Controller
                     if ($task->type == 'treasure-piece-3') {
                         // adding one day VIP DV access
                         Log::info('grantVipDVAccess request.');
-                        $grantVipDVAccess = (new APIRequestsController())->grantVipDVAccess(array('vip_access' => true, 'vip_access_until' => date('Y-m-d H:i:s', strtotime('+1 day'))));
-                        Log::info('grantVipDVAccess response.', ['response' => json_encode($grantVipDVAccess)]);
+                        $postData = array('vip_access' => true, 'vip_access_until' => date('Y-m-d H:i:s', strtotime('+1 day')));
+                        $grantVipDVAccess = (new APIRequestsController())->grantVipDVAccess($postData);
+                        Log::info('grantVipDVAccess response.', ['response' => json_encode($grantVipDVAccess), 'user_id' => session('logged_user'), 'post_data' => json_encode($postData)]);
                     }
 
                     $finishedTask = DB::table('christmas_calendar_task_participant')
@@ -448,7 +446,7 @@ class ChristmasCalendarController extends Controller
     }
 
     public function completeTaskAlreadyCompletedTask($year, $id) {
-        if ((new UserController())->checkSession() && strtotime('12/01/2020') < time()) {
+        if ((new UserController())->checkSession() && strtotime('12/01/2021') < time()) {
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id'], 'year' => $year))->get()->first();
             $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
             $finishedTask = DB::table('christmas_calendar_task_participant')
@@ -463,8 +461,9 @@ class ChristmasCalendarController extends Controller
                 if ($finishedTask->custom_reward_type == 'dv-pass') {
                     // adding one day VIP DV access
                     Log::info('grantVipDVAccess request.');
-                    $grantVipDVAccess = (new APIRequestsController())->grantVipDVAccess(array('vip_access' => true, 'vip_access_until' => date('Y-m-d H:i:s', strtotime('+1 day'))));
-                    Log::info('grantVipDVAccess response.', ['response' => json_encode($grantVipDVAccess)]);
+                    $postData = array('vip_access' => true, 'vip_access_until' => date('Y-m-d H:i:s', strtotime('+1 day')));
+                    $grantVipDVAccess = (new APIRequestsController())->grantVipDVAccess($postData);
+                    Log::info('grantVipDVAccess response.', ['response' => json_encode($grantVipDVAccess), 'user_id' => session('logged_user'), 'post_data' => json_encode($postData)]);
                 }
 
                 $dcnAmount = 0;
@@ -541,25 +540,13 @@ class ChristmasCalendarController extends Controller
     public function getHolidayCalendarParticipants(Request $request) {
         if (hash('sha256', getenv('HOLIDAY_CALENDAR_KEY').$request->input('day')) == trim($request->input('hash'))) {
             $tasks = ChristmasCalendarTask::where(array('year' => '2021'))->get()->all();
-            $firstTask = true;
             foreach ($tasks as $loopedTask) {
-                if ($firstTask) {
-                    $firstTask = false;
-                    $firstTaskId = $loopedTask->id;
-                }
-
                 $day = date('j', strtotime($loopedTask->date));
                 if ((int)$day == (int)$request->input('day')) {
                     $task = $loopedTask;
                     break;
                 }
             }
-
-            /*$participants = DB::table('christmas_calendar_participants')
-                ->select('christmas_calendar_participants.*')
-                ->leftJoin('christmas_calendar_task_participant', 'christmas_calendar_participants.id', '=', 'christmas_calendar_task_participant.participant_id')
-                ->where(array('christmas_calendar_task_participant.task_id' => $firstTaskId, 'christmas_calendar_participants.year' => '2020'))
-                ->get()->keyBy('user_id')->toArray();*/
 
             $participants = DB::table('christmas_calendar_participants')
                 ->select('christmas_calendar_participants.*')

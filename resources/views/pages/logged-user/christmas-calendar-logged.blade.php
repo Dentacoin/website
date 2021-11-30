@@ -132,7 +132,7 @@
                                                     <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-9">Oral Health Tips and Tricks</figcaption>
                                                 @elseif($task['type'] == 'jaws-calendar')
                                                     <img src="/assets/images/christmas-calendar-campaign/jaws-calendar.png" class="width-100" alt="" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-10">Jaws Brushing Calendar</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-10">Kid's Oral Care Planner</figcaption>
                                                 @elseif($task['type'] == 'dcn-wallpaper')
                                                     <img src="/assets/images/christmas-calendar-campaign/dcn-wallpaper.png" class="width-100" alt="" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Dentacoin wallpaper</figcaption>
@@ -312,7 +312,7 @@
                                                     <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-9">Oral Health Tips and Tricks</figcaption>
                                                 @elseif($task['type'] == 'jaws-calendar')
                                                     <img src="/assets/images/christmas-calendar-campaign/jaws-calendar.png" class="width-100" alt="" itemprop="contentUrl"/>
-                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-10">Jaws Brushing Calendar</figcaption>
+                                                    <figcaption class="color-white lato-bold padding-top-5 fs-14 fs-sm-11 fs-xs-10">Kid's Oral Care Planner</figcaption>
                                                 @elseif($task['type'] == 'dcn-wallpaper')
                                                     <img src="/assets/images/christmas-calendar-campaign/dcn-wallpaper.png" class="width-100" alt="" itemprop="contentUrl"/>
                                                     <figcaption class="color-white lato-bold padding-top-5">Dentacoin wallpaper</figcaption>

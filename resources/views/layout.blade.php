@@ -30,20 +30,10 @@
         <meta property="og:url" content="{{Request::url()}}"/>
         <meta property="og:title" content="{{$meta_data->social_title}}"/>
         <meta property="og:description" content="{{$meta_data->social_description}}"/>
-        @if(!empty(Route::current()) && Route::current()->getName() == 'christmas-calendar')
-            @if(time() > strtotime('2020/12/01 00:00:00'))
-                <meta property="og:image" content="{{URL::asset('assets/images/christmas-calendar-campaign/christmas-thumbnail-after-1st-dec.png')}}"/>
-            @else
-                <meta property="og:image" content="{{URL::asset('assets/images/christmas-calendar-campaign/christmas-thumbnail.png')}}"/>
-            @endif
+        @if(!empty($meta_data->media))
+            <meta property="og:image" content="{{URL::asset('assets/uploads/'.$meta_data->media->name)}}"/>
             <meta property="og:image:width" content="1200"/>
             <meta property="og:image:height" content="630"/>
-        @else
-            @if(!empty($meta_data->media))
-                <meta property="og:image" content="{{URL::asset('assets/uploads/'.$meta_data->media->name)}}"/>
-                <meta property="og:image:width" content="1200"/>
-                <meta property="og:image:height" content="630"/>
-            @endif
         @endif
     @endif
     <meta name="p:domain_verify" content="dce2e29c27694ac250a2f58e6a8fa551"/>

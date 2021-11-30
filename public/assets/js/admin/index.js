@@ -80,7 +80,7 @@ function addHTMLEditor(){
 
                             //registering command to call the callery
                             editor.addCommand("openGalleryCommand", {
-                                exec:function() {
+                                exec: function() {
                                     openMedia(null, null, null, editor);
                                 }
                             });

@@ -16,13 +16,13 @@
                     <ul class="padding-left-20">
                         <li>- One prize of 8,800,000 DCN;</li>
                         <li>- Two prizes of 5,800,00 DCN;</li>
-                        <li>- Three VIP Double Rewards Access to DentaVox for 1 month: dentavox.dentacoin.com;</li>
+                        <li>- Three VIP Double Rewards Access to DentaVox for 1 month: <a href="https://dentavox.dentacoin.com/" target="_blank" class="color-christmas-calendar-red">https://dentavox.dentacoin.com/</a>;</li>
                         <li>- Three Dentacoin NFTs;</li>
-                        <li>- Three invites to Dentacoin exclusive online event “Behind the scenes”</li>
+                        <li>- Three Amazon gift cards of 50USD for <a href="https://www.amazon.com/" target="_blank" class="color-christmas-calendar-red">https://www.amazon.com/</a></li>
                     </ul>
                 </div>
                 <h2 class="calibri-bold fs-26 padding-bottom-15 padding-top-10">II. Winners Selection</h2>
-                <div class="padding-bottom-20 fs-16">The winners of the raffle will be randomly selected on January 17, 2022  in the presence of a notary. The winners’ names will be published in the official Dentacoin group in Telegram: <a href="https://t.me/dentacoin" target="_blank" class="color-christmas-calendar-red">https://t.me/dentacoin</a>, as well as on the official page of the challenge <a href="{{route('christmas-calendar', ['year' => 2021])}}" class="color-christmas-calendar-red" target="_blank">{{route('christmas-calendar', ['year' => 2021])}}</a>.</div>
+                <div class="padding-bottom-20 fs-16">The winners of the raffle will be randomly selected on January 21, 2022  in the presence of a notary. The winners’ names will be published in the official Dentacoin group in Telegram: <a href="https://t.me/dentacoin" target="_blank" class="color-christmas-calendar-red">https://t.me/dentacoin</a>, as well as on the official page of the challenge <a href="{{route('christmas-calendar', ['year' => 2021])}}" class="color-christmas-calendar-red" target="_blank">{{route('christmas-calendar', ['year' => 2021])}}</a>.</div>
                 <div class="padding-bottom-20 fs-16">Additionally, the winners will be contacted via email. If the winners cannot be contacted or do not claim the prizes within 14 days of notification, we reserve the right to withdraw the prize from the winners and pick replacement winners.</div>
                 <h2 class="calibri-bold fs-26 padding-bottom-15 padding-top-10">III. General Rules</h2>
                 <div class="padding-bottom-20 padding-left-20 fs-16">

@@ -590,7 +590,7 @@ class ChristmasCalendarController extends Controller
                 } else if($task['type'] == 'oral-health-tips-and-tricks') {
                     $reward = 'Oral Health Tips and Tricks';
                 } else if($task['type'] == 'jaws-calendar') {
-                    $reward = 'Jaws Brushing Calendar';
+                    $reward = 'Kid\'s Oral Care Planner';
                 } else if($task['type'] == 'dcn-wallpaper') {
                     $reward = 'Dentacoin wallpaper';
                 } else if($task['type'] == 'dcn-2022-calendar') {

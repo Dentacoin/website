@@ -59,7 +59,7 @@
                             <figcaption class="color-white lato-bold padding-top-5 fs-14">Oral Health Tips and Tricks</figcaption>
                         @elseif ($task['type'] == 'jaws-calendar')
                             <img src="/assets/images/christmas-calendar-campaign/jaws-calendar.png" class="width-100" alt="" itemprop="contentUrl"/>
-                            <figcaption class="color-white lato-bold padding-top-5 fs-14">Jaws Brushing Calendar</figcaption>
+                            <figcaption class="color-white lato-bold padding-top-5 fs-14">Kid's Oral Care Planner</figcaption>
                         @elseif ($task['type'] == 'dcn-wallpaper')
                             <img src="/assets/images/christmas-calendar-campaign/dcn-wallpaper.png" class="width-100" alt="" itemprop="contentUrl"/>
                             <figcaption class="color-white lato-bold padding-top-5">Dentacoin wallpaper</figcaption>
@@ -104,7 +104,7 @@
                     <div>
                         <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                         <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">Find Dentacoin’s video on Youtube, go to “Comments” and post a comment sharing with us what is your favorite thing about Dentacoin. Text comment is required.</div>
-                        <a href="https://www.youtube.com/dentacoin" class="white-red-btn" target="_blank">VIDEO HERE</a>
+                        <a href="https://www.youtube.com/watch?v=sblWhuc3amQ" class="white-red-btn" target="_blank">VIDEO HERE</a>
                         <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                         <div class="upload-btn-parent">
                             <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
@@ -247,7 +247,8 @@
                         @break
                     @case(9)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">Share with us which is your favorite Jaws of Battle card. Text comment is required.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">Share with us which is your favorite Jaws of Battle card in the text field below.</div>
+                            <div class="fs-16 fs-xs-14 padding-bottom-10 padding-top-15 text-center">Haven't tried Jaws of Battle yet? Download here:</div>
                             <div class="padding-bottom-20 text-center">
                                 <a href="https://play.google.com/store/apps/details?id=com.DentaCare.JawsOfBattle&hl=en_US" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block"><img src="/assets/images/google-store-button.svg" alt="Google play button"/></a>
                                 <a href="https://apps.apple.com/au/app/dentacare-jaws-of-battle/id1478090870" target="_blank" class="max-width-150 max-width-xs-120 width-100 inline-block margin-left-10"><img src="/assets/images/apple-store-button.svg" alt="App store button"/></a>
@@ -771,7 +772,7 @@
                     <a href="/assets/images/christmas-calendar-campaign/weekly-planner-jaws-of-battle.pdf" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/jaws-calendar.png" class="width-100" alt="" itemprop="contentUrl"/>
                     </a>
-                    @php($presentName = 'Jaws Brushing Calendar')
+                    @php($presentName = 'Kid\'s Oral Care Planner')
                 @elseif ($task['type'] == 'dcn-wallpaper')
                     <a href="/assets/images/christmas-calendar-campaign/DCN-wallpaper-reward.png" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/dcn-wallpaper.png" class="width-100" alt="" itemprop="contentUrl"/>
@@ -888,7 +889,7 @@
                     <a href="/assets/images/christmas-calendar-campaign/weekly-planner-jaws-of-battle.pdf" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/jaws-calendar.png" class="width-100" alt="" itemprop="contentUrl"/>
                     </a>
-                    @php($presentName = 'Jaws Brushing Calendar')
+                    @php($presentName = 'Kid\'s Oral Care Planner')
                 @elseif ($task['type'] == 'dcn-wallpaper')
                     <a href="/assets/images/christmas-calendar-campaign/DCN-wallpaper-reward.png" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/dcn-wallpaper.png" class="width-100" alt="" itemprop="contentUrl"/>

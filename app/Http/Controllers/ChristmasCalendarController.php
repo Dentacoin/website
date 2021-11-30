@@ -374,7 +374,7 @@ class ChristmasCalendarController extends Controller
                         Log::info('grantVipDVAccess request.');
                         $postData = array('vip_access' => true, 'vip_access_until' => date('Y-m-d H:i:s', strtotime('+1 day')));
                         $grantVipDVAccess = (new APIRequestsController())->grantVipDVAccess($postData);
-                        Log::info('grantVipDVAccess response.', ['response' => json_encode($grantVipDVAccess), 'user_id' => session('logged_user'), 'post_data' => json_encode($postData)]);
+                        Log::info('grantVipDVAccess response.', ['response' => json_encode($grantVipDVAccess), 'user_id' => session('logged_user')['id'], 'post_data' => json_encode($postData)]);
                     }
 
                     $finishedTask = DB::table('christmas_calendar_task_participant')
@@ -463,7 +463,7 @@ class ChristmasCalendarController extends Controller
                     Log::info('grantVipDVAccess request.');
                     $postData = array('vip_access' => true, 'vip_access_until' => date('Y-m-d H:i:s', strtotime('+1 day')));
                     $grantVipDVAccess = (new APIRequestsController())->grantVipDVAccess($postData);
-                    Log::info('grantVipDVAccess response.', ['response' => json_encode($grantVipDVAccess), 'user_id' => session('logged_user'), 'post_data' => json_encode($postData)]);
+                    Log::info('grantVipDVAccess response.', ['response' => json_encode($grantVipDVAccess), 'user_id' => session('logged_user')['id'], 'post_data' => json_encode($postData)]);
                 }
 
                 $dcnAmount = 0;

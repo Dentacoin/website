@@ -679,6 +679,7 @@ class APIRequestsController extends Controller {
             CURLOPT_POST => 1,
             CURLOPT_URL => getenv('API_DOMAIN').'/api/user',
             CURLOPT_SSL_VERIFYPEER => 0,
+            CURLOPT_HTTPHEADER => $header,
             CURLOPT_POSTFIELDS => $postData
         ));
 

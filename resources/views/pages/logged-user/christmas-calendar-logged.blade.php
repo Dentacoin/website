@@ -165,7 +165,7 @@
                                             @if($task['type'] == 'spinning-wheel')
                                                 @php($finishedTask = (new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id, $year))
                                                 @if (empty($finishedTask) || empty($finishedTask->custom_reward_type))
-                                                    <div class="custom-tooltip" data-toggle="tooltip" title="Spin the Wheel for a chance to win one of four big prices. The Wheel is unlocked every Friday.">
+                                                    <div class="custom-tooltip" data-toggle="tooltip" title="Spin the Wheel for a chance to win one of four big prizes. The Wheel is unlocked every Friday.">
                                                         <i class="fa fa-info-circle color-white fs-20" aria-hidden="true"></i>
                                                     </div>
                                                 @endif
@@ -345,7 +345,7 @@
                                             @if($task['type'] == 'spinning-wheel')
                                                 @php($finishedTask = (new \App\Http\Controllers\ChristmasCalendarController())->checkIfTaskIsAlreadyFinished($task['id'], $participant->id, $year))
                                                 @if (empty($finishedTask) || empty($finishedTask->custom_reward_type))
-                                                    <div class="custom-tooltip" data-toggle="tooltip" title="Spin the Wheel for a chance to win one of four big prices. The Wheel is unlocked every Friday.">
+                                                    <div class="custom-tooltip" data-toggle="tooltip" title="Spin the Wheel for a chance to win one of four big prizes. The Wheel is unlocked every Friday.">
                                                         <i class="fa fa-info-circle color-white fs-20" aria-hidden="true"></i>
                                                     </div>
                                                 @endif

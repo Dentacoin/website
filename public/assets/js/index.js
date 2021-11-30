@@ -1514,10 +1514,10 @@ var projectData = {
                                                     if (form.find('[name="text_proof"]').val().trim() == '') {
                                                         basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
                                                         return false;
-                                                    } else if (avatar_border != 1 && avatar_border != 2) {
-                                                        basic.showAlert('Please select character gender.', '', true);
                                                     } else if (form.find('[name="avatar"]').val() == '') {
                                                         basic.showAlert('Please upload your photo.', '', true);
+                                                    } else if (avatar_border != 1 && avatar_border != 2) {
+                                                        basic.showAlert('Please select character gender.', '', true);
                                                     } else {
                                                         projectData.general_logic.data.showLoader();
 

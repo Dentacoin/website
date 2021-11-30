@@ -82,10 +82,10 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold">SHARE this post on your Facebook profile:</div>
-                            <a href="https://facebook.com/watch/?v=202109878142200" class="long-text-link color-christmas-calendar-red" target="_blank">https://facebook.com/watch/?v=202109878142200</a>
+                            <a href="https://fb.watch/9BSpyZl07h/" class="long-text-link color-christmas-calendar-red" target="_blank">https://fb.watch/9BSpyZl07h/</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15">RETWEET this tweet on your Twitter profile:</div>
-                            <a href="https://twitter.com/dentacoin/status/1334072692853628929?s=20" class="long-text-link color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1334072692853628929?s=20</a>
+                            <a href="" class="long-text-link color-christmas-calendar-red" target="_blank"></a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">
@@ -298,11 +298,6 @@
                             <textarea name="text_proof" rows="4" maxlength="1000"></textarea>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Let’s prepare  your custom sticker!</div>
                             <div class="fs-16 padding-bottom-25">Attach a portrait photo and choose a character:</div>
-                            <div class="text-center fs-18 padding-bottom-20 gender-radio-btns">
-                                <input type="radio" name="character-type" id="character-type-male" value="male"/> <label class="fs-18 lato-bold" for="character-type-male">Male character</label>
-                                <br class="show-xs">
-                                <input type="radio" name="character-type" id="character-type-female" class="margin-left-15" value="female"/> <label class="fs-18 lato-bold" for="character-type-female">Female character</label>
-                            </div>
                             <div class="row">
                                 <div class="col-xs-12 col-sm-offset-1 col-sm-10 upload-image">
                                     <div class="rotate">
@@ -327,6 +322,11 @@
                                     </div>
                                     <div class="legend">Select a photo, move it with the arrow keys, rotate it with the button, zoom in / out with the slider.<div>Max size 2MB.</div></div>
                                 </div>
+                            </div>
+                            <div class="text-center fs-18 padding-top-20 gender-radio-btns">
+                                <input type="radio" name="character-type" id="character-type-male" value="male"/> <label class="fs-18 lato-bold" for="character-type-male">Male character</label>
+                                <br class="show-xs">
+                                <input type="radio" name="character-type" id="character-type-female" class="margin-left-15" value="female"/> <label class="fs-18 lato-bold" for="character-type-female">Female character</label>
                             </div>
                         </div>
                         @break

@@ -62,7 +62,7 @@
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" alt="Dentacoins" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/328,000</div><br> Dentacoin (DCN)</div>
+                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{number_format((int)$dcnAmount*2, 0, '', ',')}} @else {{number_format($dcnAmount, 0, '', ',')}} @endif</span>/328,000</div><br> Dentacoin (DCN)</div>
                     </div>
                 </div>
             </section>
@@ -231,7 +231,7 @@
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" alt="Dentacoins" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/328,000</div><br> Dentacoin (DCN)</div>
+                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{number_format((int)$dcnAmount*2, 0, '', ',')}} @else {{number_format($dcnAmount, 0, '', ',')}} @endif</div><br> Dentacoin (DCN)</div>
                     </div>
                 </div>
             </section>

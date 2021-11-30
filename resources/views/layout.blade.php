@@ -253,7 +253,7 @@
                     <meta itemprop="description" content="Holiday Calendar 2021 campaign video">
                     <meta itemprop="uploadDate" content="2021-11-30T08:00:00+08:00">
                     <meta itemprop="thumbnailUrl" content="https://dentacoin.com/assets/uploads/video-poster.png">
-                    <link itemprop="contentURL" href="{{URL::asset('assets/videos/dentacoin-christmas-calendar-banner.mp4') }}">
+                    <link itemprop="contentURL" href="{{URL::asset('assets/videos/dentacoin-christmas-calendar-banner-2021.mp4') }}">
                 </div>
             </a>
         </div>

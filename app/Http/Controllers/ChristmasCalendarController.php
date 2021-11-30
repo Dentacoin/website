@@ -84,6 +84,7 @@ class ChristmasCalendarController extends Controller
                 foreach ($spinningWheelTasks as $task) {
                     if (strtotime($task->date) > time()) {
                         $timeLeftForNextSpinningWheel = strtotime($task->date) - time();
+                        break;
                     }
                 }
 
@@ -610,8 +611,7 @@ class ChristmasCalendarController extends Controller
                 ]);
             } else {
                 return response()->json([
-                    'error' => true,
-                    'test' => 123
+                    'error' => true
                 ]);
             }
         } else {

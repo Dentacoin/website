@@ -495,7 +495,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Answer 6 simple questions about Dentacoin to unlock your daily prize.</div>
                             <div>Clue: If you are uncertain about the right answer for some questions, don’t worry! We got your back. Simply go to dentacoin.com.</div>
                             <div class="padding-bottom-10">By going through the website you should be able to find the answers to most of these questions :)</div>
-                            <div><a href="#" target="_blank" class="white-red-btn inline-block">TAKE QUIZ</a></div>
+                            <div><a href="https://forms.gle/GjntKhw5VS1g4HK4A" target="_blank" class="white-red-btn inline-block">TAKE QUIZ</a></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Get the secret code after completing the quiz and fill it in the field below:</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">

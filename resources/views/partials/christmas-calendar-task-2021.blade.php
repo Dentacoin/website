@@ -358,7 +358,11 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-16">
                                 1. Go to Instagram and take a photo/video/boomerang of yourself or your Christmas decorations.<br>
-                                2. After you’ve taken your photo go to <a href="#" target="_blank" class="lato-bold color-christmas-calendar-red">stickers</a>. Put any Dentacoin sticker. Collage it however you want to spread the good mood.<br>
+                                2. Then go to Stickers:<br>
+                                <div class="text-center padding-top-10 padding-bottom-10">
+                                    <img src="/assets/images/christmas-calendar-campaign/phone2.png" class="margin-left-5 margin-right-5 margin-bottom-10 max-width-200 width-100 max-width-xs-120" alt="" itemprop="contentUrl"/>
+                                    <img src="/assets/images/christmas-calendar-campaign/phone1.png" class="margin-left-5 margin-right-5 margin-bottom-10 max-width-200 width-100 max-width-xs-120" alt="" itemprop="contentUrl"/>
+                                </div>
                                 3. Save your festive picture and submit it below.
                             </div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit your photo after:</div>

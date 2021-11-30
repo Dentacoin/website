@@ -31,10 +31,10 @@
                     3. Completing all 31 tasks results in double Dentacoin tokens at the end of the challenge.<br>
                     4. Additionally to the daily prizes, every day participants win a raffle ticket if the task is completed on its exact date.<br>
                     5. If a participant has missed one day, s/he can complete the task afterwards and receive the daily prize but will not be granted the daily raffle ticket and will not have their Dentacoin tokens doubled at the end of the challenge.<br>
-                    6. All Dentacoin tokens daily rewards will be gradually unlocked for withdrawal in the period January 1-17, 2022. Withdrawals will be available on <a href="https://account.dentacoin.com/" target="_blank" class="color-christmas-calendar-red">https://account.dentacoin.com/</a><br>
+                    6. All Dentacoin tokens daily rewards will be gradually unlocked for withdrawal in the period January 1-21, 2022. Withdrawals will be available on <a href="https://account.dentacoin.com/" target="_blank" class="color-christmas-calendar-red">https://account.dentacoin.com/</a><br>
                     7. Only users who have submitted proofs for their tasks get rewards and participate in the raffle.<br>
                     8. All posts, likes and follows must remain at least until the raffle is finished.<br>
-                    9. Raffle winners will be randomly selected on January 17, 2022 in the Dentacoin Telegram group: <a href="https://t.me/dentacoin" target="_blank" class="color-christmas-calendar-red">https://t.me/dentacoin</a>.
+                    9. Raffle winners will be randomly selected on January 21, 2022 in the Dentacoin Telegram group: <a href="https://t.me/dentacoin" target="_blank" class="color-christmas-calendar-red">https://t.me/dentacoin</a>.
                 </div>
                 <h2 class="calibri-bold fs-26 padding-bottom-15 padding-top-10">IV. Eligibility</h2>
                 <div class="padding-bottom-20 fs-16">In order to be eligible for the challenge, participants must be at least 18 years old and must register on <a href="{{route('christmas-calendar', ['year' => 2021])}}" class="color-christmas-calendar-red" target="_blank">{{route('christmas-calendar', ['year' => 2021])}}</a>.</div>

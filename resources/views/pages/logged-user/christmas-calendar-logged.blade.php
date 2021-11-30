@@ -7,10 +7,10 @@
                     <div class="col-xs-12 color-white">
                         <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto line-height-46">Dentacoin Holiday<br>CALENDAR CHALLENGE 2021 IS OVER!</h1>
                         <p class="fs-22 fs-xs-20 lato-regular padding-bottom-xs-25">
-                            @if(time() < strtotime('2022/01/11 00:00:00'))
-                                We will pick 10 winners on January 17, 2022.
+                            @if(time() < strtotime('2022/01/21 00:00:00'))
+                                We will pick 10 winners on January 21, 2022.
                             @else
-                                We picked 10 winners on January 17, 2022.
+                                We picked 10 winners on January 21, 2022.
                             @endif
                         </p>
                     </div>
@@ -56,13 +56,13 @@
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/bonus-ticket.svg" alt="Bonus ticket" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-ticket-amount">{{$ticketAmount}}</span>/27</div><br> bonus tickets for tasks</div>
+                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-ticket-amount">{{$ticketAmount}}</span>/47</div><br> bonus tickets for tasks</div>
                     </div>
                     <div class="col-xs-12 col-md-4 single-stat inline-block-bottom">
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" alt="Dentacoins" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/184,000</div><br> Dentacoin (DCN)</div>
+                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/328,000</div><br> Dentacoin (DCN)</div>
                     </div>
                 </div>
             </section>
@@ -208,7 +208,7 @@
                 <div class="row">
                     <div class="col-xs-12 color-white">
                         <h1 class="lato-black fs-38 fs-xs-24 padding-bottom-15 padding-top-15 max-width-600 margin-0-auto">Join Dentacoin Holiday CALENDAR CHALLENGE 2021</h1>
-                        <p class="fs-22 fs-xs-20 lato-regular padding-bottom-30">Unlock a new surprise every day from December 1 to 31!</p>
+                        <p class="fs-22 fs-xs-20 lato-regular padding-bottom-30">Unlock a new surprise every day from December 1 to 31 and spin the wheel every Friday!</p>
                     </div>
                 </div>
             </section>
@@ -225,13 +225,13 @@
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/bonus-ticket.svg" alt="Bonus ticket" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-ticket-amount">{{$ticketAmount}}</span>/27</div><br> bonus tickets for tasks</div>
+                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-ticket-amount">{{$ticketAmount}}</span>/47</div><br> bonus tickets for tasks</div>
                     </div>
                     <div class="col-xs-12 col-md-4 single-stat inline-block-bottom">
                         <figure class="inline-block" itemscope="" itemtype="http://schema.org/ImageObject">
                             <img src="/assets/images/christmas-calendar-campaign/dentacoins.svg" alt="Dentacoins" itemprop="contentUrl" class="width-100"/>
                         </figure>
-                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/184,000</div><br> Dentacoin (DCN)</div>
+                        <div class="inline-block fs-16 fs-xs-14 stats-text text-left"><div class="inline-block lato-bold fs-20 line-height-16"><span class="user-dcn-amount">@if((int)$bonusTickets == 31) {{(int)$dcnAmount*2}} @else {{$dcnAmount}} @endif</span>/328,000</div><br> Dentacoin (DCN)</div>
                     </div>
                 </div>
             </section>
@@ -240,7 +240,7 @@
                 @if(!empty($social_engagement_cookie))
                     <div class="row camping-custom-popups socials"><div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-35">BEFORE YOU START:</h2><div class="fs-18 text-center lato-regular">01. Follow us on Twitter</div><div class="text-center padding-top-15 padding-bottom-25"><a class="twitter-follow-button" href="https://twitter.com/dentacoin" data-size="large" data-show-screen-name="true" data-show-count="true">Follow</a></div>
                             <div class="fs-18 text-center lato-regular">02. Like our Facebook pages: </div>
-                            <div class="facebook-buttons text-center padding-top-5 padding-bottom-10"><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacoin</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacare</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">DentaVox</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Trusted Reviews</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.jaws/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Jaws of Battle</div></div></div>
+                            <div class="facebook-buttons text-center padding-top-5 padding-bottom-10"><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacoin</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">DentaVox</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacare</div></div><div class="single-facebook-btn inline-block text-center padding-left-10 padding-right-10"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Trusted Reviews</div></div><div class="single-facebook-btn inline-block text-center padding-left-10 padding-right-10"><div class="fb-like" data-href="https://www.facebook.com/dentacare.jaws/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Jaws of Battle</div></div></div>
                             <div class="fs-18 text-center lato-regular">03. Join our Telegram group: </div>
                             <div class="padding-top-15 padding-bottom-25 text-center"><a href="https://t.me/dentacoin" target="_blank" class="white-blue-btn padding-left-30 padding-right-30 inline-block">TELEGRAM</a></div>
                             <div class="fs-18 text-center lato-regular">04. Follow our Instagram page:</div>
@@ -376,7 +376,7 @@
                 </div>
             </section>
             <section class="presents-list margin-top-70 no-dentist-and-user-bottom">
-                <p class="fs-22 fs-xs-20 lato-black padding-bottom-30 text-center padding-left-15 padding-right-15 color-white">We are picking 12 big winners on January 17, 2022:</p>
+                <p class="fs-22 fs-xs-20 lato-black padding-bottom-30 text-center padding-left-15 padding-right-15 color-white">We are picking 12 big winners on January 21, 2022:</p>
                 <img src="/assets/images/christmas-calendar-campaign/dentist-registered-screen.png" class="dentist" alt="Dentist" itemprop="contentUrl"/>
                 <picture itemscope="" itemtype="http://schema.org/ImageObject" class="presents padding-bottom-130">
                     <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/mobile-prizes-img.png">

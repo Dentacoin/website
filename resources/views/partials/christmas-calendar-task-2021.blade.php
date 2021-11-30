@@ -294,7 +294,7 @@
                         <input type="hidden" name="background_scale" value="1"/>
                         <input type="hidden" name="avatar-border" id="avatar-border"/>
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Share with the Dentacoin team what your dental wish is towards Santa Claus! We will make sure to read them all and send them to the Dentist Santa Claus!</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Share with us your dental wish for Santa Claus! We will make sure to read them all and send them to the Dentist Santa Claus!</div>
                             <textarea name="text_proof" rows="4" maxlength="1000"></textarea>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Let’s prepare  your custom sticker!</div>
                             <div class="fs-16 padding-bottom-25">Attach a portrait photo and choose a character:</div>
@@ -344,7 +344,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-16">
                                 1.Go to <a href="https://dentavox.dentacoin.com/" target="_blank" class="lato-bold color-christmas-calendar-red">DentaVox website</a> and find your favorite survey.<br>
-                                2. Share a Facebook or Twitter post of this survey and tag a friend that can relate to the topic.<br>
+                                2. Share a Facebook or Twitter post of this survey and tag a friend who can relate to the topic.<br>
                                 3. Attach a screenshot of your post.
                             </div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
@@ -465,14 +465,14 @@
                                 <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Cast your vote for the Top Dentist of 2021 from the list of nominees and claim your daily prize.</div>
                                 <div><a href="https://forms.gle/6Zd7c6yw9yaMZo5f9" target="_blank" class="white-red-btn inline-block vote-now fs-22">VOTE NOW</a></div>
                                 <div class="padding-top-50 text-center">
-                                    <a href="javascript:void(0);" class="white-red-btn next-step">NEXT STEP</a>
+                                    <a href="javascript:void(0);" class="white-red-btn next-step fs-18">NEXT STEP</a>
                                 </div>
                             </div>
                         @endif
                         @break
                     @case(18)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">Go to <a href="https://dentacoin.com/foundation" target="_blank" class="color-christmas-calendar-red lato-bold text-decoration-underline">Dentacoin website</a> and find the hidden treasure sticker <img src="/assets/images/christmas-calendar-campaign/hidden-present3.png" width="25" class="margin-left-5 margin-right-5" alt="" itemprop="contentUrl"/>. Make sure you check all sections, the treasure could be anywhere! Type the word or number you see next to the treasure sticker in the text field below.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">Go to <a href="https://dentacoin.com/users" target="_blank" class="color-christmas-calendar-red lato-bold text-decoration-underline">Dentacoin website</a> and find the hidden treasure sticker <img src="/assets/images/christmas-calendar-campaign/hidden-present3.png" width="25" class="margin-left-5 margin-right-5" alt="" itemprop="contentUrl"/>. Make sure you check all sections, the treasure could be anywhere! Type the word or number you see next to the treasure sticker in the text field below.</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">
                                     <label for="text_proof">Your answer:</label>
@@ -546,7 +546,7 @@
                         @break
                     @case(23)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">Go to <a href="https://dentacoin.com/foundation" target="_blank" class="color-christmas-calendar-red lato-bold text-decoration-underline">Dentacoin website</a> and find the hidden treasure sticker <img src="/assets/images/christmas-calendar-campaign/hidden-present.png" width="25" class="margin-left-5 margin-right-5" alt="" itemprop="contentUrl"/>. Make sure you check all sections, the treasure could be anywhere! Type the word or number you see next to the treasure sticker in the text field below.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">Go to <a href="https://dentacoin.com/traders" target="_blank" class="color-christmas-calendar-red lato-bold text-decoration-underline">Dentacoin website</a> and find the hidden treasure sticker <img src="/assets/images/christmas-calendar-campaign/hidden-present.png" width="25" class="margin-left-5 margin-right-5" alt="" itemprop="contentUrl"/>. Make sure you check all sections, the treasure could be anywhere! Type the word or number you see next to the treasure sticker in the text field below.</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">
                                     <label for="text_proof">Your answer:</label>
@@ -659,7 +659,7 @@
                         @break
                     @case(28)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">Go to <a href="https://dentacoin.com/foundation" target="_blank" class="color-christmas-calendar-red lato-bold text-decoration-underline">Dentacoin website</a> and find the hidden treasure sticker <img src="/assets/images/christmas-calendar-campaign/hidden-present2.png" width="25" class="margin-left-5 margin-right-5" alt="" itemprop="contentUrl"/>. Make sure you check all sections, the treasure could be anywhere! Type the word or number you see next to the treasure sticker in the text field below.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10">Go to <a href="https://dentacoin.com/users" target="_blank" class="color-christmas-calendar-red lato-bold text-decoration-underline">Dentacoin website</a> and find the hidden treasure sticker <img src="/assets/images/christmas-calendar-campaign/hidden-present2.png" width="25" class="margin-left-5 margin-right-5" alt="" itemprop="contentUrl"/>. Make sure you check all sections, the treasure could be anywhere! Type the word or number you see next to the treasure sticker in the text field below.</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">
                                     <label for="text_proof">Your answer:</label>
@@ -692,7 +692,7 @@
                         @break
                     @case(30)
                         <div class="padding-top-50 padding-bottom-50 text-center">
-                            <a href="#" class="white-red-btn fs-22" target="_blank">TAKE SURVEYAKE SURVEY</a>
+                            <a href="#" class="white-red-btn fs-22" target="_blank">TAKE SURVEY</a>
                             <div class="fs-16 fs-xs-14 padding-top-10">If you’ve already completed this survey in the past, just submit the task as completed.</div>
                         </div>
                         @break
@@ -756,13 +756,13 @@
                     @php($presentName = 'Holiday card')
                 @elseif ($task['type'] == 'treasure-piece-1')
                     <img src="/assets/images/christmas-calendar-campaign/treasure-piece-1.png" class="width-100" alt="" itemprop="contentUrl"/>
-                    @php($presentName = 'You have unlocked a special item! This is the first piece out of a three part special item that will unlock a hidden treasure. Only after you have collected all three pieces will you receive access to your big prize! <i class="fa fa-info-circle fs-20 margin-left-5 margin-right-5 color-christmas-calendar-red" aria-hidden="true" data-toggle="tooltip" title="This is one out of a three pieces that will unlock a hidden treasure. Only after you have collected all three pieces will you receive access to your big prize!"></i><div class="lato-regular fs-14 padding-top-20">* Please keep in mind that only after you have unlocked all three of the treasures will you be granted the whole prize.</div>')
+                    @php($presentName = 'You have unlocked a special item! This is the first piece out of a three part special item that will unlock a hidden treasure. Only after you have collected all three pieces will you receive access to your big prize!<div class="lato-regular fs-14 padding-top-20">* Please keep in mind that only after you have unlocked all three of the treasures will you be granted the whole prize.</div>')
                 @elseif ($task['type'] == 'treasure-piece-2')
                     <img src="/assets/images/christmas-calendar-campaign/treasure-piece-2.png" class="width-100" alt="" itemprop="contentUrl"/>
-                    @php($presentName = 'You have unlocked a special item! This is the second piece out of a three part special item that will unlock a hidden treasure. Only after you have collected all three pieces will you receive access to your big prize!<i class="fa fa-info-circle fs-20 margin-left-5 margin-right-5 color-christmas-calendar-red" aria-hidden="true" data-toggle="tooltip" title="This is one out of a three pieces that will unlock a hidden treasure. Only after you have collected all three pieces will you receive access to your big prize!"></i><div class="lato-regular fs-14 padding-top-20">* Please keep in mind that only after you have unlocked all three of the treasures will you be granted the whole prize.</div>')
+                    @php($presentName = 'You have unlocked a special item! This is the second piece out of a three part special item that will unlock a hidden treasure. Only after you have collected all three pieces will you receive access to your big prize!<div class="lato-regular fs-14 padding-top-20">* Please keep in mind that only after you have unlocked all three of the treasures will you be granted the whole prize.</div>')
                 @elseif ($task['type'] == 'treasure-piece-3')
                     <img src="/assets/images/christmas-calendar-campaign/dv-vip-pass-icon.png" class="width-100" alt="" itemprop="contentUrl"/>
-                    @php($presentName = 'Daily VIP pass for DentaVox')
+                    @php($presentName = 'Daily VIP pass for DentaVox <div class="lato-regular fs-14 padding-top-20">You\'ve collected all three pieces of the hidden treasure and successfully unlocked the reward!</div>')
                 @elseif ($task['type'] == 'oral-health-tips-and-tricks')
                     <a href="/assets/images/christmas-calendar-campaign/sample.pdf" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/tips-and-tricks-pdf.png" class="width-100" alt="" itemprop="contentUrl"/>
@@ -879,7 +879,7 @@
                     @php($presentName = 'Second Treasure piece <i class="fa fa-info-circle fs-20 margin-left-5 margin-right-5 color-christmas-calendar-red" aria-hidden="true" data-toggle="tooltip" title="This is one out of a three pieces that will unlock a hidden treasure. Only after you have collected all three pieces will you receive access to your big prize!"></i>')
                 @elseif ($task['type'] == 'treasure-piece-3')
                     <img src="/assets/images/christmas-calendar-campaign/dv-vip-pass-icon.png" class="width-100" alt="" itemprop="contentUrl"/>
-                    @php($presentName = 'Daily VIP pass for DentaVox')
+                    @php($presentName = 'Daily VIP pass for DentaVox <div class="lato-regular fs-14 padding-top-20">You\'ve collected all three pieces of the hidden treasure and successfully unlocked the reward!</div>')
                 @elseif ($task['type'] == 'oral-health-tips-and-tricks')
                     <a href="/assets/images/christmas-calendar-campaign/sample.pdf" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/tips-and-tricks-pdf.png" class="width-100" alt="" itemprop="contentUrl"/>

@@ -7,10 +7,10 @@
                     <div class="col-xs-12">
                         <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto line-height-46">Dentacoin Holiday<br>CALENDAR CHALLENGE 2021 IS OVER!</h1>
                         <p class="fs-22 fs-xs-20 lato-regular padding-bottom-xs-25">
-                            @if(time() < strtotime('2022/01/17 00:00:00'))
-                                We will pick 10 winners on January 17, 2022.
+                            @if(time() < strtotime('2022/01/21 00:00:00'))
+                                We will pick 10 winners on January 21, 2022.
                             @else
-                                We picked 10 winners on January 17, 2022.
+                                We picked 10 winners on January 21, 2022.
                             @endif
                         </p>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <p class="fs-22 fs-xs-20 padding-bottom-30 lato-regular max-width-470 margin-0-auto">
-                            @if(time() < strtotime('2022/01/17 00:00:00'))
+                            @if(time() < strtotime('2022/01/21 00:00:00'))
                                 The winners will be announced first in our Telegram group. Join now and stay tuned for the winners announcement.
                             @else
                                 See the winners in our Telegram group and be the first to know about future raffles!
@@ -58,7 +58,7 @@
                     <div class="col-xs-12">
                         <h1 class="lato-black fs-38 fs-xs-25 padding-bottom-15 padding-top-15 padding-top-xs-30 max-width-600 margin-0-auto">Join Dentacoin Holiday CALENDAR CHALLENGE 2021</h1>
                         <p class="fs-22 fs-xs-20 lato-regular">Unlock a new surprise every day and spin the wheel every Friday for a special prize!</p>
-                        <p class="fs-22 fs-xs-20 lato-regular">Be consistent and increase your chances to win the <br><span class="lato-black">RAFFLE PRIZES on January, 17:</span></p>
+                        <p class="fs-22 fs-xs-20 lato-regular">Be consistent and increase your chances to win the <br><span class="lato-black">RAFFLE PRIZES on January, 21:</span></p>
                     </div>
                 </div>
             </section>

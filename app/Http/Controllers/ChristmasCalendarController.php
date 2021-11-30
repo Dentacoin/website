@@ -446,7 +446,7 @@ class ChristmasCalendarController extends Controller
     }
 
     public function completeTaskAlreadyCompletedTask($year, $id) {
-        if ((new UserController())->checkSession() && strtotime('12/01/2021') < time()) {
+        if (((new UserController())->checkSession() && strtotime('12/01/2021') < time()) || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS))) {
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id'], 'year' => $year))->get()->first();
             $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
             $finishedTask = DB::table('christmas_calendar_task_participant')

@@ -18,11 +18,12 @@ class ChristmasCalendarController extends Controller
     }
 
     const ALLOWED_ACCOUNTS = [70134, 186047, 82627, 191210, 69468, 185056];
-    const CALENDAR_YEARS = [2019, 2020, 2021];
+    const CALENDAR_YEARS = [/*2019, 2020, */2021];
 
     public function getView($year)   {
         if (!in_array($year, self::CALENDAR_YEARS)) {
-            return abort(404);
+            return redirect()->route('christmas-calendar', ['year' => 2021]);
+            //return abort(404);
         }
 
         if (strtotime('11/30/2021') < time() || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS))) {

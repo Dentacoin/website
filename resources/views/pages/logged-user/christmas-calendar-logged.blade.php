@@ -240,7 +240,33 @@
                 @if(!empty($social_engagement_cookie))
                     <div class="row camping-custom-popups socials"><div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-35">BEFORE YOU START:</h2><div class="fs-18 text-center lato-regular">01. Follow us on Twitter</div><div class="text-center padding-top-15 padding-bottom-25"><a class="twitter-follow-button" href="https://twitter.com/dentacoin" data-size="large" data-show-screen-name="true" data-show-count="true">Follow</a></div>
                             <div class="fs-18 text-center lato-regular">02. Like our Facebook pages: </div>
-                            <div class="facebook-buttons text-center padding-top-5 padding-bottom-10"><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacoin</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">DentaVox</div></div><div class="single-facebook-btn inline-block text-center"><div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Dentacare</div></div><div class="single-facebook-btn inline-block text-center padding-left-10 padding-right-10"><div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Trusted Reviews</div></div><div class="single-facebook-btn inline-block text-center padding-left-10 padding-right-10"><div class="fb-like" data-href="https://www.facebook.com/dentacare.jaws/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div><div class="fs-14 padding-top-5">Jaws of Battle</div></div></div>
+                            <div class="facebook-buttons text-center padding-top-5 padding-bottom-10">
+                                <div class="single-facebook-btn inline-block text-center">
+                                    {{--<div class="fb-like" data-href="https://www.facebook.com/dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>--}}
+                                    <a href="https://www.facebook.com/dentacoin/" target="_blank" class="inline-block padding-left-10 padding-right-10 padding-top-5 padding-bottom-5 text-left color-white fs-18 lato-bold"><i class="fa fa-facebook-official inline-block fs-26 margin-right-10" aria-hidden="true"></i><span class="inline-block">LIKE</span></a>
+                                    <div class="fs-14 padding-top-5">Dentacoin</div>
+                                </div>
+                                <div class="single-facebook-btn inline-block text-center">
+                                    {{--<div class="fb-like" data-href="https://www.facebook.com/DentaVox-1578351428897849/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>--}}
+                                    <a href="https://www.facebook.com/DentaVox-1578351428897849/" target="_blank" class="inline-block padding-left-10 padding-right-10 padding-top-5 padding-bottom-5 text-left color-white fs-18 lato-bold"><i class="fa fa-facebook-official inline-block fs-26 margin-right-10" aria-hidden="true"></i><span class="inline-block">LIKE</span></a>
+                                    <div class="fs-14 padding-top-5">DentaVox</div>
+                                </div>
+                                <div class="single-facebook-btn inline-block text-center">
+                                   {{-- <div class="fb-like" data-href="https://www.facebook.com/dentacare.dentacoin/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>--}}
+                                    <a href="https://www.facebook.com/dentacare.dentacoin/" target="_blank" class="inline-block padding-left-10 padding-right-10 padding-top-5 padding-bottom-5 text-left color-white fs-18 lato-bold"><i class="fa fa-facebook-official inline-block fs-26 margin-right-10" aria-hidden="true"></i><span class="inline-block">LIKE</span></a>
+                                    <div class="fs-14 padding-top-5">Dentacare</div>
+                                </div>
+                                <div class="single-facebook-btn inline-block text-center padding-left-10 padding-right-10">
+                                    {{--<div class="fb-like" data-href="https://www.facebook.com/dentacoin.trusted.reviews/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>--}}
+                                    <a href="https://www.facebook.com/dentacoin.trusted.reviews/" target="_blank" class="inline-block padding-left-10 padding-right-10 padding-top-5 padding-bottom-5 text-left color-white fs-18 lato-bold"><i class="fa fa-facebook-official inline-block fs-26 margin-right-10" aria-hidden="true"></i><span class="inline-block">LIKE</span></a>
+                                    <div class="fs-14 padding-top-5">Trusted Reviews</div>
+                                </div>
+                                <div class="single-facebook-btn inline-block text-center padding-left-10 padding-right-10">
+                                    {{--<div class="fb-like" data-href="https://www.facebook.com/dentacare.jaws/" data-width="" data-layout="box_count" data-action="like" data-size="small" data-show-faces="true" data-share="false"></div>--}}
+                                    <a href="https://www.facebook.com/dentacare.jaws/" target="_blank" class="inline-block padding-left-10 padding-right-10 padding-top-5 padding-bottom-5 text-left color-white fs-18 lato-bold"><i class="fa fa-facebook-official inline-block fs-26 margin-right-10" aria-hidden="true"></i><span class="inline-block">LIKE</span></a>
+                                    <div class="fs-14 padding-top-5">Jaws of Battle</div>
+                                </div>
+                            </div>
                             <div class="fs-18 text-center lato-regular">03. Join our Telegram group: </div>
                             <div class="padding-top-15 padding-bottom-25 text-center"><a href="https://t.me/dentacoin" target="_blank" class="white-blue-btn padding-left-30 padding-right-30 inline-block">TELEGRAM</a></div>
                             <div class="fs-18 text-center lato-regular">04. Follow our Instagram page:</div>
@@ -393,7 +419,7 @@
             </section>--}}
         </div>
         <div id="fb-root"></div>
-        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=1906201509652855&autoLogAppEvents=1"></script>
+        {{--<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=1906201509652855&autoLogAppEvents=1"></script>--}}
         <script type="text/javascript" async src="https://platform.twitter.com/widgets.js"></script>
     @endif
 @endsection

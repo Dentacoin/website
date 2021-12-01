@@ -261,6 +261,14 @@ body.christmas-calendar {
                     .facebook-buttons {
                         .single-facebook-btn {
                             padding: 20px;
+                            a {
+                                width: 100px;
+                                background-color: #4080ff;
+                                @include rounded(6px);
+                                &:hover, &:active, &:visited, &:focus {
+                                    color: white;
+                                }
+                            }
                         }
                     }
                 }

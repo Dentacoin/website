@@ -17,17 +17,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/', 'HomeController@getView')->name('home');
 
-    Route::get('/test', function() {
-        $session_arr = [
-            'token' => 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjM4M2IxNWQ0Yjg3MzBlMDEwZjNjOWJkZjQ4ZmU2NWZkNTBjZjY0MjBkYzc4NTRlNDlhMjk4NjFmYmMyODNiMjk2N2FlNGY5NzViOGFkNGEiLCJpYXQiOiIxNjM3NDM4ODI0LjM2MTkyOCIsIm5iZiI6IjE2Mzc0Mzg4MjQuMzYxOTMxIiwiZXhwIjoiMTY2ODk3NDgyNC4zNTg2ODEiLCJzdWIiOiI3MDEzNCIsInNjb3BlcyI6W119.uLkmxkupKqGf1MP8jiYG87gxkLdBIEdxF451Ec2j0yqwvd2B3n_ZrSmmwmboGq9Cjkb17fm3e4JMWdNwvSvD_ij1m_A2P-IDrOnr-isKXr2pWsNoOqNZOF0sz4C5xN-9qKnhj48MudotOkxu3Fz81GQKp6ONAcpoo7yTcNDz_QuvhMyhNnXKqy0GdA9fCmQFYiwLfsoTpaDyShDtddEc1L5ALqcecTVpbQiYoHERCkiW7XwkTOBKLx9b9NBFtcQh77ZHw9wwmSRu8WCU9BsjO5mt6xrurUL3u5hjMOXYJuTule57WCe1EdxxAehYXSxjauix4HerCEFhNSRoRwMckWwbp6badxojQTTcL3ogMz0wMVagXKsuM30E7-Zi80Cas1Np-GHKupOzaIMaeKsr3dWsWr_ma9ogQqpmmzo24OKoLoQGx2gM7_45nozhzwCQUVgYHtVQ3EhmKwtCTMQU6-iymYJJpRiFeqYWEZPZ1u6r8nAx3ao_EwhQjwo4t17n-JsIVf-9lx4wkHT836ZwkwOL12BT52Jyl3K0py1_L33Rei0W4Q0jETi_Ir-IKs1nYICjm0YLURp9wCSU356oKedwLG-dkSDQK-zIRkzeLj3jWc-yIeIrYw6xUUFSPCkYc8So4Zsn_-XbdkGlmno7tnTnwEUmTjd2L-ngISaXvcA',
-            'id' => 70134,
-            'type' => 'dentist'
-        ];
-
-        session(['logged_user' => $session_arr]);
-        return redirect()->route('home');
-    })->name('test');
-
     Route::get('/users', 'HomeController@getUsersPageView')->name('users');
 
     Route::get('/dentists', 'HomeController@getDentistsPageView')->name('dentists');

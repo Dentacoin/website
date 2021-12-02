@@ -17,7 +17,7 @@ class ChristmasCalendarController extends Controller
         Log::useDailyFiles(storage_path().'/logs/holiday-calendar.log');
     }
 
-    const ALLOWED_ACCOUNTS = [70134, 186047, 82627, 191210, 69468, 185056];
+    const WHITELISTED_ACCOUNTS = [70134, 186047, 82627, 191210, 69468, 185056];
     const CALENDAR_YEARS = [/*2019, 2020, */2021];
 
     public function getView($year)   {
@@ -26,7 +26,7 @@ class ChristmasCalendarController extends Controller
             //return abort(404);
         }
 
-        if (strtotime('11/30/2021') < time() || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS))) {
+        if (strtotime('11/30/2021') < time() || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::WHITELISTED_ACCOUNTS))) {
             if ((new UserController())->checkSession()) {
                 $dcnAmount = 0;
                 $ticketAmount = 0;
@@ -112,7 +112,7 @@ class ChristmasCalendarController extends Controller
     }
 
     public function getTaskPopup($year, $id, Request $request) {
-        if ((new UserController())->checkSession() && strtotime('11/30/2021') < time() || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS))) {
+        if ((new UserController())->checkSession() && strtotime('11/30/2021') < time() || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::WHITELISTED_ACCOUNTS))) {
             $task = ChristmasCalendarTask::where(array('id' => $id, 'year' => $year))->get()->first();
 
             //$participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
@@ -132,7 +132,7 @@ class ChristmasCalendarController extends Controller
                 return response()->json(['error' => $view]);
             }
 
-            if (time() > strtotime($task->date)) {
+            if (time() > strtotime($task->date) || in_array(session('logged_user')['id'], self::WHITELISTED_ACCOUNTS)) {
                 // check if user completed the tasks before this one
                 $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')
                     ->select('christmas_calendar_task_participant.*')
@@ -235,13 +235,13 @@ class ChristmasCalendarController extends Controller
     }
 
     public function completeTask($year, $id, Request $request) {
-        if (((new UserController())->checkSession() && strtotime('12/01/2021') < time()) || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS))) {
+        if (((new UserController())->checkSession() && strtotime('12/01/2021') < time()) || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::WHITELISTED_ACCOUNTS))) {
             $task = ChristmasCalendarTask::where(array('id' => $id))->get()->first();
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id'], 'year' => $year))->get()->first();
             $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
 
             // check if time passed to unlock this task
-            if (time() > strtotime($task->date)) {
+            if (time() > strtotime($task->date) || in_array(session('logged_user')['id'], self::WHITELISTED_ACCOUNTS)) {
                 if ((int)$id > 1) {
                     // check if user completed the tasks before this one
                     $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')
@@ -448,7 +448,7 @@ class ChristmasCalendarController extends Controller
     }
 
     public function completeTaskAlreadyCompletedTask($year, $id) {
-        if (((new UserController())->checkSession() && strtotime('12/01/2021') < time()) || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::ALLOWED_ACCOUNTS))) {
+        if (((new UserController())->checkSession() && strtotime('12/01/2021') < time()) || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::WHITELISTED_ACCOUNTS))) {
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id'], 'year' => $year))->get()->first();
             $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
             $finishedTask = DB::table('christmas_calendar_task_participant')

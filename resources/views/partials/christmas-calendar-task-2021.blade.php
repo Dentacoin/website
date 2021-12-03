@@ -199,12 +199,12 @@
                         @break
                     @case(6)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Follow the link and vote in Dentacoin’s special poll to share your opinion.</div>
-                            <div class="fs-18 fs-xs-16 lato-bold">VOTE in Facebook poll here:</div>
-                            <a href="https://facebook.com/watch/?v=202109878142200" class="long-text-link color-christmas-calendar-red" target="_blank">https://facebook.com/watch/?v=202109878142200</a>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Today we ask you what content you want to see from Dentacoin in 2022? Follow the link and vote in Dentacoin’s special poll to share your opinion.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold">VOTE in Telegram poll here:</div>
+                            <a href="https://t.me/dentacoin/428712" class="long-text-link color-christmas-calendar-red" target="_blank">https://t.me/dentacoin/428712</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15">VOTE in Twitter poll here:</div>
-                            <a href="https://twitter.com/dentacoin/status/1334072692853628929?s=20" class="long-text-link color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1334072692853628929?s=20</a>
+                            <a href="https://twitter.com/dentacoin/status/1466790446923923456" class="long-text-link color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1466790446923923456</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">

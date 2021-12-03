@@ -176,15 +176,11 @@
                         @break
                     @case(4)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
-                            <div class="fs-18 fs-xs-16 lato-bold">Find Dentacoin’s theme filter on Instagram and take a selfie or a Christmas photo with it.</div>
-                            <div class="color-christmas-calendar-red text-decoration-underline padding-bottom-10">Important: This can only be done from a mobile device because filters only work on the phone version of Instagram.</div>
-                            <div><a href="#" target="_blank" class="white-red-btn inline-block">FIND FILTER HERE</a></div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
-                            <div class="upload-btn-parent">
-                                <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
-                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">Invite your dentist or leave them a review at Trusted Reviews. Only real entries will be rewarded after a thorough verification.</div>
+                            <div class="padding-top-15">
+                                <a href="https://reviews.dentacoin.com/?popup=invite-new-dentist-popup" target="_blank" class="white-red-btn">INVITE NOW</a>
                             </div>
+                            <div class="padding-top-25 fs-14">If you are a dentist and you want to invite a colleague, please send us their name, address, and website at <a href="mailto:business@dentacoin.com" class="color-christmas-calendar-red">business@dentacoin.com</a>.</div>
                         </div>
                         @break
                     @case(5)
@@ -332,11 +328,15 @@
                         @break
                     @case(13)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10 padding-top-15">Invite your dentist or leave them a review at Trusted Reviews. Only real entries will be rewarded after a thorough verification.</div>
-                            <div class="padding-top-15">
-                                <a href="https://reviews.dentacoin.com/?popup=invite-new-dentist-popup" target="_blank" class="white-red-btn">INVITE NOW</a>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
+                            <div class="fs-18 fs-xs-16 lato-bold">Find Dentacoin’s theme filter on Instagram and take a Christmas photo with it. Spread the Christmas mood around.</div>
+                            <div class="color-christmas-calendar-red text-decoration-underline padding-bottom-10">Important: This can only be done from a mobile device because filters only work on the phone version of Instagram.</div>
+                            <div><a href="#" target="_blank" class="white-red-btn inline-block">FIND FILTER HERE</a></div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
+                            <div class="upload-btn-parent">
+                                <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
+                                <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>
                             </div>
-                            <div class="padding-top-25 fs-14">If you are a dentist and you want to invite a colleague, please send us their name, address, and website at <a href="mailto:business@dentacoin.com" class="color-christmas-calendar-red">business@dentacoin.com</a>.</div>
                         </div>
                         @break
                     @case(14)

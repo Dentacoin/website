@@ -374,7 +374,7 @@ class ChristmasCalendarController extends Controller
                     if ($task->type == 'treasure-piece-3') {
                         // adding one day VIP DV access
                         Log::info('grantVipDVAccess request.');
-                        $postData = array('vip_access' => true, 'vip_access_until' => date('Y-m-d H:i:s', strtotime('+1 day')));
+                        $postData = array('vip_access' => true, 'vip_access_until' => date('Y-m-d H:i:s', strtotime('+26 hours')));
                         $grantVipDVAccess = (new APIRequestsController())->grantVipDVAccess($postData);
                         Log::info('grantVipDVAccess response.', ['response' => json_encode($grantVipDVAccess), 'user_id' => session('logged_user')['id'], 'post_data' => json_encode($postData)]);
                     }
@@ -463,7 +463,7 @@ class ChristmasCalendarController extends Controller
                 if ($finishedTask->custom_reward_type == 'dv-pass') {
                     // adding one day VIP DV access
                     Log::info('grantVipDVAccess request.');
-                    $postData = array('vip_access' => true, 'vip_access_until' => date('Y-m-d H:i:s', strtotime('+1 day')));
+                    $postData = array('vip_access' => true, 'vip_access_until' => date('Y-m-d H:i:s', strtotime('+26 hours')));
                     $grantVipDVAccess = (new APIRequestsController())->grantVipDVAccess($postData);
                     Log::info('grantVipDVAccess response.', ['response' => json_encode($grantVipDVAccess), 'user_id' => session('logged_user')['id'], 'post_data' => json_encode($postData)]);
                 }

@@ -764,7 +764,7 @@
                     <img src="/assets/images/christmas-calendar-campaign/dv-vip-pass-icon.png" class="width-100" alt="" itemprop="contentUrl"/>
                     @php($presentName = 'Daily VIP pass for DentaVox <div class="lato-regular fs-14 padding-top-20">You\'ve collected all three pieces of the hidden treasure and successfully unlocked the reward!</div>')
                 @elseif ($task['type'] == 'oral-health-tips-and-tricks')
-                    <a href="/assets/images/christmas-calendar-campaign/sample.pdf" target="_blank" download>
+                    <a href="/assets/images/christmas-calendar-campaign/oral-health-tips-and-tricks.pdf" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/tips-and-tricks-pdf.png" class="width-100" alt="" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'Oral Health Tips and Tricks')
@@ -812,7 +812,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif ($dayId == 6)
-                    @php($btnLink = URL::asset('assets/images/christmas-calendar-campaign/sample.pdf'))
+                    @php($btnLink = URL::asset('assets/images/christmas-calendar-campaign/oral-health-tips-and-tricks.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif ($dayId == 9)
@@ -881,7 +881,7 @@
                     <img src="/assets/images/christmas-calendar-campaign/dv-vip-pass-icon.png" class="width-100" alt="" itemprop="contentUrl"/>
                     @php($presentName = 'Daily VIP pass for DentaVox <div class="lato-regular fs-14 padding-top-20">You\'ve collected all three pieces of the hidden treasure and successfully unlocked the reward!</div>')
                 @elseif ($task['type'] == 'oral-health-tips-and-tricks')
-                    <a href="/assets/images/christmas-calendar-campaign/sample.pdf" target="_blank" download>
+                    <a href="/assets/images/christmas-calendar-campaign/oral-health-tips-and-tricks.pdf" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/tips-and-tricks-pdf.png" class="width-100" alt="" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'Oral Health Tips and Tricks')
@@ -929,7 +929,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif ($dayId == 6)
-                    @php($btnLink = URL::asset('assets/images/christmas-calendar-campaign/sample.pdf'))
+                    @php($btnLink = URL::asset('assets/images/christmas-calendar-campaign/oral-health-tips-and-tricks.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif ($dayId == 9)

@@ -1202,21 +1202,27 @@ var projectData = {
                                             console.log(tx1, 'tx1');
                                             $('.l1-dcn-amount').val('');
 
-                                            if (parseInt(await L1_ERC20.allowance(accountsOnEnable[0], config_variable.l1.addresses.Proxy__OVM_L1StandardBridge)) == desiredAmountToDeposit) {
-                                                const tx2 = await L1StandardBridge.depositERC20(
-                                                    config_variable.l1.addresses.dcn_contract_address,
-                                                    config_variable.l2.addresses.dcn_contract_address,
-                                                    desiredAmountToDeposit,
-                                                    2000000,
-                                                    '0x');
-                                                await tx2.wait();
-                                                console.log(tx2, 'tx2');
-                                                initDepositHistory();
-                                                $('.response-layer').removeClass('show-this');
-                                                basic.showAlert('Deposit transaction has been executed successfully! Tokens should be visible on L2 network soon. <a href="'+config_variable.etherscan_domain+'/tx/'+tx2.hash+'" target="_blank">Check transaction here.</a>', '', true);
+                                            var allowanceCheck = setInterval(async function() {
+                                                console.log(parseInt(await L1_ERC20.allowance(accountsOnEnable[0], config_variable.l1.addresses.Proxy__OVM_L1StandardBridge)), 'allowance');
+                                                if (parseInt(await L1_ERC20.allowance(accountsOnEnable[0], config_variable.l1.addresses.Proxy__OVM_L1StandardBridge)) == desiredAmountToDeposit) {
+                                                    clearInterval(allowanceCheck);
 
-                                                $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));
-                                            }
+                                                    const tx2 = await L1StandardBridge.depositERC20(
+                                                        config_variable.l1.addresses.dcn_contract_address,
+                                                        config_variable.l2.addresses.dcn_contract_address,
+                                                        desiredAmountToDeposit,
+                                                        2000000,
+                                                        '0x');
+                                                    await tx2.wait();
+                                                    console.log(tx2, 'tx2');
+                                                    
+                                                    initDepositHistory();
+                                                    $('.response-layer').removeClass('show-this');
+                                                    basic.showAlert('Deposit transaction has been executed successfully! Tokens should be visible on L2 network soon. <a href="'+config_variable.etherscan_domain+'/tx/'+tx2.hash+'" target="_blank">Check transaction here.</a>', '', true);
+
+                                                    $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));
+                                                }
+                                            }, 1000);
                                         }, 500);
                                     }
                                 });

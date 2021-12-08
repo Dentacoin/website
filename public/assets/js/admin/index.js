@@ -1301,17 +1301,37 @@ var projectData = {
 
                             async function initWithdrawHistory() {
                                 console.log(config_variable.l1.addresses.dcn_contract_address, config_variable.l2.addresses.dcn_contract_address, accountsOnEnable[0], 'initWithdrawHistory');
-                                var withdrawHistory = await L2StandardBridge.queryFilter(L2StandardBridge.filters.WithdrawalInitiated(config_variable.l1.addresses.dcn_contract_address, config_variable.l2.addresses.dcn_contract_address, accountsOnEnable[0]));
-                                console.log(withdrawHistory, 'withdrawHistory');
-                                if (withdrawHistory.length) {
-                                    withdrawHistory.reverse();
-                                    var withdrawHistoryHtml = '<div style="text-align: center; padding-bottom: 15px; font-size: 20px; font-weight: bold;">Withdraw history</div><table class="table table-without-reorder table-bordered table-striped text-left"><thead><tr><th>Amount</th><th>Transaction hash</th><th>Action</th></tr></thead><tbody>';
-                                    for (var i = 0, len = withdrawHistory.length; i < len; i+=1) {
-                                        withdrawHistoryHtml += '<tr><td>'+withdrawHistory[i].args._amount+' DCN</td><td><a href="'+config_variable.optimism_etherscan_domain+'/tx/'+withdrawHistory[i].transactionHash+'" target="_blank" class="btn">Etherscan</a></td><td><a href="'+config_variable.optimism_etherscan_domain+'/messagerelayer?search='+withdrawHistory[i].transactionHash+'" target="_blank" class="btn">Complete withdraw</a></td></tr>';
+                                var withdrawHistoryArr = [];
+                                var startingFromBlock = config_variable.L1blockOfL1L2Integration;
+                                var startingToBlock = config_variable.L1blockOfL1L2Integration + 10000;
+                                var currentL1Block = await l2_provider.getBlockNumber();
+
+                                console.log(startingFromBlock, 'startingFromBlock');
+                                console.log(startingToBlock, 'startingToBlock');
+                                console.log(currentL1Block, 'currentL1Block');
+
+                                async function buildWithdrawHistory(fromBlock, toBlock) {
+                                    var withdrawHistory = await L2StandardBridge.queryFilter(L2StandardBridge.filters.WithdrawalInitiated(config_variable.l1.addresses.dcn_contract_address, config_variable.l2.addresses.dcn_contract_address, accountsOnEnable[0]), fromBlock, toBlock);
+                                    withdrawHistoryArr.push(withdrawHistory);
+
+                                    startingFromBlock = startingToBlock;
+                                    if (startingFromBlock > currentL1Block) {
+                                        if (withdrawHistoryArr.length) {
+                                            withdrawHistoryArr.reverse();
+                                            var withdrawHistoryHtml = '<div style="text-align: center; padding-bottom: 15px; font-size: 20px; font-weight: bold;">Withdraw history</div><table class="table table-without-reorder table-bordered table-striped text-left"><thead><tr><th>Amount</th><th>Transaction hash</th><th>Action</th></tr></thead><tbody>';
+                                            for (var i = 0, len = withdrawHistoryArr.length; i < len; i+=1) {
+                                                withdrawHistoryHtml += '<tr><td>'+withdrawHistoryArr[i].args._amount+' DCN</td><td><a href="'+config_variable.optimism_etherscan_domain+'/tx/'+withdrawHistoryArr[i].transactionHash+'" target="_blank" class="btn">Etherscan</a></td><td><a href="'+config_variable.optimism_etherscan_domain+'/messagerelayer?search='+withdrawHistoryArr[i].transactionHash+'" target="_blank" class="btn">Complete withdraw</a></td></tr>';
+                                            }
+                                            withdrawHistoryHtml += '</table>';
+                                            $('.withdraw-history').html(withdrawHistoryHtml);
+                                        }
+                                    } else {
+                                        startingToBlock += 10000;
+                                        buildWithdrawHistory(startingFromBlock, startingToBlock)
                                     }
-                                    withdrawHistoryHtml += '</table>';
-                                    $('.withdraw-history').html(withdrawHistoryHtml);
                                 }
+
+                                buildWithdrawHistory(startingFromBlock, startingToBlock);
                             }
                             initWithdrawHistory();
                         }

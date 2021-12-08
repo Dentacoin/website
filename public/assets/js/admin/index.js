@@ -1272,6 +1272,7 @@ var projectData = {
                             const l2StandardBridgeArtifact = require(`../../../../node_modules/@eth-optimism/contracts/artifacts/contracts/L2/messaging/L2StandardBridge.sol/L2StandardBridge.json`);
                             const factory__L2StandardBridge = new ethers.ContractFactory(l2StandardBridgeArtifact.abi, l2StandardBridgeArtifact.bytecode);
                             const L2StandardBridge = factory__L2StandardBridge.connect(l2Wallet).attach(config_variable.l2.addresses.OVM_L2StandardBridge_address);
+                            console.log(L2StandardBridge, 'L2StandardBridge');
 
                             $('.withdraw-box .max-amount').html('Current L2 DCN balance: ' + await L2_ERC20.balanceOf(accountsOnEnable[0]));
                             $('.withdraw-btn').click(async function() {
@@ -1299,7 +1300,9 @@ var projectData = {
                             });
 
                             async function initWithdrawHistory() {
+                                console.log(config_variable.l1.addresses.dcn_contract_address, config_variable.l2.addresses.dcn_contract_address, accountsOnEnable[0], 'initWithdrawHistory');
                                 var withdrawHistory = await L2StandardBridge.queryFilter(L2StandardBridge.filters.WithdrawalInitiated(config_variable.l1.addresses.dcn_contract_address, config_variable.l2.addresses.dcn_contract_address, accountsOnEnable[0]));
+                                console.log(withdrawHistory, 'withdrawHistory');
                                 if (withdrawHistory.length) {
                                     withdrawHistory.reverse();
                                     var withdrawHistoryHtml = '<div style="text-align: center; padding-bottom: 15px; font-size: 20px; font-weight: bold;">Withdraw history</div><table class="table table-without-reorder table-bordered table-striped text-left"><thead><tr><th>Amount</th><th>Transaction hash</th><th>Action</th></tr></thead><tbody>';

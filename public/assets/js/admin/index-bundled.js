@@ -31422,8 +31422,8 @@ var projectData = {
                             async function initWithdrawHistory() {
                                 console.log(config_variable.l1.addresses.dcn_contract_address, config_variable.l2.addresses.dcn_contract_address, accountsOnEnable[0], 'initWithdrawHistory');
                                 var withdrawHistoryArr = [];
-                                var startingFromBlock = config_variable.L1blockOfL1L2Integration;
-                                var startingToBlock = config_variable.L1blockOfL1L2Integration + 10000;
+                                var startingFromBlock = config_variable.L2blockOfL1L2Integration;
+                                var startingToBlock = config_variable.L2blockOfL1L2Integration + 10000;
                                 var currentL1Block = await l2_provider.getBlockNumber();
 
                                 console.log(startingFromBlock, 'startingFromBlock');
@@ -31436,6 +31436,7 @@ var projectData = {
 
                                     startingFromBlock = startingToBlock;
                                     if (startingFromBlock > currentL1Block) {
+                                        console.log(withdrawHistoryArr, 'withdrawHistoryArr');
                                         if (withdrawHistoryArr.length) {
                                             withdrawHistoryArr.reverse();
                                             var withdrawHistoryHtml = '<div style="text-align: center; padding-bottom: 15px; font-size: 20px; font-weight: bold;">Withdraw history</div><table class="table table-without-reorder table-bordered table-striped text-left"><thead><tr><th>Amount</th><th>Transaction hash</th><th>Action</th></tr></thead><tbody>';

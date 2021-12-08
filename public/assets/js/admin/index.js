@@ -1312,7 +1312,9 @@ var projectData = {
 
                                 async function buildWithdrawHistory(fromBlock, toBlock) {
                                     var withdrawHistory = await L2StandardBridge.queryFilter(L2StandardBridge.filters.WithdrawalInitiated(config_variable.l1.addresses.dcn_contract_address, config_variable.l2.addresses.dcn_contract_address, accountsOnEnable[0]), fromBlock, toBlock);
-                                    withdrawHistoryArr.push(withdrawHistory);
+                                    if (withdrawHistory.length) {
+                                        withdrawHistoryArr.push(withdrawHistory);
+                                    }
 
                                     startingFromBlock = startingToBlock;
                                     if (startingFromBlock > currentL1Block) {

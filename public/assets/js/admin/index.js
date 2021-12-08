@@ -1313,7 +1313,10 @@ var projectData = {
                                 async function buildWithdrawHistory(fromBlock, toBlock) {
                                     var withdrawHistory = await L2StandardBridge.queryFilter(L2StandardBridge.filters.WithdrawalInitiated(config_variable.l1.addresses.dcn_contract_address, config_variable.l2.addresses.dcn_contract_address, accountsOnEnable[0]), fromBlock, toBlock);
                                     if (withdrawHistory.length) {
+                                        console.log(withdrawHistory, 'withdrawHistory');
+                                        console.log(withdrawHistoryArr, 'withdrawHistoryArr');
                                         withdrawHistoryArr.concat(withdrawHistory);
+                                        console.log(withdrawHistoryArr, 'withdrawHistoryArr');
                                     }
 
                                     startingFromBlock = startingToBlock;

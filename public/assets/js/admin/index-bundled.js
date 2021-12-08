@@ -31287,7 +31287,7 @@ var projectData = {
                                             2000000,
                                             '0x');
                                         await tx2.wait();
-                                        basic.showAlert('Deposit transaction has been executed successfully! Tokens should be visible on L2 network soon. <a href="'+config_variable.etherscan_domain+'/tx/'+tx2.hash+'" target="_blank">Check transaction here.</a>', '', true);
+                                        basic.showAlert('Deposit transaction has been executed successfully! Tokens should be visible on L2 network soon ( as soon as the transaction receive over 50 block confirmations ). <a href="'+config_variable.etherscan_domain+'/tx/'+tx2.hash+'" target="_blank">Check transaction here.</a>', '', true);
                                         initDepositHistory();
 
                                         $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));
@@ -31338,7 +31338,7 @@ var projectData = {
                                                     
                                                     initDepositHistory();
                                                     $('.response-layer').removeClass('show-this');
-                                                    basic.showAlert('Deposit transaction has been executed successfully! Tokens should be visible on L2 network soon. <a href="'+config_variable.etherscan_domain+'/tx/'+tx2.hash+'" target="_blank">Check transaction here.</a>', '', true);
+                                                    basic.showAlert('Deposit transaction has been executed successfully! Tokens should be visible on L2 network soon ( as soon as the transaction receive over 50 block confirmations ). <a href="'+config_variable.etherscan_domain+'/tx/'+tx2.hash+'" target="_blank">Check transaction here.</a>', '', true);
 
                                                     $('.deposit-box .max-amount').html('Current L1 DCN balance: ' + await L1_ERC20.balanceOf(accountsOnEnable[0]));
                                                 }

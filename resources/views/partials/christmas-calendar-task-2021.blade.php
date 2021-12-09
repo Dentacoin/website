@@ -274,8 +274,7 @@
                         @break
                     @case(11)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin’s post on Instagram and post a comment tagging two of your friends to be included in a special giveaway. Text comment is required.</div>
-                            <div><a href="https://etherscan.io/token/0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6#comments" target="_blank" class="white-red-btn inline-block">POST HERE</a></div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin on <a href="https://coinmarketcap.com/" class="color-christmas-calendar-red text-decoration-underline" target="_blank">Coinmarketcap</a> through the search bar. Type in “Dentacoin” and once you go to the page follow <span class="color-christmas-calendar-red">“Rating Section”</span>. Leave your review.</div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
@@ -649,7 +648,8 @@
                         @break
                     @case(27)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin on <a href="https://coinmarketcap.com/" class="color-christmas-calendar-red text-decoration-underline" target="_blank">Coinmarketcap</a> through the search bar. Type in “Dentacoin” and once you go to the page follow <span class="color-christmas-calendar-red">“Rating Section”</span>. Leave your review.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin’s post on Instagram and post a comment tagging two of your friends to be included in a special giveaway. Text comment is required.</div>
+                            <div><a href="https://etherscan.io/token/0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6#comments" target="_blank" class="white-red-btn inline-block">POST HERE</a></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>

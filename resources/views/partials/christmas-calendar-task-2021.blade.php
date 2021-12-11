@@ -204,7 +204,7 @@
                             <a href="https://t.me/dentacoin/428712" class="long-text-link color-christmas-calendar-red" target="_blank">https://t.me/dentacoin/428712</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15">VOTE in Twitter poll here:</div>
-                            <a href="https://twitter.com/dentacoin/status/1466790446923923456" class="long-text-link color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1466790446923923456</a>
+                            <a href="https://twitter.com/dentacoin/status/1469323326732615681" class="long-text-link color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1469323326732615681</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">
@@ -330,7 +330,7 @@
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold">Find Dentacoin’s theme filter on Instagram and take a Christmas photo with it. Spread the Christmas mood around.</div>
                             <div class="color-christmas-calendar-red text-decoration-underline padding-bottom-10">Important: This can only be done from a mobile device because filters only work on the phone version of Instagram.</div>
-                            <div><a href="#" target="_blank" class="white-red-btn inline-block">FIND FILTER HERE</a></div>
+                            <div><a href="https://www.instagram.com/ar/608889983767787" target="_blank" class="white-red-btn inline-block">FIND FILTER HERE</a></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
@@ -784,7 +784,7 @@
                     </a>
                     @php($presentName = 'Dentacoin 2022 Weekly Planner')
                 @elseif ($task['type'] == 'dental-horoscope')
-                    <a href="/assets/images/christmas-calendar-campaign/sample.pdf" target="_blank" download>
+                    <a href="/assets/images/christmas-calendar-campaign/Zodiac-Dentacoin-calendar-2021.pdf" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/dental-horoscope.png" class="width-100" alt="" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'Dental Horoscope')
@@ -828,7 +828,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif ($dayId == 31)
-                    @php($btnLink = URL::asset('assets/images/christmas-calendar-campaign/sample.pdf'))
+                    @php($btnLink = URL::asset('assets/images/christmas-calendar-campaign/Zodiac-Dentacoin-calendar-2021.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @endif
@@ -901,7 +901,7 @@
                     </a>
                     @php($presentName = 'Dentacoin 2022 Weekly Planner')
                 @elseif ($task['type'] == 'dental-horoscope')
-                    <a href="/assets/images/christmas-calendar-campaign/sample.pdf" target="_blank" download>
+                    <a href="/assets/images/christmas-calendar-campaign/Zodiac-Dentacoin-calendar-2021.pdf" target="_blank" download>
                         <img src="/assets/images/christmas-calendar-campaign/dental-horoscope.png" class="width-100" alt="" itemprop="contentUrl"/>
                     </a>
                     @php($presentName = 'Dental Horoscope')
@@ -945,7 +945,7 @@
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @elseif ($dayId == 31)
-                    @php($btnLink = URL::asset('assets/images/christmas-calendar-campaign/sample.pdf'))
+                    @php($btnLink = URL::asset('assets/images/christmas-calendar-campaign/Zodiac-Dentacoin-calendar-2021.pdf'))
                     @php($btnLabel = 'DOWNLOAD')
                     @php($actionType = 'download')
                 @endif

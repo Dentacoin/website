@@ -30228,6 +30228,10 @@ function addHTMLEditor(){
     }
 }
 
+$(window).on('click', '.open-media-btn', function() {
+    openMedia($(this).attr('data-id'), $(this).attr('data-close-btn'), $(this).attr('data-type'));
+});
+
 //opening media popup with all the images in the DB
 function openMedia(id, close_btn, type, editor)    {
     var data = {};
@@ -30236,6 +30240,8 @@ function openMedia(id, close_btn, type, editor)    {
     }
     if (close_btn === undefined) {
         close_btn = false;
+    } else {
+        close_btn = true;
     }
     if (type === undefined) {
         type = null;

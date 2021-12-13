@@ -108,7 +108,7 @@ function addHTMLEditor(){
     }
 }
 
-$(window).on('click', '.open-media-btn', function() {
+$(document).on('click', '.open-media-btn', function() {
     openMedia($(this).attr('data-id'), $(this).attr('data-close-btn'), $(this).attr('data-type'));
 });
 

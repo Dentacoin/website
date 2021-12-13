@@ -274,7 +274,7 @@
                         @break
                     @case(11)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin on <a href="https://coinmarketcap.com/" class="color-christmas-calendar-red text-decoration-underline" target="_blank">Coinmarketcap</a> through the search bar. Type in “Dentacoin” and once you go to the page follow <span class="color-christmas-calendar-red">“Rating Section”</span>. Leave your review.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Go to <a href="https://coinmarketcap.com/" class="color-christmas-calendar-red text-decoration-underline" target="_blank">Coinmarketcap</a> and type "Dentacoin" in the Search field. Then scroll down on the Overview page, find "How do you feel about Dentacoin today?" and give your vote.</div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>

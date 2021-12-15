@@ -146,8 +146,10 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
                     } else if (data.bad_ip || data.suspicious_admin) {
                         var on_hold_type = '';
                         if (data.bad_ip) {
+                            console.log('bad_ip');
                             on_hold_type = '&on-hold-type=bad_ip';
                         } else if (data.suspicious_admin) {
+                            console.log('suspicious_admin');
                             on_hold_type = '&on-hold-type=suspicious_admin';
                         }
 
@@ -161,9 +163,11 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
                         }
 
                         if (type == 'mobile') {
+                            console.log('type mobile');
                             hideDcnGatewayLoader();
                             window.open(redirectUrl);
                         } else if (type == 'desktop') {
+                            console.log('type desktop');
                             window.location.replace(redirectUrl);
                         }
                         return false;

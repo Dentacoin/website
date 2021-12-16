@@ -692,7 +692,7 @@
                         @break
                     @case(30)
                         <div class="padding-top-50 padding-bottom-50 text-center">
-                            <a href="#" class="white-red-btn fs-22" target="_blank">TAKE SURVEY</a>
+                            <a href="https://dentavox.dentacoin.com/en/paid-dental-surveys/oral-health-summary-2021" class="white-red-btn fs-22" target="_blank">TAKE SURVEY</a>
                             <div class="fs-16 fs-xs-14 padding-top-10">If you’ve already completed this survey in the past, just submit the task as completed.</div>
                         </div>
                         @break

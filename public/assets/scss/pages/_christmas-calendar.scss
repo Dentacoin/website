@@ -1149,6 +1149,9 @@ body.christmas-calendar {
                 margin-top: -8%;
                 margin-bottom: -8%;
                 position: relative;
+                @include breakpoint($lgll) {
+                    margin-top: -4%;
+                }
                 @include breakpoint($xs) {
                     margin-top: 0;
                 }

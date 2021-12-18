@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\DepositApiWhitelist;
 use App\Http\Controllers\Admin\LocationsController;
-use App\Http\Controllers\Admin\SocialsController;
-use App\Media;
-use App\MenuElement;
 use App\PageMetaData;
 use App\PagesHtmlSection;
-use App\Section;
-use Illuminate\Support\Facades\DB;
+use App\Social;
 use Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -20,7 +18,6 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Route;
-use App\Social;
 
 
 class Controller extends BaseController
@@ -471,6 +468,13 @@ padding: 8px;
                 $coingeckoData = (new APIRequestsController())->getCurrentDcnRateByCoingecko();
                 return number_format($coingeckoData['USD'], 8, '.', '');
                 break;
+            case 'deposit-api-whitelists':
+                $addresses = array();
+                $whitelists = DepositApiWhitelist::all();
+                foreach ($whitelists as $whitelist) {
+                    array_push($addresses, $whitelist->address);
+                }
+                return json_encode($addresses);
             default:
                 $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
                 if (!empty($additional_data)) {

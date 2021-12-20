@@ -509,10 +509,10 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold">SHARE this post on your Facebook profile:</div>
-                            <a href="https://facebook.com/watch/?v=202109878142200" class="long-text-link color-christmas-calendar-red" target="_blank">https://facebook.com/watch/?v=202109878142200</a>
+                            <a href="https://www.facebook.com/dentacoin/posts/1400636743672718" class="long-text-link color-christmas-calendar-red" target="_blank">https://www.facebook.com/dentacoin/posts/1400636743672718</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15">RETWEET this tweet on your Twitter profile:</div>
-                            <a href="https://twitter.com/dentacoin/status/1334072692853628929?s=20" class="long-text-link color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1334072692853628929?s=20</a>
+                            <a href="https://twitter.com/dentacoin/status/1471027349953130502" class="long-text-link color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1471027349953130502</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">
@@ -531,11 +531,11 @@
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-20"><span class="color-christmas-calendar-red">• STEP 1:</span> Follow the link and vote in Dentacoin’s special poll to share your opinion.</div>
                             <div class="fs-18 fs-xs-16 lato-bold">VOTE in Facebook poll here:</div>
-                            <a href="https://facebook.com/watch/?v=202109878142200" class="color-christmas-calendar-red" target="_blank">https://facebook.com/watch/?v=202109878142200</a>
+                            <a href="https://www.facebook.com/dentacoin/posts/1403844000018659" class="color-christmas-calendar-red" target="_blank">https://www.facebook.com/dentacoin/posts/1403844000018659</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20">VOTE in Twitter poll here:</div>
-                            <a href="https://facebook.com/watch/?v=202109878142200" class="color-christmas-calendar-red" target="_blank">https://facebook.com/watch/?v=202109878142200</a>
+                            <a href="https://twitter.com/dentacoin/status/1472835566936985603" class="color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1472835566936985603</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-20">VOTE in Telegram poll here:</div>
-                            <a href="https://facebook.com/watch/?v=202109878142200" class="color-christmas-calendar-red" target="_blank">https://facebook.com/watch/?v=202109878142200</a>
+                            <a href="https://t.me/dentacoin/431278" class="color-christmas-calendar-red" target="_blank">https://t.me/dentacoin/431278</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
@@ -561,7 +561,7 @@
                             <div class="current-task-body from-beginning padding-bottom-50">
                                 <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Complete our survey:</div>
                                 <div class="padding-bottom-50 text-center">
-                                    <a href="#" class="white-red-btn fs-22" target="_blank">TAKE SURVEY</a>
+                                    <a href="https://dentavox.dentacoin.com/en/paid-dental-surveys/oral-care-holidays/" class="white-red-btn fs-22" target="_blank">TAKE SURVEY</a>
                                     <div class="fs-16 fs-xs-14 padding-top-10">If you’ve already completed this survey in the past, just proceed to next step.</div>
                                 </div>
                                 <div class="padding-top-20">
@@ -573,11 +573,9 @@
                     @case(25)
                         <div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
-                            <div class="fs-18 fs-xs-16 lato-bold">SHARE DentaVox’s “Oral Care During the Holidays” survey:</div>
-                            <a href="https://facebook.com/watch/?v=202109878142200" class="long-text-link color-christmas-calendar-red" target="_blank">https://facebook.com/watch/?v=202109878142200</a>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-top-15">RETWEET this tweet on your Twitter profile:</div>
-                            <a href="https://twitter.com/dentacoin/status/1334072692853628929?s=20" class="long-text-link color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1334072692853628929?s=20</a>
+                            <div class="fs-18 fs-xs-16 lato-bold">SHARE DentaVox’s “Oral Care During the Holidays” survey.</div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-top-10">Copy the link and share on FACEBOOK, TWITTER or INSTAGRAM:</div>
+                            <a href="https://dentavox.dentacoin.com/en/paid-dental-surveys/oral-care-holidays/" class="long-text-link color-christmas-calendar-red" target="_blank">https://dentavox.dentacoin.com/en/paid-dental-surveys/oral-care-holidays/</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">
@@ -648,9 +646,20 @@
                         @break
                     @case(27)
                         <div>
-                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span> Find Dentacoin’s post on Twitter and retweet as you tag two of your friends. Text comment is required.</div>
-                            <div><a href="#" target="_blank" class="white-red-btn inline-block">POST HERE</a></div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 1:</span></div>
+                            <div class="fs-18 fs-xs-16 lato-bold">Follow the links to Facebook or Twitter and share our latest Optimism update with your friends. Share on Facebook:</div>
+                            <a href="https://www.facebook.com/dentacoin/posts/1400238520379207" class="long-text-link color-christmas-calendar-red" target="_blank">https://www.facebook.com/dentacoin/posts/1400238520379207</a>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-top-15">Share on Twitter:</div>
+                            <a href="https://twitter.com/dentacoin/status/1470775658603335686" class="long-text-link color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1470775658603335686</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
+                            <div class="padding-bottom-15">
+                                <div class="custom-google-label-style module max-width-400">
+                                    <label for="text_proof">Link to your post/ tweet:</label>
+                                    <input type="text" id="text_proof" name="text_proof" maxlength="1000" class="full-rounded required form-field"/>
+                                </div>
+                            </div>
+                            <div class="fs-18 fs-xs-16 lato-bold padding-bottom-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="upload-btn-parent">
                                 <input type="file" class="hide screenshot_proof" id="screenshot_proof" name="screenshot_proof"/>
                                 <button type="button" class="white-red-btn padding-top-0 padding-bottom-0 padding-left-0 padding-right-0"><label for="screenshot_proof" class="margin-bottom-0 inline-block padding-top-5 padding-bottom-5 padding-left-15 padding-right-15">Attach a screenshot</label></button>

@@ -230,8 +230,12 @@
                 <div class="col-xs-12">
                     <div>© {{date('Y')}} Dentacoin Foundation. All rights reserved.</div>
                     <div><a href="\assets\uploads\dentacoin-foundation.pdf" target="_blank" class="footer-bottom-link">Verify Dentacoin Foundation</a> <span class="separator">|</span> <a href="https://dentacoin.com/privacy-policy" target="_blank" class="footer-bottom-link">Privacy Policy</a></div>
-                    <div class="padding-top-xs-25">Contract Address:</div>
-                    <div><a href="https://etherscan.io/address/0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6#code" target="_blank" class="footer-bottom-link fs-xs-11">0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6</a></div>
+                    <div class="padding-top-15 padding-top-xs-25 lato-bold fs-16">Contract Addresses:</div>
+                    <div>
+                        <a href="https://etherscan.io/address/0x08d32b0da63e2C3bcF8019c9c5d849d7a9d791e6#code" target="_blank" class="footer-bottom-link fs-xs-11">Ethereum Mainnet</a>
+                        <span class="inline-block padding-left-5 padding-right-5">|</span>
+                        <a href="https://optimistic.etherscan.io/address/0x1da650c3b2daa8aa9ff6f661d4156ce24d08a062#code" target="_blank" class="footer-bottom-link fs-xs-11">Optimism</a>
+                    </div>
                 </div>
             </div>
         </div>

@@ -651,7 +651,7 @@
                             <a href="https://www.facebook.com/dentacoin/posts/1400238520379207" class="long-text-link color-christmas-calendar-red" target="_blank">https://www.facebook.com/dentacoin/posts/1400238520379207</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15"><span class="color-christmas-calendar-red">OR:</span></div>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-15">Share on Twitter:</div>
-                            <a href="https://twitter.com/dentacoin/status/1470775658603335686" class="long-text-link color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1470775658603335686</a>
+                            <a href="https://twitter.com/dentacoin/status/1473311731900469252" class="long-text-link color-christmas-calendar-red" target="_blank">https://twitter.com/dentacoin/status/1473311731900469252</a>
                             <div class="fs-18 fs-xs-16 lato-bold padding-top-40 padding-bottom-10"><span class="color-christmas-calendar-red">• STEP 2:</span> Submit proof after completing the task:</div>
                             <div class="padding-bottom-15">
                                 <div class="custom-google-label-style module max-width-400">

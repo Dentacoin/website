@@ -1414,6 +1414,15 @@ if (typeof jQuery == 'undefined') {
 
                                     if (dcnGateway.utils.cookies.get('strictly_necessary_policy') != '1' && !loadedFromMobileApp) {
                                         dcnGateway.utils.showPopup('Please accept the strictly necessary cookies in order to continue with logging in.', 'alert');
+
+                                        if ($('.dcn-privacy-policy-cookie .accept-all').length) {
+                                            $('.dcn-privacy-policy-cookie .accept-all').fadeOut(600);
+                                            $('.dcn-privacy-policy-cookie .accept-all').fadeIn(600);
+                                            $('.dcn-privacy-policy-cookie .accept-all').fadeOut(600);
+                                            $('.dcn-privacy-policy-cookie .accept-all').fadeIn(600);
+                                            $('.dcn-privacy-policy-cookie .accept-all').fadeOut(600);
+                                            $('.dcn-privacy-policy-cookie .accept-all').fadeIn(600);
+                                        }
                                     } else {
                                         //clear prev errors
                                         if ($('.dentacoin-login-gateway-container form#dentist-login .error-handle').length) {

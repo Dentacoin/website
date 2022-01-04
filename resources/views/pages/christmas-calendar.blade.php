@@ -16,14 +16,20 @@
                     </div>
                 </div>
             </section>
-            <section class="container-fluid text-center presents-list padding-bottom-50 padding-bottom-xs-30">
-                <div class="row">
-                    <div class="col-xs-12 padding-left-xs-0 padding-right-xs-0">
-                        <picture itemscope="" itemtype="http://schema.org/ImageObject">
-                            <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/holiday-calendar-prizes-mobile.png" />
-                            <img src="/assets/images/christmas-calendar-campaign/holiday-calendar-prizes.png" alt="Presents list" itemprop="contentUrl"/>
-                        </picture>
-                    </div>
+            <section class="presents-list padding-top-40">
+                <img src="/assets/images/christmas-calendar-campaign/dentist-christmas.png" class="dentist" alt="Dentist" itemprop="contentUrl"/>
+                <picture itemscope="" itemtype="http://schema.org/ImageObject" class="presents">
+                    <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/mobile-prizes-img.png">
+                    <source media="(max-width: 992px)" srcset="/assets/images/christmas-calendar-campaign/tablet-prizes-img.png">
+                    <img src="/assets/images/christmas-calendar-campaign/holiday-calendar-2021-not-logged-prizes.png" alt="Presents list" itemprop="contentUrl"/>
+                </picture>
+                <img src="/assets/images/christmas-calendar-campaign/user-christmas-2021.png" class="user" alt="User" itemprop="contentUrl"/>
+                <div class="padding-bottom-50 padding-top-sm-30 padding-top-xs-30 text-center">
+                    <a href="javascript:void(0);" class="open-dentacoin-gateway patient-login">
+                        <figure itemscope="" itemtype="http://schema.org/ImageObject">
+                            <img src="/assets/images/christmas-calendar-campaign/join-btn.svg" class="max-width-250 max-width-xs-300" alt="Join button" itemprop="contentUrl"/>
+                        </figure>
+                    </a>
                 </div>
             </section>
             <section class="container tasks-section padding-top-50 padding-bottom-100 text-center">
@@ -46,8 +52,7 @@
             </section>
             <section>
                 <picture itemscope="" itemtype="http://schema.org/ImageObject">
-                    <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/footer-presents-mobile.png" />
-                    <img src="/assets/images/christmas-calendar-campaign/footer-presents.png" class="width-100" alt="Santa flying in the sky" itemprop="contentUrl"/>
+                    <img src="/assets/images/christmas-calendar-campaign/not-registered-trees-and-presents-footer.png" class="width-100" alt="Trees and presents" itemprop="contentUrl"/>
                 </picture>
             </section>
         </div>

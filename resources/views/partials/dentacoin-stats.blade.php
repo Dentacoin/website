@@ -25,7 +25,7 @@
                 <figure class="text-center" itemscope="" itemtype="http://schema.org/ImageObject">
                     <img alt="Dentacoin Dentists icon" class="max-width-60 margin-bottom-5" data-defer-src="/assets/uploads/stats1.svg" itemprop="contentUrl">
                 </figure>
-                <div class="fs-40 fs-lg-30 fs-md-30 fs-sm-30 fs-xs-22 lato-black padding-top-10">@if(strtotime('2021/12/18 00:00:00') < time()) <img alt="Hidden present" class="max-width-30 width-100 margin-bottom-10 inline-block" data-defer-src="/assets/images/christmas-calendar-campaign/hidden-present3.png" itemprop="contentUrl"> @endif {{$dentistsCount}}</div>
+                <div class="fs-40 fs-lg-30 fs-md-30 fs-sm-30 fs-xs-22 lato-black padding-top-10">{{$dentistsCount}}</div>
                 <div class="fs-20 fs-xs-18 padding-bottom-xs-25">Dentacoin Dentists</div>
             </div>
             <div class="single inline-block-top">
@@ -46,7 +46,7 @@
                 <figure class="text-center" itemscope="" itemtype="http://schema.org/ImageObject">
                     <img alt="Transactions icon" class="max-width-60 margin-bottom-10" data-defer-src="/assets/uploads/stats4.svg" itemprop="contentUrl">
                 </figure>
-                <div class="fs-40 fs-lg-30 fs-md-30 fs-sm-30 fs-xs-22 lato-black padding-top-10">@if(strtotime('2021/12/28 00:00:00') < time()) <img alt="Hidden present" class="max-width-30 width-100 margin-bottom-10 inline-block" data-defer-src="/assets/images/christmas-calendar-campaign/hidden-present2.png" itemprop="contentUrl"> @endif {{$dcnTransactionsCount}}</div>
+                <div class="fs-40 fs-lg-30 fs-md-30 fs-sm-30 fs-xs-22 lato-black padding-top-10">{{$dcnTransactionsCount}}</div>
                 <div class="fs-20 fs-xs-18 ">Transactions in DCN currency</div>
             </div>
         </div>

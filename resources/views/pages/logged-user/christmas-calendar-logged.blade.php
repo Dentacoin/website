@@ -16,14 +16,14 @@
                     </div>
                 </div>
             </section>
-            <section class="presents-list padding-top-150">
-                <img src="/assets/images/christmas-calendar-campaign/dentist-christmas.png" class="dentist" alt="Dentist" itemprop="contentUrl"/>
-                <picture itemscope="" itemtype="http://schema.org/ImageObject" class="presents padding-bottom-30">
-                    <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/mobile-prizes.png">
-                    <source media="(max-width: 992px)" srcset="/assets/images/christmas-calendar-campaign/tablet-prizes.png">
-                    <img src="/assets/images/christmas-calendar-campaign/holiday-calendar-2020-prizes.png" alt="Presents list" itemprop="contentUrl"/>
+            <section class="presents-list margin-top-70 no-dentist-and-user-bottom">
+                <img src="/assets/images/christmas-calendar-campaign/dentist-registered-screen.png" class="dentist" alt="Dentist" itemprop="contentUrl"/>
+                <picture itemscope="" itemtype="http://schema.org/ImageObject" class="presents padding-bottom-130">
+                    <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/mobile-prizes-img.png">
+                    <source media="(max-width: 992px)" srcset="/assets/images/christmas-calendar-campaign/tablet-prizes-img.png">
+                    <img src="/assets/images/christmas-calendar-campaign/holiday-calendar-2021-not-logged-prizes.png" alt="Presents list" itemprop="contentUrl"/>
                 </picture>
-                <img src="/assets/images/christmas-calendar-campaign/user-christmas.png" class="user" alt="User" itemprop="contentUrl"/>
+                <img src="/assets/images/christmas-calendar-campaign/woman-registered-screen.png" class="user" alt="User" itemprop="contentUrl"/>
             </section>
             <section class="container tasks-section padding-top-50 padding-bottom-100 text-center">
                 <div class="row">
@@ -197,8 +197,7 @@
             </section>
             <section class="padding-top-50">
                 <picture itemscope="" itemtype="http://schema.org/ImageObject">
-                    <source media="(max-width: 768px)" srcset="/assets/images/christmas-calendar-campaign/footer-presents-mobile.png" />
-                    <img src="/assets/images/christmas-calendar-campaign/footer-presents.png" class="width-100" alt="Santa flying in the sky" itemprop="contentUrl"/>
+                    <img src="/assets/images/christmas-calendar-campaign/not-registered-trees-and-presents-footer.png" class="width-100" alt="Trees and presents" itemprop="contentUrl"/>
                 </picture>
             </section>
         </div>

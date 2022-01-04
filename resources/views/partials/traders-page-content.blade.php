@@ -180,7 +180,7 @@
             </figure>
             <div class="right-to-image inline-block-top padding-left-15 padding-left-xs-0 padding-left-sm-0 lato-bold">
                 <h4 class="fs-28 fs-xs-22 color-black padding-bottom-10">Partly Locked:</h4>
-                <div class="fs-20 fs-xs-18 lato-regular">Approx. @if(strtotime('2021/12/23 00:00:00') < time()) <img alt="Hidden present" class="max-width-30 width-100 margin-bottom-10 inline-block" data-defer-src="/assets/images/christmas-calendar-campaign/hidden-present.png" itemprop="contentUrl"> @endif 70% of the total supply is locked in TimeLock contracts and is
+                <div class="fs-20 fs-xs-18 lato-regular">Approx. 70% of the total supply is locked in TimeLock contracts and is
                     being released in minor parts at the beginning of each year.
                     <div><a href="https://github.com/Dentacoin/ERC20-token/blob/master/DCN%20time%20lock/DCN%20TimeLock%20addresses.pdf" target="_blank" class="lato-bold color-bright-blue">See all TimeLock contract addresses.</a></div>
                 </div>

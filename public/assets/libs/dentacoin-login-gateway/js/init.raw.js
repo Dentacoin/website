@@ -1270,6 +1270,14 @@ if (typeof jQuery == 'undefined') {
 
                                 $(document).on('cannotLoginBecauseOfMissingCookies', function (event) {
                                     dcnGateway.utils.showPopup('Please accept the strictly necessary cookies in order to continue with logging in.', 'alert');
+                                    if ($('.dcn-privacy-policy-cookie .accept-all').length) {
+                                        $('.dcn-privacy-policy-cookie .accept-all').fadeOut(600);
+                                        $('.dcn-privacy-policy-cookie .accept-all').fadeIn(600);
+                                        $('.dcn-privacy-policy-cookie .accept-all').fadeOut(600);
+                                        $('.dcn-privacy-policy-cookie .accept-all').fadeIn(600);
+                                        $('.dcn-privacy-policy-cookie .accept-all').fadeOut(600);
+                                        $('.dcn-privacy-policy-cookie .accept-all').fadeIn(600);
+                                    }
                                 });
 
                                 $(document).on('noUserIdReceived', function (event) {

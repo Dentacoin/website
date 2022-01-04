@@ -35,7 +35,7 @@
                                 See the winners in our Telegram group and be the first to know about future raffles!
                             @endif
                         </p>
-                        <a href="https://t.me/dentacoin/255508" target="_blank">
+                        <a href="https://t.me/dentacoin" target="_blank">
                             <figure itemscope="" itemtype="http://schema.org/ImageObject">
                                 <img src="/assets/images/christmas-calendar-campaign/see-winners-in-dentacoin-telegram.png" class="" alt="Join dentacoin telegram button" itemprop="contentUrl"/>
                             </figure>

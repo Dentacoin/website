@@ -138,7 +138,11 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
 
                         if (type == 'mobile') {
                             hideDcnGatewayLoader();
-                            window.open(redirectUrl);
+                            var newWindow = window.open(redirectUrl);
+                            // fix, because window.open not working on DV app for whatever reason
+                            if (newWindow == null) {
+                                window.cordova.InAppBrowser.open(redirectUrl);
+                            }
                         } else if (type == 'desktop') {
                             window.location.replace(redirectUrl);
                         }
@@ -165,7 +169,11 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
                         if (type == 'mobile') {
                             console.log('type mobile');
                             hideDcnGatewayLoader();
-                            window.open(redirectUrl);
+                            var newWindow = window.open(redirectUrl);
+                            // fix, because window.open not working on DV app for whatever reason
+                            if (newWindow == null) {
+                                window.cordova.InAppBrowser.open(redirectUrl);
+                            }
                         } else if (type == 'desktop') {
                             console.log('type desktop');
                             window.location.replace(redirectUrl);
@@ -177,7 +185,11 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
 
                         if (type == 'mobile') {
                             hideDcnGatewayLoader();
-                            window.open(redirectUrl);
+                            var newWindow = window.open(redirectUrl);
+                            // fix, because window.open not working on DV app for whatever reason
+                            if (newWindow == null) {
+                                window.cordova.InAppBrowser.open(redirectUrl);
+                            }
                         } else if (type == 'desktop') {
                             window.location.replace(redirectUrl);
                         }
@@ -188,7 +200,11 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
 
                         if (type == 'mobile') {
                             hideDcnGatewayLoader();
-                            window.open(redirectUrl);
+                            var newWindow = window.open(redirectUrl);
+                            // fix, because window.open not working on DV app for whatever reason
+                            if (newWindow == null) {
+                                window.cordova.InAppBrowser.open(redirectUrl);
+                            }
                         } else if (type == 'desktop') {
                             window.location.replace(redirectUrl);
                         }

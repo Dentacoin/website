@@ -150,7 +150,11 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
 
                     if (type == 'mobile') {
                         hideDcnGatewayLoader();
-                        window.open(redirectUrl);
+                        var newWindow = window.open(redirectUrl);
+                        // fix, because window.open not working on DV app for whatever reason
+                        if (newWindow == null) {
+                            window.cordova.InAppBrowser.open(redirectUrl);
+                        }
                     } else if (type == 'desktop') {
                         window.location.replace(redirectUrl);
                     }
@@ -174,7 +178,11 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
 
                     if (type == 'mobile') {
                         hideDcnGatewayLoader();
-                        window.open(redirectUrl);
+                        var newWindow = window.open(redirectUrl);
+                        // fix, because window.open not working on DV app for whatever reason
+                        if (newWindow == null) {
+                            window.cordova.InAppBrowser.open(redirectUrl);
+                        }
                     } else if (type == 'desktop') {
                         window.location.replace(redirectUrl);
                     }
@@ -185,7 +193,11 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
 
                     if (type == 'mobile') {
                         hideDcnGatewayLoader();
-                        window.open(redirectUrl);
+                        var newWindow = window.open(redirectUrl);
+                        // fix, because window.open not working on DV app for whatever reason
+                        if (newWindow == null) {
+                            window.cordova.InAppBrowser.open(redirectUrl);
+                        }
                     } else if (type == 'desktop') {
                         window.location.replace(redirectUrl);
                     }
@@ -196,7 +208,11 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
 
                     if (type == 'mobile') {
                         hideDcnGatewayLoader();
-                        window.open(redirectUrl);
+                        var newWindow = window.open(redirectUrl);
+                        // fix, because window.open not working on DV app for whatever reason
+                        if (newWindow == null) {
+                            window.cordova.InAppBrowser.open(redirectUrl);
+                        }
                     } else if (type == 'desktop') {
                         window.location.replace(redirectUrl);
                     }

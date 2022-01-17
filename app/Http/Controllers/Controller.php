@@ -475,6 +475,8 @@ padding: 8px;
                     array_push($addresses, $whitelist->address);
                 }
                 return json_encode($addresses);
+            case 'l2-transfer-info':
+                return view('pages/l2-transfer-info');
             default:
                 $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
                 if (!empty($additional_data)) {

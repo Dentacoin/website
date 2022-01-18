@@ -15,6 +15,27 @@ Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captc
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
     //======================================= PAGES ========================================
 
+    Route::get('/test123', function() {
+        (new \App\Http\Controllers\Admin\ChristmasCalendarController())->dummySendEmail('miroslavn94@gmail.com');
+        //$array = [];
+        //$row = 1;
+        //if (($handle = fopen("./christmas_calendar_participants.csv", "r")) !== FALSE) {
+        //    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+        //        $num = count($data);
+        //        $row++;
+        //        for ($c=0; $c < $num; $c++) {
+        //            array_push($array, $data[$c]);
+        //        }
+        //    }
+        //    fclose($handle);
+        //}
+        //$response = (new \App\Http\Controllers\APIRequestsController())->getUsersData($array);
+        //foreach ($response->data as $user) {
+        //    (new \App\Http\Controllers\Admin\ChristmasCalendarController())->dummySendEmail($user->email);
+        //}
+        die();
+    })->name('test123');
+
     Route::get('/', 'HomeController@getView')->name('home');
 
     Route::get('/users', 'HomeController@getUsersPageView')->name('users');

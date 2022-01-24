@@ -206,7 +206,8 @@ class APIRequestsController extends Controller {
             CURLOPT_URL => getenv('API_DOMAIN').'/api/add-rewards/',
             CURLOPT_SSL_VERIFYPEER => 0,
             CURLOPT_POSTFIELDS => array(
-                'hashed_dcn_reward' => (new \App\Http\Controllers\Controller())->encrypt(json_encode(array('user_id' => $user_id, 'amount' => $amount, 'platform' => $platform)) , getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'))
+                'hashed_dcn_reward' => (new \App\Http\Controllers\Controller())->encrypt(json_encode(array('user_id' => $user_id, 'amount' => $amount, 'platform' => $platform)), getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY')),
+                'type' => 'Holiday calendar rewards.'
             )
         ));
 

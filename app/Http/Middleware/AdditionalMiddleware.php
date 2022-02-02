@@ -23,8 +23,9 @@ class AdditionalMiddleware
         }*/
         //$params = $request->route()->parameters();
 
+        // only if logged in, check if token is still active, if not then logout user
         $user_controller = new App\Http\Controllers\UserController();
-        if($user_controller->checkSession()) {
+        if ($user_controller->checkSession()) {
             $validateAccessTokenResponse = (new App\Http\Controllers\APIRequestsController())->validateAccessToken();
             if (!empty($validateAccessTokenResponse) && is_object($validateAccessTokenResponse) && property_exists($validateAccessTokenResponse, 'success') && !$validateAccessTokenResponse->success) {
                 $request->session()->forget('logged_user');

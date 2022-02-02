@@ -2,10 +2,8 @@ const {config_variable} = require('./config');
 const Web3 = require('../../../node_modules/web3');
 const ethers = require('../../../node_modules/ethers');
 const optimismContracts = require('../../../node_modules/@eth-optimism/contracts');
+const ethers_l2_provider = nL1FeeETHTransferew ethers.providers.JsonRpcProvider('https://mainnet.optimism.io');
 const web3_l2_provider = new Web3(new Web3.providers.HttpProvider('https://mainnet.optimism.io'));
-const ethers_l2_provider = new ethers.providers.JsonRpcProvider(
-    'https://mainnet.optimism.io'
-);
 
 async function init() {
     const L2DCNContract = new web3_l2_provider.eth.Contract(config_variable.l2.abi_definitions.dcn_contract_abi, config_variable.l2.addresses.dcn_contract_address);

@@ -306,6 +306,7 @@ class Controller extends BaseController
         return $data;
     }
 
+    // asymmetric encryption
     public function encrypt($raw_text, $algorithm, $key) {
         $length = openssl_cipher_iv_length($algorithm);
         $iv = openssl_random_pseudo_bytes($length);
@@ -315,6 +316,8 @@ class Controller extends BaseController
         return $encrypted_with_iv;
     }
 
+
+    // asymmetric decryption
     public function decrypt($encrypted_text) {
         list($data, $iv) = explode('|', $encrypted_text);
         $iv = base64_decode($iv);

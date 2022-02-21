@@ -35,9 +35,10 @@ class AdditionalMiddleware
         }
 
         $response = $next($request);
+
+        // HEADERS
         $response->headers->set('Referrer-Policy', 'no-referrer');
         $response->headers->set('X-XSS-Protection', '1; mode=block');
-
         $route = Route::getRoutes()->match($request);
         if ($route->getName() != 'google-map-iframe' || $route->getName() != 'iframe-civic-popup') {
             $response->headers->set('X-Frame-Options', 'DENY');

@@ -199,6 +199,7 @@ class UserController extends Controller {
         return response()->json(['success' => $getCountryResponse]);
     }
 
+    // used by the DCN Login gateway to create session
     protected function handleDentistLogin(Request $request) {
         $logData = $request->input();
         // removing password from logs

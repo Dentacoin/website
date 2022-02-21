@@ -62,7 +62,7 @@ $(window).on('resize', function () {
         //PRESS CENTER
         initListingPageLine();
     } else if ($('body.careers.allow-draw-lines').length > 0) {
-        //CAREERSdentacoin-ecosystem
+        //CAREERS
         drawHeaderToFirstSectionLine();
     } else if ($('body.corporate-design').length > 0) {
         //CORPORATE DESIGN
@@ -79,7 +79,7 @@ $(window).on('resize', function () {
     }
 });
 
-// ==================== PAGES ====================
+// ==================== PAGES DATA ====================
 
 var projectData = {
     pages: {
@@ -124,8 +124,6 @@ var projectData = {
                         var tradersPageData = '';
 
                         var takeHomepageDataResponse = await projectData.requests.takeHomepageData();
-                        console.log(takeHomepageDataResponse, 'takeHomepageDataResponse');
-
                         if (takeHomepageDataResponse.success) {
                             projectData.general_logic.data.hideLoader();
                             projectData.general_logic.data.showStickyHomepageNav();
@@ -213,7 +211,8 @@ var projectData = {
                             initBigHub();
                         }
                     });
-                    
+
+                    // method to initialize the big hub in /users and /dentists pages
                     async function initBigHub() {
                         if (!hasOwnProperty.call(loadedLibs, 'bigHubStyle')) {
                             if (isFirefox) {
@@ -372,17 +371,6 @@ var projectData = {
                 $('.blank-container').height($(window).height());
 
                 projectData.general_logic.data.setChangeableVideos();
-
-                // if exchange bullets exist bind them logic to show/ hide exchanges
-                /*if ($('.exchanges-bullets').length) {
-                    $('.exchanges-bullets a').click(function() {
-                        $('.exchanges-bullets a').removeClass('active');
-                        $(this).addClass('active');
-
-                        $('.mobile-exchanges .mobile-extra-row').removeClass('active');
-                        $('.mobile-exchanges .mobile-extra-row[data-bullet="'+$(this).attr('data-bullet')+'"]').addClass('active');
-                    });
-                }*/
 
                 if ($('.mobile-exchanges').length) {
                     // load slick lib
@@ -855,9 +843,9 @@ var projectData = {
             },
             christmasCalendar: function() {
                 if ($('body').hasClass('christmas-calendar')) {
-                    projectData.general_logic.data.initTooltips();
-
                     // CHRISTMAS CALENDAR
+
+                    projectData.general_logic.data.initTooltips();
                     $(document).on('click', '.custom-close-bootbox', function() {
                         basic.closeDialog();
                     });
@@ -866,10 +854,12 @@ var projectData = {
                         $('footer').css({'margin-top' : '-30px'});
                     }
 
+                    // if the holiday calendar campaign is LIVE
                     if (Date.now() > Math.floor(new Date(2021, 12, 1, 23, 59, 59, 0).getTime())) {
                         initTasksEvent();
                     } else {
                         if (basic.cookies.get('agreed_with_christmas_calendar_rules') != '1') {
+                            // RULES POPUP
                             $('.tasks-section .camping-custom-popups.rules').html('<div class="popup-wrapper"><h2 class="lato-black fs-25 text-center padding-bottom-20 padding-top-15">SIMPLE RULES:</h2> <ul class="lato-regular fs-18 line-height-30"> <li><span class="lato-black">31 days=31 gifts:</span> Unlock a new task every day, complete it and get various rewards!</li><li><span class="lato-black">Complete tasks every day and your DCN rewards will be doubled at the end of the challenge.</span></li><li><span class="lato-black">31 days=31 tickets:</span> Don’t miss a day and increase your chances to win!</li><li><span class="lato-black">Missed a day?</span> You can catch up with the daily tasks and gifts, but you’ll have one ticket less and your DCN rewards will not be doubled at the end.</li><li>All DCN daily rewards will be gradually unlocked for withdrawal in the period <span class="lato-black">Jan 4 - 22, 2022.</span></li><li>You can spin Dentacoin’s festive wheel every Friday of the month. You get the chance to win one of four amazing prizes, as it follows:<br>- 5 000 DCN - 40% chance of winning<br>- Daily VIP pass for DentaVox* - 20% chance of winning<br>- 3 Raffle Tickets - 30 % chance of winning<br>- 15 000 DCN - 10% chance of winning<br>Keep in mind that the wheel is locked by the date of release. You can see how much time is left till the next spin on the special countdown clock on the website. </li><li>Other gifts are sent via email <span class="lato-black">within 7 days after</span> the task is completed.</li><li>All tasks are subject to manual approval to guarantee proper completion.</li><li>Only users who have <span class="lato-black">submitted proofs</span> for their tasks get rewards and participate in the raffle.</li><li>All posts, likes and follows <span class="lato-black">must remain</span> at least until the raffle is finished.</li><li><span class="lato-black">Check the raffle winners on January 21, 2022 - first in our Telegram group!</span></li></ul> <div class="padding-top-20 padding-bottom-20 max-width-400 margin-0-auto checkboxes"> <div class="padding-bottom-10 padding-top-15"> <div class="checkbox-wrapper"><input id="christmas-calendar-terms" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-terms">I read and agree to the <a href="/holiday-calendar-terms" target="_blank" class="color-christmas-calendar-red">Terms & Conditions</a></label></div><div class="padding-bottom-10"> <div class="checkbox-wrapper"><input id="christmas-calendar-privacy-policy" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-privacy-policy">I read and agree to the <a href="/privacy-policy" target="_blank" class="color-christmas-calendar-red">Privacy Policy</a></label></div><div> <div class="checkbox-wrapper"><input id="christmas-calendar-years" type="checkbox"/></div><label class="fs-18 padding-left-5" for="christmas-calendar-years">I confirm that I am eighteen (18) years of age or older.</label></div></div><div class="padding-bottom-20 text-center"><a href="javascript:void(0);" class="accept-christmas-calendar-rules"> <figure itemscope="" itemtype="http://schema.org/ImageObject"><img src="/assets/images/christmas-calendar-campaign/ready-btn-present.svg" class="width-100 max-width-220" alt="Popup button" itemprop="contentUrl"/></figure></a></div></div>');
 
                             $('html, body').animate({scrollTop: $('.camping-custom-popups.rules').offset().top}, 300);
@@ -894,6 +884,8 @@ var projectData = {
 
                         function checkChristmasCalendarSocialEngagement() {
                             if (basic.cookies.get('christmas_calendar_social_engagement') != '1') {
+                                // display social tasks popup
+
                                 $('.tasks-section .camping-custom-popups.socials').show();
                                 $('html, body').animate({scrollTop: $('.camping-custom-popups.socials').offset().top}, 300);
 
@@ -1697,84 +1689,7 @@ var projectData = {
                                                         basic.showDialog(response.success, 'response-popup', null);
                                                     }, task_id);
                                                 }
-                                            }/* else if (['27'].indexOf(this_btn.attr('data-day-id')) > -1) {
-                                                // newsletter registration task
-                                                $('.newsletter-register form').on('submit', function(event)  {
-                                                    var this_form = this;
-                                                    var form = $(this_form);
-                                                    var error = false;
-                                                    if (!basic.validateEmail(form.find('input[type="email"]').val().trim()))    {
-                                                        error = true;
-                                                    } else if (!form.find('#newsletter-privacy-policy-id').is(':checked'))  {
-                                                        error = true;
-                                                    }
-
-                                                    if (!error) {
-                                                        completeTask(form, this_form, this_btn, new FormData($(form)[0]), function(response) {
-                                                            projectData.general_logic.data.hideLoader();
-                                                            if (response.dcnAmount) {
-                                                                $('.user-dcn-amount').html(response.dcnAmount);
-                                                            }
-                                                            if (response.ticketAmount) {
-                                                                $('.user-ticket-amount').html(response.ticketAmount);
-                                                            }
-                                                            if (response.bonusTickets) {
-                                                                $('.user-bonus-ticket-amount').html(response.bonusTickets);
-                                                            }
-
-                                                            this_btn.find('.wrapper').addClass('opened');
-                                                            this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
-
-                                                            basic.closeDialog();
-                                                            basic.showDialog(response.success, 'response-popup', null);
-                                                        });
-
-                                                        fireGoogleAnalyticsEvent('Subscription', 'Sign-up', 'Newsletter');
-                                                    }
-                                                });
-                                            } else if (['24'].indexOf(this_btn.attr('data-day-id')) > -1) {
-                                                // holiday card generation task
-                                                $('.popup-body form').on('submit', function(event) {
-                                                    event.preventDefault();
-                                                    var form = $(this);
-                                                    var this_form = this;
-
-                                                    completeTask(form, this_form, this_btn, new FormData($(this_form)[0]), function(response) {
-                                                        var post_data = {};
-                                                        post_data['user_slug'] = response.data;
-                                                        post_data['year'] = response.year;
-                                                        $.ajax({
-                                                            type: 'POST',
-                                                            url: 'https://christmas-calendar-api.dentacoin.com/generate-holiday-card',
-                                                            dataType: 'json',
-                                                            data: post_data,
-                                                            success: function (imageGenerationResponse) {
-                                                                projectData.general_logic.data.hideLoader();
-                                                                if (imageGenerationResponse.success) {
-                                                                    if (imageGenerationResponse.dcnAmount) {
-                                                                        $('.user-dcn-amount').html(imageGenerationResponse.dcnAmount);
-                                                                    }
-                                                                    if (imageGenerationResponse.ticketAmount) {
-                                                                        $('.user-ticket-amount').html(imageGenerationResponse.ticketAmount);
-                                                                    }
-                                                                    if (imageGenerationResponse.bonusTickets) {
-                                                                        $('.user-bonus-ticket-amount').html(imageGenerationResponse.bonusTickets);
-                                                                    }
-
-                                                                    this_btn.find('.wrapper').addClass('opened');
-                                                                    this_btn.find('.present__content').append('<i class="fa fa-check check-icon" aria-hidden="true"></i>');
-
-                                                                    basic.closeDialog();
-                                                                    basic.showDialog(response.success, 'response-popup', null);
-                                                                    //window.open('https://christmas-calendar-api.dentacoin.com/assets/uploads/face-stickers/' + imageGenerationResponse.data, '_blank');
-                                                                } else {
-                                                                    basic.showAlert('Something went wrong. Please try again later or write a message to admin@dentacoin.com with description of the problem.', '', true);
-                                                                }
-                                                            }
-                                                        });
-                                                    });
-                                                });
-                                            }*/
+                                            }
 
                                             var screenshotProofsLength = $('.screenshot_proof').length;
                                             //my_file_image.txt
@@ -1821,72 +1736,30 @@ var projectData = {
                                                     });
                                                 }
 
-                                                //if (task_id != undefined) {
-                                                    if (form.find('[name="text_proof"]').length && form.find('.screenshot_proof').length) {
-                                                        if (form.find('[name="text_proof"]').val().trim() == '' && form.find('.screenshot_proof').val().trim() == '') {
-                                                            basic.showAlert('Please submit proof. You need to link your post/ tweet or attach a screenshot.', '', true);
-                                                            return false;
-                                                        } else {
-                                                            proceedWithTaskFinishing();
-                                                        }
-                                                    } else if (form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
-                                                        basic.showAlert('Please submit text field proof.', '', true);
+                                                if (form.find('[name="text_proof"]').length && form.find('.screenshot_proof').length) {
+                                                    if (form.find('[name="text_proof"]').val().trim() == '' && form.find('.screenshot_proof').val().trim() == '') {
+                                                        basic.showAlert('Please submit proof. You need to link your post/ tweet or attach a screenshot.', '', true);
                                                         return false;
-                                                    } else if (form.find('.screenshot_proof').length && form.find('.screenshot_proof').val().trim() == '') {
-                                                        basic.showAlert('Please submit screenshot proof.', '', true);
-                                                        return false;
-                                                    } else if (form.find('.screenshot_proof').length && form.find('.screenshot_proof').val().trim() != '') {
-                                                        readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, function() {
-
-                                                            proceedWithTaskFinishing();
-                                                        }, function () {
-                                                            basic.showAlert('Max file size must be 2MB and allowed file formats are png, jpg, jpeg.', '', true);
-                                                            return false;
-                                                        });
                                                     } else {
                                                         proceedWithTaskFinishing();
                                                     }
-                                                /*} else {
-                                                    if (form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
-                                                        basic.showAlert('Please submit proof. Otherwise, you may be disqualified.', '', true);
-                                                        return false;
-                                                    } else if (screenshotProofsLength) {
-                                                        if (screenshotProofsLength > 1) {
-                                                            for (var i = 0; i < screenshotProofsLength; i+= 1) {
-                                                                if (!error) {
-                                                                    if (form.find('.screenshot_proof').eq(i).val().trim() == '') {
-                                                                        basic.showAlert('Please attach all screenshots. Otherwise, you will not receive your reward.', '', true);
-                                                                        return false;
-                                                                    } else {
-                                                                        readURL(this_form.querySelectorAll('.screenshot_proof')[i], 2, allowedImagesExtensions, function() {
-                                                                            if (i == screenshotProofsLength - 1) {
-                                                                                proceedWithTaskFinishing();
-                                                                            }
-                                                                        }, function () {
-                                                                            basic.showAlert('Max file size must be 2MB and allowed file formats are png, jpg, jpeg.', '', true);
-                                                                            return false;
-                                                                        });
-                                                                    }
-                                                                }
-                                                            }
-                                                        } else {
-                                                            if (form.find('.screenshot_proof').val().trim() == '') {
-                                                                basic.showAlert('Please attach a screenshot. Otherwise, you will not receive your reward.', '', true);
-                                                                return false;
-                                                            } else {
-                                                                readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, function() {
+                                                } else if (form.find('[name="text_proof"]').length && form.find('[name="text_proof"]').val().trim() == '') {
+                                                    basic.showAlert('Please submit text field proof.', '', true);
+                                                    return false;
+                                                } else if (form.find('.screenshot_proof').length && form.find('.screenshot_proof').val().trim() == '') {
+                                                    basic.showAlert('Please submit screenshot proof.', '', true);
+                                                    return false;
+                                                } else if (form.find('.screenshot_proof').length && form.find('.screenshot_proof').val().trim() != '') {
+                                                    readURL(this_form.querySelectorAll('.screenshot_proof')[0], 2, allowedImagesExtensions, function() {
 
-                                                                    proceedWithTaskFinishing();
-                                                                }, function () {
-                                                                    basic.showAlert('Max file size must be 2MB and allowed file formats are png, jpg, jpeg.', '', true);
-                                                                    return false;
-                                                                });
-                                                            }
-                                                        }
-                                                    } else {
                                                         proceedWithTaskFinishing();
-                                                    }
-                                                }*/
+                                                    }, function () {
+                                                        basic.showAlert('Max file size must be 2MB and allowed file formats are png, jpg, jpeg.', '', true);
+                                                        return false;
+                                                    });
+                                                } else {
+                                                    proceedWithTaskFinishing();
+                                                }
                                             }
                                         } else if (response.error) {
                                             basic.showDialog(response.error, 'response-popup', null);
@@ -1895,114 +1768,6 @@ var projectData = {
                                     }
                                 });
                             }
-                        });
-                    }
-                }
-            },
-            partnerNetwork: function() {
-                if ($('body').hasClass('partner-network')) {
-                    // PARTNER NETWORK
-                    initMap();
-                }
-            },
-            berlinRoundtable: async function() {
-                if ($('body').hasClass('berlin-roundtable')) {
-                    // BERLIN ROUNDTABLE
-
-                    // load slick lib
-                    if (!hasOwnProperty.call(loadedLibs, 'slick')) {
-                        if (isFirefox) {
-                            $('head').append('<link rel="stylesheet" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
-                        } else {
-                            $('head').append('<link rel="preload" as="style" onload="this.rel=\'stylesheet\'" type="text/css" href="/dist/libs/slick/slick.min.css"/>');
-                        }
-                        await $.getScript('/dist/libs/slick/slick.min.js', function() {});
-                        console.log('slick loaded');
-                        loadedLibs.slick = true;
-                    }
-
-                    $(document).on('click', '.reserve-your-spot', function() {
-                        $('html, body').animate({'scrollTop': $('.reserve-your-spot-form').offset().top }, 300);
-                    });
-
-                    $('select[name="company-profile"]').on('change', function() {
-                        if ($(this).find('option:selected').val() == 'Other:') {
-                            $('.camping-select-result').html('<div class="padding-bottom-20 field-parent"><textarea id="please-specify" name="please-specify" placeholder="Please specify" rows="3" maxlength="3000" class="required form-field"></textarea></div>');
-                        } else {
-                            $('.camping-select-result').html('');
-                        }
-                    });
-
-                    var init_form = true;
-                    $('form.reserve-your-spot-form').on('submit', async function(event) {
-                        var this_form = $(this);
-                        event.preventDefault();
-                        if (init_form) {
-                            //clear prev errors
-                            if (this_form.find('.error-handle').length) {
-                                this_form.find('.error-handle').remove();
-                            }
-
-                            var form_fields = this_form.find('.form-field.required');
-                            var submit_form = true;
-                            for (var i = 0, len = form_fields.length; i < len; i += 1) {
-                                if (form_fields.eq(i).is('select')) {
-                                    if (form_fields.eq(i).val() == 'disabled') {
-                                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please choose from list.');
-                                        submit_form = false;
-                                    }
-                                } else {
-                                    if (form_fields.eq(i).attr('type') == 'email' && !basic.validateEmail(form_fields.eq(i).val().trim())) {
-                                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'Please use valid email address.');
-                                        submit_form = false;
-                                    }
-
-                                    if (form_fields.eq(i).val().trim() == '') {
-                                        customErrorHandle(form_fields.eq(i).closest('.field-parent'), 'This field is required.');
-                                        submit_form = false;
-                                    }
-                                }
-                            }
-
-                            var check_captcha_response = await checkCaptcha(this_form.find('#register-captcha').val().trim());
-                            if (check_captcha_response.error) {
-                                customErrorHandle(this_form.find('#register-captcha').closest('.field-parent'), 'Please enter correct captcha.');
-                                submit_form = false;
-                            }
-
-                            if (submit_form && init_form) {
-                                init_form = false;
-                                projectData.general_logic.data.showLoader();
-                                setTimeout(async function() {
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/submit-berlin-roundtable-form',
-                                        dataType: 'json',
-                                        data: this_form.serialize(),
-                                        headers: {
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        success: function (response) {
-                                            if (response.success) {
-                                                init_form = true;
-                                                basic.showAlert(response.success);
-                                                $('form.reserve-your-spot-form input.required, form.reserve-your-spot-form textarea.required').val('');
-                                                $('.refresh-captcha').click();
-                                                projectData.general_logic.data.hideLoader();
-                                            }
-                                        }
-                                    });
-                                }, 1000);
-                            }
-                        }
-                    });
-
-                    if ($('.attendees-slider').length) {
-                        $('.attendees-slider').slick({
-                            slidesToShow: 1,
-                            infinite: true,
-                            arrows: true,
-                            dots: false
                         });
                     }
                 }
@@ -2020,6 +1785,7 @@ var projectData = {
         },
         data: {
             loadDeferResources: function() {
+                // lazy load images
                 for (var i = 0, len = jQuery('[data-defer-src]').length; i < len; i += 1) {
                     var elementInViewport = jQuery('[data-defer-src]').eq(i);
 
@@ -2029,6 +1795,7 @@ var projectData = {
                 }
             },
             gateway: function() {
+                // initialization of the DCN login gateway
                 if (typeof(dcnGateway) != 'undefined') {
                     var dcnGatewayParams;
                     if ($('body').attr('data-environment') == 'dev') {
@@ -2064,7 +1831,7 @@ var projectData = {
                 }
             },
             cookie: async function() {
-                console.log('cookie');
+                // displaying GDPR cookie
                 if (basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && basic.cookies.get('performance_cookies') == '' && !$('body').hasClass('dentacoin-map-iframe')) {
                     if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
                         await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
@@ -2082,7 +1849,6 @@ var projectData = {
                         loadedLibs.dentacoinCookieCss = true;
                     }
 
-                    console.log(typeof(dcnCookie), 'typeof(dcnCookie)');
                     if (typeof(dcnCookie) != 'undefined') {
                         dcnCookie.init({
                             'google_app_id': 'UA-97167262-1',
@@ -2103,12 +1869,12 @@ var projectData = {
                 $('.camping-loader .response-layer').hide();
             },
             initTooltips: function() {
-                console.log('initTooltips');
                 if ($('[data-toggle="tooltip"]').length) {
                     $('[data-toggle="tooltip"]').tooltip();
                 }
             },
             handlePushStateRedirects: function() {
+                // dynamicly update the URL without refreshing the page
                 if (window.location.href.includes('users')) {
                     window.location.href = HOME_URL + '/users';
                 } else if (window.location.href.includes('dentists')) {
@@ -2120,6 +1886,7 @@ var projectData = {
                 }
             },
             miniHub: async function() {
+                // initialization of the mini hub located below user avatars
                 if (!hasOwnProperty.call(loadedLibs, 'dentacoinPackageJs')) {
                     await $.getScript('/assets/libs/dentacoin-package/js/init.js?v='+new Date().getTime(), function() {});
                     loadedLibs.dentacoinPackageJs = true;
@@ -2220,17 +1987,14 @@ var projectData = {
                     });
 
                     $('.module.video-expressions-slider[data-type="'+type+'"] .youtube-play-button').click(function() {
-                        console.log('clicked');
                         $('.module.video-expressions-slider[data-type="'+type+'"] .youtube-play-button').removeAttr('data-play');
                         $('.module.video-expressions-slider[data-type="'+type+'"] .youtube-play-button[data-id="'+$(this).attr('data-id')+'"]').attr('data-play', 'true');
                         var videoId = $(this).closest('.single-slide').attr('data-video-id');
-                        console.log(videoId, 'videoId');
                         clearIframesOnSlickChange = false;
 
                         $('.module.video-expressions-slider[data-type="'+type+'"] .slide-wrapper iframe').remove();
                         $('.module.video-expressions-slider[data-type="'+type+'"] .single-slide .video-thumb').removeClass('visibility-hidden');
 
-                        console.log(xsScreen, 'xsScreen');
                         if (xsScreen) {
                             playYTVideo($(this), videoId);
                         } else {
@@ -2246,7 +2010,6 @@ var projectData = {
                     });
 
                     function playYTVideo(el, videoId) {
-                        console.log(el, 'playYTVideo');
                         el.closest('.slide-wrapper').append('<div id="main-video-player"></div>');
                         el.closest('.single-slide').find('.video-thumb').addClass('visibility-hidden');
 
@@ -2496,9 +2259,6 @@ var projectData = {
                     $('body').addClass('overflow-hidden');
                     if ($(window).width() > 992) {
                         $('.results-list').css({'max-height' : ($('.google-map-and-bottom-filters').height() - $('.left-picker .inner-gray-line').height()) + 'px'});
-
-                        console.log($('.google-map-and-bottom-filters').height(), '$(\'.google-map-and-bottom-filters\').height()');
-                        console.log($('.left-picker .inner-gray-line').height(), '$(\'.left-picker .inner-gray-line\').height()');
                     }
                     $('body').removeClass('overflow-hidden');
 
@@ -2517,8 +2277,6 @@ var projectData = {
                                     tempArr.splice(index, 1);
                                 }
                             }
-                            console.log(tempArr, 'this has beeen checked');
-
                             projectData.events.fireGoogleAnalyticsEvent('Map', 'Check type filter', $('.location-types option[value="'+tempArr+'"]').html());
 
                             locationTypesValueOnInit = $(this).val();
@@ -2550,7 +2308,7 @@ var projectData = {
                             }
                         }
 
-                        // dont allow users to filter only category-5
+                        // don't allow users to filter only category-5
                         if (thisValue.includes('category-5') && !thisValue.includes('category-1')) {
                             thisValue.push('category-1');
                         }
@@ -2726,7 +2484,6 @@ var projectData = {
                     });
 
                     $(document).on('keyup', function (event) {
-                        console.log('SEARCH');
                         if ($(event.target).is('.locations-splitted-by-category .bs-searchbox .form-control')) {
                             $('.locations-splitted-by-category .dropdown-menu .active').removeClass('selected active');
                             if (event.which == 13) {
@@ -2739,7 +2496,6 @@ var projectData = {
 
                                 var searchKeyword = $('.locations-splitted-by-category .bs-searchbox .form-control').val().trim();
                                 if (searchKeyword != '') {
-                                    console.log(searchKeyword, 'searchKeyword');
                                     projectData.events.fireGoogleAnalyticsEvent('Map', 'Search', searchKeyword);
 
                                     var searchHtml = '';
@@ -3513,7 +3269,6 @@ var projectData = {
 
                         if ($('.picker-and-map .picker-label').attr('data-last-continent') == undefined || $('.single-continent.open-item > a .element-name').html() != $('.picker-and-map .picker-label').attr('data-last-continent')) {
                             var continentName = $('.single-continent.open-item > a .element-name').html();
-                            console.log(continentName, 'set continent name');
                             $('.dentacoin-stats-category-label span').html('in ' + continentName);
                             $('.picker-and-map .picker-label').html('<a href="javascript:void(0);" class="go-back-to-continents"><img src="/assets/uploads/back-map-arrow.svg" alt="Red left arrow" class="margin-right-5 inline-block"/> <span class="inline-block">'+continentName+'</span></a>');
 
@@ -3945,8 +3700,9 @@ function styleUploadButton(callbackOnChange, buttonClass) {
     }
 }
 
-// ==================== /PAGES ====================
+// ==================== /PAGES DATA ====================
 
+// newslettor form located in the footer
 if ($('.newsletter-register').length) {
     basic.initCustomCheckboxes('.newsletter-register');
 
@@ -3982,6 +3738,7 @@ if ($('.newsletter-register').length) {
     });
 }
 
+// by default bootbox do not close if you click outside of the popup, this function enables that
 function hidePopupOnBackdropClick() {
     $(document).on('click', '.bootbox', function () {
         var classname = event.target.className;
@@ -4001,7 +3758,6 @@ function hidePopupOnBackdropClick() {
 hidePopupOnBackdropClick();
 
 function initCaptchaRefreshEvent() {
-//refreshing captcha on trying to log in admin
     if ($('.refresh-captcha').length > 0) {
         $('.refresh-captcha').click(function () {
             $.ajax({
@@ -4020,7 +3776,7 @@ function initCaptchaRefreshEvent() {
 }
 initCaptchaRefreshEvent();
 
-//INIT LOGIC FOR ALL STEPS
+// handle visually errors for form fields
 function customErrorHandle(el, string) {
     el.append('<div class="error-handle">' + string + '</div>');
 }
@@ -4071,6 +3827,7 @@ function readURL(input, megaBytesLimit, allowedImagesExtensions, callback, faile
     }
 }
 
+// captcha validation from the front end
 async function checkCaptcha(captcha) {
     return await $.ajax({
         type: 'POST',
@@ -4112,6 +3869,8 @@ function bindGoogleAlikeButtonsEvents() {
 
 bindGoogleAlikeButtonsEvents();
 
+/*
+// banner promoting the holiday calendar campaign
 if ($('.bottom-fixed-promo-banner').length) {
     $('.bottom-fixed-promo-banner .close-banner').click(function() {
         $('footer').removeClass('extra-bottom-padding');
@@ -4123,4 +3882,4 @@ if ($('.bottom-fixed-promo-banner').length) {
         now.setTime(time);
         document.cookie = 'hide-holiday-calendar-banner=1; expires=' + now.toUTCString() + ';domain=dentacoin.com;path=/;';
     });
-}
+}*/

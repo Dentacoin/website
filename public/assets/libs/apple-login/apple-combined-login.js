@@ -1,5 +1,6 @@
 $('body').on('click', '.apple-custom-btn', function() {
     if(document.cookie.indexOf('strictly_necessary_policy=') == -1 && !$(this).hasClass('mobile-app')) {
+        // don't allow login until GDPR cookies accepted
         customAppleEvent('cannotLoginBecauseOfMissingCookies', '');
     } else {
         var this_btn = $(this);
@@ -14,7 +15,6 @@ $('body').on('click', '.apple-custom-btn', function() {
 
         if (this_btn.hasClass('mobile-app')) {
             // mobile app
-
             if (hasOwnProperty.call(window, 'cordova')) {
                 if (hasOwnProperty.call(window.cordova.plugins, 'SignInWithApple')) {
                     window.cordova.plugins.SignInWithApple.signin(
@@ -51,13 +51,14 @@ $('body').on('click', '.apple-custom-btn', function() {
                 var eventType;
                 var is_dcn_hub_app;
 
-                // browser
                 if (this_btn.hasClass('is-dcn-hub-app')) {
+                    // DCN HubApp
                     clientId = 'com.dentacoin.hubapp';
                     redirectURI = 'https://hubapp.dentacoin.com/handle-apple-login';
                     eventType = 'vanilla-js-event';
                     is_dcn_hub_app = true;
                 } else if (this_btn.hasClass('is-dv-app')) {
+                    // DV App
                     clientId = 'com.dentacoin.dentavox';
                     redirectURI = 'https://dentavox.dentacoin.com/handle-apple-login';
                     eventType = undefined;
@@ -139,6 +140,7 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
         success: function(data) {
             if (data.success) {
                 if (data.deleted) {
+                    // redirect user to account pages
                     var redirectUrl;
                     if (data.appeal) {
                         customAppleEvent('hideLoader', '', null, type, event_type);
@@ -160,6 +162,7 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
                     }
                     return false;
                 } else if (data.bad_ip || data.suspicious_admin) {
+                    // redirect user to account pages
                     var on_hold_type = '';
                     if (data.bad_ip) {
                         on_hold_type = '&on-hold-type=bad_ip';
@@ -188,6 +191,7 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
                     }
                     return false;
                 } else if (data.rejected_manual_verification) {
+                    // redirect user to account pages
                     customAppleEvent('hideLoader', '', null, type, event_type);
                     var redirectUrl = 'https://account.dentacoin.com/blocked-account?platform=' + this_btn.attr('data-platform') + '&key=' + encodeURIComponent(data.data.encrypted_id);
 
@@ -203,6 +207,7 @@ function proceedWithAppleLogin(response, this_btn, type, event_type, is_dcn_hub_
                     }
                     return false;
                 } else if (data.is_vpn) {
+                    // redirect user to VPN warning account page
                     customAppleEvent('hideLoader', '', null, type, event_type);
                     var redirectUrl = 'https://account.dentacoin.com/vpn-block?platform=' + this_btn.attr('data-platform');
 

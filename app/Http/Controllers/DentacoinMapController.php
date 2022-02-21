@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 
 class DentacoinMapController extends Controller
 {
+    // return the part of the map data which is stored inside dentacoin.com database
     protected function getLabsSuppliersAndIndustryPartners(Request $request) {
         $this->validate($request, [
             'country-code' => 'required'
@@ -72,6 +73,7 @@ class DentacoinMapController extends Controller
             ->get()->toArray();
     }
 
+    // method with different cases which serves the map to combine the map data ( including requests to the CoreDB )
     protected function getMapData(Request $request) {
         $this->validate($request, [
             'action' => 'required'
@@ -350,6 +352,7 @@ class DentacoinMapController extends Controller
         $labs = $this->getDentacoinLocations(2);
         $labsData = array();
         foreach ($labs as $lab) {
+            // make the locations from dentacoin.com database to have same properties as the locations from the CoreDB
             $singleDataRecordArr = array(
                 'id' => $lab->id,
                 'name' => $lab->clinic_name,
@@ -385,6 +388,7 @@ class DentacoinMapController extends Controller
         $suppliers = $this->getDentacoinLocations(3);
         $suppliersData = array();
         foreach ($suppliers as $supplier) {
+            // make the locations from dentacoin.com database to have same properties as the locations from the CoreDB
             $singleDataRecordArr = array(
                 'id' => $supplier->id,
                 'name' => $supplier->clinic_name,
@@ -420,6 +424,7 @@ class DentacoinMapController extends Controller
         $industryPartners = $this->getDentacoinLocations(4);
         $industryPartnersData = array();
         foreach ($industryPartners as $industryPartner) {
+            // make the locations from dentacoin.com database to have same properties as the locations from the CoreDB
             $singleDataRecordArr = array(
                 'id' => $industryPartner->id,
                 'name' => $industryPartner->clinic_name,

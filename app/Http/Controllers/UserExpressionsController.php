@@ -11,7 +11,7 @@ class UserExpressionsController extends Controller
 {
     protected function getView($page)   {
         $pages_count = $this->getPagesCount();
-        //if $page more than the pagescount redirect 404
+        //if $page more than the pages count redirect 404
         if((int)$page > $pages_count || (int)$page < 1)  {
             return abort(404);
         }

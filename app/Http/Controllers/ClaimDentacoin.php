@@ -10,11 +10,12 @@ use Illuminate\Support\Facades\DB;
 class ClaimDentacoin extends Controller
 {
     public function getView() {
+        // load the page ONLY with get parameter withdraw-key
         if (!empty(Input::get('withdraw-key'))) {
             $withdrawingUser = DB::connection('mysql3')->table('users')->select('users.*')->where(array('users.randomKey' => trim(Input::get('withdraw-key'))))->get()->first();
             if (!empty($withdrawingUser)) {
+                // calculate current dcn balance
                 $currentBalance = $withdrawingUser->dcnBalance;
-
                 $lockedPeriod = DB::connection('mysql3')->table('locked_periods')->select('locked_periods.*')->where(array('locked_periods.type' => $withdrawingUser->type))->get()->first();
                 $rewardedOrders = DB::connection('mysql3')->table('already_rewarded_orders')->select('already_rewarded_orders.*')->where(array('already_rewarded_orders.user_id' => $withdrawingUser->id))->get()->all();
                 if (!empty($rewardedOrders)) {

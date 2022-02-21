@@ -1,6 +1,7 @@
 //binding click event for all the facebook login btns
 $('body').on('click', '.facebook-custom-btn', function(rerequest){
     if(document.cookie.indexOf('strictly_necessary_policy=') == -1 && !$(this).hasClass('mobile-app')) {
+        // don't allow login until GDPR cookies accepted
         customFacebookEvent('cannotLoginBecauseOfMissingCookies');
     } else {
         var this_btn = $(this);
@@ -195,6 +196,7 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
                         }
                         return false;
                     } else if (data.is_vpn) {
+                        // redirect user to VPN warning account page
                         customFacebookEvent('hideLoader', '', null, type, event_type);
                         var redirectUrl = 'https://account.dentacoin.com/vpn-block?platform=' + this_btn.attr('data-platform');
 
@@ -257,17 +259,17 @@ function proceedWithFacebookLogin(response, this_btn, type, event_type) {
     }
 }
 
-    //exchanging token for data
-    /*function fbGetData() {
-        FB.api('/me?fields=id,email,name,permissions,link', function (response) {
-            FB.api(
-                "/"+response.id+"/",
-                function (second_response) {
-                    console.log(second_response, 'second_response');
-                }
-            );
-        });
-    }*/
+//exchanging token for data
+/*function fbGetData() {
+    FB.api('/me?fields=id,email,name,permissions,link', function (response) {
+        FB.api(
+            "/"+response.id+"/",
+            function (second_response) {
+                console.log(second_response, 'second_response');
+            }
+        );
+    });
+}*/
 
 //custom function for firing events
 function customFacebookEvent(type, message, response_data, device_type, event_type) {

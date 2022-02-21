@@ -148,6 +148,7 @@ class UserController extends Controller {
         }
     }
 
+    // method used to create the cross login between platforms, every platform has such method and the requests between platforms are being made with img tags
     protected function manageCustomCookie(Request $request) {
         if (!empty(Input::get('slug')) && !empty(Input::get('type')) && !empty(Input::get('token'))) {
             //logging
@@ -364,7 +365,7 @@ class UserController extends Controller {
             }
         }
 
-        //check email validation
+        //email validation
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL))   {
             return response()->json(['error' => true, 'message' => 'Your form was not sent. Please try again with valid email.']);
         }
@@ -395,6 +396,7 @@ class UserController extends Controller {
         }
     }
 
+    // returns a html of a popup where the dentist can save more info about him self
     protected function getAfterDentistRegistrationPopup(Request $request) {
         Log::info('getAfterDentistRegistrationPopup request.', ['data' => json_encode($request->input())]);
 

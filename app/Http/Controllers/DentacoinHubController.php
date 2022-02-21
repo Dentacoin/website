@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class DentacoinHubController extends Controller
 {
+    // returning the big hub html located at /users and /dentists
     protected function getBigHubHtml($hubType, Request $request) {
         $hubElements = DB::table('dcn_hubs')
             ->leftJoin('dcn_hub_dcn_hub_element', 'dcn_hubs.id', '=', 'dcn_hub_dcn_hub_element.dcn_hub_id')

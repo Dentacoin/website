@@ -47,31 +47,31 @@ class CareersController extends Controller
         $data = $request->input();
         $files = $request->file();
 
-        //check email validation
-        if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL))   {
+        //email validation
+        if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL))   {
             return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Please try again with valid email.']);
         }
 
-        if(!empty($files))    {
+        if (!empty($files))    {
             $fileCounter = 0;
-            $allowed = array('pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rtf', 'PDF', 'DOC', 'DOCX', 'PPT', 'PPTX', 'ODT', 'RTF');
+            $allowed = array('pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rtf');
             foreach($files as $file)  {
                 // doing this check to prevent people submitting move than one file
                 $fileCounter+=1;
-                if($fileCounter > 2) {
+                if ($fileCounter > 2) {
                     return abort(404);
                 }
 
                 //checking the file size
-                if($file->getSize() > MAX_UPL_SIZE) {
+                if ($file->getSize() > MAX_UPL_SIZE) {
                     return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with with maximum size of '.number_format(MAX_UPL_SIZE / 1048576).'MB. Please try again.']);
                 }
                 //checking file format
-                if(!in_array(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION), $allowed)) {
+                if (!in_array(strtolower(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION)), $allowed)) {
                     return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with .pdf, .doc, docx, ppt, pptx, odt, rtf formats. Please try again.']);
                 }
                 //checking if error in file
-                if($file->getError()) {
+                if ($file->getError()) {
                     return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. There is error with one or more of the files, please try with other files. Please try again.']);
                 }
             }
@@ -79,14 +79,16 @@ class CareersController extends Controller
 
         $body = '<strong>Name: </strong>'.trim($data['user-name']).'<br><strong>Phone: </strong>'.trim($data['phone']).'<br><strong>Message: </strong>'.trim($data['message']);
 
-        if(!empty($data['portfolio']))  {
+        if (!empty($data['portfolio']))  {
             $body.='<br><strong>Portfolio link: </strong>'.'<a href="'.trim($data['portfolio']).'" target="_blank">'.trim($data['portfolio']).'</a>';
         }
 
         //submit email
         Mail::send(array(), array(), function($message) use ($data, $body, $files) {
             $message->to(JOB_APPLIES_EMAIL_RECEIVER)->subject('New apply from Dentacoin Careers page - '.$data['post-title'])->from($data['email'], $data['user-name'])->replyTo($data['email'], $data['user-name'])->setBody($body, 'text/html');
-            if(!empty($files)) {
+
+            // attach files to email
+            if (!empty($files)) {
                 foreach($files as $file) {
                     $message->attach($file->getRealPath(), array(
                             'as' => $file->getClientOriginalName(), // If you want you can change original name to custom name

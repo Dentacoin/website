@@ -51,6 +51,7 @@ class ChristmasCalendarController extends Controller
                         ->whereRaw('christmas_calendar_task_participant.task_id <= ' . $allTasksForThisYear[sizeof($allTasksForThisYear) - 1]['id'])->get()->toArray();
 
                     if (!empty($passedTasks)) {
+                        // calculate current dcn and ticket balance
                         foreach($passedTasks as $passedTask) {
                             if (!empty($passedTask->custom_reward_type) && !empty($passedTask->took_custom_reward)) {
                                 if ($passedTask->custom_reward_type == 'dcn-reward') {
@@ -111,6 +112,7 @@ class ChristmasCalendarController extends Controller
         return ChristmasCalendarTask::where(array('year' => $year))->get()->all();
     }
 
+    // return task popup html
     public function getTaskPopup($year, $id, Request $request) {
         if ((new UserController())->checkSession() && strtotime('11/30/2021') < time() || ((new UserController())->checkSession() && in_array(session('logged_user')['id'], self::WHITELISTED_ACCOUNTS))) {
             $task = ChristmasCalendarTask::where(array('id' => $id, 'year' => $year))->get()->first();
@@ -118,6 +120,7 @@ class ChristmasCalendarController extends Controller
             //$participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id']))->get()->first();
             $participant = ChristmasCalendarParticipant::where(array('user_id' => session('logged_user')['id'], 'year' => $year))->get()->first();
             $checkIfTaskIsAlreadyFinished = $this->checkIfTaskIsAlreadyFinished($task->id, $participant->id, $task->year);
+            // if task is already finished by current user
             if ($checkIfTaskIsAlreadyFinished) {
                 $coredbData = (new APIRequestsController())->getUserData(session('logged_user')['id']);
 
@@ -126,6 +129,7 @@ class ChristmasCalendarController extends Controller
                 return response()->json(['error' => $view]);
             }
 
+            // if holiday calendar campaign expired
             if (strtotime('2022/01/02 00:00:00') < time()) {
                 $view = view('partials/christmas-calendar-task-'.$year, ['task' => $task, 'year' => $year, 'type' => 'campaign-expired']);
                 $view = $view->render();
@@ -177,6 +181,7 @@ class ChristmasCalendarController extends Controller
                     $viewParams['rewards'] = json_encode($rewards);
                 }
 
+                // display different size of the puzzle images on mobile and desktop
                 if ($task->id == 96 || $task->id == 106) {
                     $mobile = $request->input('mobile');
                     $imgName = '';
@@ -391,6 +396,7 @@ class ChristmasCalendarController extends Controller
                     $allTasksForThisYear = $this->getAllTasksByYear($year);
                     $passedTasks = DB::connection('mysql')->table('christmas_calendar_task_participant')->select('christmas_calendar_task_participant.*')->where(array('christmas_calendar_task_participant.participant_id' => $participant->id, 'christmas_calendar_task_participant.disqualified' => 0))->whereRaw('christmas_calendar_task_participant.task_id >= ' . $allTasksForThisYear[0]['id'])->whereRaw('christmas_calendar_task_participant.task_id <= ' . $allTasksForThisYear[sizeof($allTasksForThisYear) - 1]['id'])->get()->toArray();
 
+                    // calculate current dcn and ticket balance
                     foreach($passedTasks as $passedTask) {
                         if (!empty($passedTask->custom_reward_type) && !empty($passedTask->took_custom_reward)) {
                             if ($passedTask->custom_reward_type == 'dcn-reward') {
@@ -480,6 +486,7 @@ class ChristmasCalendarController extends Controller
                     ->whereRaw('christmas_calendar_task_participant.task_id <= ' . $allTasksForThisYear[sizeof($allTasksForThisYear) - 1]['id'])->get()->toArray();
 
                 if (!empty($passedTasks)) {
+                    // calculate current dcn and ticket balance
                     foreach($passedTasks as $passedTask) {
                         if (!empty($passedTask->custom_reward_type) && !empty($passedTask->took_custom_reward)) {
                             if ($passedTask->custom_reward_type == 'dcn-reward') {

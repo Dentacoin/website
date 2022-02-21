@@ -20,11 +20,11 @@ class HomeController extends Controller
 {
     public function getView() {
         if((new UserController())->checkSession()) {
-            //return $this->getLoggedView();
             $slug = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['id'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
             $type = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['type'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
             $token = (new \App\Http\Controllers\Controller())->encrypt(session('logged_user')['token'], getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'));
 
+            // handle prod/ dev cross login
             if (!empty(getenv('API_DOMAIN'))) {
                 if (getenv('API_DOMAIN') == 'https://api.dentacoin.com') {
                     return Redirect::to('https://hub.dentacoin.com/custom-cookie?platform=dentacoin&slug='.urlencode($slug).'&type='.urlencode($type).'&token='.urlencode($token));
@@ -46,10 +46,6 @@ class HomeController extends Controller
     }
 
     protected function getNotLoggedView()   {
-        //$latest_blog_articles = DB::connection('mysql2')->select(DB::raw("SELECT `post_title`, `post_name` from dIf_posts WHERE post_status = 'publish' AND post_type = 'post' ORDER BY `post_date` DESC LIMIT 0, 5"));
-
-        // $params = ['applications' => $this->getApplications(), 'testimonials' => $this->getFeaturedTestimonials(), 'publications' => $this->getPublications(), 'exchange_platforms' => (new AvailableBuyingOptionsController())->getExchangePlatforms(), 'wallets' => (new AvailableBuyingOptionsController())->getWallets()];
-
         return view('pages/homepage');
     }
 

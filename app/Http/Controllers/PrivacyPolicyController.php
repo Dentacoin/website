@@ -13,6 +13,7 @@ class PrivacyPolicyController extends Controller
         return view('pages/privacy-policy');
     }
 
+    // for DV iOS app we have another privacy policy, because of iOS restrictions
     protected function getViewDVIOSPrivacyPolicy()   {
         return view('pages/privacy-policy-dv-ios');
     }

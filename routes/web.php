@@ -33,17 +33,11 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/testimonials/page/{page}', 'UserExpressionsController@getView')->name('testimonials');
 
-    Route::get('/partner-network', 'PartnerNetworkController@getView')->name('partner-network');
-
     Route::get('/team', 'TeamMembersController@getView')->name('team');
 
     Route::get('/sitemap', 'Controller@getSitemap')->name('sitemap');
 
     Route::get('/how-to-create-wallet', 'HowToCreateWalletController@getView')->name('how-to-create-wallet');
-
-    Route::get('/berlin-roundtable', /*'BerlinRoundtableController@getView'*/ function() {
-        return abort(410);
-    })->name('berlin-roundtable');
 
     Route::post('/take-homepage-data', 'HomeController@takeHomepageData')->name('take-homepage-data');
 

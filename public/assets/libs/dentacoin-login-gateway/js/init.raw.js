@@ -12,7 +12,6 @@ if (typeof jQuery == 'undefined') {
     var allowedImagesExtensions = ['png', 'jpg', 'jpeg'];
     var apiDomain = 'https://api.dentacoin.com';
     var dcnLibsDomain = 'https://dentacoin.com';
-    var civic_iframe_removedEventLoaded = false;
     var environment = 'live';
     var initCivicEvents = true;
     var googleKey = 'AIzaSyCaVeHq_LOhQndssbmw-aDnlMwUG73yCdk';
@@ -32,19 +31,6 @@ if (typeof jQuery == 'undefined') {
                         console.error('Request to dentacoin.com currently not working.');
                     }
                 });
-
-                /*if (fireAjax) {
-                    fireAjax = false;
-
-                    var ajaxCall = await $.ajax({
-                        type: 'GET',
-                        url: 'https://dentacoin.com/info/platforms',
-                        dataType: 'json'
-                    });
-
-                    fireAjax = true;
-                    return ajaxCall;
-                }*/
             },
             saveCivicEmailTryingToLoginFromMobileApp: async function(data, callback) {
                 $.ajax({
@@ -59,19 +45,6 @@ if (typeof jQuery == 'undefined') {
                         console.error('Request to dentacoin.com currently not working.');
                     }
                 });
-
-                /*if (fireAjax) {
-                    fireAjax = false;
-
-                    var ajaxCall = await $.ajax({
-                        type: 'GET',
-                        url: 'https://dentacoin.com/info/platforms',
-                        dataType: 'json'
-                    });
-
-                    fireAjax = true;
-                    return ajaxCall;
-                }*/
             },
             getGatewayHtml: async function(url, data, callback) {
                 await $.ajax({
@@ -632,7 +605,6 @@ if (typeof jQuery == 'undefined') {
                 });
             },
             initCivicListeners: function(currentPlatformDomain, params) {
-                console.log('initCivicListeners');
                 $(document).on('successfulCivicPatientLogin', async function (event) {
                     dcnGateway.utils.fireGoogleAnalyticsEvent('PatientLogin', 'ClickCivic', 'PatientLoginCivic');
                     dcnGateway.utils.fireFacebookPixelEvent('PatientLogin');
@@ -695,34 +667,6 @@ if (typeof jQuery == 'undefined') {
                     dcnGateway.utils.hideGateway();
                     dcnGateway.utils.showLoader('Receiving your details from Civic...');
                 });
-
-                /*$(document).on('CivicLegacyAppForbiddenLogging', async function (event) {
-                    var eventData = event;
-
-                    dcnGateway.utils.hideLoader();
-                    dcnGateway.utils.showPopup('<div class="warning-icon"><?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/"><!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/"><!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/"><!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/"><!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/"><!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/"><!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/"><!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/"><svg version="1.1" id="Layer_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 64 82" style="enable-background:new 0 0 64 82;" xml:space="preserve"><metadata><sfw xmlns="&ns_sfw;"><slices></slices><sliceSourceBounds bottomLeftOrigin="true" height="82.1" width="63.9" x="0.1" y="-0.1"></sliceSourceBounds></sfw></metadata><g transform="translate(0,-952.36218)"><g><path style="fill:#3AB03E;" d="M31.8,952.4c-0.1,0-0.3,0.1-0.4,0.1l-30,11c-0.8,0.3-1.3,1-1.3,1.9v33c0,7.8,4.4,14.3,10.3,20c5.9,5.7,13.5,10.7,20.5,15.7c0.7,0.5,1.6,0.5,2.3,0c7-5,14.6-10,20.5-15.7c5.9-5.7,10.3-12.2,10.3-20v-33c0-0.8-0.5-1.6-1.3-1.9l-30-11C32.5,952.4,32.1,952.3,31.8,952.4z M32.1,956.5l28,10.3v31.6c0,6.3-3.5,11.8-9.1,17.1c-5.2,5-12.2,9.7-18.9,14.4c-6.7-4.7-13.7-9.4-18.9-14.4c-5.5-5.3-9.1-10.8-9.1-17.1v-31.6L32.1,956.5z"/></g></g><text transform="matrix(1 0 0 1 22.2637 60.0695)" style="fill:#3AB03E;font-size:58.497px;">!</text></svg></div><div class="popup-text">CIVIC Identity app will be deprecated soon and integrated in the new upgraded CIVIC Wallet application. To avoid interruptions of your login experience, switch to the new CIVIC Wallet app now. Get it on <a href="https://play.google.com/store/apps/details?id=com.civic.wallet&referrer=utm_source%3Dhomepage%26utm_medium%3Dwebsite&_branch_match_id=827481124251595050&utm_source=homepage&utm_campaign=android&utm_medium=download" class="gateway-platform-color-important data-external-link" target="_blank">GooglePlay</a> or <a href="https://l.civic.com/1RP0bpRMg7" class="gateway-platform-color-important data-external-link" target="_blank">AppStore</a>.<br><br>Make sure you create your account in CIVIC Wallet with the <b>same email address</b> you are currently using to get access to your account.</div><div class="text-center padding-bottom-15"><a href="javascript:void(0);" class="continue-with-civic-wallet-app platform-button gateway-platform-background-color-important dentacoin-login-gateway-fs-20">CONTINUE WITH CIVIC WALLET APP</a></div><div class="text-center dentacoin-login-gateway-fs-18">Not yet. <a href="javascript:void(0);" class="continue-with-legacy-app gateway-platform-color-important">Login with CIVIC Identity app.</a></div>', 'forbidden-civic-warning');
-
-                    $('.continue-with-legacy-app').click(function() {
-                        console.log('continue with legacy app');
-                        $.event.trigger({
-                            type: 'patientProceedWithCreatingSession',
-                            platform_type: 'civic',
-                            time: new Date(),
-                            response_data: eventData.response_data
-                        });
-                    });
-
-                    $('.continue-with-civic-wallet-app').click(async function() {
-                        console.log('continue with civic wallet app');
-                        dcnGateway.utils.hideGateway();
-
-                        $.event.trigger({
-                            type: 'openPatientLogin',
-                            openLogin: true,
-                            time: new Date()
-                        });
-                    });
-                });*/
 
                 $(document).on('CivicLegacyAppForbiddenRegistrations', async function (event) {
                     dcnGateway.utils.hideLoader();
@@ -864,18 +808,31 @@ if (typeof jQuery == 'undefined') {
             },
             androidFileUpload: function(callback) {
                 fileChooser.open(function (file_uri) {
-                    console.log(file_uri, 'file_uri');
-                    window.FilePath.resolveNativePath(file_uri, successNative, failNative);
+                    window.resolveLocalFileSystemURL(file_uri, function (entry) {
+                        entry.file(function (file) {
+                            callback(file, file_uri);
+                        }, function (err) {
+                            failNative();
+                        });
+                    });
+
+                    function failNative(e) {
+                        alert('Something went wrong with uploading your file. Please contact admin@dentacoin.com.');
+                    }
+
+                    /*window.FilePath.resolveNativePath(file_uri, successNative, failNative);
 
                     function successNative(finalPath) {
-                        console.log(finalPath, 'finalPath');
                         window.resolveLocalFileSystemURL(finalPath, function (entry) {
-                            console.log(entry, 'entry');
+                            fileEntry.file(function (file) {
+                                callback(file, file_uri);
+                            }, function (err) {
+                                failNative();
+                            });
+
                             window.resolveLocalFileSystemURL(cordova.file.externalRootDirectory, function (rootEntry) {
-                                console.log(rootEntry, 'rootEntry');
                                 //checking external storage
                                 rootEntry.getFile(decodeURIComponent(entry.fullPath), {create: false}, function (fileEntry) {
-                                    console.log(fileEntry, 'fileEntry');
                                     fileEntry.file(function (file) {
                                         callback(file, file_uri);
                                     }, function (err) {
@@ -884,11 +841,8 @@ if (typeof jQuery == 'undefined') {
                                 }, function (err) {
                                     //if file is not found in the external storage check in the internal one
                                     window.resolveLocalFileSystemURL('file:///', function (rootEntry) {
-                                        console.log(rootEntry, 'rootEntry2');
                                         rootEntry.getFile(decodeURIComponent(entry.fullPath), {create: false}, function (fileEntry) {
-                                            console.log(fileEntry, 'fileEntry2');
                                             fileEntry.file(function (file) {
-                                                console.log(file, 'file2');
                                                 callback(file, file_uri);
                                             }, function (err) {
                                                 failNative();
@@ -898,21 +852,15 @@ if (typeof jQuery == 'undefined') {
                                 });
                             });
                         });
-                    }
-
-                    function failNative(e) {
-                        alert('Something went wrong with uploading your file. Please contact admin@dentacoin.com.');
-                    }
+                    }*/
                 });
             },
             iOSFileUpload: function(callback) {
                 FilePicker.pickFile(function (path) {
-                    console.log(path, 'path');
                     var fileDir = cordova.file.tempDirectory.replace('file://', '');
                     var fileName = path.replace(fileDir, '');
 
                     window.resolveLocalFileSystemURL(cordova.file.tempDirectory, function (rootEntry) {
-                        console.log(rootEntry, 'rootEntry');
                         rootEntry.getFile(fileName, {create: false}, function (fileEntry) {
                             fileEntry.file(function (file) {
                                 callback(file, path);
@@ -1325,8 +1273,6 @@ if (typeof jQuery == 'undefined') {
                                             type: 'dentist'
                                         });
 
-                                        console.log(createDentistSessionResponse, 'createDentistSessionResponse');
-
                                         if (createDentistSessionResponse.success) {
                                             $.event.trigger({
                                                 type: 'dentistAuthSuccessResponse',
@@ -1687,20 +1633,16 @@ if (typeof jQuery == 'undefined') {
                                         $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').find('.error-handle').remove();
                                         if (dcnGateway.utils.getMobileOperatingSystem() == 'Android') {
                                             dcnGateway.utils.androidFileUpload(function (file, file_uri) {
-                                                console.log('androidFileUpload');
                                                 hybridAppFileUpload(file, file_uri);
                                             });
                                         } else if (dcnGateway.utils.getMobileOperatingSystem() == 'iOS') {
                                             dcnGateway.utils.iOSFileUpload(function (file, file_uri) {
-                                                console.log('iOSFileUpload');
                                                 hybridAppFileUpload(file, file_uri);
                                             });
                                         }
                                     });
 
                                     function hybridAppFileUpload(file, file_uri) {
-                                        console.log(file, 'file');
-                                        console.log(file_uri, 'file_uri');
                                         if (2 < dcnGateway.utils.bytesToMegabytes(file.size)) {
                                             $('.gateway-avatar.module').append('<div class="error-handle task-error">The file you selected is large. Max size: 2MB.</div>');
                                             return false;
@@ -1721,7 +1663,6 @@ if (typeof jQuery == 'undefined') {
                                                 var reader = new FileReader();
                                                 reader.onloadend = function () {
                                                     var filename = file.name;
-                                                    console.log(filename, 'filename');
 
                                                     if (filename != '' && filename != undefined) {
                                                         $('.avatar-name').show().find('span').html(filename.slice(0, 20) + '...');
@@ -1741,7 +1682,6 @@ if (typeof jQuery == 'undefined') {
                                                     };
 
                                                     gateway_croppie_instance = $('#gateway-cropper-container').croppie(croppieParams);
-                                                    console.log(gateway_croppie_instance, 'gateway_croppie_instance');
 
                                                     $('.destroy-croppie').unbind().click(function() {
                                                         gateway_croppie_instance.croppie('destroy');
@@ -2205,29 +2145,6 @@ if (typeof jQuery == 'undefined') {
                                                 //checking captcha
                                                 if (loadedFromMobileApp) {
                                                     proceedWithFourthStepLogic();
-                                                    /*function initHybridAppCaptcha() {
-                                                        console.log($('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').attr('data-public-key'), 'initHybridAppCaptcha');
-                                                        if (hasOwnProperty.call(window.plugins, 'recaptcha')) {
-                                                            window.plugins.recaptcha.verify($('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').attr('data-public-key'), function(response) {
-                                                                console.log('SUCCESS RECAPTCHA');
-                                                                $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val(response);
-
-                                                                proceedWithFourthStepLogic();
-                                                            }, function() {
-                                                                console.log('FAIL RECAPTCHA');
-                                                                $('.dentacoin-login-gateway-container .dentist .form-register .step.fourth').find('.error-handle').remove();
-                                                                dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Captcha failed. Please prove that you\'re not a robot. <a href="javascript:void(0);" class="try-again-hybrid-captcha">Try again</a>');
-                                                                $('.dentacoin-login-gateway-container .step.fourth #mobile-captcha-response').val('');
-
-                                                                $('try-again-hybrid-captcha').click(function() {
-                                                                    initHybridAppCaptcha();
-                                                                });
-                                                            });
-                                                        } else {
-                                                            console.error('Missing cordova plugin cordova-plugin-recaptcha.')
-                                                        }
-                                                    }
-                                                    initHybridAppCaptcha();*/
                                                 } else {
                                                     if (typeof(grecaptcha) != undefined && grecaptcha.getResponse().length == 0) {
                                                         dcnGateway.utils.customErrorHandle($('.dentacoin-login-gateway-container .step.fourth .step-errors-holder'), 'Please prove that you\'re not a robot.');

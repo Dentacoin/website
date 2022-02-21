@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 class PriceController extends Controller
 {
+    // in general this controller will be used mainly by the clinic or by other dentists which would like to show DCN price comparison in their dentist places
     const languages = ['en', 'de', 'es', 'br'];
 
     protected function getView($lang)   {

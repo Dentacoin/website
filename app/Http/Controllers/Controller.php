@@ -59,29 +59,6 @@ class Controller extends BaseController
         return PageMetaData::where(array('slug' => $slug))->get()->first();
     }
 
-    /*public function getCurrentDcnUsdRate()  {
-        //API connection
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_RETURNTRANSFER => 1,
-            CURLOPT_URL => 'https://api.coinmarketcap.com/v1/ticker/dentacoin/?convert=USD',
-            CURLOPT_SSL_VERIFYPEER => 0
-        ));
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-        $resp = json_decode(curl_exec($curl));
-        curl_close($curl);
-
-        if(sizeof($resp) > 0)   {
-            if(property_exists($resp[0], 'price_usd'))  {
-                return (float)$resp[0]->price_usd;
-            }else {
-                return 0;
-            }
-        } else {
-            return 0;
-        }
-    }*/
-
     protected function getParentDbTitles()
     {
         if (!empty(Route::getCurrentRoute()->parameters['slug'])) {
@@ -156,8 +133,8 @@ class Controller extends BaseController
         return (new Agent())->getUserAgent();
     }
 
-    protected function getSitemap()
-    {
+    // method that generates https://dentacoin.com/sitemap
+    protected function getSitemap() {
         $sitemap = App::make("sitemap");
         // set cache (key (string), duration in minutes (Carbon|Datetime|int), turn on/off (boolean))
         // by default cache is disabled
@@ -171,10 +148,7 @@ class Controller extends BaseController
         $sitemap->add(URL::to('/users'), '2020-09-25T20:10:00+02:00', '1.0', 'daily');
         $sitemap->add(URL::to('/dentists'), '2020-09-25T20:10:00+02:00', '1.0', 'daily');
         $sitemap->add(URL::to('/traders'), '2020-09-25T20:10:00+02:00', '1.0', 'daily');
-        //$sitemap->add(URL::to('publications'), '2012-08-25T20:10:00+02:00', '0.6', 'weekly');
         $sitemap->add(URL::to('privacy-policy'), '2018-02-25T20:10:00+02:00', '0.4', 'monthly');
-        //$sitemap->add(URL::to('changelly'), '2018-08-25T20:10:00+02:00', '1.0', 'monthly');
-        /*$sitemap->add(URL::to('partner-network'), '2018-08-25T20:10:00+02:00', '0.8', 'daily');*/
         $sitemap->add(URL::to('team'), '2018-09-25T20:10:00+02:00', '0.9', 'weekly');
         $sitemap->add(URL::to('careers'), '2018-10-10T20:10:00+02:00', '1', 'daily');
         $sitemap->add(URL::to('corporate-identity'), '2018-12-10T20:10:00+02:00', '0.6', 'monthly');
@@ -198,26 +172,14 @@ class Controller extends BaseController
             $sitemap->add(URL::to('careers/' . $career->slug), '2018-10-10T20:10:00+02:00', '0.5', 'weekly');
         }
 
-        // get all posts from db
-        //$posts = DB::table('posts')->orderBy('created_at', 'desc')->get();
-        //
-        //// add every post to the sitemap
-        //foreach ($posts as $post)
-        //{
-        //   $sitemap->add($post->slug, $post->modified, $post->priority, $post->freq);
-        //}
-        //}
-        // show your sitemap (options: 'xml' (default), 'html', 'txt', 'ror-rss', 'ror-rdf')
         return $sitemap->render('xml');
     }
 
-    protected function transliterate($str)
-    {
+    protected function transliterate($str) {
         return str_replace(['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ъ', 'ы', 'ь', 'э', 'ю', 'я', ' ', '_'], ['a', 'b', 'v', 'g', 'd', 'e', 'io', 'zh', 'z', 'i', 'y', 'k', 'l', 'm', 'n', 'o', 'p', 'r', 's', 't', 'u', 'f', 'h', 'ts', 'ch', 'sh', 'sht', 'a', 'i', 'y', 'e', 'yu', 'ya', '-', '-'], mb_strtolower($str));
     }
 
-    public function minifyHtml($response)
-    {
+    public function minifyHtml($response) {
         $buffer = $response->getContent();
         if (strpos($buffer, '<pre>') !== false) {
             $replace = array(
@@ -245,23 +207,21 @@ class Controller extends BaseController
         return $response;
     }
 
-    protected function getGoogleMapIframe()
-    {
+    protected function getGoogleMapIframe() {
+        // load map inside the DCN Wallet
         return view('partials/google-map-iframe', ['locations' => (new PartnerNetworkController())->getLocations(), 'location_types' => (new PartnerNetworkController())->getLocationTypes(), 'locations_select' => (new PartnerNetworkController())->getAllLocations(), 'clinics' => (new LocationsController())->getAllFeaturedClinics()]);
     }
 
-    protected function getCivicPopupIframe()
-    {
+    protected function getCivicPopupIframe() {
+        // used to enable Civic login on hybrid apps
         return view('partials/iframe-civic-popup');
     }
 
-    protected function refreshCaptcha()
-    {
+    protected function refreshCaptcha() {
         return response()->json(['captcha' => captcha_img()]);
     }
 
-    protected function handleApiEndpoints($slug)
-    {
+    protected function handleApiEndpoints($slug) {
         switch ($slug) {
             case 'socials-data':
                 $socials = DB::connection('mysql')->table('socials')->leftJoin('media', 'socials.media_id', '=', 'media.id')->select('socials.*', 'media.name as media_name', 'media.alt as media_alt')->orderByRaw('socials.order_id ASC')->get()->toArray();
@@ -312,163 +272,12 @@ class Controller extends BaseController
                 }
                 return json_encode($platforms);
                 break;
-            case 'hitbtc-info':
-                $curl = curl_init();
-                curl_setopt_array($curl, array(
-                    CURLOPT_RETURNTRANSFER => 1,
-                    CURLOPT_URL => 'https://api.hitbtc.com/api/2/public/orderbook/DCNETH?limit=0',
-                    CURLOPT_SSL_VERIFYPEER => 0
-                ));
-
-                $resp = json_decode(curl_exec($curl));
-                curl_close($curl);
-
-                $askAmount = 0;
-                foreach ($resp->ask as $ask) {
-                    $askAmount += (int)$ask->size;
-                }
-
-                echo '<b>Current ask orders count:</b> ' . sizeof($resp->ask) . ' orders<br>';
-                echo '<b>Current ask amount:</b> ' . $askAmount . ' DCN<br><br>';
-
-                $bidAmount = 0;
-                foreach ($resp->bid as $bid) {
-                    $bidAmount += (int)$bid->size;
-                }
-
-                echo '<b>Current bid orders count:</b> ' . sizeof($resp->bid) . ' orders<br>';
-                echo '<b>Current bid amount:</b> ' . $bidAmount . ' DCN<br><br><br>';
-
-                $curl = curl_init();
-                curl_setopt_array($curl, array(
-                    CURLOPT_RETURNTRANSFER => 1,
-                    CURLOPT_URL => 'https://api.hitbtc.com/api/2/public/ticker/DCNETH',
-                    CURLOPT_SSL_VERIFYPEER => 0
-                ));
-
-                $DCNETHresp = json_decode(curl_exec($curl));
-                curl_close($curl);
-                
-                echo '<b>DCN/ ETH statistics:</b><br><style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-td, th {
-padding: 8px;
-}
-</style><table><thead>
-<tr>
-<th style="text-align: left">Description</th>
-<th style="text-align: left">Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Best ask price. Can return \'null\' if no data</td>
-<td style="text-align: left">'.$DCNETHresp->ask.'</td>
-</tr>
-<td style="text-align: left">Best bid price. Can return \'null\' if no data</td>
-<td style="text-align: left">'.$DCNETHresp->bid.'</td>
-</tr>
-<tr>
-<td style="text-align: left">Last trade price. Can return \'null\' if no data</td>
-<td style="text-align: left">'.$DCNETHresp->last.'</td>
-</tr>
-<tr>
-<td style="text-align: left">Last trade price 24 hours ago. Can return \'null\' if no data</td>
-<td style="text-align: left">'.$DCNETHresp->open.'</td>
-</tr>
-<tr>
-<td style="text-align: left">Lowest trade price within 24 hours</td>
-<td style="text-align: left">'.$DCNETHresp->low.'</td>
-</tr>
-<tr>
-<td style="text-align: left">Highest trade price within 24 hours</td>
-<td style="text-align: left">'.$DCNETHresp->high.'</td>
-</tr>
-<tr>
-<td style="text-align: left">Total trading amount within 24 hours in base currency</td>
-<td style="text-align: left">'.$DCNETHresp->volume.' DCN</td>
-</tr>
-<tr>
-<td style="text-align: left">Total trading amount within 24 hours in quote currency</td>
-<td style="text-align: left">'.$DCNETHresp->volumeQuote.' ETH</td>
-</tr>
-<tr>
-<td style="text-align: left">Last update or refresh ticker timestamp</td>
-<td style="text-align: left">'.$DCNETHresp->timestamp.'</td>
-</tr>
-</tbody></table><br><br><br>';
-
-
-                $curl = curl_init();
-                curl_setopt_array($curl, array(
-                    CURLOPT_RETURNTRANSFER => 1,
-                    CURLOPT_URL => 'https://api.hitbtc.com/api/2/public/ticker/DCNUSD',
-                    CURLOPT_SSL_VERIFYPEER => 0
-                ));
-
-                $DCNUSDresp = json_decode(curl_exec($curl));
-                curl_close($curl);
-
-                echo '<b>DCN/ USD statistics:</b><br><style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-td, th {
-padding: 8px;
-}
-</style><table><thead>
-<tr>
-<th style="text-align: left">Description</th>
-<th style="text-align: left">Value</th>
-</tr>
-</thead><tbody>
-<tr>
-<td style="text-align: left">Best ask price. Can return \'null\' if no data</td>
-<td style="text-align: left">'.$DCNUSDresp->ask.'</td>
-</tr>
-<td style="text-align: left">Best bid price. Can return \'null\' if no data</td>
-<td style="text-align: left">'.$DCNUSDresp->bid.'</td>
-</tr>
-<tr>
-<td style="text-align: left">Last trade price. Can return \'null\' if no data</td>
-<td style="text-align: left">'.$DCNUSDresp->last.'</td>
-</tr>
-<tr>
-<td style="text-align: left">Last trade price 24 hours ago. Can return \'null\' if no data</td>
-<td style="text-align: left">'.$DCNUSDresp->open.'</td>
-</tr>
-<tr>
-<td style="text-align: left">Lowest trade price within 24 hours</td>
-<td style="text-align: left">'.$DCNUSDresp->low.'</td>
-</tr>
-<tr>
-<td style="text-align: left">Highest trade price within 24 hours</td>
-<td style="text-align: left">'.$DCNUSDresp->high.'</td>
-</tr>
-<tr>
-<td style="text-align: left">Total trading amount within 24 hours in base currency</td>
-<td style="text-align: left">'.$DCNUSDresp->volume.' DCN</td>
-</tr>
-<tr>
-<td style="text-align: left">Total trading amount within 24 hours in quote currency</td>
-<td style="text-align: left">'.$DCNUSDresp->volumeQuote.' USD</td>
-</tr>
-<tr>
-<td style="text-align: left">Last update or refresh ticker timestamp</td>
-<td style="text-align: left">'.$DCNUSDresp->timestamp.'</td>
-</tr>
-</tbody></table>';
-                die();
-
-                break;
             case 'coingecko-dcn-price':
                 $coingeckoData = (new APIRequestsController())->getCurrentDcnRateByCoingecko();
                 return number_format($coingeckoData['USD'], 8, '.', '');
                 break;
             case 'deposit-api-whitelists':
+                // for the L2 deposit API
                 $addresses = array();
                 $whitelists = DepositApiWhitelist::all();
                 foreach ($whitelists as $whitelist) {
@@ -476,6 +285,7 @@ padding: 8px;
                 }
                 return json_encode($addresses);
             case 'l2-transfer-info':
+                // info page for the clinic
                 return view('pages/l2-transfer-info');
             default:
                 $additional_data = (new Admin\MainController())->getApiEndpoint($slug);
@@ -487,8 +297,7 @@ padding: 8px;
         }
     }
 
-    protected function clearPostData($data)
-    {
+    protected function clearPostData($data) {
         foreach ($data as &$value) {
             if (is_string($value)) {
                 $value = trim(strip_tags($value));
@@ -497,8 +306,7 @@ padding: 8px;
         return $data;
     }
 
-    public function encrypt($raw_text, $algorithm, $key)
-    {
+    public function encrypt($raw_text, $algorithm, $key) {
         $length = openssl_cipher_iv_length($algorithm);
         $iv = openssl_random_pseudo_bytes($length);
         $encrypted = openssl_encrypt($raw_text, $algorithm, $key, OPENSSL_RAW_DATA, $iv);
@@ -507,8 +315,7 @@ padding: 8px;
         return $encrypted_with_iv;
     }
 
-    public function decrypt($encrypted_text)
-    {
+    public function decrypt($encrypted_text) {
         list($data, $iv) = explode('|', $encrypted_text);
         $iv = base64_decode($iv);
         $raw_text = openssl_decrypt($data, getenv('API_ENCRYPTION_METHOD'), getenv('API_ENCRYPTION_KEY'), 0, $iv);
@@ -534,6 +341,7 @@ padding: 8px;
         return $ipaddress;
     }
 
+    // get IP on the front end
     public function getClientIpAsResponse()     {
         return response()->json(['success' => true, 'data' => $this->getClientIp()]);
     }

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Lang;
 
 class DentacoinLoginGateway extends Controller
 {
+    // return the DCN Login gateway HTML
     public function getView(Request $request)   {
         $params = array(
             'type' => $request->input('type'),

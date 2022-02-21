@@ -322,15 +322,23 @@ class ChristmasCalendarController extends Controller
 
                     $screenshotProof = $request->file('screenshot_proof');
                     if (!empty($screenshotProof)) {
-                        $allowed = array('jpeg', 'png', 'jpg', 'JPEG', 'PNG', 'JPG');
+                        $allowedExtensions = array('jpeg', 'png', 'jpg');
+                        $allowedMimetypes = ['image/jpeg', 'image/png'];
 
                         $arrayWithScreenshotNames = array();
                         if (is_array($screenshotProof)) {
                             foreach($screenshotProof as $file) {
-                                if (!in_array(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION), $allowed)) {
+                                //checking file format
+                                if (!in_array(strtolower(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION)), $allowedExtensions)) {
                                     return json_encode(array('error' => 'Screenshots can be only with jpeg, png or jpg formats.', 'technicalError' => true));
                                 }
 
+                                //checking file mimetype
+                                if (!in_array($file->getMimeType(), $allowedMimetypes)) {
+                                    return json_encode(array('error' => 'Screenshots can be only with jpeg, png or jpg formats.', 'technicalError' => true));
+                                }
+
+                                //checking the file size
                                 if ($file->getSize() > 2097152) {
                                     return json_encode(array('error' => 'Screenshots can be only with maximum size of 2MB.', 'technicalError' => true));
                                 }
@@ -341,10 +349,17 @@ class ChristmasCalendarController extends Controller
                                 array_push($arrayWithScreenshotNames, $filename);
                             }
                         } else {
-                            if (!in_array(pathinfo($screenshotProof->getClientOriginalName(), PATHINFO_EXTENSION), $allowed)) {
+                            //checking file format
+                            if (!in_array(strtolower(pathinfo($screenshotProof->getClientOriginalName(), PATHINFO_EXTENSION)), $allowedExtensions)) {
                                 return json_encode(array('error' => 'Screenshots can be only with jpeg, png or jpg formats.', 'technicalError' => true));
                             }
 
+                            //checking file mimetype
+                            if (!in_array($screenshotProof->getMimeType(), $allowedMimetypes)) {
+                                return json_encode(array('error' => 'Screenshots can be only with jpeg, png or jpg formats.', 'technicalError' => true));
+                            }
+
+                            //checking the file size
                             if ($screenshotProof->getSize() > 2097152) {
                                 return json_encode(array('error' => 'Screenshots can be only with maximum size of 2MB.', 'technicalError' => true));
                             }

@@ -55,6 +55,7 @@ class CareersController extends Controller
         if (!empty($files))    {
             $fileCounter = 0;
             $allowed = array('pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rtf');
+            $allowedMimetypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.oasis.opendocument.text', 'application/rtf'];
             foreach($files as $file)  {
                 // doing this check to prevent people submitting move than one file
                 $fileCounter+=1;
@@ -66,10 +67,17 @@ class CareersController extends Controller
                 if ($file->getSize() > MAX_UPL_SIZE) {
                     return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with with maximum size of '.number_format(MAX_UPL_SIZE / 1048576).'MB. Please try again.']);
                 }
+
                 //checking file format
                 if (!in_array(strtolower(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION)), $allowed)) {
-                    return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with .pdf, .doc, docx, ppt, pptx, odt, rtf formats. Please try again.']);
+                    return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with .pdf, .doc, .docx, .ppt, .pptx, .odt, .rtf formats. Please try again.']);
                 }
+
+                //checking file mimetype
+                if (!in_array($file->getMimeType(), $allowedMimetypes)) {
+                    return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. Files can be only with .pdf, .doc, .docx, .ppt, .pptx, .odt, .rtf formats. Please try again.']);
+                }
+
                 //checking if error in file
                 if ($file->getError()) {
                     return redirect()->route('careers', ['slug' => $request->input('post-slug')])->with(['error' => 'Your form was not sent. There is error with one or more of the files, please try with other files. Please try again.']);

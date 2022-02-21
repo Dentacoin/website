@@ -79,11 +79,9 @@ class PressCenterController extends Controller
         }
         if (!empty($files))    {
             $fileCounter = 0;
-            $allowed = array('pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rtf', 'xls', 'xlsx');
+            $allowedExtensions = array('pdf', 'doc', 'docx', 'ppt', 'pptx', 'odt', 'rtf', 'xls', 'xlsx');
+            $allowedMimetypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/vnd.ms-powerpoint', 'application/vnd.openxmlformats-officedocument.presentationml.presentation', 'application/vnd.oasis.opendocument.text', 'application/rtf', 'application/vnd.ms-excel', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
             foreach($files as $file)  {
-                var_dump($file->getClientOriginalName());
-                var_dump($file->getMimeType());
-                die();
                 // doing this check to prevent people submitting move than one file
                 $fileCounter+=1;
                 if ($fileCounter > 2) {
@@ -94,10 +92,17 @@ class PressCenterController extends Controller
                 if ($file->getSize() > MAX_UPL_SIZE) {
                     return redirect()->route('press-center', ['id' => 1])->with(['error' => 'Your form was not sent. Files can be only with with maximum size of '.number_format(MAX_UPL_SIZE / 1048576).'MB. Please try again.']);
                 }
-                //checking file format
-                if (!in_array(strtolower(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION)), $allowed)) {
-                    return redirect()->route('press-center', ['id' => 1])->with(['error' => 'Your form was not sent. Files can be only with .pdf, .doc, docx, ppt, pptx, odt, rtf, xls or xlsx formats. Please try again.']);
+
+                //checking file extension
+                if (!in_array(strtolower(pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION)), $allowedExtensions)) {
+                    return redirect()->route('press-center', ['id' => 1])->with(['error' => 'Your form was not sent. Files can be only with .pdf, .doc, .docx, ppt, .pptx, .odt, .rtf, .xls or .xlsx formats. Please try again.']);
                 }
+
+                //checking file mimetype
+                if (!in_array($file->getMimeType(), $allowedMimetypes)) {
+                    return redirect()->route('press-center', ['id' => 1])->with(['error' => 'Your form was not sent. Files can be only with .pdf, .doc, .docx, ppt, .pptx, .odt, .rtf, .xls or .xlsx formats. Please try again.']);
+                }
+
                 //checking if error in file
                 if ($file->getError()) {
                     return redirect()->route('press-center', ['id' => 1])->with(['error' => 'Your form was not sent. There is error with one or more of the files, please try with other files. Please try again.']);

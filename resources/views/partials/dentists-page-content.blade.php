@@ -25,7 +25,7 @@
         </picture>
     @endif
 </section>
-<section class="section-list-with-benefits-dentists-page container-fluid padding-top-30 padding-top-xs-50 padding-top-lgll-50 padding-bottom-20 text-center hide-on-map-open">
+<section class="section-list-with-benefits-dentists-page container-fluid padding-top-30 padding-top-xs-50 padding-top-lgll-50 padding-bottom-20 text-center hide-on-map-open" id="your-benefits">
     <div class="row">
         <div class="col-xs-12 padding-bottom-50 padding-bottom-xs-20 color-black">
             <h3 class="fs-30 fs-sm-24 fs-xs-20 padding-bottom-lgll-10 lato-bold">SET UP A FREE ACCOUNT:</h3>
@@ -134,7 +134,7 @@
 <section class="section-users-expressions padding-left-40 padding-right-40 padding-left-xs-0 padding-right-xs-0 hide-on-map-open">
     @include('partials.video-expressions', array('video_expressions' => $video_expressions, 'type' => 'dentists', 'title' => 'SUCCESS STORIES:', 'mobile' => $mobile_device))
 </section>
-<section class="section-users-text-expressions hide-on-map-open">
+<section class="section-users-text-expressions hide-on-map-open" id="testimonials">
     @include('partials.user-expressions', array('user_expressions' => $user_expressions, 'type' => 'dentists', 'mobile' => $mobile_device))
 </section>
 <section class="section-google-map module" id="section-google-map">

@@ -26,7 +26,7 @@
         </picture>
     @endif
 </section>
-<section class="container padding-top-20 padding-bottom-10 text-center hide-on-map-open">
+<section class="container padding-top-20 padding-bottom-10 text-center hide-on-map-open" id="dentacoin-apps">
     <div class="row">
         <div class="col-xs-12 color-black">
             <h3 class="fs-30 fs-sm-24 fs-xs-20 padding-bottom-lgll-10 lato-bold">ONE ACCOUNT. FREE REWARDS.</h3>
@@ -35,7 +35,7 @@
     </div>
 </section>
 <section id="append-big-hub-dentacoin" class="hide-on-map-open"></section>
-<section class="section-triangle-video padding-top-25 hide-on-map-open hide-on-hub-open">
+<section class="section-triangle-video padding-top-25 hide-on-map-open hide-on-hub-open" id="dentacoin-currency">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 class-video-container">
@@ -50,7 +50,7 @@
         </div>
     </div>
 </section>
-<section class="section-users-expressions padding-left-40 padding-right-40 padding-left-xs-0 padding-right-xs-0 hide-on-map-open hide-on-hub-open">
+<section class="section-users-expressions padding-left-40 padding-right-40 padding-left-xs-0 padding-right-xs-0 hide-on-map-open hide-on-hub-open" id="testimonials">
     @include('partials.video-expressions', array('video_expressions' => $video_expressions, 'type' => 'users', 'title' => 'COMMUNITY SPEAKING:', 'mobile' => $mobile_device))
 </section>
 <section class="section-users-text-expressions hide-on-map-open hide-on-hub-open">

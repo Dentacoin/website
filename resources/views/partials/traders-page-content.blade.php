@@ -42,7 +42,7 @@
     @endif
 </section>
 @if (!empty($exchange_platforms))
-    <section class="section-exchange-platforms padding-top-30 padding-bottom-50">
+    <section class="section-exchange-platforms padding-top-30 padding-bottom-50" id="exchange-platforms">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 padding-bottom-50 text-center color-black">
@@ -120,14 +120,6 @@
                         </div>
                     @endif
                     </div>
-                    {{--@if($mobile_device && sizeof($bulletsArray) > 0)
-                        <div class="exchanges-bullets padding-top-10 padding-bottom-15">
-                            @php($addClassActive = true)
-                            @foreach ($bulletsArray as $bullet)
-                                <a href="javascript:void(0);" data-bullet="{{$bullet}}" class="inline-block @if($addClassActive) @php($addClassActive = false) active @endif"></a>
-                            @endforeach
-                        </div>
-                    @endif--}}
             </div>
             <div class="row disclaimer padding-top-25">
                 <div class="col-xs-12 text-center color-black fs-16">
@@ -145,7 +137,7 @@
     </section>
 @endif
 <section
-        class="section-rules-and-figures container-fluid padding-top-lgll-80 padding-top-30 padding-bottom-30 padding-left-50 padding-right-50">
+        class="section-rules-and-figures container-fluid padding-top-lgll-80 padding-top-30 padding-bottom-30 padding-left-50 padding-right-50" id="dentacoin-supply">
     <div class="row">
         <div class="col-xs-12 color-black text-center padding-bottom-70 padding-bottom-xs-30">
             <h2 class="lato-bold fs-30 fs-sm-24 fs-xs-20 padding-bottom-lgll-10">RULES AND FIGURES:</h2>
@@ -202,7 +194,7 @@
         </div>
     </div>
 </section>
-<section class="section-everything-you-need-to-know container padding-top-30 padding-top-lgll-80 padding-bottom-30">
+<section class="section-everything-you-need-to-know container padding-top-30 padding-top-lgll-80 padding-bottom-30" id="everything-you-need-to-know">
     <div class="row">
         <div class="col-xs-12 color-black text-center padding-bottom-30 padding-bottom-lgll-60">
             <h2 class="lato-bold fs-30 fs-sm-24 fs-xs-20 padding-bottom-lgll-10">EVERYTHING YOU</h2>
@@ -291,7 +283,7 @@
     </div>
 </section>
 @if (!empty($roadmap_years))
-    <section class="section-dentacoin-roadmap padding-top-80 padding-top-xs-20 padding-top-lgll-110 padding-bottom-30">
+    <section class="section-dentacoin-roadmap padding-top-80 padding-top-xs-20 padding-top-lgll-110 padding-bottom-30" id="roadmap">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 color-black text-center padding-bottom-30 padding-bottom-xs-10">
@@ -378,7 +370,7 @@
         </div>
     </section>
 @endif
-<section class="section-latest-twitter-data container-fluid padding-top-50 padding-top-xs-20 padding-top-lgll-100 padding-bottom-90">
+<section class="section-latest-twitter-data container-fluid padding-top-50 padding-top-xs-20 padding-top-lgll-100 padding-bottom-90" id="twitter">
     <div class="row">
         <div class="col-xs-12 color-black text-center padding-bottom-40 padding-bottom-lgll-60">
             <h2 class="lato-bold fs-30 fs-sm-24 fs-xs-20 padding-bottom-lgll-10">FOLLOW US ON</h2>
@@ -396,7 +388,7 @@
         </div>
     </div>
 </section>
-<section class="section-wallet padding-top-50 padding-bottom-70 padding-bottom-lgll-100 color-white">
+<section class="section-wallet padding-top-50 padding-bottom-70 padding-bottom-lgll-100 color-white" id="dentacoin-wallet">
     <div class="container">
         <div class="row">
             <div class="col-xs-12 text-center">

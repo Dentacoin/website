@@ -11,7 +11,7 @@
     function launchTransak() {
         let transak = new TransakSDK.default({
             apiKey: 'ca55ce43-0421-4c7e-a89b-93ebda818cc8',  // Your API Key
-            environment: 'STAGING', // STAGING/PRODUCTION
+            environment: 'PRODUCTION', // STAGING/PRODUCTION
             hostURL: window.location.origin,
             widgetHeight: '625px',
             widgetWidth: '500px',

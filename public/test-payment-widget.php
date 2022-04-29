@@ -16,7 +16,7 @@
             widgetHeight: '625px',
             widgetWidth: '500px',
             // Examples of some of the customization parameters you can pass
-            defaultCryptoCurrency: '', // Example 'ETH'
+            defaultCryptoCurrency: 'OETH', // Example 'ETH'
             walletAddress: '0xC0c583DaC82Dd59dCE26e00aE6b7Fd272Ca01bEa', // Your customer's wallet address
             themeColor: '#00afe1', // App theme color
             fiatCurrency: 'USD', // If you want to limit fiat selection eg 'USD'

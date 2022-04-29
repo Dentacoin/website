@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8" />
-    <script src="<https://global.transak.com/sdk/v1.1/widget.js>" async></script>
+    <script src="https://global.transak.com/sdk/v1.1/widget.js" async></script>
 </head>
 
 <body>

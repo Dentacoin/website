@@ -12,6 +12,8 @@
 */
 Route::get('/refresh-captcha', 'Controller@refreshCaptcha')->name('refresh-captcha');
 
+Route::get('/transak-payment-widget', 'Controller@getTransakWidgetView')->name('transak-payment-widget');
+
 Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function () {
     //======================================= PAGES ========================================
 
@@ -22,8 +24,6 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
     Route::get('/dentists', 'HomeController@getDentistsPageView')->name('dentists');
 
     Route::get('/traders', 'HomeController@getTradersPageView')->name('traders');
-
-    Route::get('/transak-payment-widget', 'Controller@getTransakWidgetView')->name('transak-payment-widget');
 
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 

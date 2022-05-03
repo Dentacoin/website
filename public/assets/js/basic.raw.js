@@ -255,7 +255,7 @@ var basic = {
             }
         }
     },
-    customValidateWalletAddress: function() {
+    customValidateWalletAddress: function(address) {
         return (/^(0x){1}[0-9a-fA-F]{40}$/i.test(address));
     },
     initCustomCheckboxes: function(parent, type) {

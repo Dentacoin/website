@@ -18,6 +18,7 @@
             fiatAmount: 100,
             cryptoCurrencyCode: 'ETH',
             walletAddress: '',
+            email: '',
             widgetHeight: '625px',
             widgetWidth: '500px'
         };
@@ -44,6 +45,11 @@
             defaultValues.walletAddress = get_params.walletAddress;
         }
 
+        if (hasOwnProperty.call(get_params, 'email') && basic.validateEmail(get_params.email)) {
+            defaultValues.email = get_params.email;
+        }
+        console.log(defaultValues, 'defaultValues');
+
         function launchTransak() {
             var transakParams = {
                 apiKey: 'ca55ce43-0421-4c7e-a89b-93ebda818cc8',  // Your API Key
@@ -59,6 +65,7 @@
                 cryptoCurrencyCode: defaultValues.cryptoCurrencyCode,
                 walletAddress: defaultValues.walletAddress
             };
+            console.log(transakParams, 'transakParams');
             let transak = new TransakSDK.default(transakParams);
             transak.init();
 

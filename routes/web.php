@@ -23,6 +23,8 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
     Route::get('/traders', 'HomeController@getTradersPageView')->name('traders');
 
+    Route::get('/transak-payment-widget', 'HomeController@getTradersPageView')->name('transak-payment-widget');
+
     Route::get('/foundation', 'HomeController@getNotLoggedView')->middleware('HandleUserSession')->name('foundation');
 
     Route::get('/privacy-policy', 'PrivacyPolicyController@getView')->name('privacy-policy');

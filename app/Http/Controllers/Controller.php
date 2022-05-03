@@ -353,4 +353,8 @@ class Controller extends BaseController
         parse_str(parse_url($url, PHP_URL_QUERY), $my_array_of_vars);
         return $my_array_of_vars['v'];
     }
+
+    public function getTransakWidgetView() {
+        return view('pages/transak-payment-widget');
+    }
 }

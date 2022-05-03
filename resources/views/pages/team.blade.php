@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section("content")
     <section class="team-container">
         <div class="container team">

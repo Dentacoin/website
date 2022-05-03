@@ -17,7 +17,9 @@
             network: 'optimism', // ethereum or optimism
             fiatAmount: 100,
             cryptoCurrencyCode: 'ETH',
-            walletAddress: ''
+            walletAddress: '',
+            widgetHeight: '625px',
+            widgetWidth: '500px'
         };
 
         if (hasOwnProperty.call(get_params, 'network')) {
@@ -26,6 +28,11 @@
 
         if (hasOwnProperty.call(get_params, 'fiatAmount')) {
             defaultValues.fiatAmount = parseInt(get_params.fiatAmount);
+        }
+
+        if (hasOwnProperty.call(get_params, 'widgetHeight') && hasOwnProperty.call(get_params, 'widgetWidth')) {
+            defaultValues.widgetHeight = get_params.widgetHeight;
+            defaultValues.widgetWidth = get_params.widgetWidth;
         }
 
         // atm our users can use Transak only for ETH purchases
@@ -42,8 +49,8 @@
                 apiKey: 'ca55ce43-0421-4c7e-a89b-93ebda818cc8',  // Your API Key
                 environment: 'PRODUCTION', // STAGING/PRODUCTION
                 hostURL: window.location.origin,
-                widgetHeight: '525px',
-                widgetWidth: '400px',
+                widgetHeight: defaultValues.widgetHeight,
+                widgetWidth: defaultValues.widgetWidth,
                 themeColor: '#00afe1', // App theme color
                 fiatCurrency: 'USD', // If you want to limit fiat selection eg 'USD'
                 defaultPaymentMethod: 'credit_debit_card',

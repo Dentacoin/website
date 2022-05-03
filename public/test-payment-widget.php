@@ -20,7 +20,8 @@
             walletAddress: '0xC0c583DaC82Dd59dCE26e00aE6b7Fd272Ca01bEa', // Your customer's wallet address
             themeColor: '#00afe1', // App theme color
             fiatCurrency: 'USD', // If you want to limit fiat selection eg 'USD'
-            fiatAmount: '500', // If you want to limit fiat selection eg 'USD'
+            fiatAmount: '500',
+            defaultPaymentMethod: 'credit_debit_card'
         });
         transak.init();
         // To get all the events

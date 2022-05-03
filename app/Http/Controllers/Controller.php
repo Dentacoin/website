@@ -355,6 +355,6 @@ class Controller extends BaseController
     }
 
     public function getTransakWidgetView() {
-        return view('pages/transak-payment-widget');
+        return view('transak-payment-widget');
     }
 }

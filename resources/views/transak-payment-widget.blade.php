@@ -7,6 +7,7 @@
 <body>
     <script src="/assets/js/basic.js"></script>
     <script>
+        var get_params = basic.getGETParameters();
         var defaultValues = {
             network: 'optimism', // ethereum or optimism
             fiatAmount: 100,

@@ -37,8 +37,8 @@
                 apiKey: 'ca55ce43-0421-4c7e-a89b-93ebda818cc8',  // Your API Key
                 environment: 'PRODUCTION', // STAGING/PRODUCTION
                 hostURL: window.location.origin,
-                widgetHeight: '625px',
-                widgetWidth: '500px',
+                widgetHeight: '525px',
+                widgetWidth: '400px',
                 themeColor: '#00afe1', // App theme color
                 fiatCurrency: 'USD', // If you want to limit fiat selection eg 'USD'
                 defaultPaymentMethod: 'credit_debit_card',

@@ -16,12 +16,12 @@
             widgetHeight: '625px',
             widgetWidth: '500px',
             // Examples of some of the customization parameters you can pass
-            defaultCryptoCurrency: 'OETH', // Example 'ETH'
+            //defaultCryptoCurrency: 'OETH', // Example 'ETH'
+            cryptoCurrencyCode: 'OETH', // Example 'ETH'
             walletAddress: '0xC0c583DaC82Dd59dCE26e00aE6b7Fd272Ca01bEa', // Your customer's wallet address
             themeColor: '#00afe1', // App theme color
             fiatCurrency: 'USD', // If you want to limit fiat selection eg 'USD'
-            email: '', // Your customer's email address
-            redirectURL: ''
+            fiatAmount: '500', // If you want to limit fiat selection eg 'USD'
         });
         transak.init();
         // To get all the events

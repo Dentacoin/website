@@ -519,8 +519,9 @@ var projectData = {
                 projectData.general_logic.data.hideStickyHomepageNav();
                 projectData.general_logic.data.showStickySubpagesNav();
             },
-            transak: function() {
+            transak: async function() {
                 if ($('body').hasClass('transak-payment-widget')) {
+                    await $.getScript('https://global.transak.com/sdk/v1.1/widget.js', function() {});
                     console.log(get_params, 'get_params');
 
                     var defaultValues = {

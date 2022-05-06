@@ -59,9 +59,8 @@
                 widgetWidth: defaultValues.widgetWidth,
                 themeColor: '#00afe1', // App theme color
                 fiatCurrency: 'USD', // If you want to limit fiat selection eg 'USD'
-                /*defaultPaymentMethod: 'credit_debit_card',*/
                 paymentMethod: 'sepa_bank_transfer',
-                defaultPaymentMethod: 'sepa_bank_transfer',
+                defaultPaymentMethod: 'credit_debit_card',
                 network: defaultValues.network,
                 fiatAmount: defaultValues.fiatAmount,
                 cryptoCurrencyCode: defaultValues.cryptoCurrencyCode,

@@ -60,6 +60,7 @@
                 themeColor: '#00afe1', // App theme color
                 fiatCurrency: 'USD', // If you want to limit fiat selection eg 'USD'
                 /*defaultPaymentMethod: 'credit_debit_card',*/
+                paymentMethod: 'sepa_bank_transfer',
                 defaultPaymentMethod: 'sepa_bank_transfer',
                 network: defaultValues.network,
                 fiatAmount: defaultValues.fiatAmount,

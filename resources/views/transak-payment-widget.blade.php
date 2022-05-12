@@ -61,7 +61,7 @@
                 //fiatCurrency: 'USD', // If you want to limit fiat selection eg 'USD'
                 defaultPaymentMethod: 'credit_debit_card',
                 network: defaultValues.network,
-                fiatAmount: defaultValues.fiatAmount,
+                defaultCryptoAmount: defaultValues.fiatAmount,
                 cryptoCurrencyCode: defaultValues.cryptoCurrencyCode,
                 walletAddress: defaultValues.walletAddress
             };

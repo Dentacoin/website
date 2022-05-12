@@ -28,7 +28,7 @@
         }
 
         if (hasOwnProperty.call(get_params, 'fiatAmount')) {
-            defaultValues.fiatAmount = parseInt(get_params.fiatAmount);
+            defaultValues.fiatAmount = get_params.fiatAmount;
         }
 
         if (hasOwnProperty.call(get_params, 'widgetHeight') && hasOwnProperty.call(get_params, 'widgetWidth')) {

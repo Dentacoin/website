@@ -15,7 +15,7 @@
         var get_params = basic.getGETParameters();
         var defaultValues = {
             network: 'optimism', // ethereum or optimism
-            fiatAmount: 100,
+            cryptoAmount: 0.1,
             cryptoCurrencyCode: 'ETH',
             walletAddress: '',
             email: '',
@@ -27,8 +27,8 @@
             defaultValues.network = get_params.network;
         }
 
-        if (hasOwnProperty.call(get_params, 'fiatAmount')) {
-            defaultValues.fiatAmount = get_params.fiatAmount;
+        if (hasOwnProperty.call(get_params, 'cryptoAmount')) {
+            defaultValues.cryptoAmount = get_params.cryptoAmount;
         }
 
         if (hasOwnProperty.call(get_params, 'widgetHeight') && hasOwnProperty.call(get_params, 'widgetWidth')) {
@@ -58,10 +58,11 @@
                 widgetHeight: defaultValues.widgetHeight,
                 widgetWidth: defaultValues.widgetWidth,
                 themeColor: '#00afe1', // App theme color
-                //fiatCurrency: 'USD', // If you want to limit fiat selection eg 'USD'
                 defaultPaymentMethod: 'credit_debit_card',
                 network: defaultValues.network,
-                defaultCryptoAmount: defaultValues.fiatAmount,
+                //fiatCurrency: 'USD', // If you want to limit fiat selection eg 'USD'
+                //fiatAmount: defaultValues.fiatAmount,
+                defaultCryptoAmount: defaultValues.cryptoAmount,
                 cryptoCurrencyCode: defaultValues.cryptoCurrencyCode,
                 walletAddress: defaultValues.walletAddress
             };

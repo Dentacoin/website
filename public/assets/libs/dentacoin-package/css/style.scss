@@ -148,7 +148,7 @@
                             padding: 5px 35px;
                             font-size: 0;
                             display: block;
-                            .img, .text, .switch-icon {
+                            .img, .text {
                                 display: inline-block;
                                 vertical-align: middle;
                             }
@@ -167,14 +167,6 @@
                                 padding-left: 20px;
                                 padding-right: 15px;
                                 font-size: 18px;
-                            }
-                            .switch-icon {
-                                width: 40px;
-                                height: 40px;
-                                background-image: url('https://dentacoin.com/assets/libs/dentacoin-package/assets/switch-acc.svg');
-                                background-position: center center;
-                                background-repeat: no-repeat;
-                                background-size: auto 100%;
                             }
                         }
                         &.notification {
@@ -201,9 +193,6 @@
                             &:hover {
                                 a {
                                     background-color: #e9e9e9;
-                                    .switch-icon {
-                                        background-image: url('https://dentacoin.com/assets/libs/dentacoin-package/assets/switch-acc-blue.svg');
-                                    }
                                 }
                             }
                         }
@@ -218,6 +207,8 @@
                 transition: .3s;
                 padding: 5px 35px;
                 display: block;
+                font-size: 18px;
+                color: black;
                 img {
                     margin-right: 20px;
                     vertical-align: middle;

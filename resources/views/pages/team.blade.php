@@ -3,7 +3,7 @@
     <section class="team-container">
         <div class="container team">
             <div class="row">
-                <h2 class="col-xs-12 page-h1-title">DENTACOIN TEAM</h2>
+                <h2 class="col-xs-12 page-h1-title">DENTACOIN FOUNDERS TEAM</h2>
             </div>
             <div class="row list">
                 @php($first = false)

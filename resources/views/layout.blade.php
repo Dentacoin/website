@@ -187,7 +187,7 @@
                     </div>
                 </div>
             @endif
-            @include('partials.newsletter-registration')
+            {{--@include('partials.newsletter-registration')--}}
             @php($footerMenu = (new \App\Http\Controllers\Admin\MenuController())->getMenu('footer'))
             @if(!empty($footerMenu))
             <div class="row menu">

@@ -4,7 +4,7 @@ if (typeof jQuery == 'undefined') {
 } else {
     var fireAjax = true;
     var loadedSocialLibs = false;
-    var loadedAddressSuggesterLib = false;
+    /*var loadedAddressSuggesterLib = false;*/
     var loadedGoogleMapLib = false;
     var loadedCivicLib = false;
     var loadedFromMobileApp = false;
@@ -1776,14 +1776,14 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
-                                    if (!loadedAddressSuggesterLib) {
+                                    /*if (!loadedAddressSuggesterLib) {
                                         // init Google address suggester
                                         await $.getScript('https://dentacoin.com/assets/libs/dentacoin-login-gateway/js/address-combined-login.js?v='+new Date().getTime(), function() {});
                                         if (typeof initAddressSuggesters === 'function') {
                                             initAddressSuggesters();
                                         }
                                         loadedAddressSuggesterLib = false;
-                                    }
+                                    }*/
                                 }
 
                                 async function initFourthStepLogic() {
@@ -1795,14 +1795,14 @@ if (typeof jQuery == 'undefined') {
                                     }
 
                                     // ====================================== GOOGLE ADDRESS SUGGESTER =============================================
-                                    if (!loadedAddressSuggesterLib) {
+                                    /*if (!loadedAddressSuggesterLib) {
                                         // init Google address suggester
                                         await $.getScript('https://dentacoin.com/assets/libs/dentacoin-login-gateway/js/address-combined-login.js?v='+new Date().getTime(), function() {});
                                         if (typeof initAddressSuggesters === 'function') {
                                             initAddressSuggesters();
                                         }
                                         loadedAddressSuggesterLib = false;
-                                    }
+                                    }*/
 
                                     if (!loadedFromMobileApp) {
                                         await $.getScript('https://www.google.com/recaptcha/api.js', function() {});

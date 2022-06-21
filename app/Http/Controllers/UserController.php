@@ -385,6 +385,9 @@ class UserController extends Controller {
             $api_response = (new APIRequestsController())->dentistRegister($data);
         }
 
+        var_dump($api_response);
+        die();
+
         Log::info('dentistRegister response.', ['data' => json_encode($api_response)]);
 
         //deleting the dummy image

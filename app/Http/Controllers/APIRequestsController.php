@@ -110,11 +110,8 @@ class APIRequestsController extends Controller {
             CURLOPT_POSTFIELDS => $post_fields_arr
         ));
 
-        //$resp = json_decode(curl_exec($curl), true);
-        $resp = curl_exec($curl);
+        $resp = json_decode(curl_exec($curl), true);
         curl_close($curl);
-        var_dump($resp);
-        die();
 
         if(!empty($resp))   {
             return $resp;

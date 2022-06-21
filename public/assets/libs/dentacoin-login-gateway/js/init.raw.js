@@ -2054,10 +2054,6 @@ if (typeof jQuery == 'undefined') {
                                                 }
                                             }
 
-                                            if (stopThirdRegistrationStep == true) {
-                                                errors = true;
-                                            }
-
                                             if (!errors) {
                                                 if ($('#dentist-country').attr('data-current-user-country-code') != undefined && $('#dentist-country').val() != $('#dentist-country').attr('data-current-user-country-code')) {
                                                     dcnGateway.utils.showPopup('Your IP thinks differently. Sure you\'ve entered the right country?', 'warning', async function() {

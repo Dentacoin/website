@@ -249,6 +249,7 @@ class UserController extends Controller {
     }
 
     protected function handleDentistRegister(Request $request) {
+        die('Deprecated method.');
         $logData = $request->input();
         // removing password from logs
         unset($logData['password']);
@@ -421,6 +422,7 @@ class UserController extends Controller {
     }
 
     protected function handleEnrichProfile(Request $request) {
+        die('Deprecated method.');
         Log::info('handleEnrichProfile request.', ['data' => json_encode($request->input())]);
 
         $this->validate($request, [

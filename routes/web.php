@@ -195,13 +195,13 @@ Route::group(['prefix' => '/', 'middleware' => 'frontEndMiddleware'], function (
 
         Route::post('/check-civic-email', 'DentacoinLoginGateway@checkIfCivicEmailTryingToLoginFromMobileApp')->name('check-civic-email');
 
-        Route::post('/handle-dentist-register', 'UserController@handleDentistRegister')->name('handle-dentist-register');
+        /*Route::post('/handle-dentist-register', 'UserController@handleDentistRegister')->name('handle-dentist-register');*/
 
         Route::post('/handle-dentist-login', 'UserController@handleDentistLogin')->name('handle-dentist-login');
 
         Route::post('/get-after-dentist-registration-popup', 'UserController@getAfterDentistRegistrationPopup')->name('get-after-dentist-registration-popup');
 
-        Route::post('/handle-enrich-profile', 'UserController@handleEnrichProfile')->name('handle-enrich-profile');
+        /*Route::post('/handle-enrich-profile', 'UserController@handleEnrichProfile')->name('handle-enrich-profile');*/
     });
 });
 

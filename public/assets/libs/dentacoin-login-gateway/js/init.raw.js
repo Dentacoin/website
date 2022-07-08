@@ -1846,6 +1846,8 @@ if (typeof jQuery == 'undefined') {
 
                                 //DENTIST REGISTERING FORM
                                 $('.dentacoin-login-gateway-container .dentist .form-register .next-step').click(async function() {
+                                    alert('This feature is currently unavailable.');
+                                    return false;
                                     var this_btn = $(this);
 
                                     switch(this_btn.attr('data-current-step')) {
